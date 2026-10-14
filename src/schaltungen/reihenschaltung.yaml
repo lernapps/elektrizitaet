@@ -35,7 +35,7 @@ blocks:
           en: In a series circuit the parts are connected one behind the other. There is only one path for the current.
       - type: figure
         image: images/reihenschaltung.svg
-        source: Eigene Zeichnung / own drawing for this app
+        source: https://github.com/lernapps/elektrizitaet
         licence: CC0-1.0
         alt:
           de: Ein Stromkreis mit einer Batterie und zwei Lampen, die oben nebeneinander in derselben Leitung sitzen.

@@ -42,7 +42,7 @@ blocks:
           en: A circuit diagram shows a circuit with circuit symbols instead of drawings of the parts.
       - type: figure
         image: images/schaltzeichen.svg
-        source: Eigene Zeichnung / own drawing for this app
+        source: https://github.com/lernapps/elektrizitaet
         licence: CC0-1.0
         alt:
           de: Vier Schaltzeichen untereinander. Batterie, zwei Striche, ein langer dünner und ein kurzer dicker. Lampe,

@@ -70,8 +70,9 @@ diagram, series circuit, parallel circuit, short circuit, fuse, conductor, insul
   Beispiel: `src/schaltungen/parallelschaltung.yaml`, `ps-ausfall`.
 - **Beurteilen** (Kompetenz: Sicherheit): `multiple-choice` mit sicheren und unsicheren Handlungen, die Begründung
   steht in der `info`. Beispiel: `src/alltag/sicherheit.yaml`, `si-sicher`.
+- Die ersten drei Muster nutzen die Fragetypen `single-choice`, `multiple-choice`, `true-false`, `matching` und `ordering`.
 - **Bauen** (Kompetenz: Schaltungen planen): Komponente `SchaltungBauen` (`src/components/SchaltungBauen.vue`, Logik
-  `SchaltungBauen.ts`). Grafisches Schaltbrett (SVG) mit sechs festen Plätzen: zwei in der Hauptleitung (Platz 1 = `m1`,
+  `SchaltungBauen.ts`). Sechs Aufgaben (Ziele `eine`, `schalter`, `reihe`, `parallel`, `je-schalter`, `haupt`). Grafisches Schaltbrett (SVG) mit sechs festen Plätzen: zwei in der Hauptleitung (Platz 1 = `m1`,
   Platz 6 = `m2`) und zwei je senkrechtem Zweig einer Parallelschaltung (Plätze 2 bis 5 = `p1a`, `p1b`, `p2a`, `p2b`). Man
   wählt Kabel, Lampe oder Schalter und tippt auf einen Platz; im Modus „Testen“ legt man Schalter um und schraubt Lampen
   heraus. Ein leerer Platz ist ein Kabel; sind beide Zweige ganz leer, entfällt die Parallelschaltung. Der Simulator prüft pro
@@ -89,7 +90,8 @@ Schaltbilder sind eigene SVG-Zeichnungen in `src/images/` (`stromkreis`, `reihen
 `schaltzeichen`), schwarze Linien auf weißem Grund. Die Bilder enthalten **keine Wörter**, nur Ziffern (1, 2, 3 …), damit sie in
 beiden Sprachen gelten; die Legende („Beschriftung: 1 Batterie, 2 Lampe …“) steht in der Bildunterschrift, je Sprache. In der
 Parallelschaltung gibt es keine Querleitung, die die Zweige überbrückt, Schaltzeichen nach der üblichen Norm
-(Batterie, Lampe als Kreis mit Kreuz, Schalter mit Lücke). Quelle `Eigene Zeichnung für diese App`, Lizenz `CC0-1.0`.
+(Batterie, Lampe als Kreis mit Kreuz, Schalter mit Lücke). Quelle ist die Adresse des Repos `https://github.com/lernapps/elektrizitaet` (sprachneutral: die Bildnachweise stehen
+sonst in der Sprache der Seite, und ein Text ließe sich dort nicht übersetzen), Lizenz `CC0-1.0`.
 Der Alt-Text beschreibt, was die Zeichnung zeigt (Bauteile und Lage), die Bildunterschrift sagt, worauf man achten soll.
 
 

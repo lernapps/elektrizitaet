@@ -37,7 +37,7 @@ blocks:
             each part.
       - type: figure
         image: images/parallelschaltung.svg
-        source: Eigene Zeichnung / own drawing for this app
+        source: https://github.com/lernapps/elektrizitaet
         licence: CC0-1.0
         alt:
           de:

@@ -51,7 +51,7 @@ blocks:
             - the **wires**, that is, cables. They connect the parts.
       - type: figure
         image: images/stromkreis.svg
-        source: Eigene Zeichnung / own drawing for this app
+        source: https://github.com/lernapps/elektrizitaet
         licence: CC0-1.0
         alt:
           de: Ein Rechteck aus Kabeln. Links sitzt eine Batterie, oben eine Lampe. Der Kreis ist an keiner Stelle unterbrochen.
