@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+title: Leiter und Nichtleiter
+description: Metalle leiten den Strom, Gummi, Glas und Kunststoff nicht. Daran erkennst du, woraus Kabel gemacht sind.
+blocks:
+  - type: section
+    id: idee
+    title: Die Idee
+    blocks:
+      - type: text
+        text: |
+          Ein Kabel besteht innen aus Kupfer und außen aus Kunststoff. Warum nicht ganz aus Kupfer oder ganz aus
+          Kunststoff? Weil manche Stoffe den Strom durchlassen und andere nicht.
+  - type: section
+    id: merke
+    title: Das merkst du dir
+    blocks:
+      - type: definition
+        term: Leiter
+        explanation: Ein Leiter lässt den elektrischen Strom gut durch. Dazu gehören alle Metalle, zum Beispiel Kupfer, Eisen und Aluminium.
+      - type: definition
+        term: Nichtleiter
+        explanation: Ein Nichtleiter (auch Isolator) lässt den elektrischen Strom praktisch nicht durch, zum Beispiel Kunststoff, Gummi, Glas, Holz und Porzellan.
+      - type: table
+        caption: Wichtige Stoffe und ob sie den Strom leiten
+        header: [Stoff, Leiter oder Nichtleiter?]
+        rowHeaders: true
+        rows:
+          - [Kupfer, Leiter]
+          - [Eisen, Leiter]
+          - [Aluminium, Leiter]
+          - [Graphit (Bleistiftmine), Leiter]
+          - [Kunststoff, Nichtleiter]
+          - [Gummi, Nichtleiter]
+          - [Glas, Nichtleiter]
+          - [Holz (trocken), Nichtleiter]
+      - type: note
+        title: Auch Wasser kann leiten
+        blocks:
+          - type: text
+            text: |
+              Leitungswasser und Salzwasser leiten den Strom, weil Stoffe darin gelöst sind. Deshalb sind nasse Hände
+              und Strom eine gefährliche Mischung. Mehr dazu auf der Seite „Sicherheit“.
+  - type: section
+    id: beispiel
+    title: Beispiel
+    blocks:
+      - type: example
+        title: Warum ein Kabel zwei Teile hat
+        blocks:
+          - type: text
+            text: |
+              Der **Kupferdraht** im Inneren ist ein Leiter: In ihm fließt der Strom. Die **Hülle** aus Kunststoff ist
+              ein Nichtleiter: Sie schützt dich, wenn du das Kabel anfasst, und verhindert, dass zwei Drähte sich
+              berühren.
+  - type: section
+    id: uebung
+    title: Übung
+    blocks:
+      - type: multiple-choice
+        id: ln-leiter
+        text: Welche Stoffe sind Leiter?
+        options:
+          - text: Kupfer
+            correct: true
+            info: Kupfer ist ein Metall und leitet den Strom sehr gut. Deshalb sind Kabel innen aus Kupfer.
+          - text: Eisen
+            correct: true
+            info: Auch Eisen ist ein Metall und leitet den Strom.
+          - text: Gummi
+            correct: false
+            info: Gummi leitet den Strom nicht. Deshalb ist es als Hülle um Kabel und Griffe geeignet.
+          - text: Glas
+            correct: false
+            info: Glas leitet den Strom nicht und gehört zu den Nichtleitern.
+        explanation: Alle Metalle sind Leiter. Gummi und Glas sind Nichtleiter.
+        links:
+          - title: Elektrischer Leiter (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Elektrischer_Leiter
+      - type: single-choice
+        id: ln-huelle
+        text: Aus welchem Stoff ist die Hülle eines Kabels, die dich schützt?
+        options:
+          - text: Kunststoff, ein Nichtleiter
+            correct: true
+            info: Kunststoff lässt keinen Strom durch. Deshalb kannst du die Hülle gefahrlos anfassen.
+          - text: Kupfer, ein Leiter
+            correct: false
+            info: Kupfer ist der Draht im Inneren. Er leitet den Strom und wäre als Hülle gefährlich.
+          - text: Eisen, ein Leiter
+            correct: false
+            info: Eisen leitet den Strom und eignet sich nicht als Schutzhülle.
+        explanation: Die Hülle muss ein Nichtleiter sein, damit der Strom nur im Draht fließt und du geschützt bist.
+        links:
+          - title: Isolator (Elektrotechnik) (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Isolator_(Elektrotechnik)
+      - type: true-false
+        id: ln-wasser
+        text: Leitungswasser leitet den elektrischen Strom.
+        answer: true
+        explanation: Im Leitungswasser sind Salze gelöst, und sie lassen den Strom durch. Reines, destilliertes Wasser leitet kaum.
+        links:
+          - title: Elektrischer Leiter (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Elektrischer_Leiter

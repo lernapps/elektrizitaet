@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+title: Sicher mit Strom umgehen
+description: Steckdose, Batterie und Gewitter. Du lernst, was gefährlich ist und was nicht.
+blocks:
+  - type: section
+    id: idee
+    title: Die Idee
+    blocks:
+      - type: text
+        text: |
+          Strom ist nützlich, kann aber gefährlich sein. Die Batterie in deiner Taschenlampe ist ungefährlich. Der Strom
+          aus der Steckdose kann dich dagegen **lebensgefährlich verletzen**. Wer die Regeln kennt, bleibt sicher.
+  - type: section
+    id: merke
+    title: Das merkst du dir
+    blocks:
+      - type: definition
+        term: Sicherung
+        explanation: Eine Sicherung unterbricht den Stromkreis automatisch, wenn zu viel Strom fließt, zum Beispiel bei einem Kurzschluss. Das schützt vor Bränden.
+      - type: text
+        text: |
+          Diese Regeln solltest du kennen:
+          - Stecke **nie** Gegenstände in eine Steckdose, auch keine Nadeln oder Gabeln.
+          - Fasse elektrische Geräte **nie mit nassen Händen** an, und benutze sie nicht in der Badewanne.
+          - Ziehe am **Stecker**, nicht am Kabel, und benutze keine Geräte mit beschädigtem Kabel.
+          - **Experimentiere nie mit Strom aus der Steckdose.** Für Versuche nimmst du nur Batterien.
+          - **Bei Gewitter** bleibst du im Haus oder im Auto. Auf freiem Feld und unter einzelnen Bäumen bist du in Gefahr.
+      - type: note
+        title: Batterie und Steckdose
+        blocks:
+          - type: text
+            text: |
+              Eine Flachbatterie hat 4,5 Volt und ist für dich ungefährlich. Die Steckdose liefert 230 Volt. Das ist
+              viel zu viel für deinen Körper.
+  - type: section
+    id: beispiel
+    title: Beispiel
+    blocks:
+      - type: example
+        title: Ein Föhn fällt in die Badewanne
+        blocks:
+          - type: text
+            text: |
+              Wasser leitet den Strom, und dein Körper auch. Deshalb darf kein elektrisches Gerät in die Nähe von
+              Badewasser. Bade nie mit angeschlossenem Gerät, und stelle keine Geräte an den Rand der Wanne.
+  - type: section
+    id: uebung
+    title: Übung
+    blocks:
+      - type: multiple-choice
+        id: si-sicher
+        text: Was ist sicher?
+        options:
+          - text: Mit einer Taschenlampenbatterie ein Lämpchen zum Leuchten bringen.
+            correct: true
+            info: Eine kleine Batterie hat nur wenige Volt und ist für dich ungefährlich.
+          - text: Beim Ziehen des Steckers den Stecker anfassen, nicht das Kabel.
+            correct: true
+            info: Das Kabel kann beim Ziehen beschädigt werden. Am Stecker zu ziehen ist richtig.
+          - text: Mit einer Gabel in der Steckdose stochern.
+            correct: false
+            info: Die Steckdose hat 230 Volt. Das kann dich lebensgefährlich verletzen.
+          - text: Einen Föhn mit nassen Händen anfassen.
+            correct: false
+            info: Nasse Haut leitet den Strom gut. Das macht einen Stromschlag sehr gefährlich.
+        explanation: Batterien mit wenigen Volt sind ungefährlich. Bei der Steckdose mit 230 Volt gelten strenge Regeln.
+        links:
+          - title: Stromunfall (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Stromunfall
+      - type: single-choice
+        id: si-gewitter
+        text: Ein Gewitter zieht auf, und du bist auf einer Wiese. Was tust du?
+        options:
+          - text: Ich gehe in ein Gebäude oder in ein Auto.
+            correct: true
+            info: In Gebäuden und Autos bist du vor Blitzen gut geschützt.
+          - text: Ich stelle mich unter einen einzelnen großen Baum.
+            correct: false
+            info: Einzelne hohe Bäume werden oft vom Blitz getroffen. Das ist gefährlich.
+          - text: Ich bleibe mitten auf der Wiese und stehe aufrecht.
+            correct: false
+            info: Auf freiem Feld bist du der höchste Punkt, und der Blitz kann dich treffen.
+        explanation: Bei Gewitter suchst du einen geschützten Ort wie ein Gebäude oder ein Auto und meidest freie Flächen und einzelne Bäume.
+        links:
+          - title: Blitzschlag (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Blitzschlag
+      - type: true-false
+        id: si-sicherung
+        text: Eine Sicherung unterbricht den Stromkreis, wenn zu viel Strom fließt.
+        answer: true
+        explanation: Die Sicherung schaltet bei einer Überlastung oder einem Kurzschluss ab. So wird verhindert, dass Kabel zu heiß werden.
+        links:
+          - title: Schmelzsicherung (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Schmelzsicherung

@@ -1,10 +1,22 @@
 # yaml-language-server: $schema=../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
-title: Prozentrechnung
+title: Elektrizität
 intro: |
-  Prozentwert, Prozentsatz und Grundwert: Was sie bedeuten, wie du sie ausrechnest, und je ein Beispiel dazu.
-  Für die Klassen 7 und 8.
+  Wie funktioniert ein Stromkreis? Warum leitet Kupfer den Strom und Gummi nicht? Was ist der Unterschied zwischen
+  Reihen- und Parallelschaltung? Hier erklärst du dir die Grundlagen der Elektrizität Schritt für Schritt und übst auf
+  jeder Seite. Am Ende baust du selbst Schaltungen im Bau-Editor. Für die Klassen 5 und 6; später kommen höhere
+  Klassen dazu.
 languages: [de]
-chapters: [prozent]
+chapters: [stromkreis, schaltungen, alltag]
 sources:
-  - title: Prozentrechnung mittels Formeln (Serlo)
-    url: https://de.serlo.org/mathe/2193/prozentrechnung-mittels-formeln
+  - title: Elektrischer Stromkreis (Wikipedia)
+    url: https://de.wikipedia.org/wiki/Elektrischer_Stromkreis
+  - title: Elektrischer Leiter (Wikipedia)
+    url: https://de.wikipedia.org/wiki/Elektrischer_Leiter
+  - title: Isolator (Elektrotechnik) (Wikipedia)
+    url: https://de.wikipedia.org/wiki/Isolator_(Elektrotechnik)
+  - title: Reihenschaltung (Wikipedia)
+    url: https://de.wikipedia.org/wiki/Reihenschaltung
+  - title: Parallelschaltung (Wikipedia)
+    url: https://de.wikipedia.org/wiki/Parallelschaltung
+  - title: Stromunfall (Wikipedia)
+    url: https://de.wikipedia.org/wiki/Stromunfall

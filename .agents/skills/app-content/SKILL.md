@@ -5,65 +5,105 @@ description: Use for any content work in this app - researching, writing, extend
 
 # Content guide of this app
 
-<!--
-The standing guide to this app's content, for every agent that works on it after you: what the app teaches, from
-which curriculum, and how its content is built. The generator wrote it as a skeleton.
-
-- Fill in every "FILL IN" once the creator has confirmed the plan, before you build the content. Keep the headings:
-  `lernapps check` looks for them (rule app-content-guide), and fails on a "FILL IN" left once the plan is in Commit.
-- Write precise, concrete instructions that a follow-up agent can act on without your conversation: name the files,
-  ids, data files and examples of this app.
-  - Vague: "Use varied exercises with figures where they help."
-  - Concrete: "Every page ends with the section `uebung`: one `generated` exercise of the pattern 'Ohmsches Gesetz'
-    (below), drawing from `src/data/widerstaende.yaml`, and one `matching` block of symbols and parts."
-- When a content decision changes (a new pattern, a figure type, a source rule), change this file in the same
-  commit. The plan file is the record of one run; this file is the guide that stays.
-- Keep it free of personal data and of goals of one learner: it is public, in the app's repo.
--->
-
 ## Curriculum
 
-<!-- FILL IN: Land, Schulform and Jahrgang; the Lehrplan the app follows (document, issuer, year, address), with
-the page and unit of each part the app covers; where the creator's own material differs from it, and which one the
-app follows. -->
+Deutschland, länderübergreifend, Schulform-übergreifend, Jahrgang 5 und 6 (Physik bzw. Naturwissenschaften). Es ist
+**kein offizielles Lehrplandokument zitiert**: die Recherche fand nur schulinterne Pläne und Unterrichtsmaterial, die
+übereinstimmend dieselben Themen für Klasse 5/6 nennen (Stromkreis, Leiter/Nichtleiter, Schalter und Schaltpläne,
+Reihen- und Parallelschaltung, Wirkungen des Stroms, Sicherheit). Das Lehrplanzitat (Titel, Herausgeber, Jahr, Seite,
+Einheit) ist nachzureichen, sobald ein Land festgelegt ist; bis dahin gilt: Lehrplan nicht geprüft. Spätere Jahrgänge
+(Spannung, Stromstärke, Widerstand, ohmsches Gesetz) kommen als weitere Kapitel dazu.
+
 
 ## Competencies
 
-<!-- FILL IN: every competency as "Ich kann …", one observable skill each, grouped into chapters. For each: its
-chapter, the page or round where it is taught and practised (file and id), and its exercise ids. -->
+Kapitel `stromkreis` (Der Stromkreis)
+- Ich kann einen einfachen Stromkreis aus Stromquelle, Verbraucher und Leitungen beschreiben und erklären, warum er
+  geschlossen sein muss. Seite `stromkreis/einfacher-stromkreis`; Übungen `sk-geschlossen`, `sk-teile`, `sk-offen`.
+- Ich kann Stoffe als Leiter oder Nichtleiter einordnen. Seite `stromkreis/leiter-nichtleiter`; `ln-leiter`,
+  `ln-huelle`, `ln-wasser`.
+
+Kapitel `schaltungen` (Schaltungen)
+- Ich kann die Schaltzeichen für Batterie, Lampe und Schalter lesen und die Wirkung eines Schalters erklären. Seite
+  `schaltungen/schalter-schaltzeichen`; `sz-zuordnen`, `sz-offen`, `sz-schalter`.
+- Ich kann eine Reihenschaltung erkennen und vorhersagen, was passiert, wenn ein Bauteil ausfällt. Seite
+  `schaltungen/reihenschaltung`; `rs-ausfall`, `rs-wege`, `rs-reihenfolge`.
+- Ich kann eine Parallelschaltung erkennen und von der Reihenschaltung unterscheiden. Seite
+  `schaltungen/parallelschaltung`; `ps-ausfall`, `ps-zuordnen`, `ps-haus`.
+- Ich kann Stromkreise planen und bauen, die eine vorgegebene Aufgabe erfüllen. Seite `schaltungen/bau-editor`;
+  Komponente `SchaltungBauen` (Ziele `eine`, `schalter`, `reihe`, `parallel`, `je-schalter`, `haupt`), `be-kurzschluss`.
+
+Kapitel `alltag` (Strom im Alltag)
+- Ich kann Wärme-, Licht- und Magnetwirkung des Stroms an Geräten zuordnen. Seite `alltag/wirkungen`; `wk-zuordnen`,
+  `wk-kabel`, `wk-gluehlampe`.
+- Ich kann Alltagssituationen mit Strom als sicher oder gefährlich beurteilen und begründen. Seite
+  `alltag/sicherheit`; `si-sicher`, `si-gewitter`, `si-sicherung`.
+
 
 ## Content structure
 
-<!-- FILL IN: how a chapter, page or round of this app is built: the sections or groups of questions in their
-order, with their ids or titles, and what each holds; how long a page or round is. -->
+Jede Seite hat dieselben vier Sektionen in dieser Reihenfolge: `idee` (Die Idee: 2 bis 4 Sätze, Alltagsbezug),
+`merke` (Das merkst du dir: `definition`-Blöcke für Fachwörter, Tabelle oder Figur, Regeln als Liste), `beispiel`
+(ein `example`-Kasten) und `uebung` (3 Übungen, auf der Seite `bau-editor` die Komponente plus eine Frage). Eine Seite
+umfasst eine Kompetenz und passt auf einen Bildschirm voll Text. Kapitel haben 2 bis 4 Seiten.
+
 
 ## Terminology
 
-<!-- FILL IN: the terms the app uses and those it avoids (with the reason), units and notation, how learners are
-addressed; which terms go into the glossary, with their wording. -->
+- Stromkreis (nicht „Stromlauf“), Stromquelle, Verbraucher, Leitung, Schalter, Schaltzeichen, Schaltplan,
+  Reihenschaltung, Parallelschaltung, Kurzschluss, Sicherung; Leiter und Nichtleiter (Isolator als Nebenwort).
+- „Der Strom fließt“ ist die Sprechweise; Elektronen, Spannung und Stromstärke kommen erst in höheren Jahrgängen vor.
+- Die Lernenden werden mit „du“ angesprochen. Jedes Fachwort steht einmal als `definition` (daraus entsteht das Glossar).
+
 
 ## Exercise patterns
 
-<!-- FILL IN: each pattern the app uses: its name, the competency it practises, how it is expressed in this
-archetype (block or question type, its fixed parts and what varies), one concrete example as it is in the app
-(file and id), and its data file, if any. -->
+- **Einordnen** (Kompetenz: Stoffe, Bauteile, Geräte zuordnen): `multiple-choice` oder `matching` mit je Option einer
+  wahren `info`. Beispiel: `src/stromkreis/leiter-nichtleiter.yaml`, `ln-leiter`. Bei `matching` hat jede rechte Seite
+  genau einen Partner (keine doppelten Antworten).
+- **Vorhersagen** (Kompetenz: Reihen-/Parallelschaltung): `single-choice` oder `true-false` zum Ausfall einer Lampe.
+  Beispiel: `src/schaltungen/parallelschaltung.yaml`, `ps-ausfall`.
+- **Beurteilen** (Kompetenz: Sicherheit): `multiple-choice` mit sicheren und unsicheren Handlungen, die Begründung
+  steht in der `info`. Beispiel: `src/alltag/sicherheit.yaml`, `si-sicher`.
+- **Bauen** (Kompetenz: Schaltungen planen): Komponente `SchaltungBauen` (`src/components/SchaltungBauen.vue`, Logik
+  `SchaltungBauen.ts`). Der Simulator prüft pro Aufgabe das Verhalten bei allen Schalterstellungen und mit herausgeschraubten
+  Lampen, nicht den Aufbau. Eine neue Aufgabe braucht: ein Ziel in `Goal` und `meets` und `solution` (Logik), einen Test, den
+  Text `goal…` in den `texts` der Seite und einen Eintrag in `goals`. Sie kann nur Reihe, Parallelzweige (ein Level) mit
+  Lampen und Schaltern; keine Spannung, keine Helligkeit.
+Eine Datendatei in `src/data/` gibt es noch nicht; sobald Stoffe oder Bauteile in mehreren Übungen vorkommen, entsteht
+`src/data/stoffe.yaml`.
+
 
 ## Figures
 
-<!-- FILL IN: the figure kinds and images the app uses, and for what; their conventions (colours, labels, units,
-orientation, sizes); how alt texts and captions are written; where bundled images come from, with their licence. -->
+Schaltbilder sind eigene SVG-Zeichnungen in `src/images/` (`stromkreis`, `reihenschaltung`, `parallelschaltung`,
+`schaltzeichen`), schwarze Linien auf weißem Grund, Beschriftung auf Deutsch, Schaltzeichen nach der üblichen Norm
+(Batterie, Lampe als Kreis mit Kreuz, Schalter mit Lücke). Quelle `Eigene Zeichnung für diese App`, Lizenz `CC0-1.0`.
+Der Alt-Text beschreibt, was die Zeichnung zeigt (Bauteile und Lage), die Bildunterschrift sagt, worauf man achten soll.
+
 
 ## Sources
 
-<!-- FILL IN: which sources the app links or relies on (the Lehrplan, second explanations, videos, articles), how
-each was verified, and what is left out; that the creator's own material stays local and is never committed. -->
+Die Fakten stammen aus den Wikipedia-Artikeln, die in `src/app.yaml` unter `sources` stehen (geladen und geprüft,
+Quelle für Fakten, nicht für Formulierungen). Die Fragen verlinken jeweils auf einen passenden Artikel. Serlo und LeifiPhysik
+sind nicht verwendet: Serlo wurde nur als Übersicht geladen, LeifiPhysik lieferte 403. Eigenes Material der Auftraggeber
+bleibt lokal und wird nie committet.
+
 
 ## Adding a chapter or round
 
-<!-- FILL IN: the steps to add a new chapter (explainer) or round (quiz) in this app, in order, with the files to
-change: the competencies, the content, the exercises from the patterns above, the entry's topics, the check, the
-commit. -->
+1. Kompetenz als „Ich kann …“ in „Competencies“ eintragen und Lehrplanbezug in „Curriculum“ ergänzen.
+2. Ordner `src/<kapitel>/` mit `chapter.yaml` anlegen, in `src/app.yaml` unter `chapters` eintragen.
+3. Pro Kompetenz eine Seite mit den Sektionen `idee`, `merke`, `beispiel`, `uebung` schreiben und in `pages` listen.
+4. Übungen nach den Mustern oben, jede Frage mit mindestens einem geprüften Link.
+5. Jede Seite mit Themenpfad in die Katalogeintrags-`topics` (`<kapitel>/<seite>/`) aufnehmen.
+6. `npx lernapps check` laufen lassen, committen.
+
 
 ## Rules learned from mistakes
 
-<!-- FILL IN: each rule with the mistake it came from, one line each. "None yet." until the first one. -->
+- Kommas in YAML-Flow-Listen (`[a, b]`, `{ left: a, right: b }`) trennen Zellen und Felder: Texte mit Komma in Anführungszeichen.
+- Links zwischen Seiten haben die Form `/<kapitel>/<seite>/`, nicht relativ.
+- Eine Seite braucht mindestens eine Quiz-Übung, auch wenn sie eine Komponente enthält.
+- `vue-tsc` braucht `@types/node` (als devDependency ergänzt).
+

@@ -4,229 +4,157 @@
 # archetype: the kind of app, chosen at the end of Explore: explainer, interactive or quiz. null until then.
 archetype: explainer
 # phase: the phase you work in now: explore, plan, code or commit. Change it when you enter the next phase.
-phase: code
+phase: commit
 # prePushFailures: failed runs of the pre-push hook. The hook counts them. Never change this value.
 prePushFailures: 0
 ---
 
-# Plan: <name of the app>
+# Plan: Elektrizität
 
-<!--
-This file guides you, the assistant, and shows the creator where you are.
-- Keep it at .vibe/plan.md. Read it before each step.
-- Work through one phase at a time: Explore, Plan, Code, Commit. Do the tasks of the current phase in order.
-- Tick a task when it is done and move it to "Completed" of its phase. Add tasks as you find them.
-- A task marked as a checkpoint means: stop, show the creator what they need to decide, and wait for their answer.
-- Work on the branch `work`, from the first commit on, until the first publish: before it, if your environment asks
-  you to push, push `work` only. The first publish, in Commit, creates `main`; from then on, push `main` as the Commit
-  tasks say. While a check fails, tell the creator instead of pushing.
-- Write the plan in the language you talk to the creator in. Keep the headings and the front matter keys as they
-  are: the review reads them.
-- Delete these comments only where you have filled the part they explain.
--->
-
-*Started on <date>. Workflow: Explore, Plan, Code, Commit.*
+*Gestartet am 2026-10-14. Ablauf: Explore, Plan, Code, Commit.*
 
 ## Goal
 
-<!-- One or two sentences: what learners do in the app, and what they learn or train by it. Fill it in Explore. -->
+Lernende der Klassen 5 und 6 erklären sich Schritt für Schritt die Grundlagen der Elektrizität (Stromkreis, Leiter und
+Nichtleiter, Schaltungen, Wirkungen und Sicherheit) und üben auf jeder Seite; im Bau-Editor bauen sie selbst
+Schaltungen. Der Lehrgang soll später um höhere Jahrgänge wachsen.
 
 ## Key decisions
 
-<!--
-One line each: the decision and why. The archetype is the first one. Add decisions in any phase.
-Mark a choice you made without asking the creator with "(guess)", and list it in the retrospective.
--->
+- Archetyp `explainer`: viele Seiten mit Erklärung und Übung, auch ohne JavaScript lesbar.
+- Jahrgang 5 und 6, Deutschland länderübergreifend (Entscheidung der Auftraggeberin bzw. des Auftraggebers).
+- Bau-Editor von Anfang an dabei, als Komponente `SchaltungBauen`: kein Block kann eine Schaltung bauen lassen
+  (`prefer-built-in-block`). Er prüft das Verhalten der Schaltung, nicht ihren Aufbau.
+- Ohne Lehrplanzitat weitergebaut, weil kein offizielles Lehrplandokument gefunden wurde (Entscheidung der Auftraggeberin
+  bzw. des Auftraggebers).
+- `@types/node` als devDependency ergänzt, damit `vue-tsc` besteht (guess).
+- Selbst gezeichnete Schaltbilder als SVG unter CC0-1.0 statt fremder Bilder (guess).
 
 ## Notes
 
-<!-- What you need later: sources and licences of content, links, open questions. -->
+- Lehrplan: nicht geprüft. Schulinterne Pläne und Unterrichtsmaterial nennen übereinstimmend die Themen Stromkreis, Leiter und
+  Nichtleiter, Schalter und Schaltpläne, Reihen- und Parallelschaltung, Wirkungen des Stroms, Sicherheit.
+- Quellen: die Wikipedia-Artikel aus `src/app.yaml` (geladen). Serlo: nur Übersichtsseite geladen, keine Einzelartikel
+  geprüft, nicht verwendet. LeifiPhysik: HTTP 403, nicht geprüft.
+- Kompetenzen und Seiten stehen im Inhaltsleitfaden `.agents/skills/app-content/SKILL.md`.
+- Offen: Lehrplanzitat nachreichen, sobald ein Land festgelegt ist.
 
 ## Explore
 
-<!--
-Find out what the app is for, for whom, and what the app overview needs to help adults find it.
-Ask the creator; write no code. Ask one or two questions per turn, in plain words. Do not ask what you can derive
-from earlier answers. Write each answer under "Answers".
--->
-
 ### Tasks
-
-- [ ] Ask what the app is for: what do learners do in it, and what do they learn or train?
-- [ ] Ask who the learners are: subject, school year, what they know already.
-- [ ] Ask where the content comes from: written by the creator, or taken from others (with source and licence)?
-- [ ] Research the content: load the skill `lernapps-content-research` and follow it (in an app whose
-      `.agents/skills/app-content/SKILL.md` is filled in, load that first; it takes precedence). Write the Lehrplan
-      with its citation, the competencies by chapter and the verified sources under "Notes".
-- [ ] Fetch the entry schema of the app overview: https://lernapps.net/apps/schemas/entry.v1.schema.json. Read the
-      description of every property. Ask the creator what it needs to help adults (teachers, parents) find the app.
-      Fill the "Entry draft" from the answers.
-- [ ] Choose the archetype from the answers: `explainer` (many pages of explanation and exercises), `interactive`
-      (one app page in the browser, plus a static start page) or `quiz` (questions with options and feedback).
-      Write it under "Key decisions" with the reason; set `archetype`.
-- [ ] **Checkpoint:** research. Explain to the creator, in plain words, what you found and how: the Lehrplan with its
-      citation, the competencies by chapter, the sources and how you checked them, what you could not check, and the
-      archetype with its reason. Stop and wait for the creator. Change it if they ask, then ask again.
-- [ ] Set `phase: plan`.
 
 ### Answers
 
-<!-- The creator's answers, in their words, one bullet per question. -->
+- Zielgruppe: Klasse 5–6, Deutschland, länderübergreifend.
+- Übungen: Schaltung bauen/prüfen, Sortieren/Zuordnen, Quizfragen mit Rückmeldung, Sicherheit im Alltag.
+- Der Lehrgang folgt dem Lehrplan, beginnt mit den jüngeren Jahrgängen und soll später wachsen.
+- Bau-Editor gleich mit dabei. Ohne Lehrplanzitat weiterbauen. Urheber: Oliver (@mrsimpson).
 
 ### Entry draft
 
-<!--
-The entry of the app in the app overview, as YAML that validates against the entry schema. Use the schema's
-property names; its descriptions say what each one needs. Fill it from the answers; never invent a value. Leave out
-what is not known yet, such as the app's address before it is published. The listing completes it.
--->
-
 ```yaml
+title: Elektrizität
+subject: Physik
+grades: [5, 6]
+summary: >-
+  Du erklärst dir Schritt für Schritt, wie ein Stromkreis funktioniert, welche Stoffe den Strom leiten und wie
+  Reihen- und Parallelschaltung sich unterscheiden. Auf jeder Seite übst du, und im Bau-Editor baust du selbst
+  Schaltungen.
+topics:
+  - { title: Der einfache Stromkreis, path: stromkreis/einfacher-stromkreis/ }
+  - { title: Leiter und Nichtleiter, path: stromkreis/leiter-nichtleiter/ }
+  - { title: Schalter und Schaltzeichen, path: schaltungen/schalter-schaltzeichen/ }
+  - { title: Reihenschaltung, path: schaltungen/reihenschaltung/ }
+  - { title: Parallelschaltung, path: schaltungen/parallelschaltung/ }
+  - { title: Bau-Editor, path: schaltungen/bau-editor/ }
+  - { title: Wirkungen des elektrischen Stroms, path: alltag/wirkungen/ }
+  - { title: Sicher mit Strom umgehen, path: alltag/sicherheit/ }
+keywords: [Stromkreis, Leiter, Nichtleiter, Schalter, Reihenschaltung, Parallelschaltung, Schaltplan, Kurzschluss]
+creator:
+  name: Oliver
+  url: https://github.com/mrsimpson
+fitness:
+  account: false
+  install: false
+  storage: none
+  thirdParty: none
+  checked: false
 ```
 
 ### Completed
 
+- [x] Zweck, Zielgruppe und Herkunft der Inhalte erfragt.
+- [x] Inhalte recherchiert; kein Lehrplandokument gefunden, Auftraggeber:in entschied: ohne Zitat weiterbauen.
+- [x] Archetyp `explainer` gewählt.
+- [x] Checkpoint Recherche: besprochen und bestätigt.
+
 ## Plan
 
-<!--
-Turn the answers into tasks the creator can confirm in one read. After the confirmation you work on your own: the
-creator's turns from here to the listing are counted in the retrospective (target: at most 3).
--->
-
 ### Tasks
-
-- [ ] Write the tasks of Code under "Code": the pages or screens, the content, and what each must show. Each task
-      ends in a commit.
-- [ ] Write the content method under "Content method": load the skill of the archetype and the skill
-      `lernapps-exercise-patterns`, and decide with them how you will make the content.
-- [ ] Show the creator the goal, the competencies by chapter, the entry draft and the tasks, short. Explain the
-      content method in plain words: what learners will see and do, and what it cannot do.
-- [ ] **Checkpoint:** confirm the plan and the content method. Stop and wait for the creator. Change the plan if they
-      ask, then ask again.
-- [ ] Set `phase: code`.
 
 ### Content method
 
-<!--
-How you will make the content, one line each, so the creator can judge it: the exercise patterns and where each is
-used; the figures and how they are made; data files for material used more than once; each component, what it
-checks and what it cannot; how a later agent adds a chapter. In Code, it becomes the content guide.
--->
+- Muster Einordnen, Vorhersagen, Beurteilen: Quiz-Fragetypen des Explainers, je Seite drei Stück, mit wahrer `info` je Option.
+- Muster Bauen: Komponente `SchaltungBauen`, sechs Aufgaben; sie kann nur Reihe und Parallelzweige mit Lampen und
+  Schaltern simulieren, keine Spannung oder Helligkeit.
+- Figuren: eigene SVG-Zeichnungen in `src/images/`; keine Datendateien in der ersten Version.
+- Eine neue Seite folgt dem Leitfaden `app-content`, Abschnitt „Adding a chapter or round“.
 
 ### Completed
 
+- [x] Aufgaben von Code geschrieben (acht Seiten in drei Kapiteln, Bau-Editor).
+- [x] Inhaltsmethode beschrieben.
+- [x] Checkpoint Plan: von der Auftraggeberin bzw. dem Auftraggeber bestätigt.
+
 ## Code
-
-<!--
-Generate the app, then build it task by task. Load the skill lernapps-app and the skill of the archetype before you
-write code. Commit after each task: the git hooks run the checks. The pre-commit hook is quiet: when it fails, it
-prints one line naming the step and its log, `node_modules/.cache/lernapps/pre-commit.log`; read that log for the
-messages. Fix every failed check from its message; never bypass a hook. When you cannot decide something, choose, mark it "(guess)" under "Key decisions" and go on.
-
-The generator needs git, Node 22.18 or later and the network: github.com and codeload.github.com for the tooling, the
-template and the runtime, and the npm registry (registry.npmjs.org) for the other dependencies. If the sandbox blocks
-one of them, stop and ask the creator to allow it, then run the command again. Never write the app by hand.
--->
 
 ### Tasks
 
-- [ ] Generate the app in the folder that holds this plan: `npx --yes github:lernapps/tooling#main create --archetype
-      <archetype>`. Nothing needs to be installed first. The generator keeps this plan at `.vibe/plan.md`.
-- [ ] Run `git init --initial-branch=work` if the folder is not a git repository yet; in one, `git switch -c work` if
-      you are not on `work` yet. Then run `npm install`: it installs the dependencies and the git hooks. From now on,
-      everything runs from the app's own `node_modules`: `npx lernapps check`, the hooks.
-- [ ] Commit what the generator wrote, with this plan: the first commit.
-- [ ] Load the skill `lernapps-app` and the skill of the archetype.
-- [ ] Fill in the content guide `.agents/skills/app-content/SKILL.md`, which the generator wrote, from the confirmed
-      plan and its content method, before you build the content: replace every "FILL IN" with precise, concrete
-      instructions, as its comments show (the skill `lernapps-exercise-patterns` helps with its patterns). Commit it.
-      Whenever a content decision changes later, update it in the same commit: this plan records the run, the guide
-      stays for the agents after you.
-- [ ] <the tasks written in Plan>
-- [ ] `npx lernapps check` passes.
-- [ ] Set `phase: commit`.
+- [x] Generator, Branch `work`, `npm install`, erster Commit.
+- [x] Skills `lernapps-app` und `lernapps-explainer` gelesen.
+- [x] Inhaltsleitfaden ausgefüllt.
+- [x] Kapitel `stromkreis`: zwei Seiten.
+- [x] Kapitel `schaltungen`: vier Seiten mit Bau-Editor `SchaltungBauen`.
+- [x] Kapitel `alltag`: zwei Seiten.
+- [x] `npx lernapps check` besteht.
+- [x] `phase: commit` gesetzt.
 
 ### Completed
 
 ## Commit
 
-<!--
-Publish the app and list it, each only after the creator says yes. Then fill the retrospective.
-A push to `main` publishes the app: the workflow `Pages` checks it and, in its job `deploy`, publishes the checked
-bundle to the repo's GitHub Pages, at the repo's own address (usually https://<owner>.github.io/<repo>/). So work on
-the branch `work` until the creator says yes; the first publish creates `main`.
-The repo's default branch must be `main`: only `main` publishes, and update pull requests (Renovate) and new pull
-requests target the default branch. A repo whose first push was `work` has `work` as its default branch until it is
-changed.
-A push to `main` that changes only the plan (`.vibe/`) starts a run of `Pages` that checks and publishes nothing:
-push the plan whenever a task says so. Every push to `main` must start a run of `Pages`. If none has started a minute
-after the push (`gh run list --workflow Pages --branch main --commit <commit>` lists none), start it:
-`gh workflow run Pages --ref main`.
--->
-
 ### Tasks
 
-- [ ] Push the branch `work` (not `main`): `git push -u origin work`. The pre-push hook runs the heavy checks; fix
-      what fails.
-- [ ] Check the repo's settings on GitHub: the default branch (`gh repo view --json defaultBranchRef`) and GitHub
-      Pages (`gh api repos/<owner>/<repo>/pages`; "Not Found" means it is off). For each one that is not right and
-      that you may not change, note the clicks of a repository admin:
-      - Pages, once the first run has created the branch `gh-pages`: Settings → Pages → Build and deployment →
-        Source: Deploy from a branch → Branch: gh-pages, folder: / (root) → Save.
-      - The default branch, once `main` is pushed: Settings → General → Default branch → ⇄ (Switch to another
-        branch) → main → Update.
-- [ ] **Checkpoint:** publish. Ask the creator before the app goes online, and wait for their yes. Put the clicks you
-      noted into the same question, to make after the first run, so that they cost no extra turn.
-- [ ] Create `main` from `work` and push it: `git switch -c main`, `git push -u origin main`. Check that a run of
-      the workflow `Pages` started for this commit:
-      `gh run list --workflow Pages --branch main --commit "$(git rev-parse HEAD)"`. GitHub may start none for a
-      push that creates a branch from commits it already has. If none is listed a minute after the push, start it:
-      `gh workflow run Pages --ref main`. Watch the run until it ends (for example `gh run watch`, or the Actions
-      tab of the repo). If it fails, read the message of the failed step: fix what you can and push again. For a
-      setting only a repository admin may change: if the creator agreed to the clicks at the checkpoint, wait until
-      the setting is made (for example `gh api repos/<owner>/<repo>/pages` names `gh-pages`) and run the failed jobs
-      again (`gh run rerun <id> --failed`); otherwise tell the creator the exact clicks the message names, and run
-      them again when they are done.
-- [ ] Set the default branch to `main`: `gh repo edit --default-branch main`, or the creator's clicks from the
-      checkpoint. The run of `Pages` warns while it is another branch.
-- [ ] Open the address the job `deploy` printed ("published at ...") and confirm that it shows the app.
-- [ ] Load the skill `lernapps-listing`.
-- [ ] Complete the entry draft with what is known now, such as the app's address.
-- [ ] **Checkpoint:** list. Ask the creator before you open the listing pull request, and wait for their yes.
-- [ ] Fill the retrospective.
-- [ ] Commit this plan on `main` and push it: the listing check and the review read it, with the filled
-      retrospective, in the repo. A push that changes only `.vibe/` publishes nothing again.
-- [ ] Open the listing pull request as the skill says, and see it through to "bestanden": when the check passes, the
-      results comment on the pull request says "bestanden" (not "nicht bestanden").
-- [ ] If this plan changed since its last push, commit it on `main` and push it again.
+- [ ] Branch `work` pushen.
+- [ ] Repo-Einstellungen prüfen (Standardbranch, Pages).
+- [ ] **Checkpoint:** Veröffentlichung.
+- [ ] `main` anlegen und pushen, Lauf `Pages` beobachten.
+- [ ] Standardbranch auf `main`.
+- [ ] Adresse öffnen.
+- [ ] Skill `lernapps-listing` laden, Eintrag vervollständigen.
+- [ ] **Checkpoint:** Listing.
+- [ ] Retrospektive ausfüllen, Plan auf `main` pushen.
+- [ ] Listing-Pull-Request öffnen.
 
 ### Completed
 
 ## Retrospective
 
-<!--
-Fill it at the end of Commit, before the listing pull request: facts, short, no names of people. The review reads
-it with the listing; the evals compare it across runs. It stays in the creator's repo.
--->
-
 ### Phases reached
 
-<!-- The last phase you completed and the checkpoints the creator passed. Example: "commit; confirmed, published". -->
+Code abgeschlossen; Checkpoints Recherche und Plan bestätigt. Commit steht aus.
 
 ### Failed checks
 
-<!--
-Each check that failed, with its rule id and how often. Example: "`no-request-before-click`: 2".
-Leave out the failed pre-push runs: the hook counts them in the front matter.
--->
+- `checks-pass`: 2 (Format; `vue-tsc` ohne `@types/node`).
+- `explainer-content-valid`: 1 (Link zwischen Seiten, Seite ohne Quiz-Übung, Kommas in Flow-Listen).
 
 ### Creator turns after the plan
 
-<!-- How many messages the creator sent after confirming the plan, and what each was about. Target: at most 3. -->
+Bisher 1: Antwort zum Lehrplan (ohne Zitat weiterbauen) und Name des Urhebers.
 
 ### Where I had to guess
 
-<!--
-Each place where this plan, a skill, a message or the creator's answers did not tell you what to do, and what you
-chose. Write "None" if there was none.
--->
+- `@types/node` ergänzt, weil `vue-tsc` sonst an Dateien aus `node_modules` scheitert (Fehler der Vorlage?).
+- Schaltbilder selbst gezeichnet; Lizenz CC0-1.0.
+- Lehrplan nicht zitiert, weil kein offizielles Dokument gefunden wurde.

@@ -1,0 +1,100 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+title: Der einfache Stromkreis
+description: Batterie, Lampe und Kabel bilden einen Stromkreis. Er muss geschlossen sein, damit die Lampe leuchtet.
+blocks:
+  - type: section
+    id: idee
+    title: Die Idee
+    blocks:
+      - type: text
+        text: |
+          Du drückst den Schalter, und die Lampe leuchtet. Du nimmst ein Kabel ab, und sie geht aus. Warum? Die Lampe
+          bekommt nur Strom, wenn der Strom **im Kreis laufen** kann: von der Batterie durch das Kabel zur Lampe und
+          wieder zurück zur Batterie.
+  - type: section
+    id: merke
+    title: Das merkst du dir
+    blocks:
+      - type: definition
+        term: Stromkreis
+        explanation: Ein Stromkreis ist ein geschlossener Weg für den elektrischen Strom, von der Stromquelle durch die Geräte und wieder zurück.
+      - type: text
+        text: |
+          Ein einfacher Stromkreis hat drei Teile:
+          - die **Stromquelle**, zum Beispiel eine Batterie. Sie hat zwei Pole, Plus und Minus.
+          - den **Verbraucher**, zum Beispiel eine Lampe. Er wandelt den Strom in Licht um.
+          - die **Leitungen**, also Kabel. Sie verbinden die Teile miteinander.
+      - type: figure
+        image: images/stromkreis.svg
+        source: Eigene Zeichnung für diese App
+        licence: CC0-1.0
+        alt: Ein Rechteck aus Kabeln. Links sitzt eine Batterie, oben eine Lampe. Der Kreis ist an keiner Stelle unterbrochen.
+        caption: Der Stromkreis ist **geschlossen**. Der Strom kann von der Batterie durch die Lampe und zurück fließen, die Lampe leuchtet.
+      - type: note
+        title: Unterbrochen heißt dunkel
+        blocks:
+          - type: text
+            text: |
+              Ist der Kreis an **einer** Stelle offen, fließt nirgends Strom. Das kann ein loses Kabel sein, ein
+              offener Schalter oder eine herausgeschraubte Lampe. Dann leuchtet die Lampe nicht.
+  - type: section
+    id: beispiel
+    title: Beispiel
+    blocks:
+      - type: example
+        title: Die Taschenlampe
+        blocks:
+          - type: text
+            text: |
+              In einer Taschenlampe sitzen Batterien, eine Lampe und ein Schalter. Drückst du den Schalter, schließt
+              er den Kreis. Der Strom fließt durch die Lampe, und sie leuchtet. Schaltest du aus, öffnet der Schalter
+              den Kreis wieder.
+  - type: section
+    id: uebung
+    title: Übung
+    blocks:
+      - type: single-choice
+        id: sk-geschlossen
+        text: Warum leuchtet die Lampe nicht, wenn ein Kabel im Stromkreis lose ist?
+        options:
+          - text: Der Stromkreis ist unterbrochen, also kann kein Strom fließen.
+            correct: true
+            info: Ein Stromkreis muss ganz geschlossen sein. Eine einzige offene Stelle genügt, und der Strom fließt nirgends mehr.
+          - text: Die Batterie ist dann sofort leer.
+            correct: false
+            info: Eine Batterie entlädt sich nicht, wenn der Kreis offen ist. Es fließt ja kein Strom.
+          - text: Die Lampe braucht zwei Batterien.
+            correct: false
+            info: Eine Lampe leuchtet schon mit einer passenden Batterie, wenn der Kreis geschlossen ist.
+        explanation: Strom fließt nur im geschlossenen Kreis. Ein loses Kabel öffnet den Kreis an einer Stelle, und dann geht die Lampe aus.
+        links:
+          - title: Elektrischer Stromkreis (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Elektrischer_Stromkreis
+      - type: multiple-choice
+        id: sk-teile
+        text: Welche Teile gehören zu einem einfachen Stromkreis?
+        options:
+          - text: eine Stromquelle, zum Beispiel eine Batterie
+            correct: true
+            info: Die Stromquelle liefert den Strom für den ganzen Kreis.
+          - text: ein Verbraucher, zum Beispiel eine Lampe
+            correct: true
+            info: Der Verbraucher macht etwas mit dem Strom, hier Licht.
+          - text: Leitungen, die alles verbinden
+            correct: true
+            info: Ohne Leitungen gibt es keinen Weg, auf dem der Strom von Teil zu Teil fließt.
+          - text: ein Wasserschlauch
+            correct: false
+            info: Ein Wasserschlauch leitet Wasser. Im Stromkreis braucht man Leitungen aus Metall, zum Beispiel Kupferkabel.
+        explanation: Stromquelle, Verbraucher und Leitungen bilden zusammen einen einfachen Stromkreis.
+        links:
+          - title: Elektrischer Stromkreis (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Elektrischer_Stromkreis
+      - type: true-false
+        id: sk-offen
+        text: In einem offenen Stromkreis leuchtet die Lampe weiter, nur schwächer.
+        answer: false
+        explanation: Ist der Kreis offen, fließt gar kein Strom. Die Lampe leuchtet dann überhaupt nicht.
+        links:
+          - title: Elektrischer Stromkreis (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Elektrischer_Stromkreis

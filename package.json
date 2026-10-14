@@ -11,6 +11,7 @@
   "devDependencies": {
     "@lernapps/app-templates": "github:lernapps/app-templates#1af96d3783ec2200b3ec2174f8f50e925efc5958",
     "@lernapps/tooling": "github:lernapps/tooling#2e926afca2e16274e1bbb75973c219d31200a622",
+    "@types/node": "^22.20.5",
     "typescript": "6.0.3",
     "vite-plus": "1.0.0",
     "vue-tsc": "3.3.11"

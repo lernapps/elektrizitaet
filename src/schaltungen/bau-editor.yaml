@@ -1,0 +1,95 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+title: Bau-Editor
+description: Baue Schaltungen mit Batterie, Lampen und Schaltern, schalte sie ein und aus und prüfe, ob sie die Aufgabe erfüllen.
+blocks:
+  - type: section
+    id: idee
+    title: Die Idee
+    blocks:
+      - type: text
+        text: |
+          Jetzt baust du selbst. Du bekommst eine Aufgabe, zum Beispiel „zwei Lampen, die einzeln leuchten“, und
+          setzt Lampen, Schalter und Parallelzweige zu einer Schaltung zusammen. Die Batterie ist immer dabei.
+          Du kannst Schalter umlegen und Lampen herausschrauben, um zu sehen, was passiert.
+  - type: section
+    id: merke
+    title: Das merkst du dir
+    blocks:
+      - type: text
+        text: |
+          - Teile, die du **nacheinander** anfügst, hängen in **Reihe**.
+          - Eine **Parallelschaltung** legst du mit „Parallelschaltung anlegen“ an. Jeder Zweig ist ein eigener Weg.
+          - Ein Zweig **ohne Lampe** ist ein **Kurzschluss**. Dann leuchtet im Kreis nichts mehr, und der Editor warnt dich.
+  - type: section
+    id: beispiel
+    title: Beispiel
+    blocks:
+      - type: example
+        title: Zwei Lampen, die einzeln schaltbar sind
+        blocks:
+          - type: text
+            text: |
+              Lege eine Parallelschaltung an, füge in jeden Zweig einen Schalter und eine Lampe ein. Jeder Schalter
+              schaltet nur seine eigene Lampe.
+  - type: section
+    id: uebung
+    title: Übung
+    blocks:
+      - type: vue-component
+        component: SchaltungBauen
+        props:
+          goals: [eine, schalter, reihe, parallel, je-schalter, haupt]
+          texts:
+            battery: Batterie
+            lamp: Lampe
+            lampLit: leuchtet
+            lampDark: leuchtet nicht
+            switchClosed: Schalter ist geschlossen (zum Öffnen drücken)
+            switchOpen: Schalter ist offen (zum Schließen drücken)
+            unscrew: Lampe herausschrauben
+            screwIn: Lampe einschrauben
+            addLamp: Lampe anfügen
+            addSwitch: Schalter anfügen
+            addParallel: Parallelschaltung anlegen
+            addBranch: Zweig hinzufügen
+            remove: Entfernen
+            removeBranch: Zweig entfernen
+            parallelGroup: Parallelschaltung
+            branch: Zweig
+            circuit: Deine Schaltung
+            taskLabel: "Aufgabe:"
+            short: Kurzschluss! Hier fließt Strom an den Lampen vorbei. Gib dem Zweig eine Lampe.
+            reset: Neu anfangen
+            check: Prüfen
+            next: Nächste Aufgabe
+            goalEine: Baue einen Stromkreis, in dem eine Lampe leuchtet.
+            goalSchalter: Baue einen Stromkreis, in dem du eine Lampe mit einem Schalter ein- und ausschaltest.
+            goalReihe: Baue einen Stromkreis mit zwei Lampen in Reihe. Wird eine herausgeschraubt, geht auch die andere aus.
+            goalParallel: Baue einen Stromkreis mit zwei Lampen parallel. Wird eine herausgeschraubt, leuchtet die andere weiter.
+            goalJeSchalter: Baue einen Stromkreis mit zwei Lampen, die du mit je einem eigenen Schalter einzeln ein- und ausschaltest.
+            goalHaupt: Baue einen Stromkreis mit zwei parallelen Lampen und einem Schalter, der beide gemeinsam ein- und ausschaltet.
+        nojs: |
+          Diese Aufgaben stellt der Bau-Editor, jeweils mit ihrer Lösung:
+          - **Eine Lampe leuchtet:** Batterie und eine Lampe in einem geschlossenen Kreis.
+          - **Lampe mit Schalter:** Batterie, ein Schalter und eine Lampe hintereinander.
+          - **Zwei Lampen in Reihe:** Batterie, Lampe 1 und Lampe 2 hintereinander. Fehlt eine, geht auch die andere aus.
+          - **Zwei Lampen parallel:** Zwei Zweige mit je einer Lampe. Fehlt eine, leuchtet die andere weiter.
+          - **Zwei Lampen mit je einem Schalter:** Zwei Zweige, jeder mit einem Schalter und einer Lampe.
+          - **Ein Schalter für zwei parallele Lampen:** Ein Schalter in der gemeinsamen Leitung, dahinter zwei Zweige mit je einer Lampe.
+      - type: single-choice
+        id: be-kurzschluss
+        text: Du legst eine Parallelschaltung an und lässt einen Zweig leer, also ohne Lampe. Was passiert?
+        options:
+          - text: Es gibt einen Kurzschluss, und die Lampen leuchten nicht.
+            correct: true
+            info: Der leere Zweig ist ein Weg für den Strom ganz ohne Lampe. Der Strom nimmt diesen Weg und lässt die Lampen aus.
+          - text: Die Lampen leuchten heller.
+            correct: false
+            info: Die Lampen bekommen dann sogar keinen Strom mehr, weil der Strom den leeren Zweig nimmt.
+          - text: Es passiert nichts.
+            correct: false
+            info: Ein leerer Zweig verändert den Stromkreis deutlich. Es ist ein Kurzschluss.
+        explanation: Ein Zweig ohne Verbraucher ist ein Kurzschluss. Der Strom fließt am ganzen Verbraucher vorbei, und das kann Kabel gefährlich heiß machen.
+        links:
+          - title: Kurzschluss (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Kurzschluss

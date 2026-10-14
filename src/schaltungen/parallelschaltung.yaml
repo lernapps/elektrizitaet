@@ -1,0 +1,95 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+title: Parallelschaltung
+description: Bei der Parallelschaltung hat jede Lampe ihren eigenen Weg. Fällt eine aus, leuchten die anderen weiter.
+blocks:
+  - type: section
+    id: idee
+    title: Die Idee
+    blocks:
+      - type: text
+        text: |
+          In deinem Zimmer kannst du das Licht ausschalten, ohne dass der Kühlschrank in der Küche ausgeht. Das geht,
+          weil die Geräte im Haus **parallel** geschaltet sind: Jedes hat seinen eigenen Weg zur Stromquelle.
+  - type: section
+    id: merke
+    title: Das merkst du dir
+    blocks:
+      - type: definition
+        term: Parallelschaltung
+        explanation: Bei einer Parallelschaltung sind die Bauteile nebeneinander geschaltet. Der Strom hat mehrere Wege, einen für jedes Bauteil.
+      - type: figure
+        image: images/parallelschaltung.svg
+        source: Eigene Zeichnung für diese App
+        licence: CC0-1.0
+        alt: Ein Stromkreis mit einer Batterie und zwei Lampen, die nebeneinander an derselben oberen und unteren Leitung hängen. Jede Lampe hat ihren eigenen Weg.
+        caption: Der Strom teilt sich auf. Jede Lampe liegt auf **ihrem eigenen Weg**.
+      - type: text
+        text: |
+          Daraus folgt:
+          - Wird **eine** Lampe herausgeschraubt, leuchten die **anderen weiter**.
+          - Mit einem Schalter in jedem Zweig schaltest du jede Lampe **einzeln**.
+          - Ein Schalter in der gemeinsamen Leitung schaltet **alle** zusammen.
+          - Jede Lampe leuchtet gleich hell, auch wenn du eine dazuschaltest.
+      - type: note
+        title: Vorsicht, Kurzschluss
+        blocks:
+          - type: definition
+            term: Kurzschluss
+            explanation: Bei einem Kurzschluss fließt der Strom über einen Weg ganz ohne Verbraucher. Das Kabel kann sehr heiß werden, deshalb ist ein Kurzschluss gefährlich.
+          - type: text
+            text: Verbindest du die beiden Pole der Batterie direkt mit einem Kabel, gibt es einen Kurzschluss.
+  - type: section
+    id: beispiel
+    title: Beispiel
+    blocks:
+      - type: example
+        title: Das Licht im Haus
+        blocks:
+          - type: text
+            text: |
+              Alle Lampen und Steckdosen im Haus sind parallel geschaltet. Fällt eine Lampe aus, leuchten die
+              anderen weiter, und jede Lampe hat ihren eigenen Schalter.
+  - type: section
+    id: uebung
+    title: Übung
+    blocks:
+      - type: single-choice
+        id: ps-ausfall
+        text: Zwei Lampen sind parallel geschaltet. Eine wird herausgeschraubt. Was passiert mit der anderen?
+        options:
+          - text: Sie leuchtet weiter.
+            correct: true
+            info: Jede Lampe hat ihren eigenen Weg, und der Kreis der anderen Lampe bleibt geschlossen.
+          - text: Sie geht auch aus.
+            correct: false
+            info: Das passiert in der Reihenschaltung, wo es nur einen Weg gibt.
+          - text: Sie leuchtet doppelt so hell.
+            correct: false
+            info: Die Helligkeit bleibt gleich. Jede Lampe bekommt weiter denselben Strom.
+        explanation: In der Parallelschaltung hat jede Lampe einen eigenen Weg. Fällt eine aus, bleibt der Weg der anderen geschlossen.
+        links:
+          - title: Parallelschaltung (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Parallelschaltung
+      - type: matching
+        id: ps-zuordnen
+        text: Ordne jede Beobachtung der passenden Schaltung zu.
+        pairs:
+          - { left: "Eine Lampe wird herausgedreht, alle gehen aus", right: Reihenschaltung }
+          - { left: "Eine Lampe wird herausgedreht, die anderen leuchten weiter", right: Parallelschaltung }
+        explanation: Gehen alle Lampen aus, gibt es nur einen Weg, also eine Reihenschaltung. Leuchten die anderen weiter, hat jede Lampe einen eigenen Weg, also eine Parallelschaltung.
+        links:
+          - title: Parallelschaltung (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Parallelschaltung
+      - type: true-false
+        id: ps-haus
+        text: Die Lampen in einem Haus sind parallel geschaltet.
+        answer: true
+        explanation: Weil die Lampen und Geräte parallel liegen, funktionieren sie unabhängig voneinander. Du kannst jede einzeln ausschalten.
+        links:
+          - title: Parallelschaltung (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Parallelschaltung
+      - type: note
+        title: Probiere es aus
+        blocks:
+          - type: text
+            text: Baue die Parallelschaltung im [Bau-Editor](/schaltungen/bau-editor/) und schraube eine Lampe heraus.

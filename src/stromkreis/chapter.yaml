@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+title: Der Stromkreis
+summary: Damit eine Lampe leuchtet, muss der Strom im Kreis fließen können. Welche Stoffe ihn dabei durchlassen, findest du hier heraus.
+pages: [einfacher-stromkreis, leiter-nichtleiter]

@@ -1,0 +1,79 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+title: Wirkungen des elektrischen Stroms
+description: Strom kann Wärme, Licht und Magnetismus erzeugen. Damit funktionieren viele Geräte.
+blocks:
+  - type: section
+    id: idee
+    title: Die Idee
+    blocks:
+      - type: text
+        text: |
+          Du kannst Strom nicht sehen. Aber du siehst, was er macht: Er lässt Lampen leuchten, Toaster heiß werden und
+          Klingeln läuten. Diese Dinge heißen **Wirkungen des Stroms**.
+  - type: section
+    id: merke
+    title: Das merkst du dir
+    blocks:
+      - type: table
+        caption: Wirkungen des elektrischen Stroms mit Beispielen
+        header: [Wirkung, Was passiert, Beispiel]
+        rowHeaders: true
+        rows:
+          - [Wärmewirkung, Der Draht wird warm oder heiß, "Toaster, Föhn, Herdplatte"]
+          - [Lichtwirkung, Der Strom bringt etwas zum Leuchten, "Glühlampe, LED-Lampe"]
+          - [Magnetwirkung, Der Strom erzeugt ein Magnetfeld, "Klingel, Elektromagnet am Kran"]
+      - type: text
+        text: |
+          Jede dieser Wirkungen kannst du nutzen. Manchmal tritt auch eine Wirkung auf, die du nicht willst: Ein dünnes
+          Kabel, durch das zu viel Strom fließt, wird heiß. Das kann einen Brand auslösen.
+  - type: section
+    id: beispiel
+    title: Beispiel
+    blocks:
+      - type: example
+        title: Die elektrische Klingel
+        blocks:
+          - type: text
+            text: |
+              Drückst du den Klingelknopf, fließt Strom durch eine Spule. Sie wird zum **Elektromagneten**, zieht
+              einen kleinen Hammer an und schlägt gegen die Glocke. Das ist die Magnetwirkung des Stroms.
+  - type: section
+    id: uebung
+    title: Übung
+    blocks:
+      - type: matching
+        id: wk-zuordnen
+        text: Ordne jedes Gerät der Wirkung des Stroms zu, die es hauptsächlich nutzt.
+        pairs:
+          - { left: Toaster, right: Wärmewirkung }
+          - { left: Taschenlampe, right: Lichtwirkung }
+          - { left: Klingel, right: Magnetwirkung }
+        explanation: Der Toaster erhitzt Drähte, die Taschenlampe bringt eine Lampe zum Leuchten, und die Klingel nutzt einen Elektromagneten.
+        links:
+          - title: Elektromagnet (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Elektromagnet
+      - type: true-false
+        id: wk-kabel
+        text: Fließt durch ein dünnes Kabel zu viel Strom, kann es heiß werden.
+        answer: true
+        explanation: Das ist die Wärmewirkung des Stroms. Zu viel Strom macht ein dünnes Kabel heiß und kann einen Brand verursachen.
+        links:
+          - title: Elektrischer Strom (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Elektrischer_Strom
+      - type: single-choice
+        id: wk-gluehlampe
+        text: Welche Wirkung des Stroms nutzt eine Glühlampe, damit sie leuchtet?
+        options:
+          - text: Der dünne Draht in der Lampe wird so heiß, dass er glüht.
+            correct: true
+            info: Der Draht erhitzt sich durch den Strom und sendet dabei Licht aus. Die Wärmewirkung erzeugt hier das Licht.
+          - text: Ein Magnet zieht ein Teil in der Lampe an.
+            correct: false
+            info: Magnetwirkung nutzt zum Beispiel die Klingel, nicht die Glühlampe.
+          - text: Das Glas der Lampe wird vom Strom aufgeladen.
+            correct: false
+            info: Das Glas ist ein Nichtleiter und leuchtet nicht selbst.
+        explanation: In der Glühlampe wird ein dünner Draht durch den Strom so heiß, dass er glüht und Licht abgibt.
+        links:
+          - title: Glühlampe (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Glühlampe

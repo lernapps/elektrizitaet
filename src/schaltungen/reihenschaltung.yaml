@@ -1,0 +1,84 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+title: Reihenschaltung
+description: Bei der Reihenschaltung hängen die Lampen hintereinander. Fällt eine aus, gehen alle aus.
+blocks:
+  - type: section
+    id: idee
+    title: Die Idee
+    blocks:
+      - type: text
+        text: |
+          Zwei Lampen kannst du auf zwei Arten mit einer Batterie verbinden. Die erste Art heißt **Reihenschaltung**: Die
+          Lampen hängen wie Perlen an einer Kette **hintereinander**.
+  - type: section
+    id: merke
+    title: Das merkst du dir
+    blocks:
+      - type: definition
+        term: Reihenschaltung
+        explanation: Bei einer Reihenschaltung sind die Bauteile hintereinander geschaltet. Es gibt nur einen Weg für den Strom.
+      - type: figure
+        image: images/reihenschaltung.svg
+        source: Eigene Zeichnung für diese App
+        licence: CC0-1.0
+        alt: Ein Stromkreis mit einer Batterie und zwei Lampen, die oben nebeneinander in derselben Leitung sitzen. Der Strom hat nur einen Weg.
+        caption: Der Strom muss nacheinander durch **beide** Lampen. Es gibt keinen anderen Weg.
+      - type: text
+        text: |
+          Daraus folgt:
+          - Ist **eine** Lampe kaputt oder herausgeschraubt, ist der Kreis unterbrochen, und **alle** Lampen gehen aus.
+          - Ein Schalter in der Reihe schaltet **alle** Lampen zusammen ein und aus.
+          - Je mehr Lampen du in Reihe schaltest, desto schwächer leuchten sie.
+  - type: section
+    id: beispiel
+    title: Beispiel
+    blocks:
+      - type: example
+        title: Die alte Lichterkette
+        blocks:
+          - type: text
+            text: |
+              Bei manchen älteren Lichterketten sind alle Lämpchen in Reihe geschaltet. Dreht man ein Lämpchen heraus,
+              erlischt die ganze Kette. Dann sucht man das defekte Lämpchen, bis die Kette wieder leuchtet.
+  - type: section
+    id: uebung
+    title: Übung
+    blocks:
+      - type: true-false
+        id: rs-ausfall
+        text: Bei einer Reihenschaltung von zwei Lampen leuchtet die zweite weiter, wenn die erste herausgeschraubt wird.
+        answer: false
+        explanation: Bei der Reihenschaltung gibt es nur einen Weg für den Strom. Fehlt eine Lampe, ist der Kreis offen, und die andere geht auch aus.
+        links:
+          - title: Reihenschaltung (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Reihenschaltung
+      - type: single-choice
+        id: rs-wege
+        text: Wie viele Wege hat der Strom bei einer Reihenschaltung?
+        options:
+          - text: Genau einen.
+            correct: true
+            info: Die Bauteile hängen hintereinander, also kommt der Strom nur auf einem Weg durch den Kreis.
+          - text: Einen für jede Lampe.
+            correct: false
+            info: Eigene Wege für jede Lampe gibt es bei der Parallelschaltung, nicht bei der Reihenschaltung.
+          - text: Keinen, die Lampen leuchten durch die Batterie.
+            correct: false
+            info: Ohne Weg für den Strom leuchtet keine Lampe. Der Kreis muss geschlossen sein.
+        explanation: In der Reihenschaltung gibt es nur einen Stromweg, auf dem der Strom nacheinander durch alle Bauteile fließt.
+        links:
+          - title: Reihenschaltung (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Reihenschaltung
+      - type: ordering
+        id: rs-reihenfolge
+        text: Bringe die Bauteile in die Reihenfolge, in der der Strom sie in einer Reihenschaltung durchläuft, beginnend an der Batterie.
+        items: [Batterie, Schalter, Lampe 1, Lampe 2]
+        explanation: In einer Reihenschaltung läuft der Strom nacheinander durch alle Bauteile und am Ende zurück zur Batterie. Die Reihenfolge von Schalter und Lampen ändert nichts daran, dass alle zusammen an- und ausgehen.
+        links:
+          - title: Reihenschaltung (Wikipedia)
+            url: https://de.wikipedia.org/wiki/Reihenschaltung
+      - type: note
+        title: Probiere es aus
+        blocks:
+          - type: text
+            text: Baue die Reihenschaltung im [Bau-Editor](/schaltungen/bau-editor/), schraube eine Lampe heraus und beobachte die andere.
