@@ -157,8 +157,9 @@ Commit; bestätigt, veröffentlicht (https://lernapps.net/elektrizitaet/), Listi
 
 ### Creator turns after the plan
 
-4 (Lehrplan und Urheber; Wunsch nach Deutsch/Englisch und grafischem Editor; Veröffentlichung bestätigt; Listing bestätigt). Davon 2 Wünsche nach dem Plan: Antwort zum Lehrplan (ohne Zitat weiterbauen) und Name des Urhebers; danach der Wunsch nach Deutsch und Englisch
-und nach einem grafischen Editor mit Plätzen.
+4 Nachrichten: (1) Antwort zum Lehrplan (ohne Zitat weiterbauen) und Name des Urhebers; (2) Wunsch nach Deutsch und Englisch und nach
+einem grafischen Editor mit Plätzen; (3) Veröffentlichung bestätigt; (4) Listing bestätigt. Zwei davon waren neue Wünsche nach
+dem Plan (2); das Ziel von höchstens 3 ist verfehlt.
 
 ### Where I had to guess
 
