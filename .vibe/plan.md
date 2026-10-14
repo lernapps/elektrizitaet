@@ -130,15 +130,15 @@ fitness:
 
 ### Tasks
 
-- [ ] Branch `work` pushen.
-- [ ] Repo-Einstellungen prüfen (Standardbranch, Pages).
-- [ ] **Checkpoint:** Veröffentlichung.
-- [ ] `main` anlegen und pushen, Lauf `Pages` beobachten.
-- [ ] Standardbranch auf `main`.
-- [ ] Adresse öffnen.
-- [ ] Skill `lernapps-listing` laden, Eintrag vervollständigen.
-- [ ] **Checkpoint:** Listing.
-- [ ] Retrospektive ausfüllen, Plan auf `main` pushen.
+- [x] Branch `work` pushen.
+- [x] Repo-Einstellungen prüfen (Standardbranch, Pages).
+- [x] **Checkpoint:** Veröffentlichung.
+- [x] `main` anlegen und pushen, Lauf `Pages` beobachten.
+- [x] Standardbranch auf `main`.
+- [x] Adresse öffnen.
+- [x] Skill `lernapps-listing` laden, Eintrag vervollständigen.
+- [x] **Checkpoint:** Listing.
+- [x] Retrospektive ausfüllen, Plan auf `main` pushen.
 - [ ] Listing-Pull-Request öffnen.
 
 ### Completed
@@ -147,7 +147,7 @@ fitness:
 
 ### Phases reached
 
-Code abgeschlossen; Checkpoints Recherche und Plan bestätigt. Commit steht aus.
+Commit; bestätigt, veröffentlicht (https://lernapps.net/elektrizitaet/), Listing bestätigt. Der Listing-Pull-Request ist offen.
 
 ### Failed checks
 
@@ -157,7 +157,7 @@ Code abgeschlossen; Checkpoints Recherche und Plan bestätigt. Commit steht aus.
 
 ### Creator turns after the plan
 
-Bisher 2: Antwort zum Lehrplan (ohne Zitat weiterbauen) und Name des Urhebers; danach der Wunsch nach Deutsch und Englisch
+4 (Lehrplan und Urheber; Wunsch nach Deutsch/Englisch und grafischem Editor; Veröffentlichung bestätigt; Listing bestätigt). Davon 2 Wünsche nach dem Plan: Antwort zum Lehrplan (ohne Zitat weiterbauen) und Name des Urhebers; danach der Wunsch nach Deutsch und Englisch
 und nach einem grafischen Editor mit Plätzen.
 
 ### Where I had to guess
