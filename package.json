@@ -1,0 +1,21 @@
+{
+  "name": "elektrizitaet",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vp dev",
+    "build": "vp build --outDir _site",
+    "check": "lernapps check",
+    "prepare": "lernapps hooks"
+  },
+  "devDependencies": {
+    "@lernapps/app-templates": "github:lernapps/app-templates#1af96d3783ec2200b3ec2174f8f50e925efc5958",
+    "@lernapps/tooling": "github:lernapps/tooling#2e926afca2e16274e1bbb75973c219d31200a622",
+    "typescript": "6.0.3",
+    "vite-plus": "1.0.0",
+    "vue-tsc": "3.3.11"
+  },
+  "overrides": {
+    "vite": "npm:@voidzero-dev/vite-plus-core@1.0.0"
+  }
+}
