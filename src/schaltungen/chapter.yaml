@@ -1,4 +1,13 @@
 # yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
-title: Schaltungen
-summary: Schalter, Schaltzeichen, Reihen- und Parallelschaltung, und ein Bau-Editor, in dem du selbst Schaltungen baust.
-pages: [schalter-schaltzeichen, reihenschaltung, parallelschaltung, bau-editor]
+title:
+  de: Schaltungen
+  en: Circuits
+summary:
+  de: Schalter, Schaltzeichen, Reihen- und Parallelschaltung, und ein Bau-Editor, in dem du selbst Schaltungen baust.
+  en: Switches, circuit symbols, series and parallel circuits, and a circuit builder in which you build circuits
+    yourself.
+pages:
+  - schalter-schaltzeichen
+  - reihenschaltung
+  - parallelschaltung
+  - bau-editor

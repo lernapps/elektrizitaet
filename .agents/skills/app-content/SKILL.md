@@ -50,6 +50,11 @@ umfasst eine Kompetenz und passt auf einen Bildschirm voll Text. Kapitel haben 2
 
 ## Terminology
 
+**Sprachen:** Deutsch und Englisch (`languages: [de, en]` in `src/app.yaml`). Jeder Lerntext ist eine Map `{ de: …, en: … }`,
+auch die `texts` der Komponente. Links in Fragen verweisen für beide Sprachen auf den deutschen Wikipedia-Artikel; der englische
+Linktitel sagt „(German Wikipedia)“. Englische Fachwörter: circuit, power source, load, wire, switch, circuit symbol, circuit
+diagram, series circuit, parallel circuit, short circuit, fuse, conductor, insulator.
+
 - Stromkreis (nicht „Stromlauf“), Stromquelle, Verbraucher, Leitung, Schalter, Schaltzeichen, Schaltplan,
   Reihenschaltung, Parallelschaltung, Kurzschluss, Sicherung; Leiter und Nichtleiter (Isolator als Nebenwort).
 - „Der Strom fließt“ ist die Sprechweise; Elektronen, Spannung und Stromstärke kommen erst in höheren Jahrgängen vor.
@@ -66,10 +71,14 @@ umfasst eine Kompetenz und passt auf einen Bildschirm voll Text. Kapitel haben 2
 - **Beurteilen** (Kompetenz: Sicherheit): `multiple-choice` mit sicheren und unsicheren Handlungen, die Begründung
   steht in der `info`. Beispiel: `src/alltag/sicherheit.yaml`, `si-sicher`.
 - **Bauen** (Kompetenz: Schaltungen planen): Komponente `SchaltungBauen` (`src/components/SchaltungBauen.vue`, Logik
-  `SchaltungBauen.ts`). Der Simulator prüft pro Aufgabe das Verhalten bei allen Schalterstellungen und mit herausgeschraubten
-  Lampen, nicht den Aufbau. Eine neue Aufgabe braucht: ein Ziel in `Goal` und `meets` und `solution` (Logik), einen Test, den
-  Text `goal…` in den `texts` der Seite und einen Eintrag in `goals`. Sie kann nur Reihe, Parallelzweige (ein Level) mit
-  Lampen und Schaltern; keine Spannung, keine Helligkeit.
+  `SchaltungBauen.ts`). Grafisches Schaltbrett (SVG) mit sechs festen Plätzen: zwei in der Hauptleitung (Platz 1 = `m1`,
+  Platz 6 = `m2`) und zwei je senkrechtem Zweig einer Parallelschaltung (Plätze 2 bis 5 = `p1a`, `p1b`, `p2a`, `p2b`). Man
+  wählt Kabel, Lampe oder Schalter und tippt auf einen Platz; im Modus „Testen“ legt man Schalter um und schraubt Lampen
+  heraus. Ein leerer Platz ist ein Kabel; sind beide Zweige ganz leer, entfällt die Parallelschaltung. Der Simulator prüft pro
+  Aufgabe das Verhalten bei allen Schalterstellungen und mit herausgeschraubten Lampen, nicht den Aufbau. Eine neue Aufgabe
+  braucht: ein Ziel in `Goal`, `meets` und `solutionSlots` (Logik), einen Test, den Text `goal…` in den `texts` der Seite (beide
+  Sprachen) und einen Eintrag in `goals`. Sie kann nur Reihe und einen Parallelabschnitt mit Lampen und Schaltern; keine
+  Spannung, keine Helligkeit.
 Eine Datendatei in `src/data/` gibt es noch nicht; sobald Stoffe oder Bauteile in mehreren Übungen vorkommen, entsteht
 `src/data/stoffe.yaml`.
 
@@ -77,7 +86,9 @@ Eine Datendatei in `src/data/` gibt es noch nicht; sobald Stoffe oder Bauteile i
 ## Figures
 
 Schaltbilder sind eigene SVG-Zeichnungen in `src/images/` (`stromkreis`, `reihenschaltung`, `parallelschaltung`,
-`schaltzeichen`), schwarze Linien auf weißem Grund, Beschriftung auf Deutsch, Schaltzeichen nach der üblichen Norm
+`schaltzeichen`), schwarze Linien auf weißem Grund. Die Bilder enthalten **keine Wörter**, nur Ziffern (1, 2, 3 …), damit sie in
+beiden Sprachen gelten; die Legende („Beschriftung: 1 Batterie, 2 Lampe …“) steht in der Bildunterschrift, je Sprache. In der
+Parallelschaltung gibt es keine Querleitung, die die Zweige überbrückt, Schaltzeichen nach der üblichen Norm
 (Batterie, Lampe als Kreis mit Kreuz, Schalter mit Lücke). Quelle `Eigene Zeichnung für diese App`, Lizenz `CC0-1.0`.
 Der Alt-Text beschreibt, was die Zeichnung zeigt (Bauteile und Lage), die Bildunterschrift sagt, worauf man achten soll.
 
@@ -104,6 +115,9 @@ bleibt lokal und wird nie committet.
 
 - Kommas in YAML-Flow-Listen (`[a, b]`, `{ left: a, right: b }`) trennen Zellen und Felder: Texte mit Komma in Anführungszeichen.
 - Links zwischen Seiten haben die Form `/<kapitel>/<seite>/`, nicht relativ.
+- Der Block `labelled-figure` zeigt das Bild ohne JavaScript nicht (die Prüfung `explainer › without JavaScript` scheitert):
+  stattdessen `figure` mit Ziffern im Bild und Legende in der Bildunterschrift.
+- Texte in YAML-Flow-Listen mit „?“ in Anführungszeichen setzen.
 - Eine Seite braucht mindestens eine Quiz-Übung, auch wenn sie eine Komponente enthält.
 - `vue-tsc` braucht `@types/node` (als devDependency ergänzt).
 

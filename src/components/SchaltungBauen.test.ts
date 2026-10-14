@@ -1,11 +1,14 @@
 import { describe, expect, it } from "vite-plus/test";
 import {
   check,
+  emptySlots,
+  fromSlots,
   generate,
-  indexed,
+  lampSlots,
   meets,
   simulate,
   solution,
+  solutionSlots,
   wrong,
   type Circuit,
   type Goal,
@@ -43,10 +46,11 @@ describe("simulate", () => {
   it("treats an empty circuit as a short circuit", () => {
     expect(simulate([]).short).toBe(true);
   });
-  it("numbers lamps and switches in the order of the loop", () => {
-    const view = indexed([lamp, { kind: "parallel", branches: [[shut, lamp], [lamp]] }]);
-    expect(view[0]).toMatchObject({ kind: "lamp", i: 0 });
-    expect(view[1]).toMatchObject({ kind: "parallel" });
+  it("numbers the lamps of a board in the order of the loop", () => {
+    const slots = emptySlots();
+    slots.p2b = { kind: "lamp" };
+    slots.m1 = { kind: "lamp" };
+    expect(lampSlots(slots)).toEqual(["m1", "p2b"]);
   });
 });
 
@@ -82,5 +86,29 @@ describe("generate", () => {
   });
   it("copes with no goals", () => {
     expect(generate(1, { goals: [] }).goal).toBe("eine");
+  });
+});
+
+describe("fromSlots", () => {
+  it("makes an empty board a short circuit", () => {
+    expect(fromSlots(emptySlots())).toEqual([]);
+    expect(simulate(fromSlots(emptySlots())).short).toBe(true);
+  });
+  it("treats a parallel section of bare wire as wire", () => {
+    const slots = emptySlots();
+    slots.m1 = { kind: "lamp" };
+    slots.m2 = { kind: "lamp" };
+    expect(fromSlots(slots)).toHaveLength(2);
+    expect(meets("reihe", fromSlots(slots))).toBe(true);
+  });
+  it("lets a bare branch bypass the lamp in the other branch", () => {
+    const slots = emptySlots();
+    slots.p1a = { kind: "lamp" };
+    const sim = simulate(fromSlots(slots));
+    expect(sim.short).toBe(true);
+    expect(sim.lit).toEqual([]);
+  });
+  it("solves every goal with its solution board", () => {
+    for (const goal of GOALS) expect(meets(goal, fromSlots(solutionSlots({ goal })))).toBe(true);
   });
 });

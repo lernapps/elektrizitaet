@@ -1,22 +1,46 @@
 # yaml-language-server: $schema=../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
-title: Elektrizität
-intro: |
-  Wie funktioniert ein Stromkreis? Warum leitet Kupfer den Strom und Gummi nicht? Was ist der Unterschied zwischen
-  Reihen- und Parallelschaltung? Hier erklärst du dir die Grundlagen der Elektrizität Schritt für Schritt und übst auf
-  jeder Seite. Am Ende baust du selbst Schaltungen im Bau-Editor. Für die Klassen 5 und 6; später kommen höhere
-  Klassen dazu.
-languages: [de]
-chapters: [stromkreis, schaltungen, alltag]
+title:
+  de: Elektrizität
+  en: Electricity
+intro:
+  de: |
+    Wie funktioniert ein Stromkreis? Warum leitet Kupfer den Strom und Gummi nicht? Was ist der Unterschied zwischen
+    Reihen- und Parallelschaltung? Hier erklärst du dir die Grundlagen der Elektrizität Schritt für Schritt und übst auf
+    jeder Seite. Am Ende baust du selbst Schaltungen im Bau-Editor. Für die Klassen 5 und 6; später kommen höhere
+    Klassen dazu.
+  en: |
+    How does an electric circuit work? Why does copper conduct electricity and rubber does not? What is the difference
+    between series and parallel circuits? Here you work out the basics of electricity step by step and practise on every
+    page. At the end you build circuits yourself in the circuit builder. For grades 5 and 6; higher grades will follow.
+languages:
+  - de
+  - en
+chapters:
+  - stromkreis
+  - schaltungen
+  - alltag
 sources:
-  - title: Elektrischer Stromkreis (Wikipedia)
+  - title:
+      de: Elektrischer Stromkreis (Wikipedia)
+      en: Elektrischer Stromkreis (German Wikipedia)
     url: https://de.wikipedia.org/wiki/Elektrischer_Stromkreis
-  - title: Elektrischer Leiter (Wikipedia)
+  - title:
+      de: Elektrischer Leiter (Wikipedia)
+      en: Elektrischer Leiter (German Wikipedia)
     url: https://de.wikipedia.org/wiki/Elektrischer_Leiter
-  - title: Isolator (Elektrotechnik) (Wikipedia)
+  - title:
+      de: Isolator (Elektrotechnik) (Wikipedia)
+      en: Isolator (Elektrotechnik) (German Wikipedia)
     url: https://de.wikipedia.org/wiki/Isolator_(Elektrotechnik)
-  - title: Reihenschaltung (Wikipedia)
+  - title:
+      de: Reihenschaltung (Wikipedia)
+      en: Reihenschaltung (German Wikipedia)
     url: https://de.wikipedia.org/wiki/Reihenschaltung
-  - title: Parallelschaltung (Wikipedia)
+  - title:
+      de: Parallelschaltung (Wikipedia)
+      en: Parallelschaltung (German Wikipedia)
     url: https://de.wikipedia.org/wiki/Parallelschaltung
-  - title: Stromunfall (Wikipedia)
+  - title:
+      de: Stromunfall (Wikipedia)
+      en: Stromunfall (German Wikipedia)
     url: https://de.wikipedia.org/wiki/Stromunfall

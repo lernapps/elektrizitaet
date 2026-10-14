@@ -1,89 +1,194 @@
 # yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
-title: Schalter und Schaltzeichen
-description: Ein Schalter öffnet und schließt den Stromkreis. Im Schaltplan zeichnest du Bauteile als Schaltzeichen.
+title:
+  de: Schalter und Schaltzeichen
+  en: Switches and circuit symbols
+description:
+  de: Ein Schalter öffnet und schließt den Stromkreis. Im Schaltplan zeichnest du Bauteile als Schaltzeichen.
+  en: A switch opens and closes the circuit. In a circuit diagram you draw parts as circuit symbols.
 blocks:
   - type: section
     id: idee
-    title: Die Idee
+    title:
+      de: Die Idee
+      en: The idea
     blocks:
       - type: text
-        text: |
-          Wer einen Stromkreis aufschreiben will, muss keine Kabel und Lampen malen. Es gibt für jedes Bauteil ein
-          kurzes **Schaltzeichen**. So lesen Menschen auf der ganzen Welt denselben Plan.
+        text:
+          de: |
+            Wer einen Stromkreis aufschreiben will, muss keine Kabel und Lampen malen. Es gibt für jedes Bauteil ein
+            kurzes **Schaltzeichen**. So lesen Menschen auf der ganzen Welt denselben Plan.
+          en: |
+            If you want to write down a circuit, you do not have to draw cables and lamps. Every part has a short
+            **circuit symbol**. That way people all over the world read the same diagram.
   - type: section
     id: merke
-    title: Das merkst du dir
+    title:
+      de: Das merkst du dir
+      en: What to remember
     blocks:
       - type: definition
-        term: Schalter
-        explanation: Ein Schalter öffnet oder schließt den Stromkreis. Geschlossen fließt der Strom, offen fließt keiner.
+        term:
+          de: Schalter
+          en: Switch
+        explanation:
+          de: Ein Schalter öffnet oder schließt den Stromkreis. Geschlossen fließt der Strom, offen fließt keiner.
+          en: A switch opens or closes the circuit. Closed, the current flows; open, none flows.
       - type: definition
-        term: Schaltplan
-        explanation: Ein Schaltplan zeigt einen Stromkreis mit Schaltzeichen statt mit Zeichnungen der Bauteile.
+        term:
+          de: Schaltplan
+          en: Circuit diagram
+        explanation:
+          de: Ein Schaltplan zeigt einen Stromkreis mit Schaltzeichen statt mit Zeichnungen der Bauteile.
+          en: A circuit diagram shows a circuit with circuit symbols instead of drawings of the parts.
       - type: figure
         image: images/schaltzeichen.svg
-        source: Eigene Zeichnung für diese App
+        source: Eigene Zeichnung / own drawing for this app
         licence: CC0-1.0
-        alt: Vier Schaltzeichen untereinander. Batterie, zwei Striche, ein langer dünner und ein kurzer dicker. Lampe, ein Kreis mit Kreuz. Schalter offen, eine Linie mit einer Lücke, die schräg nach oben zeigt. Schalter geschlossen, eine durchgehende Linie.
-        caption: Die wichtigsten Schaltzeichen. Beim offenen Schalter ist die Linie **unterbrochen**, beim geschlossenen durchgehend.
+        alt:
+          de: Vier Schaltzeichen untereinander. Batterie, zwei Striche, ein langer dünner und ein kurzer dicker. Lampe,
+            ein Kreis mit Kreuz. Schalter offen, eine Linie mit einer Lücke, die schräg nach oben zeigt. Schalter geschlossen,
+            eine durchgehende Linie.
+          en: Four circuit symbols one below the other. Battery, two bars, a long thin one and a short thick one. Lamp,
+            a circle with a cross. Open switch, a line with a gap that slants upwards. Closed switch, an unbroken line.
+        caption:
+          de: "Die wichtigsten Schaltzeichen. Beim offenen Schalter ist die Linie **unterbrochen**, beim geschlossenen
+            durchgehend. Beschriftung: 1 Batterie, 2 Lampe, 3 Schalter offen, 4 Schalter geschlossen."
+          en: "The most important circuit symbols. With the open switch the line is **broken**; with the closed switch
+            it is unbroken. Labels: 1 battery, 2 lamp, 3 open switch, 4 closed switch."
       - type: table
-        caption: Schaltzeichen und Bauteile
-        header: [Bauteil, So erkennst du das Schaltzeichen]
+        caption:
+          de: Schaltzeichen und Bauteile
+          en: Circuit symbols and parts
+        header:
+          - de: Bauteil
+            en: Part
+          - de: So erkennst du das Schaltzeichen
+            en: How to recognise the circuit symbol
         rowHeaders: true
         rows:
-          - [Batterie, "zwei Striche, ein langer dünner und ein kurzer dicker"]
-          - [Lampe, ein Kreis mit einem Kreuz darin]
-          - [Schalter offen, eine Linie mit Lücke; der Strom fließt nicht]
-          - [Schalter geschlossen, eine durchgehende Linie; der Strom fließt]
+          - - de: Batterie
+              en: Battery
+            - de: zwei Striche, ein langer dünner und ein kurzer dicker
+              en: two bars, a long thin one and a short thick one
+          - - de: Lampe
+              en: Lamp
+            - de: ein Kreis mit einem Kreuz darin
+              en: a circle with a cross inside
+          - - de: Schalter offen
+              en: Open switch
+            - de: eine Linie mit Lücke; der Strom fließt nicht
+              en: a line with a gap; the current does not flow
+          - - de: Schalter geschlossen
+              en: Closed switch
+            - de: eine durchgehende Linie; der Strom fließt
+              en: an unbroken line; the current flows
   - type: section
     id: beispiel
-    title: Beispiel
+    title:
+      de: Beispiel
+      en: Example
     blocks:
       - type: example
-        title: Ein Schaltplan in Worten
+        title:
+          de: Ein Schaltplan in Worten
+          en: A circuit diagram in words
         blocks:
           - type: text
-            text: |
-              Ein Schaltplan zeigt: Batterie, dann ein Schalter, dann eine Lampe, dann zurück zur Batterie. Ist das
-              Schaltzeichen des Schalters durchgehend, ist der Schalter geschlossen und die Lampe leuchtet. Zeigt es
-              eine Lücke, ist er offen, und die Lampe bleibt dunkel.
+            text:
+              de: |
+                Ein Schaltplan zeigt: Batterie, dann ein Schalter, dann eine Lampe, dann zurück zur Batterie. Ist das
+                Schaltzeichen des Schalters durchgehend, ist der Schalter geschlossen und die Lampe leuchtet. Zeigt es
+                eine Lücke, ist er offen, und die Lampe bleibt dunkel.
+              en: |
+                A circuit diagram shows: battery, then a switch, then a lamp, then back to the battery. If the circuit
+                symbol of the switch is unbroken, the switch is closed and the lamp lights up. If it shows a gap, the
+                switch is open and the lamp stays dark.
   - type: section
     id: uebung
-    title: Übung
+    title:
+      de: Übung
+      en: Practice
     blocks:
       - type: matching
         id: sz-zuordnen
-        text: Ordne jedes Schaltzeichen dem Bauteil zu.
+        text:
+          de: Ordne jedes Schaltzeichen dem Bauteil zu.
+          en: Match each circuit symbol with the part.
         pairs:
-          - { left: ein Kreis mit einem Kreuz, right: Lampe }
-          - { left: "zwei Striche, ein langer und ein kurzer dicker", right: Batterie }
-          - { left: eine Linie mit Lücke, right: offener Schalter }
-        explanation: Der Kreis mit Kreuz steht für die Lampe, die zwei Striche für die Batterie, und die Lücke in der Linie zeigt einen offenen Schalter.
+          - left:
+              de: ein Kreis mit einem Kreuz
+              en: a circle with a cross
+            right:
+              de: Lampe
+              en: Lamp
+          - left:
+              de: zwei Striche, ein langer und ein kurzer dicker
+              en: two bars, a long one and a short thick one
+            right:
+              de: Batterie
+              en: Battery
+          - left:
+              de: eine Linie mit Lücke
+              en: a line with a gap
+            right:
+              de: offener Schalter
+              en: open switch
+        explanation:
+          de: Der Kreis mit Kreuz steht für die Lampe, die zwei Striche für die Batterie, und die Lücke in der Linie
+            zeigt einen offenen Schalter.
+          en: The circle with a cross stands for the lamp, the two bars for the battery, and the gap in the line shows
+            an open switch.
         links:
-          - title: Schaltzeichen (Wikipedia)
+          - title:
+              de: Schaltzeichen (Wikipedia)
+              en: Schaltzeichen (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Schaltzeichen
       - type: true-false
         id: sz-offen
-        text: Ein Schalter, dessen Schaltzeichen eine Lücke hat, ist geschlossen.
+        text:
+          de: Ein Schalter, dessen Schaltzeichen eine Lücke hat, ist geschlossen.
+          en: A switch whose circuit symbol has a gap is closed.
         answer: false
-        explanation: Die Lücke bedeutet, dass der Kreis dort unterbrochen ist. Der Schalter ist offen, und es fließt kein Strom.
+        explanation:
+          de: Die Lücke bedeutet, dass der Kreis dort unterbrochen ist. Der Schalter ist offen, und es fließt kein Strom.
+          en: The gap means that the circuit is broken there. The switch is open and no current flows.
         links:
-          - title: Elektrischer Schalter (Wikipedia)
+          - title:
+              de: Elektrischer Schalter (Wikipedia)
+              en: Elektrischer Schalter (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Elektrischer_Schalter
       - type: single-choice
         id: sz-schalter
-        text: Die Lampe in einem Stromkreis mit Schalter leuchtet. Was weißt du über den Schalter?
+        text:
+          de: Die Lampe in einem Stromkreis mit Schalter leuchtet. Was weißt du über den Schalter?
+          en: The lamp in a circuit with a switch is lit. What do you know about the switch?
         options:
-          - text: Er ist geschlossen.
+          - text:
+              de: Er ist geschlossen.
+              en: It is closed.
             correct: true
-            info: Nur wenn der Schalter geschlossen ist, ist der ganze Kreis geschlossen, und der Strom kann fließen.
-          - text: Er ist offen.
+            info:
+              de: Nur wenn der Schalter geschlossen ist, ist der ganze Kreis geschlossen, und der Strom kann fließen.
+              en: Only when the switch is closed is the whole circuit closed, so that the current can flow.
+          - text:
+              de: Er ist offen.
+              en: It is open.
             correct: false
-            info: Bei offenem Schalter ist der Kreis unterbrochen, und die Lampe bleibt dunkel.
-          - text: Das kann man nicht sagen.
+            info:
+              de: Bei offenem Schalter ist der Kreis unterbrochen, und die Lampe bleibt dunkel.
+              en: With an open switch the circuit is broken and the lamp stays dark.
+          - text:
+              de: Das kann man nicht sagen.
+              en: You cannot tell.
             correct: false
-            info: Doch. Leuchtet die Lampe, muss der Kreis überall geschlossen sein, auch am Schalter.
-        explanation: Die Lampe leuchtet nur, wenn der Strom durch den Schalter fließen kann. Also muss er geschlossen sein.
+            info:
+              de: Doch. Leuchtet die Lampe, muss der Kreis überall geschlossen sein, auch am Schalter.
+              en: Yes, you can. If the lamp is lit, the circuit must be closed everywhere, including at the switch.
+        explanation:
+          de: Die Lampe leuchtet nur, wenn der Strom durch den Schalter fließen kann. Also muss er geschlossen sein.
+          en: The lamp only lights up when the current can flow through the switch. So it must be closed.
         links:
-          - title: Elektrischer Schalter (Wikipedia)
+          - title:
+              de: Elektrischer Schalter (Wikipedia)
+              en: Elektrischer Schalter (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Elektrischer_Schalter

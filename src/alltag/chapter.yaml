@@ -1,4 +1,10 @@
 # yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
-title: Strom im Alltag
-summary: Was der elektrische Strom bewirkt, und wie du sicher mit ihm umgehst.
-pages: [wirkungen, sicherheit]
+title:
+  de: Strom im Alltag
+  en: Electricity in everyday life
+summary:
+  de: Was der elektrische Strom bewirkt, und wie du sicher mit ihm umgehst.
+  en: What electric current does, and how to handle it safely.
+pages:
+  - wirkungen
+  - sicherheit

@@ -27,28 +27,6 @@ export interface Props {
   goals: Goal[];
 }
 
-/** The same structure with the number of each lamp and switch, in the order of the loop. */
-export type View = (
-  | { kind: "lamp"; part: Lamp; i: number }
-  | { kind: "switch"; part: Switch; i: number }
-  | {
-      kind: "parallel";
-      branches: ({ kind: "lamp"; part: Lamp; i: number } | { kind: "switch"; part: Switch; i: number })[][];
-    }
-)[];
-
-export function indexed(circuit: Circuit): View {
-  let lamp = 0;
-  let sw = 0;
-  const part = (p: Part) =>
-    p.kind === "lamp" ? { kind: "lamp" as const, part: p, i: lamp++ } : { kind: "switch" as const, part: p, i: sw++ };
-  return circuit.map((element) =>
-    element.kind === "parallel"
-      ? { kind: "parallel" as const, branches: element.branches.map((branch) => branch.map(part)) }
-      : part(element),
-  );
-}
-
 export interface Overrides {
   /** Whether the switch with this number is closed; the switch itself when absent. */
   closed?: (i: number) => boolean;
@@ -177,34 +155,70 @@ export function check(task: Task, answer: Circuit): boolean {
   return meets(task.goal, answer);
 }
 
+/** The places of the board: two in the main line (m1, m2) and two per branch of the parallel section (p1a to p2b). */
+export type SlotId = "m1" | "p1a" | "p1b" | "p2a" | "p2b" | "m2";
+/** The order of the loop; lamps and switches are numbered in it. */
+export const SLOTS: readonly SlotId[] = ["m1", "p1a", "p1b", "p2a", "p2b", "m2"];
+export type Slots = Record<SlotId, Part | null>;
+
+export const emptySlots = (): Slots => ({ m1: null, p1a: null, p1b: null, p2a: null, p2b: null, m2: null });
+
+/**
+ * The circuit of a board: an empty place is a wire. A parallel section whose branches are all bare wire is just wire;
+ * with a part in one branch only, the bare branch is a bypass.
+ */
+export function fromSlots(slots: Slots): Circuit {
+  const parts = (...ids: SlotId[]) => ids.flatMap((id) => (slots[id] === null ? [] : [slots[id]!]));
+  const branches = [parts("p1a", "p1b"), parts("p2a", "p2b")];
+  return [
+    ...parts("m1"),
+    ...(branches.some((b) => b.length > 0) ? [{ kind: "parallel" as const, branches }] : []),
+    ...parts("m2"),
+  ];
+}
+
+/** The place of each lamp of the circuit, numbered as `simulate` does. */
+export const lampSlots = (slots: Slots): SlotId[] => SLOTS.filter((id) => slots[id]?.kind === "lamp");
+
 const lamp = (): Lamp => ({ kind: "lamp" });
 const closedSwitch = (): Switch => ({ kind: "switch", closed: true });
 
-/** A circuit that meets the goal. */
-export function solution(task: Task): Circuit {
+/** A board that meets the goal. */
+export function solutionSlots(task: Task): Slots {
+  const slots = emptySlots();
   switch (task.goal) {
     case "eine":
-      return [lamp()];
+      slots.m1 = lamp();
+      break;
     case "schalter":
-      return [closedSwitch(), lamp()];
+      slots.m1 = closedSwitch();
+      slots.m2 = lamp();
+      break;
     case "reihe":
-      return [lamp(), lamp()];
+      slots.m1 = lamp();
+      slots.m2 = lamp();
+      break;
     case "parallel":
-      return [{ kind: "parallel", branches: [[lamp()], [lamp()]] }];
+      slots.p1a = lamp();
+      slots.p2a = lamp();
+      break;
     case "je-schalter":
-      return [
-        {
-          kind: "parallel",
-          branches: [
-            [closedSwitch(), lamp()],
-            [closedSwitch(), lamp()],
-          ],
-        },
-      ];
+      slots.p1a = closedSwitch();
+      slots.p1b = lamp();
+      slots.p2a = closedSwitch();
+      slots.p2b = lamp();
+      break;
     case "haupt":
-      return [closedSwitch(), { kind: "parallel", branches: [[lamp()], [lamp()]] }];
+      slots.m1 = closedSwitch();
+      slots.p1a = lamp();
+      slots.p2a = lamp();
+      break;
   }
+  return slots;
 }
+
+/** A circuit that meets the goal. */
+export const solution = (task: Task): Circuit => fromSlots(solutionSlots(task));
 
 /** A circuit that meets no goal: the battery alone. */
 export function wrong(_task: Task): Circuit {

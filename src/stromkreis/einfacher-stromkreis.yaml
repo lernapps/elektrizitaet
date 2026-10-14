@@ -1,100 +1,197 @@
 # yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
-title: Der einfache Stromkreis
-description: Batterie, Lampe und Kabel bilden einen Stromkreis. Er muss geschlossen sein, damit die Lampe leuchtet.
+title:
+  de: Der einfache Stromkreis
+  en: The simple circuit
+description:
+  de: Batterie, Lampe und Kabel bilden einen Stromkreis. Er muss geschlossen sein, damit die Lampe leuchtet.
+  en: A battery, a lamp and wires form a circuit. It must be closed for the lamp to light up.
 blocks:
   - type: section
     id: idee
-    title: Die Idee
+    title:
+      de: Die Idee
+      en: The idea
     blocks:
       - type: text
-        text: |
-          Du drückst den Schalter, und die Lampe leuchtet. Du nimmst ein Kabel ab, und sie geht aus. Warum? Die Lampe
-          bekommt nur Strom, wenn der Strom **im Kreis laufen** kann: von der Batterie durch das Kabel zur Lampe und
-          wieder zurück zur Batterie.
+        text:
+          de: |
+            Du drückst den Schalter, und die Lampe leuchtet. Du nimmst ein Kabel ab, und sie geht aus. Warum? Die Lampe
+            bekommt nur Strom, wenn der Strom **im Kreis laufen** kann: von der Batterie durch das Kabel zur Lampe und
+            wieder zurück zur Batterie.
+          en: |
+            You press the switch and the lamp lights up. You take off a wire and it goes out. Why? The lamp only gets
+            current when the current can **run in a circle**: from the battery through the wire to the lamp and back
+            to the battery.
   - type: section
     id: merke
-    title: Das merkst du dir
+    title:
+      de: Das merkst du dir
+      en: What to remember
     blocks:
       - type: definition
-        term: Stromkreis
-        explanation: Ein Stromkreis ist ein geschlossener Weg für den elektrischen Strom, von der Stromquelle durch die Geräte und wieder zurück.
+        term:
+          de: Stromkreis
+          en: Circuit
+        explanation:
+          de: Ein Stromkreis ist ein geschlossener Weg für den elektrischen Strom, von der Stromquelle durch die Geräte
+            und wieder zurück.
+          en: A circuit is a closed path for the electric current, from the power source through the devices and back
+            again.
       - type: text
-        text: |
-          Ein einfacher Stromkreis hat drei Teile:
-          - die **Stromquelle**, zum Beispiel eine Batterie. Sie hat zwei Pole, Plus und Minus.
-          - den **Verbraucher**, zum Beispiel eine Lampe. Er wandelt den Strom in Licht um.
-          - die **Leitungen**, also Kabel. Sie verbinden die Teile miteinander.
+        text:
+          de: |
+            Ein einfacher Stromkreis hat drei Teile:
+            - die **Stromquelle**, zum Beispiel eine Batterie. Sie hat zwei Pole, Plus und Minus.
+            - den **Verbraucher**, zum Beispiel eine Lampe. Er wandelt den Strom in Licht um.
+            - die **Leitungen**, also Kabel. Sie verbinden die Teile miteinander.
+          en: |
+            A simple circuit has three parts:
+            - the **power source**, for example a battery. It has two poles, plus and minus.
+            - the **load**, for example a lamp. It turns the current into light.
+            - the **wires**, that is, cables. They connect the parts.
       - type: figure
         image: images/stromkreis.svg
-        source: Eigene Zeichnung für diese App
+        source: Eigene Zeichnung / own drawing for this app
         licence: CC0-1.0
-        alt: Ein Rechteck aus Kabeln. Links sitzt eine Batterie, oben eine Lampe. Der Kreis ist an keiner Stelle unterbrochen.
-        caption: Der Stromkreis ist **geschlossen**. Der Strom kann von der Batterie durch die Lampe und zurück fließen, die Lampe leuchtet.
+        alt:
+          de: Ein Rechteck aus Kabeln. Links sitzt eine Batterie, oben eine Lampe. Der Kreis ist an keiner Stelle unterbrochen.
+          en: A rectangle of wires. A battery sits on the left and a lamp at the top. The circuit is not broken anywhere.
+        caption:
+          de: "Der Stromkreis ist **geschlossen**. Der Strom kann von der Batterie durch die Lampe und zurück fließen,
+            die Lampe leuchtet. Beschriftung: 1 Batterie, 2 Lampe, 3 Kabel."
+          en: "The circuit is **closed**. The current can flow from the battery through the lamp and back, so the lamp
+            lights up. Labels: 1 battery, 2 lamp, 3 wire."
       - type: note
-        title: Unterbrochen heißt dunkel
+        title:
+          de: Unterbrochen heißt dunkel
+          en: Broken means dark
         blocks:
           - type: text
-            text: |
-              Ist der Kreis an **einer** Stelle offen, fließt nirgends Strom. Das kann ein loses Kabel sein, ein
-              offener Schalter oder eine herausgeschraubte Lampe. Dann leuchtet die Lampe nicht.
+            text:
+              de: |
+                Ist der Kreis an **einer** Stelle offen, fließt nirgends Strom. Das kann ein loses Kabel sein, ein
+                offener Schalter oder eine herausgeschraubte Lampe. Dann leuchtet die Lampe nicht.
+              en: |
+                If the circuit is open at **one** place, no current flows anywhere. That can be a loose wire, an open
+                switch or an unscrewed lamp. Then the lamp does not light up.
   - type: section
     id: beispiel
-    title: Beispiel
+    title:
+      de: Beispiel
+      en: Example
     blocks:
       - type: example
-        title: Die Taschenlampe
+        title:
+          de: Die Taschenlampe
+          en: The torch
         blocks:
           - type: text
-            text: |
-              In einer Taschenlampe sitzen Batterien, eine Lampe und ein Schalter. Drückst du den Schalter, schließt
-              er den Kreis. Der Strom fließt durch die Lampe, und sie leuchtet. Schaltest du aus, öffnet der Schalter
-              den Kreis wieder.
+            text:
+              de: |
+                In einer Taschenlampe sitzen Batterien, eine Lampe und ein Schalter. Drückst du den Schalter, schließt
+                er den Kreis. Der Strom fließt durch die Lampe, und sie leuchtet. Schaltest du aus, öffnet der Schalter
+                den Kreis wieder.
+              en: |
+                A torch holds batteries, a lamp and a switch. When you press the switch, it closes the circuit. The
+                current flows through the lamp and it lights up. When you switch off, the switch opens the circuit again.
   - type: section
     id: uebung
-    title: Übung
+    title:
+      de: Übung
+      en: Practice
     blocks:
       - type: single-choice
         id: sk-geschlossen
-        text: Warum leuchtet die Lampe nicht, wenn ein Kabel im Stromkreis lose ist?
+        text:
+          de: Warum leuchtet die Lampe nicht, wenn ein Kabel im Stromkreis lose ist?
+          en: Why does the lamp not light up when a wire in the circuit is loose?
         options:
-          - text: Der Stromkreis ist unterbrochen, also kann kein Strom fließen.
+          - text:
+              de: Der Stromkreis ist unterbrochen, also kann kein Strom fließen.
+              en: The circuit is broken, so no current can flow.
             correct: true
-            info: Ein Stromkreis muss ganz geschlossen sein. Eine einzige offene Stelle genügt, und der Strom fließt nirgends mehr.
-          - text: Die Batterie ist dann sofort leer.
+            info:
+              de:
+                Ein Stromkreis muss ganz geschlossen sein. Eine einzige offene Stelle genügt, und der Strom fließt nirgends
+                mehr.
+              en: A circuit must be completely closed. A single open place is enough and the current stops flowing everywhere.
+          - text:
+              de: Die Batterie ist dann sofort leer.
+              en: The battery is empty at once.
             correct: false
-            info: Eine Batterie entlädt sich nicht, wenn der Kreis offen ist. Es fließt ja kein Strom.
-          - text: Die Lampe braucht zwei Batterien.
+            info:
+              de: Eine Batterie entlädt sich nicht, wenn der Kreis offen ist. Es fließt ja kein Strom.
+              en: A battery does not run down when the circuit is open. No current flows.
+          - text:
+              de: Die Lampe braucht zwei Batterien.
+              en: The lamp needs two batteries.
             correct: false
-            info: Eine Lampe leuchtet schon mit einer passenden Batterie, wenn der Kreis geschlossen ist.
-        explanation: Strom fließt nur im geschlossenen Kreis. Ein loses Kabel öffnet den Kreis an einer Stelle, und dann geht die Lampe aus.
+            info:
+              de: Eine Lampe leuchtet schon mit einer passenden Batterie, wenn der Kreis geschlossen ist.
+              en: A lamp lights up with a single suitable battery when the circuit is closed.
+        explanation:
+          de: Strom fließt nur im geschlossenen Kreis. Ein loses Kabel öffnet den Kreis an einer Stelle, und dann geht
+            die Lampe aus.
+          en: Current only flows in a closed circuit. A loose wire opens the circuit at one place, and then the lamp
+            goes out.
         links:
-          - title: Elektrischer Stromkreis (Wikipedia)
+          - title:
+              de: Elektrischer Stromkreis (Wikipedia)
+              en: Elektrischer Stromkreis (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Elektrischer_Stromkreis
       - type: multiple-choice
         id: sk-teile
-        text: Welche Teile gehören zu einem einfachen Stromkreis?
+        text:
+          de: Welche Teile gehören zu einem einfachen Stromkreis?
+          en: Which parts belong to a simple circuit?
         options:
-          - text: eine Stromquelle, zum Beispiel eine Batterie
+          - text:
+              de: eine Stromquelle, zum Beispiel eine Batterie
+              en: a power source, for example a battery
             correct: true
-            info: Die Stromquelle liefert den Strom für den ganzen Kreis.
-          - text: ein Verbraucher, zum Beispiel eine Lampe
+            info:
+              de: Die Stromquelle liefert den Strom für den ganzen Kreis.
+              en: The power source supplies the current for the whole circuit.
+          - text:
+              de: ein Verbraucher, zum Beispiel eine Lampe
+              en: a load, for example a lamp
             correct: true
-            info: Der Verbraucher macht etwas mit dem Strom, hier Licht.
-          - text: Leitungen, die alles verbinden
+            info:
+              de: Der Verbraucher macht etwas mit dem Strom, hier Licht.
+              en: The load does something with the current, here it makes light.
+          - text:
+              de: Leitungen, die alles verbinden
+              en: wires that connect everything
             correct: true
-            info: Ohne Leitungen gibt es keinen Weg, auf dem der Strom von Teil zu Teil fließt.
-          - text: ein Wasserschlauch
+            info:
+              de: Ohne Leitungen gibt es keinen Weg, auf dem der Strom von Teil zu Teil fließt.
+              en: Without wires there is no path on which the current can flow from part to part.
+          - text:
+              de: ein Wasserschlauch
+              en: a water hose
             correct: false
-            info: Ein Wasserschlauch leitet Wasser. Im Stromkreis braucht man Leitungen aus Metall, zum Beispiel Kupferkabel.
-        explanation: Stromquelle, Verbraucher und Leitungen bilden zusammen einen einfachen Stromkreis.
+            info:
+              de: Ein Wasserschlauch leitet Wasser. Im Stromkreis braucht man Leitungen aus Metall, zum Beispiel Kupferkabel.
+              en: A water hose carries water. A circuit needs wires made of metal, for example copper cables.
+        explanation:
+          de: Stromquelle, Verbraucher und Leitungen bilden zusammen einen einfachen Stromkreis.
+          en: A power source, a load and wires together form a simple circuit.
         links:
-          - title: Elektrischer Stromkreis (Wikipedia)
+          - title:
+              de: Elektrischer Stromkreis (Wikipedia)
+              en: Elektrischer Stromkreis (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Elektrischer_Stromkreis
       - type: true-false
         id: sk-offen
-        text: In einem offenen Stromkreis leuchtet die Lampe weiter, nur schwächer.
+        text:
+          de: In einem offenen Stromkreis leuchtet die Lampe weiter, nur schwächer.
+          en: In an open circuit the lamp keeps shining, only more weakly.
         answer: false
-        explanation: Ist der Kreis offen, fließt gar kein Strom. Die Lampe leuchtet dann überhaupt nicht.
+        explanation:
+          de: Ist der Kreis offen, fließt gar kein Strom. Die Lampe leuchtet dann überhaupt nicht.
+          en: If the circuit is open, no current flows at all. The lamp does not light up.
         links:
-          - title: Elektrischer Stromkreis (Wikipedia)
+          - title:
+              de: Elektrischer Stromkreis (Wikipedia)
+              en: Elektrischer Stromkreis (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Elektrischer_Stromkreis

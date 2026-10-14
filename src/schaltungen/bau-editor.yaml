@@ -1,95 +1,232 @@
 # yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
-title: Bau-Editor
-description: Baue Schaltungen mit Batterie, Lampen und Schaltern, schalte sie ein und aus und prüfe, ob sie die Aufgabe erfüllen.
+title:
+  de: Bau-Editor
+  en: Circuit builder
+description:
+  de: Baue Schaltungen mit Batterie, Lampen und Schaltern, schalte sie ein und aus und prüfe, ob sie die Aufgabe
+    erfüllen.
+  en: Build circuits with a battery, lamps and switches, switch them on and off and check whether they solve the
+    task.
 blocks:
   - type: section
     id: idee
-    title: Die Idee
+    title:
+      de: Die Idee
+      en: The idea
     blocks:
       - type: text
-        text: |
-          Jetzt baust du selbst. Du bekommst eine Aufgabe, zum Beispiel „zwei Lampen, die einzeln leuchten“, und
-          setzt Lampen, Schalter und Parallelzweige zu einer Schaltung zusammen. Die Batterie ist immer dabei.
-          Du kannst Schalter umlegen und Lampen herausschrauben, um zu sehen, was passiert.
+        text:
+          de: |
+            Jetzt baust du selbst. Du bekommst eine Aufgabe, zum Beispiel „zwei Lampen, die einzeln leuchten“, und
+            setzt Lampen und Schalter auf die Plätze eines Schaltbretts. Die Batterie ist immer dabei. Im Modus
+            „Testen“ legst du Schalter um und schraubst Lampen heraus, um zu sehen, was passiert.
+          en: |
+            Now you build for yourself. You get a task, for example “two lamps that shine separately”, and you put lamps
+            and switches on the places of a circuit board. The battery is always there. In “Test” mode you flip
+            switches and unscrew lamps to see what happens.
   - type: section
     id: merke
-    title: Das merkst du dir
+    title:
+      de: Das merkst du dir
+      en: What to remember
     blocks:
       - type: text
-        text: |
-          - Teile, die du **nacheinander** anfügst, hängen in **Reihe**.
-          - Eine **Parallelschaltung** legst du mit „Parallelschaltung anlegen“ an. Jeder Zweig ist ein eigener Weg.
-          - Ein Zweig **ohne Lampe** ist ein **Kurzschluss**. Dann leuchtet im Kreis nichts mehr, und der Editor warnt dich.
+        text:
+          de: |
+            - Teile auf der **Hauptleitung** (oben und unten links) hängen mit allem anderen in **Reihe**.
+            - Die beiden **senkrechten Zweige** sind eine **Parallelschaltung**. Jeder Zweig ist ein eigener Weg.
+            - Ein leerer Platz ist nur ein Kabel. Ist ein Zweig **ohne Lampe**, während im anderen eine sitzt, fließt der Strom am
+              Lampenzweig vorbei: ein **Kurzschluss**. Der Editor warnt dich.
+          en: |
+            - Parts on the **main wire** (top and bottom left) are in **series** with everything else.
+            - The two **vertical branches** form a **parallel circuit**. Each branch is a path of its own.
+            - An empty place is just a wire. If one branch is **without a lamp** while the other has one, the current
+              flows past the lamp branch: a **short circuit**. The builder warns you.
   - type: section
     id: beispiel
-    title: Beispiel
+    title:
+      de: Beispiel
+      en: Example
     blocks:
       - type: example
-        title: Zwei Lampen, die einzeln schaltbar sind
+        title:
+          de: Zwei Lampen, die einzeln schaltbar sind
+          en: Two lamps that can be switched separately
         blocks:
           - type: text
-            text: |
-              Lege eine Parallelschaltung an, füge in jeden Zweig einen Schalter und eine Lampe ein. Jeder Schalter
-              schaltet nur seine eigene Lampe.
+            text:
+              de: |
+                Setze in jeden der beiden senkrechten Zweige einen Schalter und eine Lampe. Jeder Schalter schaltet nur
+                seine eigene Lampe.
+              en: |
+                Put a switch and a lamp into each of the two vertical branches. Each switch only switches its own lamp.
   - type: section
     id: uebung
-    title: Übung
+    title:
+      de: Übung
+      en: Practice
     blocks:
       - type: vue-component
         component: SchaltungBauen
         props:
-          goals: [eine, schalter, reihe, parallel, je-schalter, haupt]
+          goals:
+            - eine
+            - schalter
+            - reihe
+            - parallel
+            - je-schalter
+            - haupt
           texts:
-            battery: Batterie
-            lamp: Lampe
-            lampLit: leuchtet
-            lampDark: leuchtet nicht
-            switchClosed: Schalter ist geschlossen (zum Öffnen drücken)
-            switchOpen: Schalter ist offen (zum Schließen drücken)
-            unscrew: Lampe herausschrauben
-            screwIn: Lampe einschrauben
-            addLamp: Lampe anfügen
-            addSwitch: Schalter anfügen
-            addParallel: Parallelschaltung anlegen
-            addBranch: Zweig hinzufügen
-            remove: Entfernen
-            removeBranch: Zweig entfernen
-            parallelGroup: Parallelschaltung
-            branch: Zweig
-            circuit: Deine Schaltung
-            taskLabel: "Aufgabe:"
-            short: Kurzschluss! Hier fließt Strom an den Lampen vorbei. Gib dem Zweig eine Lampe.
-            reset: Neu anfangen
-            check: Prüfen
-            next: Nächste Aufgabe
-            goalEine: Baue einen Stromkreis, in dem eine Lampe leuchtet.
-            goalSchalter: Baue einen Stromkreis, in dem du eine Lampe mit einem Schalter ein- und ausschaltest.
-            goalReihe: Baue einen Stromkreis mit zwei Lampen in Reihe. Wird eine herausgeschraubt, geht auch die andere aus.
-            goalParallel: Baue einen Stromkreis mit zwei Lampen parallel. Wird eine herausgeschraubt, leuchtet die andere weiter.
-            goalJeSchalter: Baue einen Stromkreis mit zwei Lampen, die du mit je einem eigenen Schalter einzeln ein- und ausschaltest.
-            goalHaupt: Baue einen Stromkreis mit zwei parallelen Lampen und einem Schalter, der beide gemeinsam ein- und ausschaltet.
-        nojs: |
-          Diese Aufgaben stellt der Bau-Editor, jeweils mit ihrer Lösung:
-          - **Eine Lampe leuchtet:** Batterie und eine Lampe in einem geschlossenen Kreis.
-          - **Lampe mit Schalter:** Batterie, ein Schalter und eine Lampe hintereinander.
-          - **Zwei Lampen in Reihe:** Batterie, Lampe 1 und Lampe 2 hintereinander. Fehlt eine, geht auch die andere aus.
-          - **Zwei Lampen parallel:** Zwei Zweige mit je einer Lampe. Fehlt eine, leuchtet die andere weiter.
-          - **Zwei Lampen mit je einem Schalter:** Zwei Zweige, jeder mit einem Schalter und einer Lampe.
-          - **Ein Schalter für zwei parallele Lampen:** Ein Schalter in der gemeinsamen Leitung, dahinter zwei Zweige mit je einer Lampe.
+            battery:
+              de: Batterie
+              en: Battery
+            board:
+              de: Schaltbrett mit sechs Plätzen
+              en: Circuit board with six places
+            tools:
+              de: Bauteil wählen
+              en: Choose a part
+            toolWire:
+              de: Kabel
+              en: Wire
+            toolLamp:
+              de: Lampe
+              en: Lamp
+            toolSwitch:
+              de: Schalter
+              en: Switch
+            modes:
+              de: Betriebsart
+              en: Mode
+            modeBuild:
+              de: Bauen
+              en: Build
+            modeTest:
+              de: Testen
+              en: Test
+            hintBuild:
+              de: Wähle ein Bauteil und tippe auf einen Platz im Schaltbrett. Mit Kabel machst du einen Platz wieder
+                leer.
+              en: Choose a part and tap a place on the circuit board. With the wire you make a place empty again.
+            hintTest:
+              de:
+                Tippe auf einen Schalter, um ihn zu öffnen oder zu schließen, und auf eine Lampe, um sie herauszuschrauben
+                oder wieder einzuschrauben.
+              en: Tap a switch to open or close it, and tap a lamp to unscrew it or screw it back in.
+            slot:
+              de: Platz
+              en: Place
+            slotEmpty:
+              de: leer, nur Kabel
+              en: empty, just a wire
+            slotLamp:
+              de: Lampe
+              en: lamp
+            slotLampOut:
+              de: Lampe herausgeschraubt
+              en: lamp unscrewed
+            slotSwitchClosed:
+              de: Schalter geschlossen
+              en: switch closed
+            slotSwitchOpen:
+              de: Schalter offen
+              en: switch open
+            status:
+              de: "Leuchtende Lampen: {n}"
+              en: "Lamps shining: {n}"
+            short:
+              de: Kurzschluss! Ein Kabel ohne Lampe überbrückt die Lampen im anderen Zweig, und der Strom fließt an
+                ihnen vorbei.
+              en: Short circuit! A wire without a lamp bypasses the lamps in the other branch, and the current flows
+                past them.
+            taskLabel:
+              de: "Aufgabe:"
+              en: "Task:"
+            reset:
+              de: Neu anfangen
+              en: Start again
+            check:
+              de: Prüfen
+              en: Check
+            next:
+              de: Nächste Aufgabe
+              en: Next task
+            goalEine:
+              de: Baue einen Stromkreis, in dem eine Lampe leuchtet.
+              en: Build a circuit in which one lamp shines.
+            goalSchalter:
+              de: Baue einen Stromkreis, in dem du eine Lampe mit einem Schalter ein- und ausschaltest.
+              en: Build a circuit in which you switch a lamp on and off with a switch.
+            goalReihe:
+              de: Baue einen Stromkreis mit zwei Lampen in Reihe. Wird eine herausgeschraubt, geht auch die andere aus.
+              en: Build a circuit with two lamps in series. If one is unscrewed, the other goes out too.
+            goalParallel:
+              de: Baue einen Stromkreis mit zwei Lampen parallel. Wird eine herausgeschraubt, leuchtet die andere weiter.
+              en: Build a circuit with two lamps in parallel. If one is unscrewed, the other keeps shining.
+            goalJeSchalter:
+              de: Baue einen Stromkreis mit zwei Lampen, die du mit je einem eigenen Schalter einzeln ein- und ausschaltest.
+              en: Build a circuit with two lamps that you switch on and off separately, each with its own switch.
+            goalHaupt:
+              de: Baue einen Stromkreis mit zwei parallelen Lampen und einem Schalter, der beide gemeinsam ein- und
+                ausschaltet.
+              en: Build a circuit with two parallel lamps and one switch that switches both on and off together.
+        nojs:
+          de: |
+            Diese Aufgaben stellt der Bau-Editor, jeweils mit ihrer Lösung. Das Schaltbrett hat Plätze in der Hauptleitung (1 und 6) und
+            zwei Zweige mit je zwei Plätzen (2 bis 5):
+            - **Eine Lampe leuchtet:** Lampe auf Platz 1.
+            - **Lampe mit Schalter:** Schalter auf Platz 1, Lampe auf Platz 6.
+            - **Zwei Lampen in Reihe:** Lampen auf Platz 1 und 6.
+            - **Zwei Lampen parallel:** Lampe in jedem Zweig, zum Beispiel auf Platz 2 und 4.
+            - **Zwei Lampen mit je einem Schalter:** In jedem Zweig ein Schalter und eine Lampe.
+            - **Ein Schalter für zwei parallele Lampen:** Schalter auf Platz 1, Lampe in jedem Zweig.
+          en: |
+            These are the tasks the circuit builder sets, each with its solution. The circuit board has places in the
+            main wire (1 and 6) and two branches with two places each (2 to 5):
+            - **One lamp shines:** a lamp on place 1.
+            - **Lamp with a switch:** a switch on place 1, a lamp on place 6.
+            - **Two lamps in series:** lamps on places 1 and 6.
+            - **Two lamps in parallel:** a lamp in each branch, for example on places 2 and 4.
+            - **Two lamps, each with its own switch:** a switch and a lamp in each branch.
+            - **One switch for two parallel lamps:** a switch on place 1, a lamp in each branch.
       - type: single-choice
         id: be-kurzschluss
-        text: Du legst eine Parallelschaltung an und lässt einen Zweig leer, also ohne Lampe. Was passiert?
+        text:
+          de: Du setzt eine Lampe in den linken senkrechten Zweig und lässt den rechten Zweig leer, also ohne Lampe.
+            Was passiert?
+          en: You put a lamp into the left vertical branch and leave the right branch empty, that is, without a lamp.
+            What happens?
         options:
-          - text: Es gibt einen Kurzschluss, und die Lampen leuchten nicht.
+          - text:
+              de: Es gibt einen Kurzschluss, und die Lampen leuchten nicht.
+              en: There is a short circuit, and the lamp does not shine.
             correct: true
-            info: Der leere Zweig ist ein Weg für den Strom ganz ohne Lampe. Der Strom nimmt diesen Weg und lässt die Lampen aus.
-          - text: Die Lampen leuchten heller.
+            info:
+              de: Der leere Zweig ist ein Weg für den Strom ganz ohne Lampe. Der Strom nimmt diesen Weg und lässt die
+                Lampen aus.
+              en: The empty branch is a path for the current with no lamp at all. The current takes this path and leaves
+                the lamp off.
+          - text:
+              de: Die Lampen leuchten heller.
+              en: The lamp shines more brightly.
             correct: false
-            info: Die Lampen bekommen dann sogar keinen Strom mehr, weil der Strom den leeren Zweig nimmt.
-          - text: Es passiert nichts.
+            info:
+              de: Die Lampen bekommen dann sogar keinen Strom mehr, weil der Strom den leeren Zweig nimmt.
+              en: The lamp then gets no current at all, because the current takes the empty branch.
+          - text:
+              de: Es passiert nichts.
+              en: Nothing happens.
             correct: false
-            info: Ein leerer Zweig verändert den Stromkreis deutlich. Es ist ein Kurzschluss.
-        explanation: Ein Zweig ohne Verbraucher ist ein Kurzschluss. Der Strom fließt am ganzen Verbraucher vorbei, und das kann Kabel gefährlich heiß machen.
+            info:
+              de: Ein leerer Zweig verändert den Stromkreis deutlich. Es ist ein Kurzschluss.
+              en: An empty branch changes the circuit a lot. It is a short circuit.
+        explanation:
+          de: Ein Zweig ohne Verbraucher ist ein Kurzschluss. Der Strom fließt am ganzen Verbraucher vorbei, und das
+            kann Kabel gefährlich heiß machen.
+          en: A branch without a load is a short circuit. The current flows past every load, and that can make cables
+            dangerously hot.
         links:
-          - title: Kurzschluss (Wikipedia)
+          - title:
+              de: Kurzschluss (Wikipedia)
+              en: Kurzschluss (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Kurzschluss

@@ -23,6 +23,11 @@ Schaltungen. Der Lehrgang soll später um höhere Jahrgänge wachsen.
 
 - Archetyp `explainer`: viele Seiten mit Erklärung und Übung, auch ohne JavaScript lesbar.
 - Jahrgang 5 und 6, Deutschland länderübergreifend (Entscheidung der Auftraggeberin bzw. des Auftraggebers).
+- Zweisprachig von Anfang an, Deutsch und Englisch (Wunsch der Auftraggeberin bzw. des Auftraggebers nach der Planbestätigung).
+- Der Bau-Editor ist grafisch: ein SVG-Schaltbrett mit sechs festen Plätzen, auf die man Lampe, Schalter oder Kabel setzt
+  (Wunsch der Auftraggeberin bzw. des Auftraggebers).
+- Bilder ohne Wörter, nur mit Ziffern, Legende in der Bildunterschrift, weil `labelled-figure` ohne JavaScript nicht prüfbar
+  war (guess).
 - Bau-Editor von Anfang an dabei, als Komponente `SchaltungBauen`: kein Block kann eine Schaltung bauen lassen
   (`prefer-built-in-block`). Er prüft das Verhalten der Schaltung, nicht ihren Aufbau.
 - Ohne Lehrplanzitat weitergebaut, weil kein offizielles Lehrplandokument gefunden wurde (Entscheidung der Auftraggeberin
@@ -148,13 +153,17 @@ Code abgeschlossen; Checkpoints Recherche und Plan bestätigt. Commit steht aus.
 
 - `checks-pass`: 2 (Format; `vue-tsc` ohne `@types/node`).
 - `explainer-content-valid`: 1 (Link zwischen Seiten, Seite ohne Quiz-Übung, Kommas in Flow-Listen).
+- `checks-pass` (Ende-zu-Ende-Test ohne JavaScript): 1, weil `labelled-figure` sein Bild ohne JavaScript versteckt.
 
 ### Creator turns after the plan
 
-Bisher 1: Antwort zum Lehrplan (ohne Zitat weiterbauen) und Name des Urhebers.
+Bisher 2: Antwort zum Lehrplan (ohne Zitat weiterbauen) und Name des Urhebers; danach der Wunsch nach Deutsch und Englisch
+und nach einem grafischen Editor mit Plätzen.
 
 ### Where I had to guess
 
 - `@types/node` ergänzt, weil `vue-tsc` sonst an Dateien aus `node_modules` scheitert (Fehler der Vorlage?).
 - Schaltbilder selbst gezeichnet; Lizenz CC0-1.0.
 - Lehrplan nicht zitiert, weil kein offizielles Dokument gefunden wurde.
+- Englische Fassung der Fragen verlinkt auf deutsche Wikipedia-Artikel (die Linkadresse hat keine Sprachvariante).
+- Parallelschaltung: Mein erstes Schaltbild hatte eine Querleitung, die beide Lampen kurzgeschlossen hätte; behoben.

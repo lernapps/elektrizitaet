@@ -1,95 +1,198 @@
 # yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
-title: Parallelschaltung
-description: Bei der Parallelschaltung hat jede Lampe ihren eigenen Weg. Fällt eine aus, leuchten die anderen weiter.
+title:
+  de: Parallelschaltung
+  en: Parallel circuit
+description:
+  de: Bei der Parallelschaltung hat jede Lampe ihren eigenen Weg. Fällt eine aus, leuchten die anderen weiter.
+  en: In a parallel circuit every lamp has its own path. If one fails, the others keep shining.
 blocks:
   - type: section
     id: idee
-    title: Die Idee
+    title:
+      de: Die Idee
+      en: The idea
     blocks:
       - type: text
-        text: |
-          In deinem Zimmer kannst du das Licht ausschalten, ohne dass der Kühlschrank in der Küche ausgeht. Das geht,
-          weil die Geräte im Haus **parallel** geschaltet sind: Jedes hat seinen eigenen Weg zur Stromquelle.
+        text:
+          de: |
+            In deinem Zimmer kannst du das Licht ausschalten, ohne dass der Kühlschrank in der Küche ausgeht. Das geht,
+            weil die Geräte im Haus **parallel** geschaltet sind: Jedes hat seinen eigenen Weg zur Stromquelle.
+          en: |
+            In your room you can switch off the light without the fridge in the kitchen going off. That works because
+            the devices in a house are connected **in parallel**: each has its own path to the power source.
   - type: section
     id: merke
-    title: Das merkst du dir
+    title:
+      de: Das merkst du dir
+      en: What to remember
     blocks:
       - type: definition
-        term: Parallelschaltung
-        explanation: Bei einer Parallelschaltung sind die Bauteile nebeneinander geschaltet. Der Strom hat mehrere Wege, einen für jedes Bauteil.
+        term:
+          de: Parallelschaltung
+          en: Parallel circuit
+        explanation:
+          de: Bei einer Parallelschaltung sind die Bauteile nebeneinander geschaltet. Der Strom hat mehrere Wege, einen
+            für jedes Bauteil.
+          en: In a parallel circuit the parts are connected next to each other. The current has several paths, one for
+            each part.
       - type: figure
         image: images/parallelschaltung.svg
-        source: Eigene Zeichnung für diese App
+        source: Eigene Zeichnung / own drawing for this app
         licence: CC0-1.0
-        alt: Ein Stromkreis mit einer Batterie und zwei Lampen, die nebeneinander an derselben oberen und unteren Leitung hängen. Jede Lampe hat ihren eigenen Weg.
-        caption: Der Strom teilt sich auf. Jede Lampe liegt auf **ihrem eigenen Weg**.
+        alt:
+          de:
+            Ein Stromkreis mit einer Batterie und zwei Lampen, die nebeneinander an derselben oberen und unteren Leitung
+            hängen. Jede Lampe hat ihren eigenen Weg.
+          en: A circuit with a battery and two lamps that hang next to each other on the same top and bottom wire. Each
+            lamp has its own path.
+        caption:
+          de: "Der Strom teilt sich auf. Jede Lampe liegt auf **ihrem eigenen Weg**. Beschriftung: 1 Batterie, 2 Lampe
+            1, 3 Lampe 2."
+          en: "The current splits up. Each lamp is on **its own path**. Labels: 1 battery, 2 lamp 1, 3 lamp 2."
       - type: text
-        text: |
-          Daraus folgt:
-          - Wird **eine** Lampe herausgeschraubt, leuchten die **anderen weiter**.
-          - Mit einem Schalter in jedem Zweig schaltest du jede Lampe **einzeln**.
-          - Ein Schalter in der gemeinsamen Leitung schaltet **alle** zusammen.
-          - Jede Lampe leuchtet gleich hell, auch wenn du eine dazuschaltest.
+        text:
+          de: |
+            Daraus folgt:
+            - Wird **eine** Lampe herausgeschraubt, leuchten die **anderen weiter**.
+            - Mit einem Schalter in jedem Zweig schaltest du jede Lampe **einzeln**.
+            - Ein Schalter in der gemeinsamen Leitung schaltet **alle** zusammen.
+            - Jede Lampe leuchtet gleich hell, auch wenn du eine dazuschaltest.
+          en: |
+            It follows that:
+            - If **one** lamp is unscrewed, the **others keep shining**.
+            - With a switch in each branch you switch each lamp **on its own**.
+            - A switch in the shared wire switches **all** of them together.
+            - Every lamp shines equally brightly, even if you add another.
       - type: note
-        title: Vorsicht, Kurzschluss
+        title:
+          de: Vorsicht, Kurzschluss
+          en: Careful, short circuit
         blocks:
           - type: definition
-            term: Kurzschluss
-            explanation: Bei einem Kurzschluss fließt der Strom über einen Weg ganz ohne Verbraucher. Das Kabel kann sehr heiß werden, deshalb ist ein Kurzschluss gefährlich.
+            term:
+              de: Kurzschluss
+              en: Short circuit
+            explanation:
+              de: Bei einem Kurzschluss fließt der Strom über einen Weg ganz ohne Verbraucher. Das Kabel kann sehr heiß
+                werden, deshalb ist ein Kurzschluss gefährlich.
+              en: In a short circuit the current flows along a path with no load at all. The cable can get very hot, so
+                a short circuit is dangerous.
           - type: text
-            text: Verbindest du die beiden Pole der Batterie direkt mit einem Kabel, gibt es einen Kurzschluss.
+            text:
+              de: Verbindest du die beiden Pole der Batterie direkt mit einem Kabel, gibt es einen Kurzschluss.
+              en: If you connect the two poles of the battery directly with a wire, you get a short circuit.
   - type: section
     id: beispiel
-    title: Beispiel
+    title:
+      de: Beispiel
+      en: Example
     blocks:
       - type: example
-        title: Das Licht im Haus
+        title:
+          de: Das Licht im Haus
+          en: The lights in a house
         blocks:
           - type: text
-            text: |
-              Alle Lampen und Steckdosen im Haus sind parallel geschaltet. Fällt eine Lampe aus, leuchten die
-              anderen weiter, und jede Lampe hat ihren eigenen Schalter.
+            text:
+              de: |
+                Alle Lampen und Steckdosen im Haus sind parallel geschaltet. Fällt eine Lampe aus, leuchten die
+                anderen weiter, und jede Lampe hat ihren eigenen Schalter.
+              en: |
+                All the lamps and sockets in a house are connected in parallel. If one lamp fails, the others keep
+                shining, and every lamp has its own switch.
   - type: section
     id: uebung
-    title: Übung
+    title:
+      de: Übung
+      en: Practice
     blocks:
       - type: single-choice
         id: ps-ausfall
-        text: Zwei Lampen sind parallel geschaltet. Eine wird herausgeschraubt. Was passiert mit der anderen?
+        text:
+          de: Zwei Lampen sind parallel geschaltet. Eine wird herausgeschraubt. Was passiert mit der anderen?
+          en: Two lamps are connected in parallel. One is unscrewed. What happens to the other?
         options:
-          - text: Sie leuchtet weiter.
+          - text:
+              de: Sie leuchtet weiter.
+              en: It keeps shining.
             correct: true
-            info: Jede Lampe hat ihren eigenen Weg, und der Kreis der anderen Lampe bleibt geschlossen.
-          - text: Sie geht auch aus.
+            info:
+              de: Jede Lampe hat ihren eigenen Weg, und der Kreis der anderen Lampe bleibt geschlossen.
+              en: Each lamp has its own path, and the circuit of the other lamp stays closed.
+          - text:
+              de: Sie geht auch aus.
+              en: It goes out too.
             correct: false
-            info: Das passiert in der Reihenschaltung, wo es nur einen Weg gibt.
-          - text: Sie leuchtet doppelt so hell.
+            info:
+              de: Das passiert in der Reihenschaltung, wo es nur einen Weg gibt.
+              en: That happens in a series circuit, where there is only one path.
+          - text:
+              de: Sie leuchtet doppelt so hell.
+              en: It shines twice as brightly.
             correct: false
-            info: Die Helligkeit bleibt gleich. Jede Lampe bekommt weiter denselben Strom.
-        explanation: In der Parallelschaltung hat jede Lampe einen eigenen Weg. Fällt eine aus, bleibt der Weg der anderen geschlossen.
+            info:
+              de: Die Helligkeit bleibt gleich. Jede Lampe bekommt weiter denselben Strom.
+              en: The brightness stays the same. Each lamp still gets the same current.
+        explanation:
+          de: In der Parallelschaltung hat jede Lampe einen eigenen Weg. Fällt eine aus, bleibt der Weg der anderen
+            geschlossen.
+          en: In a parallel circuit each lamp has its own path. If one fails, the path of the other stays closed.
         links:
-          - title: Parallelschaltung (Wikipedia)
+          - title:
+              de: Parallelschaltung (Wikipedia)
+              en: Parallelschaltung (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Parallelschaltung
       - type: matching
         id: ps-zuordnen
-        text: Ordne jede Beobachtung der passenden Schaltung zu.
+        text:
+          de: Ordne jede Beobachtung der passenden Schaltung zu.
+          en: Match each observation with the right circuit.
         pairs:
-          - { left: "Eine Lampe wird herausgedreht, alle gehen aus", right: Reihenschaltung }
-          - { left: "Eine Lampe wird herausgedreht, die anderen leuchten weiter", right: Parallelschaltung }
-        explanation: Gehen alle Lampen aus, gibt es nur einen Weg, also eine Reihenschaltung. Leuchten die anderen weiter, hat jede Lampe einen eigenen Weg, also eine Parallelschaltung.
+          - left:
+              de: Eine Lampe wird herausgedreht, alle gehen aus
+              en: One lamp is unscrewed, all go out
+            right:
+              de: Reihenschaltung
+              en: Series circuit
+          - left:
+              de: Eine Lampe wird herausgedreht, die anderen leuchten weiter
+              en: One lamp is unscrewed, the others keep shining
+            right:
+              de: Parallelschaltung
+              en: Parallel circuit
+        explanation:
+          de: Gehen alle Lampen aus, gibt es nur einen Weg, also eine Reihenschaltung. Leuchten die anderen weiter,
+            hat jede Lampe einen eigenen Weg, also eine Parallelschaltung.
+          en: If all lamps go out, there is only one path, so it is a series circuit. If the others keep shining, each
+            lamp has its own path, so it is a parallel circuit.
         links:
-          - title: Parallelschaltung (Wikipedia)
+          - title:
+              de: Parallelschaltung (Wikipedia)
+              en: Parallelschaltung (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Parallelschaltung
       - type: true-false
         id: ps-haus
-        text: Die Lampen in einem Haus sind parallel geschaltet.
+        text:
+          de: Die Lampen in einem Haus sind parallel geschaltet.
+          en: The lamps in a house are connected in parallel.
         answer: true
-        explanation: Weil die Lampen und Geräte parallel liegen, funktionieren sie unabhängig voneinander. Du kannst jede einzeln ausschalten.
+        explanation:
+          de:
+            Weil die Lampen und Geräte parallel liegen, funktionieren sie unabhängig voneinander. Du kannst jede einzeln
+            ausschalten.
+          en: Because the lamps and devices are in parallel, they work independently of each other. You can switch each
+            one off on its own.
         links:
-          - title: Parallelschaltung (Wikipedia)
+          - title:
+              de: Parallelschaltung (Wikipedia)
+              en: Parallelschaltung (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Parallelschaltung
       - type: note
-        title: Probiere es aus
+        title:
+          de: Probiere es aus
+          en: Try it out
         blocks:
           - type: text
-            text: Baue die Parallelschaltung im [Bau-Editor](/schaltungen/bau-editor/) und schraube eine Lampe heraus.
+            text:
+              de: Baue die Parallelschaltung im [Bau-Editor](/schaltungen/bau-editor/) und schraube eine Lampe heraus.
+              en: Build the parallel circuit in the [circuit builder](/schaltungen/bau-editor/) and unscrew one lamp.

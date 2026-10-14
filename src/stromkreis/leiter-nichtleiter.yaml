@@ -1,103 +1,222 @@
 # yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
-title: Leiter und Nichtleiter
-description: Metalle leiten den Strom, Gummi, Glas und Kunststoff nicht. Daran erkennst du, woraus Kabel gemacht sind.
+title:
+  de: Leiter und Nichtleiter
+  en: Conductors and insulators
+description:
+  de: Metalle leiten den Strom, Gummi, Glas und Kunststoff nicht. Daran erkennst du, woraus Kabel gemacht sind.
+  en: Metals conduct electricity; rubber, glass and plastic do not. That is how you can tell what cables are made
+    of.
 blocks:
   - type: section
     id: idee
-    title: Die Idee
+    title:
+      de: Die Idee
+      en: The idea
     blocks:
       - type: text
-        text: |
-          Ein Kabel besteht innen aus Kupfer und außen aus Kunststoff. Warum nicht ganz aus Kupfer oder ganz aus
-          Kunststoff? Weil manche Stoffe den Strom durchlassen und andere nicht.
+        text:
+          de: |
+            Ein Kabel besteht innen aus Kupfer und außen aus Kunststoff. Warum nicht ganz aus Kupfer oder ganz aus
+            Kunststoff? Weil manche Stoffe den Strom durchlassen und andere nicht.
+          en: |
+            Inside, a cable is made of copper; outside, of plastic. Why not all copper or all plastic? Because some
+            materials let current through and others do not.
   - type: section
     id: merke
-    title: Das merkst du dir
+    title:
+      de: Das merkst du dir
+      en: What to remember
     blocks:
       - type: definition
-        term: Leiter
-        explanation: Ein Leiter lässt den elektrischen Strom gut durch. Dazu gehören alle Metalle, zum Beispiel Kupfer, Eisen und Aluminium.
+        term:
+          de: Leiter
+          en: Conductor
+        explanation:
+          de: Ein Leiter lässt den elektrischen Strom gut durch. Dazu gehören alle Metalle, zum Beispiel Kupfer, Eisen
+            und Aluminium.
+          en: A conductor lets electric current through well. All metals are conductors, for example copper, iron and
+            aluminium.
       - type: definition
-        term: Nichtleiter
-        explanation: Ein Nichtleiter (auch Isolator) lässt den elektrischen Strom praktisch nicht durch, zum Beispiel Kunststoff, Gummi, Glas, Holz und Porzellan.
+        term:
+          de: Nichtleiter
+          en: Insulator
+        explanation:
+          de:
+            Ein Nichtleiter (auch Isolator) lässt den elektrischen Strom praktisch nicht durch, zum Beispiel Kunststoff,
+            Gummi, Glas, Holz und Porzellan.
+          en: An insulator (also called a non-conductor) hardly lets any electric current through, for example plastic,
+            rubber, glass, wood and porcelain.
       - type: table
-        caption: Wichtige Stoffe und ob sie den Strom leiten
-        header: [Stoff, Leiter oder Nichtleiter?]
+        caption:
+          de: Wichtige Stoffe und ob sie den Strom leiten
+          en: Important materials and whether they conduct electricity
+        header:
+          - de: Stoff
+            en: Material
+          - de: Leiter oder Nichtleiter?
+            en: Conductor or insulator?
         rowHeaders: true
         rows:
-          - [Kupfer, Leiter]
-          - [Eisen, Leiter]
-          - [Aluminium, Leiter]
-          - [Graphit (Bleistiftmine), Leiter]
-          - [Kunststoff, Nichtleiter]
-          - [Gummi, Nichtleiter]
-          - [Glas, Nichtleiter]
-          - [Holz (trocken), Nichtleiter]
+          - - de: Kupfer
+              en: Copper
+            - de: Leiter
+              en: Conductor
+          - - de: Eisen
+              en: Iron
+            - de: Leiter
+              en: Conductor
+          - - de: Aluminium
+              en: Aluminium
+            - de: Leiter
+              en: Conductor
+          - - de: Graphit (Bleistiftmine)
+              en: Graphite (pencil lead)
+            - de: Leiter
+              en: Conductor
+          - - de: Kunststoff
+              en: Plastic
+            - de: Nichtleiter
+              en: Insulator
+          - - de: Gummi
+              en: Rubber
+            - de: Nichtleiter
+              en: Insulator
+          - - de: Glas
+              en: Glass
+            - de: Nichtleiter
+              en: Insulator
+          - - de: Holz (trocken)
+              en: Wood (dry)
+            - de: Nichtleiter
+              en: Insulator
       - type: note
-        title: Auch Wasser kann leiten
+        title:
+          de: Auch Wasser kann leiten
+          en: Water can conduct, too
         blocks:
           - type: text
-            text: |
-              Leitungswasser und Salzwasser leiten den Strom, weil Stoffe darin gelöst sind. Deshalb sind nasse Hände
-              und Strom eine gefährliche Mischung. Mehr dazu auf der Seite „Sicherheit“.
+            text:
+              de: |
+                Leitungswasser und Salzwasser leiten den Strom, weil Stoffe darin gelöst sind. Deshalb sind nasse Hände
+                und Strom eine gefährliche Mischung. Mehr dazu auf der Seite „Sicherheit“.
+              en: |
+                Tap water and salt water conduct electricity because substances are dissolved in them. That is why wet
+                hands and electricity are a dangerous mix. More on the page “Staying safe”.
   - type: section
     id: beispiel
-    title: Beispiel
+    title:
+      de: Beispiel
+      en: Example
     blocks:
       - type: example
-        title: Warum ein Kabel zwei Teile hat
+        title:
+          de: Warum ein Kabel zwei Teile hat
+          en: Why a cable has two parts
         blocks:
           - type: text
-            text: |
-              Der **Kupferdraht** im Inneren ist ein Leiter: In ihm fließt der Strom. Die **Hülle** aus Kunststoff ist
-              ein Nichtleiter: Sie schützt dich, wenn du das Kabel anfasst, und verhindert, dass zwei Drähte sich
-              berühren.
+            text:
+              de: |
+                Der **Kupferdraht** im Inneren ist ein Leiter: In ihm fließt der Strom. Die **Hülle** aus Kunststoff ist
+                ein Nichtleiter: Sie schützt dich, wenn du das Kabel anfasst, und verhindert, dass zwei Drähte sich
+                berühren.
+              en: |
+                The **copper wire** inside is a conductor: the current flows in it. The **sheath** of plastic is an
+                insulator: it protects you when you touch the cable and stops two wires from touching each other.
   - type: section
     id: uebung
-    title: Übung
+    title:
+      de: Übung
+      en: Practice
     blocks:
       - type: multiple-choice
         id: ln-leiter
-        text: Welche Stoffe sind Leiter?
+        text:
+          de: Welche Stoffe sind Leiter?
+          en: Which materials are conductors?
         options:
-          - text: Kupfer
+          - text:
+              de: Kupfer
+              en: Copper
             correct: true
-            info: Kupfer ist ein Metall und leitet den Strom sehr gut. Deshalb sind Kabel innen aus Kupfer.
-          - text: Eisen
+            info:
+              de: Kupfer ist ein Metall und leitet den Strom sehr gut. Deshalb sind Kabel innen aus Kupfer.
+              en: Copper is a metal and conducts electricity very well. That is why cables are made of copper inside.
+          - text:
+              de: Eisen
+              en: Iron
             correct: true
-            info: Auch Eisen ist ein Metall und leitet den Strom.
-          - text: Gummi
+            info:
+              de: Auch Eisen ist ein Metall und leitet den Strom.
+              en: Iron is a metal too and conducts electricity.
+          - text:
+              de: Gummi
+              en: Rubber
             correct: false
-            info: Gummi leitet den Strom nicht. Deshalb ist es als Hülle um Kabel und Griffe geeignet.
-          - text: Glas
+            info:
+              de: Gummi leitet den Strom nicht. Deshalb ist es als Hülle um Kabel und Griffe geeignet.
+              en: Rubber does not conduct electricity. That is why it is suitable as a sheath around cables and on handles.
+          - text:
+              de: Glas
+              en: Glass
             correct: false
-            info: Glas leitet den Strom nicht und gehört zu den Nichtleitern.
-        explanation: Alle Metalle sind Leiter. Gummi und Glas sind Nichtleiter.
+            info:
+              de: Glas leitet den Strom nicht und gehört zu den Nichtleitern.
+              en: Glass does not conduct electricity and is an insulator.
+        explanation:
+          de: Alle Metalle sind Leiter. Gummi und Glas sind Nichtleiter.
+          en: All metals are conductors. Rubber and glass are insulators.
         links:
-          - title: Elektrischer Leiter (Wikipedia)
+          - title:
+              de: Elektrischer Leiter (Wikipedia)
+              en: Elektrischer Leiter (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Elektrischer_Leiter
       - type: single-choice
         id: ln-huelle
-        text: Aus welchem Stoff ist die Hülle eines Kabels, die dich schützt?
+        text:
+          de: Aus welchem Stoff ist die Hülle eines Kabels, die dich schützt?
+          en: What is the sheath of a cable, which protects you, made of?
         options:
-          - text: Kunststoff, ein Nichtleiter
+          - text:
+              de: Kunststoff, ein Nichtleiter
+              en: Plastic, an insulator
             correct: true
-            info: Kunststoff lässt keinen Strom durch. Deshalb kannst du die Hülle gefahrlos anfassen.
-          - text: Kupfer, ein Leiter
+            info:
+              de: Kunststoff lässt keinen Strom durch. Deshalb kannst du die Hülle gefahrlos anfassen.
+              en: Plastic does not let current through. That is why you can touch the sheath safely.
+          - text:
+              de: Kupfer, ein Leiter
+              en: Copper, a conductor
             correct: false
-            info: Kupfer ist der Draht im Inneren. Er leitet den Strom und wäre als Hülle gefährlich.
-          - text: Eisen, ein Leiter
+            info:
+              de: Kupfer ist der Draht im Inneren. Er leitet den Strom und wäre als Hülle gefährlich.
+              en: Copper is the wire inside. It conducts the current and would be dangerous as a sheath.
+          - text:
+              de: Eisen, ein Leiter
+              en: Iron, a conductor
             correct: false
-            info: Eisen leitet den Strom und eignet sich nicht als Schutzhülle.
-        explanation: Die Hülle muss ein Nichtleiter sein, damit der Strom nur im Draht fließt und du geschützt bist.
+            info:
+              de: Eisen leitet den Strom und eignet sich nicht als Schutzhülle.
+              en: Iron conducts electricity and is not suitable as a protective sheath.
+        explanation:
+          de: Die Hülle muss ein Nichtleiter sein, damit der Strom nur im Draht fließt und du geschützt bist.
+          en: The sheath must be an insulator so that the current flows only in the wire and you are protected.
         links:
-          - title: Isolator (Elektrotechnik) (Wikipedia)
+          - title:
+              de: Isolator (Elektrotechnik) (Wikipedia)
+              en: Isolator (Elektrotechnik) (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Isolator_(Elektrotechnik)
       - type: true-false
         id: ln-wasser
-        text: Leitungswasser leitet den elektrischen Strom.
+        text:
+          de: Leitungswasser leitet den elektrischen Strom.
+          en: Tap water conducts electric current.
         answer: true
-        explanation: Im Leitungswasser sind Salze gelöst, und sie lassen den Strom durch. Reines, destilliertes Wasser leitet kaum.
+        explanation:
+          de: Im Leitungswasser sind Salze gelöst, und sie lassen den Strom durch. Reines, destilliertes Wasser leitet
+            kaum.
+          en: Salts are dissolved in tap water, and they let current through. Pure, distilled water hardly conducts.
         links:
-          - title: Elektrischer Leiter (Wikipedia)
+          - title:
+              de: Elektrischer Leiter (Wikipedia)
+              en: Elektrischer Leiter (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Elektrischer_Leiter
