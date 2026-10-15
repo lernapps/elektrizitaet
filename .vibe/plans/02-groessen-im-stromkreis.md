@@ -69,7 +69,28 @@ Mark a choice you made without asking the creator with "(guess)", and list it in
   - https://de.wikipedia.org/wiki/Elektrische_Spannung, „Elektrische Spannung“ (Volt).
   - https://de.wikipedia.org/wiki/Elektrischer_Widerstand, „Elektrischer Widerstand“ (Ohm; R = ρ · l / A).
   - https://de.wikipedia.org/wiki/Ohmsches_Gesetz, „Ohmsches Gesetz“ (U = R · I).
-  - Serlo und LeifiPhysik: noch nicht geprüft.
+  - Serlo und LeifiPhysik: noch nicht geprüft, nicht verwendet.
+- Vorgeschlagene Kompetenzen (Entwurf für den Checkpoint „Recherche“):
+  Kapitel `groessen` (Größen im Stromkreis)
+  - Ich kann die Stromstärke in A und mA angeben, am Amperemeter ablesen und das Amperemeter richtig einbauen.
+    Seite `groessen/stromstaerke`.
+  - Ich kann Spannung als „Antrieb“ des Stroms erklären, in V angeben, am Voltmeter ablesen und es richtig anschließen.
+    Seite `groessen/spannung`.
+  - Ich kann erklären, wovon der Widerstand eines Drahts abhängt (Material, Länge, Querschnitt), und ihn in Ω angeben.
+    Seite `groessen/widerstand`.
+  - Ich kann mit R = U / I eine fehlende Größe berechnen und eine Kennlinie lesen. Seite `groessen/ohmsches-gesetz`.
+  Kapitel `schaltungen-messen` (Schaltungen mit Größen)
+  - Ich kann Stromstärke und Spannung in einer Reihenschaltung mit bis zu drei Widerständen vorhersagen und berechnen.
+    Seite `schaltungen-messen/reihenschaltung`.
+  - Ich kann dasselbe in einer Parallelschaltung (zwei Zweige, in einem bis zu zwei Widerstände). Seite
+    `schaltungen-messen/parallelschaltung`.
+  - Ich kann eine Schaltung mit Messgeräten und Widerständen bauen, die vorgegebene Werte erfüllt. Seite
+    `schaltungen-messen/bau-editor`; Komponente `SchaltungMessen`.
+- Bau-Editor mit Variablen: Die Komponenten-Schnittstelle des Explainers trägt das schon (`generate(seed, props)` gibt die
+  Aufgabe, eine Prüffunktion urteilt, 50 feste Startwerte werden gebaut und getestet). Der Simulator rechnet Spannung und
+  Strom idealisiert (Gleichstrom, ideale Quelle und Messgeräte, bis zu drei Widerstände) und prüft das Verhalten der
+  Schaltung, nicht ihren Aufbau. Aufgaben ziehen sinnvolle Werte aus Listen (Quelle 6, 9, 12 V; Widerstände aus 10, 20,
+  30, 50, 100 Ω); die Lösung wird gerechnet, nicht gespeichert.
 
 <!-- What you need later: sources and licences of content, links, open questions. -->
 
@@ -88,8 +109,8 @@ turn, in plain words. Do not ask what you can derive from earlier answers or fro
 - [x] Load the content guide `.agents/skills/app-content/SKILL.md` and the skill `lernapps-content-growth`, and read
       the plans in `.vibe/plans/`: what the app teaches, how its content is made, and what earlier increments left
       open.
-- [ ] Ask what this increment adds or changes: which competencies, chapters or rounds, for which school years.
-- [ ] Research the new content: follow the guide's curriculum and sources, and the skill `lernapps-content-research`
+- [x] Ask what this increment adds or changes: which competencies, chapters or rounds, for which school years.
+- [x] Research the new content: follow the guide's curriculum and sources, and the skill `lernapps-content-research`
       for what the guide does not cover yet. Write the Lehrplan with its citation, the new competencies by chapter
       and the verified sources under "Notes".
 - [ ] **Checkpoint:** research. Explain to the creator, in plain words, what you found and how: the Lehrplan with its
@@ -101,7 +122,9 @@ turn, in plain words. Do not ask what you can derive from earlier answers or fro
 
 - Die App soll um die nächsten Jahrgänge wachsen. Nach meinem Vorschlag (Spannung, Stromstärke, Widerstand, ohmsches
   Gesetz, später Leistung/Energie, Magnetismus): „Größen im Stromkreis klingt gut.“
-- Offen: Land/Schulform für das Lehrplanzitat; ob die Erweiterung wie bisher länderübergreifend bleibt.
+- Bau-Editor: „Ohne den Editor ist es lahm. Der sollte auch Übungen mit Variablen unterstützen, also so, dass man sinnvolle
+  Werte nutzt, diese aber von Übung zu Übung variiert und dennoch geprüft werden können.“
+- Offen: ob Bayern (Gymnasium, Jahrgangsstufe 8) als Lehrplanzitat genügt und der Text sonst länderübergreifend bleibt.
 
 ### Completed
 
