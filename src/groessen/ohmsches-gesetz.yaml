@@ -1,0 +1,240 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+title:
+  de: Das ohmsche Gesetz
+  en: Ohm's law
+description:
+  de: "Spannung, Stromstärke und Widerstand hängen zusammen: R = U / I. Damit berechnest du eine fehlende Größe."
+  en: "Voltage, current and resistance are linked: R = U / I. With it you calculate a missing quantity."
+blocks:
+  - type: section
+    id: idee
+    title:
+      de: Die Idee
+      en: The idea
+    blocks:
+      - type: text
+        text:
+          de: "Du schließt einen Widerstand an eine Batterie an und misst. Mit doppelter Spannung fließt auch doppelt
+            so viel Strom. Das Verhältnis aus Spannung und Stromstärke bleibt gleich: Es ist der Widerstand. Dieser
+            Zusammenhang ist das **ohmsche Gesetz**.
+
+            "
+          en: "You connect a resistor to a battery and measure. With twice the voltage, twice as much current flows.
+            The ratio of voltage to current stays the same: it is the resistance. This relation is **Ohm's law**.
+
+            "
+  - type: section
+    id: merke
+    title:
+      de: Das merkst du dir
+      en: What to remember
+    blocks:
+      - type: definition
+        term:
+          de: Ohmsches Gesetz
+          en: Ohm's law
+        explanation:
+          de:
+            'Bei einem ohmschen Widerstand ist die Spannung geteilt durch die Stromstärke immer gleich: $R = \frac{U}{I}$.
+            Der Widerstand ändert sich nicht, wenn man die Spannung ändert.'
+          en:
+            'For an ohmic resistor the voltage divided by the current is always the same: $R = \frac{U}{I}$. The resistance
+            does not change when you change the voltage.'
+      - type: formula
+        formula: R = \frac{U}{I}
+      - type: formula
+        formula: U = R \cdot I
+      - type: formula
+        formula: I = \frac{U}{R}
+      - type: text
+        text:
+          de: "Die Einheit: 1 Ω = 1 V : 1 A. Rechne die Stromstärke vorher in Ampere um, nicht in Milliampere.
+
+            "
+          en: "The unit: 1 Ω = 1 V : 1 A. Convert the current to amperes first, not milliamperes.
+
+            "
+      - type: definition
+        term:
+          de: Kennlinie
+          en: Characteristic curve
+        explanation:
+          de: Eine Kennlinie zeigt, wie die Stromstärke von der Spannung abhängt. Bei einem ohmschen Widerstand ist
+            sie eine Gerade durch den Nullpunkt.
+          en:
+            A characteristic curve shows how the current depends on the voltage. For an ohmic resistor it is a straight
+            line through the origin.
+      - type: figure
+        image: images/kennlinie.svg
+        source: https://github.com/lernapps/elektrizitaet
+        licence: CC0-1.0
+        alt:
+          de: "Ein Koordinatensystem mit der Spannung U nach rechts und der Stromstärke I nach oben. Eine Gerade geht
+            vom Nullpunkt schräg nach oben. Zwei Punkte sind markiert: bei U gleich 1 ist I gleich 1, bei U gleich 2
+            ist I gleich 2."
+          en: "A coordinate system with the voltage U to the right and the current I upward. A straight line rises from
+            the origin. Two points are marked: at U equal to 1, I is 1, and at U equal to 2, I is 2."
+        caption:
+          de: "Die Kennlinie eines ohmschen Widerstands ist eine Gerade durch den Nullpunkt: Doppelte Spannung ergibt
+            doppelte Stromstärke. Die Ziffern 1 und 2 stehen für gleiche Schritte auf beiden Achsen."
+          en: "The characteristic curve of an ohmic resistor is a straight line through the origin: twice the voltage
+            gives twice the current. The digits 1 and 2 stand for equal steps on both axes."
+      - type: note
+        title:
+          de: Nicht jedes Bauteil ist ohmsch
+          en: Not every part is ohmic
+        blocks:
+          - type: text
+            text:
+              de: 'Eine Glühlampe wird beim Leuchten heiß, und ihr Widerstand wächst dabei. Ihre Kennlinie ist deshalb
+                gebogen und keine Gerade. Für sie gilt $R = \frac{U}{I}$ trotzdem in jedem einzelnen Moment, aber der
+                Wert ändert sich.
+
+                '
+              en: 'A bulb gets hot when it shines, and its resistance grows. Its characteristic curve is therefore bent,
+                not a straight line. $R = \frac{U}{I}$ still holds for it at every single moment, but the value changes.
+
+                '
+  - type: section
+    id: beispiel
+    title:
+      de: Beispiel
+      en: Example
+    blocks:
+      - type: example
+        title:
+          de: Ein Widerstand an der Batterie
+          en: A resistor on the battery
+        blocks:
+          - type: text
+            text:
+              de: 'Ein Widerstand von 20 Ω liegt an 6 V. Gesucht ist die Stromstärke: $I = \frac{U}{R} = \frac{6 \text{
+                V}}{20 \text{ Ω}} = 0{,}3 \text{ A}$. Das Amperemeter zeigt 0,3 A, also 300 mA.
+
+                '
+              en: 'A resistor of 20 Ω is connected to 6 V. We want the current: $I = \frac{U}{R} = \frac{6 \text{ V}}{20
+                \text{ Ω}} = 0.3 \text{ A}$. The ammeter shows 0.3 A, that is 300 mA.
+
+                '
+  - type: section
+    id: uebung
+    title:
+      de: Übung
+      en: Practice
+    blocks:
+      - type: generated
+        id: og-strom
+        given:
+          U:
+            oneOf:
+              - 3
+              - 4.5
+              - 6
+              - 9
+              - 12
+          R:
+            oneOf:
+              - 10
+              - 20
+              - 30
+              - 50
+              - 100
+              - 200
+        where:
+          - decimals(U / R) <= 3
+        task:
+          text:
+            de: Ein Widerstand von {{R}} Ω liegt an {{U}} V. Wie groß ist die Stromstärke in Ampere?
+            en: A resistor of {{R}} Ω is connected to {{U}} V. What is the current in amperes?
+        answer:
+          value: U / R
+          compare:
+            number:
+              format: decimal
+              decimals: 3
+              unit:
+                de: A
+                en: A
+        mistakes:
+          - value: R / U
+            message:
+              de: "Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand."
+              en: "You divided the resistance by the voltage. Correct is: voltage divided by resistance."
+          - value: U * R
+            message:
+              de: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
+              en: You multiplied. The current is the voltage divided by the resistance.
+        hint:
+          de: $I = \frac{U}{R}$
+          en: $I = \frac{U}{R}$
+        steps:
+          - de: $I = \frac{U}{R}$
+            en: $I = \frac{U}{R}$
+          - de: $I = \frac{{{U}}\text{ V}}{{{R}}\text{ Ω}} = {{answer}}\text{ A}$
+            en: $I = \frac{{{U}}\text{ V}}{{{R}}\text{ Ω}} = {{answer}}\text{ A}$
+      - type: generated
+        id: og-widerstand
+        given:
+          U:
+            oneOf:
+              - 3
+              - 6
+              - 9
+              - 12
+          I:
+            oneOf:
+              - 0.1
+              - 0.2
+              - 0.3
+              - 0.4
+              - 0.5
+              - 0.6
+        where:
+          - decimals(U / I) == 0
+        task:
+          text:
+            de: An einem Widerstand liegen {{U}} V, und das Amperemeter zeigt {{I}} A. Wie groß ist der Widerstand in
+              Ω?
+            en: An resistor has {{U}} V across it, and the ammeter shows {{I}} A. What is the resistance in Ω?
+        answer:
+          value: U / I
+          compare:
+            number:
+              format: integer
+              unit:
+                de: Ω
+                en: Ω
+        mistakes:
+          - value: I / U
+            message:
+              de: "Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke."
+              en: "You divided the current by the voltage. Correct is: voltage divided by current."
+          - value: U * I
+            message:
+              de: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
+              en: You multiplied. The resistance is the voltage divided by the current.
+        hint:
+          de: $R = \frac{U}{I}$
+          en: $R = \frac{U}{I}$
+        steps:
+          - de: $R = \frac{U}{I}$
+            en: $R = \frac{U}{I}$
+          - de: $R = \frac{{{U}}\text{ V}}{{{I}}\text{ A}} = {{answer}}\text{ Ω}$
+            en: $R = \frac{{{U}}\text{ V}}{{{I}}\text{ A}} = {{answer}}\text{ Ω}$
+      - type: true-false
+        id: og-doppelt
+        text:
+          de: An einem ohmschen Widerstand verdoppelst du die Spannung. Dann verdoppelt sich auch die Stromstärke.
+          en: You double the voltage across an ohmic resistor. Then the current doubles too.
+        answer: true
+        explanation:
+          de: Weil das Verhältnis $\frac{U}{I}$ gleich bleibt, wächst die Stromstärke im gleichen Maß wie die Spannung.
+            Die Kennlinie ist eine Gerade durch den Nullpunkt.
+          en:
+            Because the ratio $\frac{U}{I}$ stays the same, the current grows in step with the voltage. The characteristic
+            curve is a straight line through the origin.
+        links:
+          - title:
+              de: Ohmsches Gesetz (Wikipedia)
+              en: Ohmsches Gesetz (German Wikipedia)
+            url: https://de.wikipedia.org/wiki/Ohmsches_Gesetz

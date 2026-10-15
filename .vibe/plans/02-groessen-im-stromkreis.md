@@ -200,14 +200,14 @@ something, choose, mark it "(guess)" under "Key decisions" and go on.
 ### Tasks
 
 - [x] Switch to a new branch from `main`: `git switch -c increment/02-groessen-im-stromkreis`. Commit this plan on it.
-- [ ] Update the app to the newest tooling and runtime: `npx --yes github:lernapps/tooling#main update`, then
-      `npm install`. Move `.vibe/plan.md` to `.vibe/plans/01-elektrizitaet.md` (the update does it, else by hand).
+- [x] Update the app to the newest tooling and runtime: `npx --yes github:lernapps/tooling#main update`, then
+      `npm install`. Move `.vibe/plan.md` to `.vibe/plans/01-first-version.md` (the update does it, else by hand).
       Commit the update on its own, and fix what its checks report before you add content.
-- [ ] Slice 1: kapitel `groessen` (`chapter.yaml`, Eintrag in `src/app.yaml`) und Seite `groessen/stromstaerke`
+- [x] Slice 1: kapitel `groessen` (`chapter.yaml`, Eintrag in `src/app.yaml`) und Seite `groessen/stromstaerke`
       (Amperemeter, A und mA); Bild der Messung in Reihe; drei Übungen; Thema im Katalogeintrag; Check; Commit.
-- [ ] Slice 2: Seite `groessen/spannung` (Spannung als Antrieb, Voltmeter parallel); Bild; drei Übungen; Thema; Check; Commit.
-- [ ] Slice 3: Seite `groessen/widerstand` (Material, Länge, Querschnitt, Ω); Bild; drei Übungen; Thema; Check; Commit.
-- [ ] Slice 4: Seite `groessen/ohmsches-gesetz` (R = U / I, Kennlinie); Bild der Kennlinie; Übungen mit `generated`
+- [x] Slice 2: Seite `groessen/spannung` (Spannung als Antrieb, Voltmeter parallel); Bild; drei Übungen; Thema; Check; Commit.
+- [x] Slice 3: Seite `groessen/widerstand` (Material, Länge, Querschnitt, Ω); Bild; drei Übungen; Thema; Check; Commit.
+- [x] Slice 4: Seite `groessen/ohmsches-gesetz` (R = U / I, Kennlinie); Bild der Kennlinie; Übungen mit `generated`
       (Rechnen mit Einheiten, typische Fehler); Thema; Check; Commit.
 - [ ] Slice 5: Kapitel `schaltungen-messen` und Seite `reihenschaltung` (Stromstärke gleich, Spannungen addieren sich, bis
       zu drei Widerstände); Bild; Übungen mit `generated`; Thema; Check; Commit.

@@ -1,0 +1,220 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+title:
+  de: Die Spannung
+  en: Voltage
+description:
+  de: Die Spannung treibt den Strom an. Du misst sie mit dem Voltmeter, in Volt (V), parallel zu dem Bauteil.
+  en: The voltage drives the current. You measure it with a voltmeter, in volts (V), in parallel with the part.
+blocks:
+  - type: section
+    id: idee
+    title:
+      de: Die Idee
+      en: The idea
+    blocks:
+      - type: text
+        text:
+          de:
+            "Warum fließt in einem Stromkreis überhaupt Strom? Die Batterie treibt ihn an, so wie eine Pumpe das Wasser
+            im Kreis antreibt. Wie stark sie antreibt, sagt die **Spannung**. Ohne Antrieb fließt nichts, auch wenn
+            der Kreis geschlossen ist. Wie beim Wasserbild gilt: Das Bild erklärt, hat aber Grenzen.
+
+            "
+          en: "Why does current flow in a circuit at all? The battery drives it, like a pump drives water around a loop.
+            How strongly it drives is told by the **voltage**. Without a drive nothing flows, even when the circuit
+            is closed. As with the water picture: the picture explains, but it has limits.
+
+            "
+  - type: section
+    id: merke
+    title:
+      de: Das merkst du dir
+      en: What to remember
+    blocks:
+      - type: definition
+        term:
+          de: Spannung
+          en: Voltage
+        explanation:
+          de: Die Spannung gibt an, wie stark die Stromquelle den Strom antreibt. Sie hat das Formelzeichen $U$ und
+            wird in Volt (V) gemessen.
+          en: The voltage says how strongly the power source drives the current. Its symbol is $U$ and it is measured
+            in volts (V).
+      - type: definition
+        term:
+          de: Voltmeter
+          en: Voltmeter
+        explanation:
+          de: "Ein Voltmeter misst die Spannung. Du schließt es **parallel** an: mit beiden Anschlüssen an den beiden
+            Enden des Bauteils, an dem du messen willst."
+          en: "A voltmeter measures the voltage. You connect it **in parallel**: with its two terminals at the two ends
+            of the part you want to measure."
+      - type: text
+        text:
+          de: "Typische Spannungen: - Mignonzelle (AA-Batterie): 1,5 V - Flachbatterie: 4,5 V - Autobatterie: 12 V -
+            Steckdose: 230 V
+
+            "
+          en: "Typical voltages: - AA battery: 1.5 V - flat battery: 4.5 V - car battery: 12 V - socket: 230 V
+
+            "
+      - type: figure
+        image: images/voltmeter.svg
+        source: https://github.com/lernapps/elektrizitaet
+        licence: CC0-1.0
+        alt:
+          de:
+            Ein Rechteck aus Kabeln mit einer Batterie links und einer Lampe oben. Neben der Lampe zweigt eine Schleife
+            mit einem Kreis mit dem Buchstaben V ab, der an beiden Enden der Lampe angeschlossen ist.
+          en: A rectangle of wires with a battery on the left and a lamp at the top. Next to the lamp a loop branches
+            off with a circle with the letter V, connected at both ends of the lamp.
+        caption:
+          de: "Das Voltmeter liegt **parallel** zur Lampe: Es misst die Spannung an der Lampe. Beschriftung: 1 Batterie,
+            2 Lampe, 3 Voltmeter."
+          en:
+            "The voltmeter is **in parallel** with the lamp: it measures the voltage across the lamp. Labels: 1 battery,
+            2 lamp, 3 voltmeter."
+      - type: note
+        title:
+          de: Auch ohne Strom
+          en: Even without current
+        blocks:
+          - type: text
+            text:
+              de:
+                "Zwischen den Polen einer Batterie liegt auch dann Spannung, wenn der Stromkreis offen ist. Strom fließt
+                aber nur im geschlossenen Kreis.
+
+                "
+              en: "There is voltage between the poles of a battery even when the circuit is open. But current only flows
+                in a closed circuit.
+
+                "
+      - type: note
+        title:
+          de: Sicherheit
+          en: Safety
+        blocks:
+          - type: text
+            text:
+              de: "Experimentiere nur mit Batterien, nie mit der Steckdose: 230 V sind lebensgefährlich.
+
+                "
+              en: "Only experiment with batteries, never with the socket: 230 V can kill.
+
+                "
+  - type: section
+    id: beispiel
+    title:
+      de: Beispiel
+      en: Example
+    blocks:
+      - type: example
+        title:
+          de: Zwei Mignonzellen
+          en: Two AA batteries
+        blocks:
+          - type: text
+            text:
+              de: "In einer Taschenlampe liegen zwei Mignonzellen hintereinander. Jede hat 1,5 V, zusammen treiben sie
+                den Strom mit 3 V an. Ein Voltmeter an den beiden Enden der beiden Zellen zeigt 3 V.
+
+                "
+              en: "A torch holds two AA batteries one behind the other. Each has 1.5 V, together they drive the current
+                with 3 V. A voltmeter across both batteries shows 3 V.
+
+                "
+  - type: section
+    id: uebung
+    title:
+      de: Übung
+      en: Practice
+    blocks:
+      - type: single-choice
+        id: sp-anschluss
+        text:
+          de: Wie schließt du ein Voltmeter an, um die Spannung an einer Lampe zu messen?
+          en: How do you connect a voltmeter to measure the voltage across a lamp?
+        options:
+          - text:
+              de: Parallel zur Lampe, mit beiden Anschlüssen an den Enden der Lampe.
+              en: In parallel with the lamp, with both terminals at the ends of the lamp.
+            correct: true
+            info:
+              de: Die Spannung gibt es zwischen zwei Punkten, hier den beiden Enden der Lampe.
+              en: Voltage exists between two points, here the two ends of the lamp.
+          - text:
+              de: In Reihe mit der Lampe, mitten im Kabel.
+              en: In series with the lamp, in the middle of the wire.
+            correct: false
+            info:
+              de: So wird ein Voltmeter nicht eingebaut. Das ist die Art, wie man ein Amperemeter anschließt.
+              en: That is not how a voltmeter is connected. That is how an ammeter is connected.
+          - text:
+              de: Nur an einen Pol der Batterie.
+              en: Only to one pole of the battery.
+            correct: false
+            info:
+              de: Spannung misst man immer zwischen zwei Punkten. Mit nur einem Anschluss gibt es nichts zu messen.
+              en: Voltage is always measured between two points. With only one terminal there is nothing to measure.
+        explanation:
+          de: Ein Voltmeter liegt parallel zu dem Bauteil, an dem du die Spannung messen willst.
+          en: A voltmeter is in parallel with the part whose voltage you want to measure.
+        links:
+          - title:
+              de: Elektrische Spannung (Wikipedia)
+              en: Elektrische Spannung (German Wikipedia)
+            url: https://de.wikipedia.org/wiki/Elektrische_Spannung
+      - type: true-false
+        id: sp-offen
+        text:
+          de: Zwischen den Polen einer Batterie liegt auch dann Spannung, wenn kein Strom fließt.
+          en: There is voltage between the poles of a battery even when no current flows.
+        answer: true
+        explanation:
+          de: Die Spannung gibt es zwischen den Polen, auch im offenen Stromkreis. Strom fließt nur, wenn der Kreis
+            geschlossen ist.
+          en: The voltage exists between the poles, even in an open circuit. Current only flows if the circuit is closed.
+        links:
+          - title:
+              de: Elektrische Spannung (Wikipedia)
+              en: Elektrische Spannung (German Wikipedia)
+            url: https://de.wikipedia.org/wiki/Elektrische_Spannung
+      - type: matching
+        id: sp-zuordnen
+        text:
+          de: Ordne jeder Spannungsquelle ihre Spannung zu.
+          en: Match each voltage source with its voltage.
+        pairs:
+          - left:
+              de: Mignonzelle (AA-Batterie)
+              en: AA battery
+            right:
+              de: 1,5 V
+              en: 1.5 V
+          - left:
+              de: Flachbatterie
+              en: Flat battery
+            right:
+              de: 4,5 V
+              en: 4.5 V
+          - left:
+              de: Autobatterie
+              en: Car battery
+            right:
+              de: 12 V
+              en: 12 V
+          - left:
+              de: Steckdose
+              en: Socket
+            right:
+              de: 230 V
+              en: 230 V
+        explanation:
+          de: Eine Mignonzelle hat 1,5 V, eine Flachbatterie 4,5 V, eine Autobatterie 12 V und die Steckdose 230 V.
+          en: An AA battery has 1.5 V, a flat battery 4.5 V, a car battery 12 V and the socket 230 V.
+        links:
+          - title:
+              de: Elektrische Spannung (Wikipedia)
+              en: Elektrische Spannung (German Wikipedia)
+            url: https://de.wikipedia.org/wiki/Elektrische_Spannung
