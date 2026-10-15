@@ -29,7 +29,7 @@ jobs:
   app:
     runs-on: ubuntu-latest
     steps:
-      - uses: lernapps/tooling/actions/app-check@60f5a946f06535536a9d1b80363fc899604a87b9 # main
+      - uses: lernapps/tooling/actions/app-check@953820dad80145fb1606b132e2ae6705b2412679 # main
   deploy:
     if: github.ref == 'refs/heads/main'
     needs: app
@@ -38,4 +38,4 @@ jobs:
       contents: write
       pages: write
     steps:
-      - uses: lernapps/tooling/actions/app-publish@60f5a946f06535536a9d1b80363fc899604a87b9 # main
+      - uses: lernapps/tooling/actions/app-publish@953820dad80145fb1606b132e2ae6705b2412679 # main
