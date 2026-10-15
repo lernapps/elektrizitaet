@@ -288,22 +288,22 @@ bundle. A pull request to `main` runs the same checks without publishing.
 
 ### Tasks
 
-- [ ] Push the branch and open a pull request to `main` in the app's repo. The pre-push hook runs the heavy checks;
+- [x] Push the branch and open a pull request to `main` in the app's repo. The pre-push hook runs the heavy checks;
       fix what fails. See the checks of the pull request through to green.
-- [ ] **Checkpoint:** publish. Show the creator what the increment adds, and ask before it goes online. Wait for
+- [x] **Checkpoint:** publish. Show the creator what the increment adds, and ask before it goes online. Wait for
       their yes.
-- [ ] Merge the pull request into `main` (or, without a pull request, merge the branch into `main` and push `main`).
+- [x] Merge the pull request into `main` (or, without a pull request, merge the branch into `main` and push `main`).
       Watch the run of the workflow `Pages` for that commit until it ends. If it fails, read the message of the
       failed step, fix what you can and push again.
-- [ ] Open the address the job `deploy` printed ("published at ...", also in the run's summary) and confirm that it
+- [x] Open the address the job `deploy` printed ("published at ...", also in the run's summary) and confirm that it
       shows the new content. Take that address, never one you derive; follow its redirects.
-- [ ] If the app is listed and the increment changes what its entry says (topics, school years, summary): load the
+- [x] If the app is listed and the increment changes what its entry says (topics, school years, summary): load the
       skill `lernapps-listing` and write the changed entry. Otherwise skip the next task.
-- [ ] **Checkpoint:** list. Ask the creator before you open the pull request to the catalog, and wait for their yes.
-- [ ] Fill the retrospective.
-- [ ] Commit this plan on `main` and push it. A push that changes only `.vibe/` publishes nothing again.
-- [ ] If you opened a pull request to the catalog, see it through to "bestanden" as the skill says.
-- [ ] If this plan changed since its last push, commit it on `main` and push it again.
+- [x] **Checkpoint:** list. Ask the creator before you open the pull request to the catalog, and wait for their yes.
+- [x] Fill the retrospective.
+- [x] Commit this plan on `main` and push it. A push that changes only `.vibe/` publishes nothing again.
+- [x] If you opened a pull request to the catalog, see it through to "bestanden" as the skill says.
+- [x] If this plan changed since its last push, commit it on `main` and push it again.
 
 ### Completed
 
@@ -316,26 +316,30 @@ runs and increments. It stays in the creator's repo.
 
 ### Phases reached
 
-Stand vor der Veröffentlichung (Pull Request #3 offen, Vorschau mehrfach vom Ersteller geprüft): Code abgeschlossen, Commit begonnen.
-Bestätigt: Recherche, Plan und Inhaltsmethode, Umbau der Interaktion, Ersetzen des alten Bau-Editors. Noch offen: Veröffentlichung,
-Listing.
+Commit abgeschlossen. Bestätigt vom Ersteller: Recherche, Plan und Inhaltsmethode, Umbau der Interaktion, Ersetzen des alten Bau-Editors,
+Veröffentlichung (er führte den Pull Request #3 selbst zusammen; der Lauf `Pages` für `e762d07` war erfolgreich, die Adresse
+http://lernapps.net/elektrizitaet/ zeigt die neuen Seiten), Änderung des Eintrags im bestehenden Listing-Pull-Request
+(lernapps/apps#26). Dessen Prüfung meldet „bestanden“ (9 Regeln); die Entscheidung über den Eintrag liegt bei lernapps.net.
 
 ### Failed checks
 
 - `checks-pass`: 1 (Typfehler im Test der ersten Messen-Komponente, `vue-tsc`; der Commit lief trotzdem durch, die volle Prüfung
   meldete ihn danach).
+- `entry-links-resolve`: 1 (der alte Eintrag im offenen Listing-Pull-Request nannte das entfallene Thema `schaltungen/bau-editor/`, 404;
+  gefunden bei der Prüfung vor dem Ändern des Eintrags, nicht im Pull Request).
 - `explainer-content-valid`: 6 beim Bauen (Prop-Typ als importierter Alias, Prop mit `null`, Text `resistor` ohne Feld in der Komponente,
   Übersetzung der Einheit fehlte, Einrückung in `chapter.yaml`, Hilfsdateien in `src/components/` ohne zugehörige Komponente und Test).
 
 ### Creator turns after the plan
 
-9 Nachrichten nach der Bestätigung des Plans, Ziel höchstens 3 verfehlt: (1) Ja zur Anweisung der Tooling-Sitzung (Update, Pull Request);
+14 Nachrichten nach der Bestätigung des Plans, Ziel höchstens 3 verfehlt: (1) Ja zur Anweisung der Tooling-Sitzung (Update, Pull Request);
 (2) die Interaktivität sei nicht visuell, die Übungen deshalb nicht wertvoll; (3) der separate Bau-Editor sei nicht hilfreich, die
 Interaktion solle in die Übungen; (4) Ersetzen des alten Bau-Editors ist in Ordnung; (5) „A“; (6) Rückmeldung zur Vorschau: Bauen,
 dann Strom einschalten und prüfen, lange Beschreibung unter der Übung, unklare Bauaufgaben, „Lösung“ vor der Antwort; (7) Bildschirmfoto
 einer richtig gebauten Schaltung, die als falsch bewertet wurde; (8) Bildschirmfoto einer Sortierübung, deren Reihenfolge egal ist, mit dem Hinweis auf ein systematisches Problem der Modellierung
-der Prüfungen; (9) Bitte um Aufnahme in die Retrospektive, der Rest der Vorschau gefalle.
-Ursache der Nachrichten 2 bis 7: Die Interaktion wurde nach Wunsch „Bauen“ geplant (Rechner mit Kästchen und Texteingabe), ohne vorher ein
+der Prüfungen; (9) Bitte um Aufnahme in die Retrospektive, der Rest der Vorschau gefalle; (10) „und?“ nach der Veröffentlichung; (11) Bitte, die Tooling-Sitzung
+auf diese Sitzung hinzuweisen; (12) Frage, ob der Pull Request noch offen sei; (13) Adresse des Listing-Pull-Requests; (14) „Ergänze den alten PR“.
+Ursache der Nachrichten 2 bis 8: Die Interaktion wurde nach Wunsch „Bauen“ geplant (Rechner mit Kästchen und Texteingabe), ohne vorher ein
 Bild davon zu zeigen; der Ersteller sah sie erst in der Vorschau.
 
 ### Where I had to guess
@@ -343,6 +347,7 @@ Bild davon zu zeigen; der Ersteller sah sie erst in der Vorschau.
 - Reihen- und Parallelschaltung üben „erst vorhersagen, dann messen“ (nicht ausdrücklich bestätigt).
 - Typische Werte im Text (Föhn etwa 9 A, Taschenlampenlämpchen etwa 200 mA) stehen nicht in den geprüften Quellen.
 - Das ohmsche Gesetz steht im zitierten Lehrplan nicht ausdrücklich; aufgenommen, weil andere Länder es in diesen Jahrgängen behandeln.
+- Den bestehenden Listing-Pull-Request ergänzt, statt einen neuen zu öffnen (Entscheidung des Erstellers).
 - Wasserbild als Modell für Strom, Spannung und Widerstand, mit dem Hinweis auf seine Grenzen.
 - Die Batterie ist in den neuen und geänderten Bildern einheitlich gezeichnet (lange dünne Platte oben als Plus); die älteren Bilder
   hatten sie vertauscht.
