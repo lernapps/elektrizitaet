@@ -7,12 +7,25 @@ description: Use for any content work in this app - researching, writing, extend
 
 ## Curriculum
 
-Deutschland, länderübergreifend, Schulform-übergreifend, Jahrgang 5 und 6 (Physik bzw. Naturwissenschaften). Es ist
-**kein offizielles Lehrplandokument zitiert**: die Recherche fand nur schulinterne Pläne und Unterrichtsmaterial, die
-übereinstimmend dieselben Themen für Klasse 5/6 nennen (Stromkreis, Leiter/Nichtleiter, Schalter und Schaltpläne,
-Reihen- und Parallelschaltung, Wirkungen des Stroms, Sicherheit). Das Lehrplanzitat (Titel, Herausgeber, Jahr, Seite,
-Einheit) ist nachzureichen, sobald ein Land festgelegt ist; bis dahin gilt: Lehrplan nicht geprüft. Spätere Jahrgänge
-(Spannung, Stromstärke, Widerstand, ohmsches Gesetz) kommen als weitere Kapitel dazu.
+Deutschland, länderübergreifend, Schulform-übergreifend, Jahrgang 5 bis 8 (Physik bzw. Naturwissenschaften). Die Lerntexte
+nennen kein Land und keinen Lehrplan; das Zitat steht nur hier und im Plan.
+
+- **Klasse 5 und 6** (Kapitel `stromkreis`, `schaltungen`, `alltag`): **kein offizielles Lehrplandokument zitiert**. Die
+  Recherche fand nur schulinterne Pläne und Unterrichtsmaterial, die übereinstimmend dieselben Themen nennen (Stromkreis,
+  Leiter/Nichtleiter, Schalter und Schaltpläne, Reihen- und Parallelschaltung, Wirkungen des Stroms, Sicherheit). Lehrplan
+  nicht geprüft; das Zitat ist nachzureichen, sobald ein Land festgelegt ist.
+- **Klasse 7 und 8** (Kapitel `groessen`, `schaltungen-messen`): Lehrplanzitat Bayern, Gymnasium: *Fachlehrplan Physik 8 –
+  Phänomene experimentell untersuchen und modellieren*, Staatsinstitut für Schulqualität und Bildungsforschung (ISB),
+  LehrplanPLUS, Jahrgangsstufe 8, Lernbereich 1 „Elektrischer Strom“ (ca. 14 Std.),
+  <https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/8/physik>, geöffnet am 2026-10-15. Er nennt: Stromkreismodell,
+  Stromstärke, Spannung, Widerstand mit Definitionsgleichung, Kennlinien, Reihen- und Parallelschaltung mit höchstens drei
+  Widerständen, Kurzschluss, Haushaltsinstallation. Das ohmsche Gesetz steht dort nicht ausdrücklich (nur „ohmscher und
+  nicht-ohmscher Widerstand“); es ist aufgenommen, weil andere Länder es in diesen Jahrgängen behandeln (nicht geprüft). Die
+  Jahrgangsstufe ist je nach Land verschieden (Bayern: 8); die App sagt deshalb „Klasse 7 und 8“.
+- **Später**: Wechselstrom als eigenes Kapitel `wechselstrom` hinter `schaltungen-messen` (Wechselspannung, Steckdose,
+  Generator, Transformator); danach Leistung und Energie, Magnetismus und Elektromagnet. Die Kapitel dieser Klassen heißen nach
+  dem Thema, nicht „Gleichstrom“, weil die Größen auch für Wechselstrom gelten; die Einleitung sagt, dass es um Gleichstrom
+  geht.
 
 
 ## Competencies
@@ -39,12 +52,32 @@ Kapitel `alltag` (Strom im Alltag)
 - Ich kann Alltagssituationen mit Strom als sicher oder gefährlich beurteilen und begründen. Seite
   `alltag/sicherheit`; `si-sicher`, `si-gewitter`, `si-sicherung`.
 
+Kapitel `groessen` (Größen im Stromkreis)
+- Ich kann die Stromstärke in A und mA angeben, am Amperemeter ablesen und das Amperemeter richtig einbauen. Seite
+  `groessen/stromstaerke`; `sa-einbau`, `sa-umrechnen`, `sa-rechnen` (`generated`).
+- Ich kann Spannung als „Antrieb“ des Stroms erklären, in V angeben und das Voltmeter richtig anschließen. Seite
+  `groessen/spannung`; `sp-anschluss`, `sp-offen`, `sp-zuordnen`.
+- Ich kann erklären, wovon der Widerstand eines Drahts abhängt (Material, Länge, Querschnitt), und ihn in Ω angeben. Seite
+  `groessen/widerstand`; `wd-laenge`, `wd-kleiner`, `wd-ordnen`.
+- Ich kann mit R = U / I eine fehlende Größe berechnen und eine Kennlinie lesen. Seite `groessen/ohmsches-gesetz`;
+  `og-strom`, `og-widerstand` (beide `generated`), `og-doppelt`.
+
+Kapitel `schaltungen-messen` (Schaltungen mit Messgeräten)
+- Ich kann Stromstärke und Spannung in einer Reihenschaltung mit bis zu drei Widerständen vorhersagen und berechnen. Seite
+  `schaltungen-messen/reihenschaltung`; `rr-strom`, `rr-teilspannung` (beide `generated`), `rr-ampere`.
+- Ich kann Stromstärke und Spannung in einer Parallelschaltung (zwei Zweige) vorhersagen und berechnen. Seite
+  `schaltungen-messen/parallelschaltung`; `pr-gesamtstrom`, `pr-zweigstrom` (beide `generated`), `pr-spannung`.
+- Ich kann eine Schaltung mit Messgeräten und Widerständen bauen, die vorgegebene Werte erfüllt. Seite
+  `schaltungen-messen/bau-editor`; Komponente `SchaltungMessen` (Aufgabenarten `strom`, `spannung`, `parallel`),
+  `be-kurzschluss`.
+
 
 ## Content structure
 
 Jede Seite hat dieselben vier Sektionen in dieser Reihenfolge: `idee` (Die Idee: 2 bis 4 Sätze, Alltagsbezug),
 `merke` (Das merkst du dir: `definition`-Blöcke für Fachwörter, Tabelle oder Figur, Regeln als Liste), `beispiel`
-(ein `example`-Kasten) und `uebung` (3 Übungen, auf der Seite `bau-editor` die Komponente plus eine Frage). Eine Seite
+(ein `example`-Kasten) und `uebung` (3 Übungen, auf den Seiten `schaltungen/bau-editor` und `schaltungen-messen/bau-editor` die
+Komponente plus eine Frage). Eine Seite
 umfasst eine Kompetenz und passt auf einen Bildschirm voll Text. Kapitel haben 2 bis 4 Seiten.
 
 
@@ -57,7 +90,14 @@ diagram, series circuit, parallel circuit, short circuit, fuse, conductor, insul
 
 - Stromkreis (nicht „Stromlauf“), Stromquelle, Verbraucher, Leitung, Schalter, Schaltzeichen, Schaltplan,
   Reihenschaltung, Parallelschaltung, Kurzschluss, Sicherung; Leiter und Nichtleiter (Isolator als Nebenwort).
-- „Der Strom fließt“ ist die Sprechweise; Elektronen, Spannung und Stromstärke kommen erst in höheren Jahrgängen vor.
+- „Der Strom fließt“ ist die Sprechweise; Elektronen kommen erst in höheren Jahrgängen vor. In Klasse 5 und 6 gibt es keine
+  Größen. Ab Kapitel `groessen` heißen sie Stromstärke $I$ (Ampere, A; 1 A = 1000 mA), Spannung $U$ (Volt, V) und Widerstand
+  $R$ (Ohm, Ω). Als Bild dient der Wasserkreislauf (Pumpe, enges Rohr); jede Seite sagt, dass das Bild Grenzen hat. Zahlen
+  haben immer eine Einheit; Dezimalkomma in Deutsch, Dezimalpunkt in Englisch (`decimal` in den Texten der Komponente).
+- Englisch zusätzlich: current (Stromstärke), voltage, resistance, resistor, ammeter, voltmeter, Ohm's law, characteristic
+  curve, total resistance. Deutsch zusätzlich: Stromstärke, Spannung, Widerstand (auch das Bauteil), Amperemeter, Voltmeter,
+  ohmsches Gesetz, Kennlinie, Gesamtwiderstand. Das Amperemeter wird **in Reihe eingebaut**, das Voltmeter **parallel
+  angeschlossen**.
 - Die Lernenden werden mit „du“ angesprochen. Jedes Fachwort steht einmal als `definition` (daraus entsteht das Glossar).
 
 
@@ -71,6 +111,26 @@ diagram, series circuit, parallel circuit, short circuit, fuse, conductor, insul
 - **Beurteilen** (Kompetenz: Sicherheit): `multiple-choice` mit sicheren und unsicheren Handlungen, die Begründung
   steht in der `info`. Beispiel: `src/alltag/sicherheit.yaml`, `si-sicher`.
 - Die ersten drei Muster nutzen die Fragetypen `single-choice`, `multiple-choice`, `true-false`, `matching` und `ordering`.
+- **Rechnen** (Kompetenz: eine Größe mit Einheit berechnen): `generated`-Aufgabe mit Zahlen aus kurzen Listen
+  (`oneOf`): Spannung 3 bis 12 V (3, 4,5, 6, 9, 12), Widerstände 10, 20, 30, 50, 100 (200) Ω, Ströme in Zehntelampere. `where`
+  hält das Ergebnis auf höchstens drei (Ampere) bzw. null (Ohm) Nachkommastellen und hindert, dass ein Fehler gleich der Antwort
+  ist (`U != 2 * U1`). Die Antwort ist eine Zahl mit Einheit: `compare: { number: { format, decimals, unit: { de, en } } }`
+  (die Einheit ist eine Sprachtabelle). Jede Aufgabe hat zwei typische Fehler mit Rückmeldung („R / U statt U / R“, „nur den
+  ersten Widerstand genommen“, „Parallelschaltung gerechnet“, „mA nicht umgerechnet“), einen Tipp und die Schritte mit Formel.
+  Beispiel: `src/groessen/ohmsches-gesetz.yaml`, `og-strom`.
+- **Bauen mit Messgeräten** (Kompetenz: Schaltungen mit vorgegebenen Werten bauen): Komponente `SchaltungMessen`
+  (`src/components/SchaltungMessen.vue`, Logik `SchaltungMessen.ts`). Vier feste Plätze (1 = `a` und 4 = `b` in der Hauptleitung,
+  2 = `p` und 3 = `q` die zwei Zweige einer Parallelschaltung); ein Platz ist ein Widerstand (10, 20, 30, 50 oder 100 Ω) oder
+  leer (Draht). Werkzeuge: Widerstand, Draht, Amperemeter (in Reihe zum Platz) und Voltmeter (parallel zum Platz), jeweils per
+  Tippen auf einen Platz. Der Rechner (`measure`) kennt Gleichstrom, ideale Quelle und ideale Messgeräte: ein Zweig ohne
+  Widerstand überbrückt den anderen, ohne Widerstand im Kreis ist es ein Kurzschluss (keine Anzeige). Aufgaben entstehen aus
+  einem Startwert (`generate(seed, props)`, Quelle 6, 9 oder 12 V, Widerstände aus `STOCK`); das Ziel wird aus einer echten Lösung
+  gerechnet und muss auf drei (Ampere) bzw. zwei (Volt) Stellen genau sein. Die drei Arten: `strom` (Amperemeter in der
+  Hauptleitung zeigt einen Strom), `spannung` (Voltmeter an einem Widerstand zeigt eine Spannung), `parallel` (zwei Zweige mit
+  Widerstand, Amperemeter in der Hauptleitung). Geprüft wird, was die Messgeräte anzeigen (`check`), nicht der Aufbau: mehrere
+  Lösungen gelten. Eine neue Aufgabenart braucht: einen Eintrag in `Kind`, `draw` und `check` (Logik), einen Test, den Text
+  `task…` in den `texts` der Seite (beide Sprachen) und einen Eintrag in `kinds`. Sie kann nicht: Wechselstrom, Innenwiderstände,
+  nicht-ohmsche Bauteile, mehr als drei Widerstände, Leistung, Helligkeit.
 - **Bauen** (Kompetenz: Schaltungen planen): Komponente `SchaltungBauen` (`src/components/SchaltungBauen.vue`, Logik
   `SchaltungBauen.ts`). Sechs Aufgaben (Ziele `eine`, `schalter`, `reihe`, `parallel`, `je-schalter`, `haupt`). Grafisches Schaltbrett (SVG) mit sechs festen Plätzen: zwei in der Hauptleitung (Platz 1 = `m1`,
   Platz 6 = `m2`) und zwei je senkrechtem Zweig einer Parallelschaltung (Plätze 2 bis 5 = `p1a`, `p1b`, `p2a`, `p2b`). Man
@@ -87,7 +147,9 @@ Eine Datendatei in `src/data/` gibt es noch nicht; sobald Stoffe oder Bauteile i
 ## Figures
 
 Schaltbilder sind eigene SVG-Zeichnungen in `src/images/` (`stromkreis`, `reihenschaltung`, `parallelschaltung`,
-`schaltzeichen`), schwarze Linien auf weißem Grund. Die Bilder enthalten **keine Wörter**, nur Ziffern (1, 2, 3 …), damit sie in
+`schaltzeichen`), schwarze Linien auf weißem Grund. Seit Klasse 7 und 8 auch `amperemeter`, `voltmeter`, `kennlinie`, `reihe-messen`, `parallel-messen`: Messgeräte als Kreis mit dem
+Buchstaben A oder V (Symbol, kein Wort), Widerstände als Rechteck, die Kennlinie mit den Achsenzeichen I und U und Ziffern 1, 2
+für gleiche Schritte. Die Bilder enthalten **keine Wörter**, nur Ziffern (1, 2, 3 …), damit sie in
 beiden Sprachen gelten; die Legende („Beschriftung: 1 Batterie, 2 Lampe …“) steht in der Bildunterschrift, je Sprache. In der
 Parallelschaltung gibt es keine Querleitung, die die Zweige überbrückt, Schaltzeichen nach der üblichen Norm
 (Batterie, Lampe als Kreis mit Kreuz, Schalter mit Lücke). Quelle ist die Adresse des Repos `https://github.com/lernapps/elektrizitaet` (sprachneutral: die Bildnachweise stehen
@@ -98,8 +160,10 @@ Der Alt-Text beschreibt, was die Zeichnung zeigt (Bauteile und Lage), die Bildun
 ## Sources
 
 Die Fakten stammen aus den Wikipedia-Artikeln, die in `src/app.yaml` unter `sources` stehen (geladen und geprüft,
-Quelle für Fakten, nicht für Formulierungen). Die Fragen verlinken jeweils auf einen passenden Artikel. Serlo und LeifiPhysik
-sind nicht verwendet: Serlo wurde nur als Übersicht geladen, LeifiPhysik lieferte 403. Eigenes Material der Auftraggeber
+Quelle für Fakten, nicht für Formulierungen); für die Größen: Elektrische Stromstärke, Elektrische Spannung, Elektrischer
+Widerstand, Ohmsches Gesetz (am 2026-10-15 geöffnet: richtiger Artikel, keine Begriffsklärung). Die Fragen verlinken jeweils auf
+einen passenden Artikel. Serlo und LeifiPhysik sind nicht verwendet: Serlo hat zur Elektrizitätslehre nur Seiten ohne Inhalt
+(„Fächer im Aufbau“), LeifiPhysik lieferte 403 (nicht umgangen). Eigenes Material der Auftraggeber
 bleibt lokal und wird nie committet.
 
 
@@ -112,8 +176,16 @@ bleibt lokal und wird nie committet.
 5. Jede Seite mit Themenpfad in die Katalogeintrags-`topics` (`<kapitel>/<seite>/`) aufnehmen.
 6. `npx lernapps check` laufen lassen, committen.
 
+Nächstes Kapitel: `wechselstrom` hinter `schaltungen-messen` in `src/app.yaml`; zuerst die Kompetenzen oben eintragen und
+das Lehrplanzitat prüfen (Bayern, Gymnasium, Jahrgangsstufe 9 oder 10, nicht geprüft).
+
 
 ## Rules learned from mistakes
+
+- Eine `unit` in `compare.number` ist eine Sprachtabelle `{ de: A, en: A }`, kein String.
+- Die Props einer Komponente nutzen Literal-Unions im Text von `defineProps` (`("strom" | "spannung")[]`), keinen importierten
+  Typ-Alias (`vue-component-props-valid`).
+- Vor dem Commit `npx vp fmt src`, sonst scheitert die Formatprüfung.
 
 - Kommas in YAML-Flow-Listen (`[a, b]`, `{ left: a, right: b }`) trennen Zellen und Felder: Texte mit Komma in Anführungszeichen.
 - Links zwischen Seiten haben die Form `/<kapitel>/<seite>/`, nicht relativ.

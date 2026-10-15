@@ -102,6 +102,27 @@ Mark a choice you made without asking the creator with "(guess)", and list it in
 
 <!-- What you need later: sources and licences of content, links, open questions. -->
 
+## Entry draft
+
+Ergänzung des Katalogeintrags (Änderung per Pull Request an den Katalog, erst nach der Veröffentlichung; Schema vorher
+laden, `entry-from-schema`):
+
+```yaml
+grades: [5, 6, 7, 8]
+topics:
+  # neu:
+  - { title: Die Stromstärke, path: groessen/stromstaerke/ }
+  - { title: Die Spannung, path: groessen/spannung/ }
+  - { title: Der Widerstand, path: groessen/widerstand/ }
+  - { title: Das ohmsche Gesetz, path: groessen/ohmsches-gesetz/ }
+  - { title: Reihenschaltung mit Messgeräten, path: schaltungen-messen/reihenschaltung/ }
+  - { title: Parallelschaltung mit Messgeräten, path: schaltungen-messen/parallelschaltung/ }
+  - { title: Bau-Editor mit Messgeräten, path: schaltungen-messen/bau-editor/ }
+keywords: [Stromstärke, Spannung, Widerstand, ohmsches Gesetz, Gleichstrom, Amperemeter, Voltmeter]
+```
+
+Die Zusammenfassung nennt dann auch Stromstärke, Spannung, Widerstand und das ohmsche Gesetz (Klasse 7 und 8).
+
 ## Explore
 
 <!--
@@ -213,14 +234,14 @@ something, choose, mark it "(guess)" under "Key decisions" and go on.
       zu drei Widerstände); Bild; Übungen mit `generated`; Thema; Check; Commit.
 - [x] Slice 6: Seite `schaltungen-messen/parallelschaltung` (Spannung gleich, Ströme addieren sich, zwei Zweige); Bild;
       Übungen mit `generated`; Thema; Check; Commit.
-- [ ] Slice 7: Komponente `SchaltungMessen`: Logik in `SchaltungMessen.ts` (Schaltungsmodell, Rechner für Strom und
+- [x] Slice 7: Komponente `SchaltungMessen`: Logik in `SchaltungMessen.ts` (Schaltungsmodell, Rechner für Strom und
       Spannung, Aufgaben aus einem Startwert, Prüffunktion), Test über viele Startwerte, dann Oberfläche
       (`SchaltungMessen.vue`); Seite `schaltungen-messen/bau-editor` mit Quizfrage; Thema; Check; Commit.
 - [ ] Der Katalogeintrag (Entwurf unten): Klassen 5 bis 8, Zusammenfassung, Themen aller neuen Seiten; `src/app.yaml`
       (Einleitung, Quellen) aktualisiert; kein Land in den Lerntexten.
-- [ ] The content guide describes the app as it is now: its competencies, chapters and patterns, and its procedure
+- [x] The content guide describes the app as it is now: its competencies, chapters and patterns, and its procedure
       for the next increment (`app-content-matches`). Lehrplanzitat Bayern steht im Abschnitt „Curriculum“.
-- [ ] Alle Texte in Deutsch und Englisch, beide vollständig.
+- [x] Alle Texte in Deutsch und Englisch, beide vollständig.
 - [ ] The content guide describes the app as it is now: its competencies, chapters and patterns, and its procedure
       for the next increment (`app-content-matches`).
 - [ ] `npx lernapps check` passes.
