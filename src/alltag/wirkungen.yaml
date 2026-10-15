@@ -43,14 +43,14 @@ blocks:
               en: Heating effect
             - de: Der Draht wird warm oder heiß
               en: The wire gets warm or hot
-            - de: Toaster, Föhn, Herdplatte
-              en: Toaster, hairdryer, hob
+            - de: Toaster, Föhn, Herdplatte, Glühlampe
+              en: Toaster, hairdryer, hob, incandescent bulb
           - - de: Lichtwirkung
               en: Light effect
             - de: Der Strom bringt etwas zum Leuchten
               en: The current makes something glow
-            - de: Glühlampe, LED-Lampe
-              en: Incandescent bulb, LED lamp
+            - de: LED-Lampe, Leuchtstoffröhre
+              en: LED lamp, fluorescent tube
           - - de: Magnetwirkung
               en: Magnetic effect
             - de: Der Strom erzeugt ein Magnetfeld
@@ -103,8 +103,8 @@ blocks:
               de: Wärmewirkung
               en: Heating effect
           - left:
-              de: Taschenlampe
-              en: Torch
+              de: LED-Taschenlampe
+              en: LED torch
             right:
               de: Lichtwirkung
               en: Light effect
@@ -115,9 +115,10 @@ blocks:
               de: Magnetwirkung
               en: Magnetic effect
         explanation:
-          de: Der Toaster erhitzt Drähte, die Taschenlampe bringt eine Lampe zum Leuchten, und die Klingel nutzt einen
+          de:
+            Der Toaster erhitzt Drähte, die LED-Taschenlampe bringt eine Leuchtdiode zum Leuchten, und die Klingel nutzt einen
             Elektromagneten.
-          en: The toaster heats wires, the torch makes a lamp shine, and the bell uses an electromagnet.
+          en: The toaster heats wires, the LED torch makes a light-emitting diode shine, and the bell uses an electromagnet.
         links:
           - title:
               de: Elektromagnet (Wikipedia)

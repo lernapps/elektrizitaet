@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+title:
+  de: Schaltungen mit Messgeräten
+  en: Circuits with meters
+summary:
+  de: Strom und Spannung in Reihen- und Parallelschaltungen vorhersagen und berechnen, einschalten und am Messgerät
+    prüfen.
+  en: Predict and calculate current and voltage in series and parallel circuits, switch on and check on the meter.
+pages:
+  - reihenschaltung
+  - parallelschaltung

@@ -1,0 +1,300 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+title:
+  de: Die Stromstärke
+  en: Current
+description:
+  de: Die Stromstärke sagt, wie viel Strom fließt. Du misst sie mit dem Amperemeter, in Ampere (A) und Milliampere
+    (mA).
+  en: The current tells you how much electric current flows. You measure it with an ammeter, in amperes (A) and
+    milliamperes (mA).
+blocks:
+  - type: section
+    id: idee
+    title:
+      de: Die Idee
+      en: The idea
+    blocks:
+      - type: text
+        text:
+          de: "Ein kleines Lämpchen und ein Föhn hängen beide am Strom, doch der Föhn braucht viel mehr davon. Wie viel
+            Strom fließt, sagt die **Stromstärke**. Stell dir den Stromkreis wie einen Wasserkreislauf vor: Die Stromstärke
+            ist wie die Wassermenge, die in jeder Sekunde an einer Stelle vorbeiströmt. Das Bild hilft, hat aber Grenzen:
+            Strom ist kein Wasser, und Kabel sind nicht hohl.
+
+            "
+          en: "A small lamp and a hairdryer both run on electricity, but the hairdryer needs much more of it. How much
+            current flows is told by the **current** (in German: *Stromstärke*). Think of the circuit as a water cycle:
+            the current is like the amount of water that flows past one place every second. The picture helps, but it
+            has limits: electricity is not water, and wires are not hollow.
+
+            "
+  - type: section
+    id: merke
+    title:
+      de: Das merkst du dir
+      en: What to remember
+    blocks:
+      - type: definition
+        term:
+          de: Stromstärke
+          en: Current
+        explanation:
+          de: Die Stromstärke gibt an, wie viel elektrischer Strom in einem Stromkreis fließt. Sie hat das Formelzeichen
+            $I$ und wird in Ampere (A) gemessen.
+          en: The current says how much electric current flows in a circuit. Its symbol is $I$ and it is measured in
+            amperes (A).
+      - type: definition
+        term:
+          de: Amperemeter
+          en: Ammeter
+        explanation:
+          de: Ein Amperemeter misst die Stromstärke. Du baust es **in den Stromkreis ein**, sodass der Strom durch das
+            Gerät fließt.
+          en: An ammeter measures the current. You put it **into the circuit** so that the current flows through the
+            device.
+      - type: formula
+        formula: 1 \text{ A} = 1000 \text{ mA}
+      - type: text
+        text:
+          de: "Typische Werte: ein Taschenlampenlämpchen braucht etwa 200 mA, also 0,2 A. Ein Föhn braucht etwa 9 A.
+
+            "
+          en: "Typical values: a torch bulb needs about 200 mA, that is 0.2 A. A hairdryer needs about 9 A.
+
+            "
+      - type: figure
+        image: images/amperemeter.svg
+        source: https://github.com/lernapps/elektrizitaet
+        licence: CC0-1.0
+        alt:
+          de: Ein Rechteck aus Kabeln mit einer Batterie links, einer Lampe oben und einem Kreis mit dem Buchstaben
+            A rechts. Der Kreis sitzt mitten im Kabel.
+          en: A rectangle of wires with a battery on the left, a lamp at the top and a circle with the letter A on the
+            right. The circle sits in the middle of the wire.
+        caption:
+          de: "Das Amperemeter sitzt **im** Stromkreis, in Reihe mit der Lampe: Der ganze Strom fließt durch das Gerät.
+            Beschriftung: 1 Batterie, 2 Lampe, 3 Amperemeter."
+          en: "The ammeter sits **in** the circuit, in series with the lamp: all the current flows through the device.
+            Labels: 1 battery, 2 lamp, 3 ammeter."
+      - type: note
+        title:
+          de: Nie parallel
+          en: Never in parallel
+        blocks:
+          - type: text
+            text:
+              de: "Ein Amperemeter lässt den Strom fast ungehindert durch. Schließt du es **parallel** an, etwa direkt
+                an die Batterie, entsteht ein Kurzschluss: Es fließt viel zu viel Strom.
+
+                "
+              en: "An ammeter lets the current through almost without hindrance. If you connect it in **parallel**, for
+                example straight across the battery, you create a short circuit: far too much current flows.
+
+                "
+  - type: section
+    id: beispiel
+    title:
+      de: Beispiel
+      en: Example
+    blocks:
+      - type: example
+        title:
+          de: Das Lämpchen messen
+          en: Measuring the bulb
+        blocks:
+          - type: text
+            text:
+              de:
+                "Das Amperemeter zeigt 0,25 A. Das sind 0,25 · 1000 = 250 mA. Ein Lämpchen mit 250 mA braucht also etwas
+                mehr Strom als das Taschenlampenlämpchen von oben.
+
+                "
+              en:
+                "The ammeter shows 0.25 A. That is 0.25 · 1000 = 250 mA. So a bulb with 250 mA needs a little more current
+                than the torch bulb above.
+
+                "
+  - type: section
+    id: uebung
+    title:
+      de: Übung
+      en: Practice
+    blocks:
+      - type: vue-component
+        component: StromMessen
+        props:
+          texts:
+            taskLabel:
+              de: "Aufgabe:"
+              en: "Task:"
+            reset:
+              de: Neu anfangen
+              en: Start again
+            check:
+              de: Prüfen
+              en: Check
+            next:
+              de: Nächste Aufgabe
+              en: Next task
+            decimal:
+              de: ","
+              en: .
+            switchOn:
+              de: Strom einschalten
+              en: Switch the power on
+            switchOff:
+              de: Strom ausschalten
+              en: Switch the power off
+            "off":
+              de: Der Strom ist aus. Schalte ihn ein oder prüfe, dann wird gemessen.
+              en: The power is off. Switch it on or check, then it measures.
+            resistor:
+              de: "{n} Ω"
+              en: "{n} Ω"
+            board:
+              de: Stromkreis mit Batterie und Widerstand und drei Stellen für das Amperemeter
+              en: Circuit with battery and resistor and three places for the ammeter
+            resistors:
+              de: Widerstand wählen
+              en: Choose the resistor
+            spot:
+              de: Stelle
+              en: Place
+            spotA:
+              de: in der oberen Leitung
+              en: in the top wire
+            spotB:
+              de: in der unteren Leitung
+              en: in the bottom wire
+            spotPar:
+              de: quer über der Batterie
+              en: straight across the battery
+            spotFree:
+              de: frei
+              en: free
+            spotTaken:
+              de: Amperemeter eingebaut
+              en: ammeter built in
+            hint:
+              de: "So geht es: Tippe auf eine Stelle, um das Amperemeter dort einzubauen. Noch einmal tippen nimmt es
+                wieder heraus. Wähle den Widerstand. Dann schalte den Strom ein und lies das Amperemeter ab."
+              en:
+                "How it works: tap a place to build the ammeter in there. Tapping again takes it out. Choose the resistor.
+                Then switch the power on and read the ammeter."
+            short:
+              de: Kurzschluss! Das Amperemeter überbrückt die Batterie, und es fließt viel zu viel Strom.
+              en: Short circuit! The ammeter bridges the battery, and far too much current flows.
+            ammeter:
+              de: Das Amperemeter zeigt {v}.
+              en: The ammeter shows {v}.
+            noAmmeter:
+              de: Noch kein Amperemeter eingebaut.
+              en: No ammeter built in yet.
+            task:
+              de: Die Batterie hat {U} V. Baue das Amperemeter richtig ein und wähle den Widerstand so, dass es {T}
+                A zeigt.
+              en: The battery has {U} V. Build the ammeter in correctly and choose the resistor so that it shows {T}
+                A.
+        nojs:
+          de: "Diese Übung zeigt einen Stromkreis mit Batterie und Widerstand, in dem der Strom als laufende Punkte
+            zu sehen ist. Du baust ein Amperemeter an eine von drei Stellen ein und wählst den Widerstand, bis es den
+            Zielwert zeigt. Beispiel: Batterie 12 V, Ziel 0,4 A. Lösung: das Amperemeter in die obere oder untere Leitung,
+            nie quer über die Batterie, und ein Widerstand von 30 Ω, denn 12 V : 30 Ω = 0,4 A."
+          en: "This exercise shows a circuit with a battery and a resistor in which the current can be seen as running
+            dots. You build an ammeter in at one of three places and choose the resistor until it shows the target.
+            Example: battery 12 V, target 0.4 A. Solution: the ammeter in the top or bottom wire, never straight across
+            the battery, and a resistor of 30 Ω, because 12 V : 30 Ω = 0.4 A."
+      - type: single-choice
+        id: sa-einbau
+        text:
+          de: Wie schließt du ein Amperemeter an, um die Stromstärke durch eine Lampe zu messen?
+          en: How do you connect an ammeter to measure the current through a lamp?
+        options:
+          - text:
+              de: Du baust es in den Stromkreis ein, in Reihe mit der Lampe.
+              en: You put it into the circuit, in series with the lamp.
+            correct: true
+            info:
+              de: Nur wenn der ganze Strom durch das Gerät fließt, kann es ihn messen.
+              en: Only when all the current flows through the device can it measure it.
+          - text:
+              de: Du hältst es parallel an die Lampe.
+              en: You connect it in parallel with the lamp.
+            correct: false
+            info:
+              de: "Parallel angeschlossen überbrückt das Amperemeter die Lampe: Es entsteht ein Kurzschluss."
+              en: "Connected in parallel, the ammeter bypasses the lamp: that makes a short circuit."
+          - text:
+              de: Du hältst es nur an die Batterie.
+              en: You only hold it against the battery.
+            correct: false
+            info:
+              de: Ein Amperemeter misst nur, was durch es hindurchfließt. An der Batterie allein fließt nichts durch das
+                Gerät.
+              en: An ammeter only measures what flows through it. Held against the battery alone, nothing flows through
+                the device.
+        explanation:
+          de: Das Amperemeter muss im Stromkreis liegen, damit der Strom hindurchfließt.
+          en: The ammeter must be in the circuit so that the current flows through it.
+        links:
+          - title:
+              de: Elektrische Stromstärke (Wikipedia)
+              en: Elektrische Stromstärke (German Wikipedia)
+            url: https://de.wikipedia.org/wiki/Elektrische_Stromst%C3%A4rke
+      - type: true-false
+        id: sa-umrechnen
+        text:
+          de: Ein Amperemeter zeigt 0,5 A. Das sind 500 mA.
+          en: An ammeter shows 0.5 A. That is 500 mA.
+        answer: true
+        explanation:
+          de: 1 A sind 1000 mA, also sind 0,5 A genau 500 mA.
+          en: 1 A is 1000 mA, so 0.5 A is exactly 500 mA.
+        links:
+          - title:
+              de: Elektrische Stromstärke (Wikipedia)
+              en: Elektrische Stromstärke (German Wikipedia)
+            url: https://de.wikipedia.org/wiki/Elektrische_Stromst%C3%A4rke
+      - type: generated
+        id: sa-rechnen
+        given:
+          mA:
+            oneOf:
+              - 100
+              - 200
+              - 250
+              - 300
+              - 400
+              - 500
+              - 750
+              - 800
+        task:
+          text:
+            de: Ein Gerät braucht {{mA}} mA. Wie groß ist die Stromstärke in Ampere?
+            en: A device needs {{mA}} mA. What is the current in amperes?
+        answer:
+          value: mA / 1000
+          compare:
+            number:
+              format: decimal
+              decimals: 2
+              unit:
+                de: A
+                en: A
+        mistakes:
+          - value: mA / 100
+            message:
+              de: Du hast durch 100 geteilt. 1 A sind 1000 mA, du musst durch 1000 teilen.
+              en: You divided by 100. 1 A is 1000 mA, so you divide by 1000.
+          - value: mA * 1000
+            message:
+              de: Du hast in die falsche Richtung umgerechnet. Ampere ist die größere Einheit, die Zahl wird kleiner.
+              en: You converted the wrong way. The ampere is the larger unit, so the number gets smaller.
+        hint:
+          de: 1 A sind 1000 mA. Teile die Zahl durch 1000.
+          en: 1 A is 1000 mA. Divide the number by 1000.
+        steps:
+          - de: $I = \frac{{{mA}}\text{ mA}}{1000}$
+            en: $I = \frac{{{mA}}\text{ mA}}{1000}$
+          - de: "{{mA}} mA sind {{answer}} A."
+            en: "{{mA}} mA is {{answer}} A."

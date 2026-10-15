@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vite-plus/test";
 import {
   check,
+  diagnose,
   emptySlots,
+  flows,
   fromSlots,
   generate,
   lampSlots,
@@ -12,6 +14,7 @@ import {
   wrong,
   type Circuit,
   type Goal,
+  type Part,
 } from "./SchaltungBauen.ts";
 
 const GOALS: Goal[] = ["eine", "schalter", "reihe", "parallel", "je-schalter", "haupt"];
@@ -110,5 +113,106 @@ describe("fromSlots", () => {
   });
   it("solves every goal with its solution board", () => {
     for (const goal of GOALS) expect(meets(goal, fromSlots(solutionSlots({ goal })))).toBe(true);
+  });
+});
+
+describe("flows", () => {
+  const run = (set: (s: ReturnType<typeof emptySlots>) => void) => {
+    const slots = emptySlots();
+    set(slots);
+    return flows(slots, simulate(fromSlots(slots)));
+  };
+  it("runs nowhere when the loop does not conduct", () => {
+    expect(run((s) => (s.m1 = { kind: "switch", closed: false }))).toEqual({ total: 0, first: 0, second: 0 });
+  });
+  it("runs through the main wire and every branch with a lamp", () => {
+    const f = run((s) => {
+      s.p1a = { kind: "lamp" };
+      s.p2a = { kind: "lamp" };
+    });
+    expect(f.total).toBe(1);
+    expect(f.first).toBe(0.5);
+    expect(f.second).toBe(0.5);
+  });
+  it("leaves out a branch with an unscrewed lamp", () => {
+    const f = run((s) => {
+      s.p1a = { kind: "lamp", out: true };
+      s.p2a = { kind: "lamp" };
+    });
+    expect(f.first).toBe(0);
+    expect(f.second).toBe(1);
+  });
+  it("runs a short circuit through the bare branch only", () => {
+    const f = run((s) => (s.p1a = { kind: "lamp" }));
+    expect(f.first).toBe(0);
+    expect(f.second).toBe(1.5);
+  });
+  it("treats two bare branches as one wire", () => {
+    const f = run((s) => (s.m1 = { kind: "lamp" }));
+    expect(f).toEqual({ total: 1, first: 1, second: 0 });
+  });
+});
+
+describe("one lamp", () => {
+  it("accepts a switch in the loop when the lamp shines", () => {
+    expect(meets("eine", [shut, lamp])).toBe(true);
+  });
+  it("rejects a switch that is open, so that the lamp stays dark", () => {
+    expect(meets("eine", [open, lamp])).toBe(false);
+  });
+  it("rejects a loop without a lamp", () => {
+    expect(meets("eine", [])).toBe(false);
+    expect(meets("eine", [shut])).toBe(false);
+  });
+});
+
+describe("diagnose", () => {
+  it("says nothing for a circuit that meets the goal", () => {
+    for (const goal of GOALS) expect(diagnose(goal, solution({ goal }))).toBeNull();
+  });
+  it("names the wrong number of lamps and switches", () => {
+    expect(diagnose("reihe", [lamp])).toBe("lamps");
+    expect(diagnose("schalter", [lamp])).toBe("switches");
+    expect(diagnose("reihe", [lamp, lamp, lamp])).toBe("lamps");
+    expect(diagnose("haupt", [{ kind: "parallel", branches: [[lamp], [lamp]] }])).toBe("switches");
+  });
+  it("names a short circuit and a dark lamp", () => {
+    expect(diagnose("parallel", [{ kind: "parallel", branches: [[lamp], []] }, lamp])).toBe("short");
+    expect(diagnose("parallel", [{ kind: "parallel", branches: [[lamp, lamp], []] }])).toBe("short");
+    expect(diagnose("eine", [open, lamp])).toBe("dark");
+  });
+  it("names a circuit with the right parts that behaves differently", () => {
+    expect(diagnose("reihe", [{ kind: "parallel", branches: [[lamp], [lamp]] }])).toBe("behaviour");
+  });
+});
+
+describe("equivalent solutions", () => {
+  // The goals say what the circuit must do, not how it is built: every build that does it counts.
+  it("accepts a series circuit in any order and with a switch anywhere", () => {
+    expect(meets("reihe", [lamp, lamp])).toBe(true);
+    expect(meets("reihe", [shut, lamp, lamp])).toBe(true);
+    expect(meets("reihe", [lamp, shut, lamp])).toBe(true);
+    expect(meets("reihe", [lamp, lamp, shut])).toBe(true);
+  });
+  it("accepts parallel lamps with a switch in the main wire, in either branch order", () => {
+    const branches = (a: Part[], b: Part[]): Circuit => [{ kind: "parallel", branches: [a, b] }];
+    expect(meets("parallel", branches([lamp], [lamp]))).toBe(true);
+    expect(meets("parallel", [shut, ...branches([lamp], [lamp])])).toBe(true);
+    expect(meets("parallel", branches([lamp, shut], [shut, lamp]))).toBe(true);
+  });
+  it("accepts the lamp and the switch in either order, and the switch in the other half of the loop", () => {
+    expect(meets("schalter", [shut, lamp])).toBe(true);
+    expect(meets("schalter", [lamp, shut])).toBe(true);
+    expect(meets("eine", [lamp, shut])).toBe(true);
+  });
+  it("accepts either lamp with its own switch in either branch, and either order inside the branch", () => {
+    const branches = (a: Part[], b: Part[]): Circuit => [{ kind: "parallel", branches: [a, b] }];
+    expect(meets("je-schalter", branches([shut, lamp], [shut, lamp]))).toBe(true);
+    expect(meets("je-schalter", branches([lamp, shut], [shut, lamp]))).toBe(true);
+  });
+  it("accepts the common switch before or after the parallel lamps", () => {
+    const parallel: Circuit = [{ kind: "parallel", branches: [[lamp], [lamp]] }];
+    expect(meets("haupt", [shut, ...parallel])).toBe(true);
+    expect(meets("haupt", [...parallel, shut])).toBe(true);
   });
 });

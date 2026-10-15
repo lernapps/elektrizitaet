@@ -5,13 +5,16 @@ title:
 intro:
   de: |
     Wie funktioniert ein Stromkreis? Warum leitet Kupfer den Strom und Gummi nicht? Was ist der Unterschied zwischen
-    Reihen- und Parallelschaltung? Hier erklärst du dir die Grundlagen der Elektrizität Schritt für Schritt und übst auf
-    jeder Seite. Am Ende baust du selbst Schaltungen im Bau-Editor. Für die Klassen 5 und 6; später kommen höhere
-    Klassen dazu.
+    Reihen- und Parallelschaltung? Und wie hängen Stromstärke, Spannung und Widerstand zusammen? Hier erklärst du dir die
+    Grundlagen der Elektrizität Schritt für Schritt und übst auf jeder Seite. In den Übungen baust du selbst
+    Schaltungen. Für die Klassen 5 bis 8: erst der Stromkreis, dann die Größen mit dem ohmschen Gesetz. Es geht um
+    Gleichstrom, wie ihn Batterien liefern; Wechselstrom kommt später.
   en: |
     How does an electric circuit work? Why does copper conduct electricity and rubber does not? What is the difference
-    between series and parallel circuits? Here you work out the basics of electricity step by step and practise on every
-    page. At the end you build circuits yourself in the circuit builder. For grades 5 and 6; higher grades will follow.
+    between series and parallel circuits? And how are current, voltage and resistance related? Here you work out the basics
+    of electricity step by step and practise on every page. In the exercises you build circuits yourself. For grades
+    5 to 8: first the circuit, then the quantities with Ohm's law. It is about direct current, as batteries supply it;
+    alternating current comes later.
 languages:
   - de
   - en
@@ -19,6 +22,8 @@ chapters:
   - stromkreis
   - schaltungen
   - alltag
+  - groessen
+  - schaltungen-messen
 sources:
   - title:
       de: Elektrischer Stromkreis (Wikipedia)
@@ -44,3 +49,19 @@ sources:
       de: Stromunfall (Wikipedia)
       en: Stromunfall (German Wikipedia)
     url: https://de.wikipedia.org/wiki/Stromunfall
+  - title:
+      de: Elektrische Stromstärke (Wikipedia)
+      en: Elektrische Stromstärke (German Wikipedia)
+    url: https://de.wikipedia.org/wiki/Elektrische_Stromst%C3%A4rke
+  - title:
+      de: Elektrische Spannung (Wikipedia)
+      en: Elektrische Spannung (German Wikipedia)
+    url: https://de.wikipedia.org/wiki/Elektrische_Spannung
+  - title:
+      de: Elektrischer Widerstand (Wikipedia)
+      en: Elektrischer Widerstand (German Wikipedia)
+    url: https://de.wikipedia.org/wiki/Elektrischer_Widerstand
+  - title:
+      de: Ohmsches Gesetz (Wikipedia)
+      en: Ohmsches Gesetz (German Wikipedia)
+    url: https://de.wikipedia.org/wiki/Ohmsches_Gesetz

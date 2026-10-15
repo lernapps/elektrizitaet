@@ -100,7 +100,8 @@ export function meets(goal: Goal, circuit: Circuit): boolean {
   const unscrewed = (n: number) => sim(closed, (i) => i === n);
   switch (goal) {
     case "eine":
-      return all.lamps === 1 && all.switches === 0 && sameSet(all.lit, [0]) && !all.short;
+      // One lamp that shines with the switches as they are; a switch in the loop does no harm.
+      return circuit.length > 0 && all.lamps === 1 && sameSet(simulate(circuit).lit, [0]) && !all.short;
     case "schalter":
       return (
         all.lamps === 1 &&
@@ -112,7 +113,6 @@ export function meets(goal: Goal, circuit: Circuit): boolean {
     case "reihe":
       return (
         all.lamps === 2 &&
-        all.switches === 0 &&
         sameSet(all.lit, [0, 1]) &&
         !all.short &&
         unscrewed(0).lit.length === 0 &&
@@ -121,7 +121,6 @@ export function meets(goal: Goal, circuit: Circuit): boolean {
     case "parallel":
       return (
         all.lamps === 2 &&
-        all.switches === 0 &&
         sameSet(all.lit, [0, 1]) &&
         !all.short &&
         sameSet(unscrewed(0).lit, [1]) &&
@@ -223,4 +222,58 @@ export const solution = (task: Task): Circuit => fromSlots(solutionSlots(task));
 /** A circuit that meets no goal: the battery alone. */
 export function wrong(_task: Task): Circuit {
   return [];
+}
+
+export interface Flows {
+  /** How strongly current flows through the main wire and each branch, 0 for none; 1 is a normal current. */
+  total: number;
+  first: number;
+  second: number;
+}
+
+/**
+ * How the current runs on the board, for the picture: through the main wire when the loop conducts, in each branch that
+ * conducts, and only through a bare branch when there is a short circuit. A section of bare branches is just wire.
+ */
+export function flows(slots: Slots, sim: Simulation): Flows {
+  if (!sim.conducts) return { total: 0, first: 0, second: 0 };
+  const branch = (ids: SlotId[]) => {
+    const parts = ids.flatMap((id) => (slots[id] === null ? [] : [slots[id]!]));
+    const conducts = parts.every((p) => (p.kind === "lamp" ? p.out !== true : p.closed));
+    return { bare: parts.length === 0, conducts };
+  };
+  const first = branch(["p1a", "p1b"]);
+  const second = branch(["p2a", "p2b"]);
+  if (first.bare && second.bare) return { total: 1, first: 1, second: 0 };
+  const open = [first, second].filter((b) => b.conducts);
+  const bypass = open.filter((b) => b.bare);
+  if (bypass.length > 0) {
+    const level = (b: { bare: boolean; conducts: boolean }) => (bypass.includes(b) ? 1.5 : 0);
+    return { total: 1.5, first: level(first), second: level(second) };
+  }
+  const level = (b: { conducts: boolean }) => (b.conducts ? 1 / open.length : 0);
+  return { total: 1, first: level(first), second: level(second) };
+}
+
+export type Reason = "lamps" | "switches" | "short" | "dark" | "behaviour";
+
+const EXPECTED: Record<Goal, { lamps: number; switches: number | null }> = {
+  eine: { lamps: 1, switches: null },
+  schalter: { lamps: 1, switches: 1 },
+  reihe: { lamps: 2, switches: null },
+  parallel: { lamps: 2, switches: null },
+  "je-schalter": { lamps: 2, switches: 2 },
+  haupt: { lamps: 2, switches: 1 },
+};
+
+/** Why a circuit does not meet the goal, for a hint to the learner; null when it does. */
+export function diagnose(goal: Goal, circuit: Circuit): Reason | null {
+  if (meets(goal, circuit)) return null;
+  const all = simulate(circuit, { closed: () => true, out: () => false });
+  const expected = EXPECTED[goal];
+  if (all.lamps !== expected.lamps) return "lamps";
+  if (expected.switches !== null && all.switches !== expected.switches) return "switches";
+  if (all.short) return "short";
+  if (simulate(circuit).lit.length < all.lamps) return "dark";
+  return "behaviour";
 }

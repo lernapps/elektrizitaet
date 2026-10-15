@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "skills": {
+    "lernapps-app": {
+      "source": "lernapps/tooling",
+      "sourceType": "github",
+      "skillPath": "skills/lernapps-app/SKILL.md",
+      "computedHash": "581dc6d98f6508ac62b8928197cb0be49b529e0edbd1a4e0b721184416c0145a"
+    },
+    "lernapps-content-growth": {
+      "source": "lernapps/tooling",
+      "sourceType": "github",
+      "skillPath": "skills/lernapps-content-growth/SKILL.md",
+      "computedHash": "4fdbc619f1d61f8f49b2935e194b04748273f110ca9024d4fc56f2b9dc85a9c4"
+    },
+    "lernapps-content-research": {
+      "source": "lernapps/tooling",
+      "sourceType": "github",
+      "skillPath": "skills/lernapps-content-research/SKILL.md",
+      "computedHash": "71a3eaab1f8ccd8047d706e2746cced3fd9d392f5b042dc5ff26c25925b01d7d"
+    },
+    "lernapps-exercise-patterns": {
+      "source": "lernapps/tooling",
+      "sourceType": "github",
+      "skillPath": "skills/lernapps-exercise-patterns/SKILL.md",
+      "computedHash": "3867363cae533d9bdf2d29a39771cc7f439dd50b7a2655f1fce62ea9859dcf93"
+    },
+    "lernapps-explainer": {
+      "source": "lernapps/tooling",
+      "sourceType": "github",
+      "skillPath": "skills/lernapps-explainer/SKILL.md",
+      "computedHash": "23f2c8efebf7f7cad16a7de48ecb928967fbd8ebe236c9b015858c14dc167ace"
+    },
+    "lernapps-listing": {
+      "source": "lernapps/tooling",
+      "sourceType": "github",
+      "skillPath": "skills/lernapps-listing/SKILL.md",
+      "computedHash": "2e35b401e2671d9cab0387b00f574e3bea9acf42541086d94571ac8e0df6a5bf"
+    },
+    "lernapps-quiz": {
+      "source": "lernapps/tooling",
+      "sourceType": "github",
+      "skillPath": "skills/lernapps-quiz/SKILL.md",
+      "computedHash": "88fd5e0dd463cfb49331ac6fb0092ec7cbc0fd254ee431710f259660cdabf1c6"
+    },
+    "rules-review": {
+      "source": "lernapps/tooling",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/rules-review/SKILL.md",
+      "computedHash": "365de4108123ca36f6f86aee2921e250f00013aa080d4fcc0709110e745492ed"
+    }
+  }
+}

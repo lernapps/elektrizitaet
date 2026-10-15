@@ -14,12 +14,17 @@ blocks:
     blocks:
       - type: text
         text:
-          de: |
-            In deinem Zimmer kannst du das Licht ausschalten, ohne dass der Kühlschrank in der Küche ausgeht. Das geht,
+          de: "In deinem Zimmer kannst du das Licht ausschalten, ohne dass der Kühlschrank in der Küche ausgeht. Das
+            geht,
+
             weil die Geräte im Haus **parallel** geschaltet sind: Jedes hat seinen eigenen Weg zur Stromquelle.
-          en: |
-            In your room you can switch off the light without the fridge in the kitchen going off. That works because
+
+            "
+          en: "In your room you can switch off the light without the fridge in the kitchen going off. That works because
+
             the devices in a house are connected **in parallel**: each has its own path to the power source.
+
+            "
   - type: section
     id: merke
     title:
@@ -51,18 +56,28 @@ blocks:
           en: "The current splits up. Each lamp is on **its own path**. Labels: 1 battery, 2 lamp 1, 3 lamp 2."
       - type: text
         text:
-          de: |
-            Daraus folgt:
+          de: "Daraus folgt:
+
             - Wird **eine** Lampe herausgeschraubt, leuchten die **anderen weiter**.
+
             - Mit einem Schalter in jedem Zweig schaltest du jede Lampe **einzeln**.
+
             - Ein Schalter in der gemeinsamen Leitung schaltet **alle** zusammen.
+
             - Jede Lampe leuchtet gleich hell, auch wenn du eine dazuschaltest.
-          en: |
-            It follows that:
+
+            "
+          en: "It follows that:
+
             - If **one** lamp is unscrewed, the **others keep shining**.
+
             - With a switch in each branch you switch each lamp **on its own**.
+
             - A switch in the shared wire switches **all** of them together.
+
             - Every lamp shines equally brightly, even if you add another.
+
+            "
       - type: note
         title:
           de: Vorsicht, Kurzschluss
@@ -94,12 +109,16 @@ blocks:
         blocks:
           - type: text
             text:
-              de: |
-                Alle Lampen und Steckdosen im Haus sind parallel geschaltet. Fällt eine Lampe aus, leuchten die
+              de: "Alle Lampen und Steckdosen im Haus sind parallel geschaltet. Fällt eine Lampe aus, leuchten die
+
                 anderen weiter, und jede Lampe hat ihren eigenen Schalter.
-              en: |
-                All the lamps and sockets in a house are connected in parallel. If one lamp fails, the others keep
+
+                "
+              en: "All the lamps and sockets in a house are connected in parallel. If one lamp fails, the others keep
+
                 shining, and every lamp has its own switch.
+
+                "
   - type: section
     id: uebung
     title:
@@ -187,12 +206,190 @@ blocks:
               de: Parallelschaltung (Wikipedia)
               en: Parallelschaltung (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Parallelschaltung
-      - type: note
-        title:
-          de: Probiere es aus
-          en: Try it out
-        blocks:
-          - type: text
-            text:
-              de: Baue die Parallelschaltung im [Bau-Editor](/schaltungen/bau-editor/) und schraube eine Lampe heraus.
-              en: Build the parallel circuit in the [circuit builder](/schaltungen/bau-editor/) and unscrew one lamp.
+      - type: vue-component
+        component: SchaltungBauen
+        props:
+          goals:
+            - parallel
+            - je-schalter
+            - haupt
+          texts:
+            battery:
+              de: Batterie
+              en: Battery
+            board:
+              de: "Schaltbrett mit sechs Plätzen: oben und unten die Hauptleitung, daneben zwei Zweige"
+              en: "Circuit board with six places: the main wire at the top and bottom, and two branches beside it"
+            tools:
+              de: Bauteil wählen
+              en: Choose a part
+            toolWire:
+              de: Kabel
+              en: Wire
+            toolLamp:
+              de: Lampe
+              en: Lamp
+            toolSwitch:
+              de: Schalter
+              en: Switch
+            slot:
+              de: Platz
+              en: Place
+            slotEmpty:
+              de: leer, nur Kabel
+              en: empty, just a wire
+            slotLamp:
+              de: Lampe
+              en: lamp
+            slotLampOut:
+              de: Lampe herausgeschraubt
+              en: lamp unscrewed
+            slotSwitchClosed:
+              de: Schalter geschlossen
+              en: switch closed
+            slotSwitchOpen:
+              de: Schalter offen
+              en: switch open
+            status:
+              de: "Leuchtende Lampen: {n}"
+              en: "Lamps shining: {n}"
+            short:
+              de: Kurzschluss! Ein Kabel ohne Lampe überbrückt die Lampen im anderen Zweig, und der Strom fließt an
+                ihnen vorbei.
+              en: Short circuit! A wire without a lamp bypasses the lamps in the other branch, and the current flows
+                past them.
+            taskLabel:
+              de: "Aufgabe:"
+              en: "Task:"
+            reset:
+              de: Neu anfangen
+              en: Start again
+            check:
+              de: Prüfen
+              en: Check
+            next:
+              de: Nächste Aufgabe
+              en: Next task
+            goalEine:
+              de: Baue einen Stromkreis mit einer Lampe. Wenn du den Strom einschaltest, soll die Lampe leuchten.
+              en: Build a circuit with one lamp. When you switch the power on, the lamp should shine.
+            goalSchalter:
+              de: Baue einen Stromkreis mit einer Lampe und einem Schalter. Mit dem Schalter sollst du die Lampe ein-
+                und ausschalten können.
+              en: Build a circuit with one lamp and one switch. You should be able to switch the lamp on and off with
+                the switch.
+            goalReihe:
+              de:
+                Baue einen Stromkreis mit zwei Lampen hintereinander, also in Reihe. Wenn du eine Lampe herausschraubst,
+                soll auch die andere ausgehen.
+              en: Build a circuit with two lamps one behind the other, that is, in series. When you unscrew one lamp,
+                the other should go out too.
+            goalParallel:
+              de:
+                Baue einen Stromkreis mit zwei Lampen in den beiden Zweigen, also parallel. Wenn du eine Lampe herausschraubst,
+                soll die andere weiterleuchten.
+              en: Build a circuit with two lamps in the two branches, that is, in parallel. When you unscrew one lamp,
+                the other should keep shining.
+            goalJeSchalter:
+              de: Baue einen Stromkreis mit zwei Lampen in den beiden Zweigen. Jede Lampe soll einen eigenen Schalter
+                haben, mit dem du nur sie ein- und ausschaltest.
+              en: Build a circuit with two lamps in the two branches. Each lamp should have its own switch, with which
+                you switch only that lamp on and off.
+            goalHaupt:
+              de:
+                Baue einen Stromkreis mit zwei Lampen in den beiden Zweigen und einem Schalter, der beide Lampen gemeinsam
+                ein- und ausschaltet.
+              en: Build a circuit with two lamps in the two branches and one switch that switches both lamps on and
+                off together.
+            boardSimple:
+              de: Schaltbrett mit zwei Plätzen in einem Stromkreis
+              en: Circuit board with two places in one circuit
+            hintOff:
+              de: "So geht es: Wähle ein Bauteil und tippe auf einen Platz. Mit dem Schalter-Werkzeug klappst du einen
+                eingebauten Schalter auf oder zu. Wenn du fertig bist, schalte den Strom ein."
+              en: "How it works: choose a part and tap a place. With the switch tool you flip a switch that is already
+                built in. When you are done, switch the power on."
+            hintOn:
+              de: Der Strom ist an. Tippe auf einen Schalter, um ihn zu öffnen oder zu schließen, oder auf eine Lampe,
+                um sie herauszuschrauben. Zum Umbauen schaltest du den Strom wieder aus.
+              en: The power is on. Tap a switch to open or close it, or a lamp to unscrew it. To rebuild, switch the
+                power off again.
+            powerOn:
+              de: Strom einschalten
+              en: Switch the power on
+            powerOff:
+              de: Strom ausschalten
+              en: Switch the power off
+            statusOff:
+              de: Der Strom ist aus.
+              en: The power is off.
+            whyLamps:
+              de: "Die Anzahl der Lampen stimmt noch nicht. Lies die Aufgabe noch einmal: Wie viele Lampen sollen es
+                sein?"
+              en: "The number of lamps is not right yet. Read the task again: how many lamps should there be?"
+            whySwitches:
+              de: "Die Anzahl der Schalter stimmt noch nicht. Lies die Aufgabe noch einmal: Wie viele Schalter sollen
+                es sein?"
+              en: "The number of switches is not right yet. Read the task again: how many switches should there be?"
+            whyShort:
+              de: "Es gibt einen Kurzschluss: Ein Weg ohne Lampe überbrückt die Lampen. Setze in jeden Zweig ein Bauteil."
+              en: "There is a short circuit: a path without a lamp bypasses the lamps. Put a part into each branch."
+            whyDark:
+              de: Es leuchtet nicht alles, was leuchten soll. Ist ein Schalter offen oder eine Lampe herausgeschraubt?
+              en: Not everything that should shine does. Is a switch open or a lamp unscrewed?
+            whyBehaviour:
+              de:
+                "Die Bauteile sind da, aber die Schaltung verhält sich noch nicht wie verlangt. Teste sie bei eingeschaltetem
+                Strom: Schraube eine Lampe heraus und lege Schalter um."
+              en: "The parts are there, but the circuit does not behave as asked yet. Test it with the power on: unscrew
+                a lamp and flip the switches."
+        nojs:
+          de: "Diese Aufgaben stellt die Übung. Das Schaltbrett hat sechs Plätze: 1 und 6 in der Hauptleitung, 2 bis
+            5 in zwei Zweigen (2 und 3 im ersten, 4 und 5 im zweiten). - **Zwei Lampen parallel:** eine Lampe in jedem
+            Zweig, zum Beispiel auf Platz 2 und 4. - **Zwei Lampen mit je einem Schalter:** In jedem Zweig ein Schalter
+            und eine Lampe. - **Ein Schalter für zwei parallele Lampen:** Schalter auf Platz 1, Lampe in jedem Zweig."
+          en: "The exercise sets these tasks. The circuit board has six places: 1 and 6 in the main wire, 2 to 5 in
+            two branches (2 and 3 in the first, 4 and 5 in the second). - **Two lamps in parallel:** a lamp in each
+            branch, for example on places 2 and 4. - **Two lamps, each with its own switch:** a switch and a lamp in
+            each branch. - **One switch for two parallel lamps:** a switch on place 1, a lamp in each branch."
+      - type: single-choice
+        id: be-kurzschluss
+        text:
+          de: Du setzt eine Lampe in den linken senkrechten Zweig und lässt den rechten Zweig leer, also ohne Lampe.
+            Was passiert?
+          en: You put a lamp into the left vertical branch and leave the right branch empty, that is, without a lamp.
+            What happens?
+        options:
+          - text:
+              de: Es gibt einen Kurzschluss, und die Lampen leuchten nicht.
+              en: There is a short circuit, and the lamp does not shine.
+            correct: true
+            info:
+              de: Der leere Zweig ist ein Weg für den Strom ganz ohne Lampe. Der Strom nimmt diesen Weg und lässt die
+                Lampen aus.
+              en: The empty branch is a path for the current with no lamp at all. The current takes this path and leaves
+                the lamp off.
+          - text:
+              de: Die Lampen leuchten heller.
+              en: The lamp shines more brightly.
+            correct: false
+            info:
+              de: Die Lampen bekommen dann sogar keinen Strom mehr, weil der Strom den leeren Zweig nimmt.
+              en: The lamp then gets no current at all, because the current takes the empty branch.
+          - text:
+              de: Es passiert nichts.
+              en: Nothing happens.
+            correct: false
+            info:
+              de: Ein leerer Zweig verändert den Stromkreis deutlich. Es ist ein Kurzschluss.
+              en: An empty branch changes the circuit a lot. It is a short circuit.
+        explanation:
+          de: Ein Zweig ohne Verbraucher ist ein Kurzschluss. Der Strom fließt am ganzen Verbraucher vorbei, und das
+            kann Kabel gefährlich heiß machen.
+          en: A branch without a load is a short circuit. The current flows past every load, and that can make cables
+            dangerously hot.
+        links:
+          - title:
+              de: Kurzschluss (Wikipedia)
+              en: Kurzschluss (German Wikipedia)
+            url: https://de.wikipedia.org/wiki/Kurzschluss

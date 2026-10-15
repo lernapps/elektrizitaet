@@ -1,0 +1,276 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+title:
+  de: Der Widerstand
+  en: Resistance
+description:
+  de: Der Widerstand sagt, wie stark ein Bauteil den Strom hemmt. Er wird in Ohm (Ω) gemessen und hängt von Material,
+    Länge und Dicke ab.
+  en: The resistance tells how strongly a part hinders the current. It is measured in ohms (Ω) and depends on the
+    material, length and thickness.
+blocks:
+  - type: section
+    id: idee
+    title:
+      de: Die Idee
+      en: The idea
+    blocks:
+      - type: text
+        text:
+          de: "Ein dünnes, langes Kabel macht es dem Strom schwerer als ein kurzes, dickes. Im Wasserbild: Durch ein
+            langes, enges Rohr strömt weniger Wasser als durch ein kurzes, weites. Wie sehr ein Bauteil den Strom hemmt,
+            sagt der **Widerstand**.
+
+            "
+          en: "A thin, long wire makes it harder for the current than a short, thick one. In the water picture: less
+            water flows through a long, narrow pipe than through a short, wide one. How strongly a part hinders the
+            current is told by the **resistance**.
+
+            "
+  - type: section
+    id: merke
+    title:
+      de: Das merkst du dir
+      en: What to remember
+    blocks:
+      - type: definition
+        term:
+          de: Widerstand
+          en: Resistance
+        explanation:
+          de: Der elektrische Widerstand gibt an, wie stark ein Bauteil den Strom hemmt. Er hat das Formelzeichen $R$
+            und wird in Ohm (Ω) gemessen.
+          en:
+            The electrical resistance says how strongly a part hinders the current. Its symbol is $R$ and it is measured
+            in ohms (Ω).
+      - type: text
+        text:
+          de: "Bei gleicher Spannung gilt: Je größer der Widerstand, desto kleiner die Stromstärke.
+
+            "
+          en: "At the same voltage: the larger the resistance, the smaller the current.
+
+            "
+      - type: table
+        caption:
+          de: Wovon der Widerstand eines Drahtes abhängt
+          en: What the resistance of a wire depends on
+        header:
+          - de: Änderung am Draht
+            en: Change to the wire
+          - de: Widerstand
+            en: Resistance
+        rowHeaders: true
+        rows:
+          - - de: länger
+              en: longer
+            - de: wird größer
+              en: gets larger
+          - - de: kürzer
+              en: shorter
+            - de: wird kleiner
+              en: gets smaller
+          - - de: dicker
+              en: thicker
+            - de: wird kleiner
+              en: gets smaller
+          - - de: dünner
+              en: thinner
+            - de: wird größer
+              en: gets larger
+          - - de: anderes Material
+              en: other material
+            - de: Kupfer hat einen kleinen, Konstantan einen großen Widerstand
+              en: copper has a small resistance, constantan a large one
+      - type: note
+        title:
+          de: Widerstand als Bauteil
+          en: Resistor as a part
+        blocks:
+          - type: text
+            text:
+              de:
+                "Ein Bauteil, das man extra wegen seines Widerstands einbaut, heißt auch Widerstand. Sein Schaltzeichen
+                ist ein Rechteck.
+
+                "
+              en:
+                "A part built in on purpose for its resistance is also called a resistor. Its circuit symbol is a rectangle.
+
+                "
+  - type: section
+    id: beispiel
+    title:
+      de: Beispiel
+      en: Example
+    blocks:
+      - type: example
+        title:
+          de: Das lange Kabel
+          en: The long cable
+        blocks:
+          - type: text
+            text:
+              de: "Zwei Kupferkabel sind gleich dick. Das eine ist 1 m lang, das andere 10 m. Das lange Kabel hat den
+                größeren Widerstand. An einer Kabeltrommel kommt deshalb weniger Strom an, wenn sie ganz abgewickelt ist.
+
+                "
+              en: "Two copper cables are equally thick. One is 1 m long, the other 10 m. The long cable has the larger
+                resistance. That is why less current gets through a cable drum that is fully unrolled.
+
+                "
+  - type: section
+    id: uebung
+    title:
+      de: Übung
+      en: Practice
+    blocks:
+      - type: vue-component
+        component: DrahtLabor
+        props:
+          texts:
+            taskLabel:
+              de: "Aufgabe:"
+              en: "Task:"
+            reset:
+              de: Neu anfangen
+              en: Start again
+            check:
+              de: Prüfen
+              en: Check
+            next:
+              de: Nächste Aufgabe
+              en: Next task
+            decimal:
+              de: ","
+              en: .
+            board:
+              de: Stromkreis mit Batterie und einem Draht, dessen Länge und Dicke du einstellst
+              en: Circuit with a battery and a wire whose length and thickness you set
+            length:
+              de: Länge des Drahts
+              en: Length of the wire
+            thickness:
+              de: Dicke des Drahts
+              en: Thickness of the wire
+            summary:
+              de: Der Draht ist {L} m lang und {A} mm² dick. Das Amperemeter zeigt {I} A bei {V} V.
+              en: The wire is {L} m long and {A} mm² thick. The ammeter shows {I} A at {V} V.
+            hint:
+              de: Verändere Länge und Dicke mit den Reglern. Beobachte die Punkte im Draht und das Amperemeter.
+              en: Change the length and thickness with the sliders. Watch the dots in the wire and the ammeter.
+            task:
+              de: Am Anfang zeigt das Amperemeter {I} A. Stelle Länge und Dicke des Drahts so ein, dass es mindestens
+                {K}-mal so viel zeigt.
+              en: At the start the ammeter shows {I} A. Set the length and thickness of the wire so that it shows at
+                least {K} times as much.
+        nojs:
+          de: "Diese Übung zeigt eine Batterie mit 3 V und einem Draht, den du mit zwei Reglern einstellst: Länge von
+            1 bis 6 m, Dicke von 0,1 bis 0,5 mm². Das Amperemeter zeigt den Strom. Ziel: ein Vielfaches des Anfangsstroms.
+            Beispiel: Anfang 5 m lang und 0,2 mm² dick, Ziel doppelt so viel. Lösung: halb so lang (2,5 m, also 2 m)
+            oder doppelt so dick (0,4 mm²) macht den Widerstand halb so groß und den Strom doppelt so groß."
+          en:
+            "This exercise shows a 3 V battery and a wire that you set with two sliders: length from 1 to 6 m, thickness
+            from 0.1 to 0.5 mm². The ammeter shows the current. Goal: a multiple of the starting current. Example: start
+            5 m long and 0.2 mm² thick, goal twice as much. Solution: half as long (2.5 m, so 2 m) or twice as thick
+            (0.4 mm²) halves the resistance and doubles the current."
+      - type: single-choice
+        id: wd-laenge
+        text:
+          de: Zwei Kupferdrähte sind gleich dick. Der eine ist 1 m lang, der andere 2 m. Welcher hat den größeren Widerstand?
+          en: Two copper wires are equally thick. One is 1 m long, the other 2 m. Which one has the larger resistance?
+        options:
+          - text:
+              de: der 2 m lange
+              en: the 2 m one
+            correct: true
+            info:
+              de: Je länger der Draht, desto größer der Widerstand.
+              en: The longer the wire, the larger the resistance.
+          - text:
+              de: der 1 m lange
+              en: the 1 m one
+            correct: false
+            info:
+              de: Der kürzere Draht hat den kleineren Widerstand.
+              en: The shorter wire has the smaller resistance.
+          - text:
+              de: beide gleich
+              en: both the same
+            correct: false
+            info:
+              de: Bei gleichem Material und gleicher Dicke kommt es auf die Länge an, und die ist verschieden.
+              en: With the same material and thickness the length matters, and it differs.
+        explanation:
+          de: Je länger der Draht, desto größer der Widerstand.
+          en: The longer the wire, the larger the resistance.
+        links:
+          - title:
+              de: Elektrischer Widerstand (Wikipedia)
+              en: Elektrischer Widerstand (German Wikipedia)
+            url: https://de.wikipedia.org/wiki/Elektrischer_Widerstand
+      - type: multiple-choice
+        id: wd-kleiner
+        text:
+          de: Was macht den Widerstand eines Drahtes kleiner?
+          en: What makes the resistance of a wire smaller?
+        options:
+          - text:
+              de: ein kürzerer Draht
+              en: a shorter wire
+            correct: true
+            info:
+              de: Weniger Länge, weniger Widerstand.
+              en: Less length, less resistance.
+          - text:
+              de: ein dickerer Draht
+              en: a thicker wire
+            correct: true
+            info:
+              de: Ein dicker Draht lässt dem Strom mehr Platz, der Widerstand sinkt.
+              en: A thick wire gives the current more room, so the resistance falls.
+          - text:
+              de: ein längerer Draht
+              en: a longer wire
+            correct: false
+            info:
+              de: Ein längerer Draht hat einen größeren Widerstand.
+              en: A longer wire has a larger resistance.
+          - text:
+              de: ein dünnerer Draht
+              en: a thinner wire
+            correct: false
+            info:
+              de: Ein dünnerer Draht hat einen größeren Widerstand.
+              en: A thinner wire has a larger resistance.
+        explanation:
+          de: Kürzer und dicker macht den Widerstand kleiner, länger und dünner macht ihn größer.
+          en: Shorter and thicker make the resistance smaller, longer and thinner make it larger.
+        links:
+          - title:
+              de: Elektrischer Widerstand (Wikipedia)
+              en: Elektrischer Widerstand (German Wikipedia)
+            url: https://de.wikipedia.org/wiki/Elektrischer_Widerstand
+      - type: ordering
+        id: wd-ordnen
+        text:
+          de: Vier Kupferdrähte sind gleich lang und verschieden dick. Ordne sie nach ihrem Widerstand, den größten
+            zuerst.
+          en: Four copper wires are equally long and differ in thickness. Order them by their resistance, the largest
+            first.
+        items:
+          - de: Draht mit 0,2 mm Durchmesser
+            en: wire of 0.2 mm diameter
+          - de: Draht mit 0,5 mm Durchmesser
+            en: wire of 0.5 mm diameter
+          - de: Draht mit 1 mm Durchmesser
+            en: wire of 1 mm diameter
+          - de: Draht mit 2 mm Durchmesser
+            en: wire of 2 mm diameter
+        explanation:
+          de: "Je dünner der Draht, desto größer der Widerstand: Der dünnste Draht kommt zuerst."
+          en: "The thinner the wire, the larger the resistance: the thinnest wire comes first."
+        links:
+          - title:
+              de: Elektrischer Widerstand (Wikipedia)
+              en: Elektrischer Widerstand (German Wikipedia)
+            url: https://de.wikipedia.org/wiki/Elektrischer_Widerstand

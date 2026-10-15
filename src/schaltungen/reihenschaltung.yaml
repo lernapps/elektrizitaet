@@ -14,12 +14,19 @@ blocks:
     blocks:
       - type: text
         text:
-          de: |
-            Zwei Lampen kannst du auf zwei Arten mit einer Batterie verbinden. Die erste Art heißt **Reihenschaltung**: Die
+          de:
+            "Zwei Lampen kannst du auf zwei Arten mit einer Batterie verbinden. Die erste Art heißt **Reihenschaltung**:
+            Die
+
             Lampen hängen wie Perlen an einer Kette **hintereinander**.
-          en: |
-            You can connect two lamps to a battery in two ways. The first way is called a **series circuit**: the lamps
+
+            "
+          en: "You can connect two lamps to a battery in two ways. The first way is called a **series circuit**: the
+            lamps
+
             hang **one behind the other** like beads on a string.
+
+            "
   - type: section
     id: merke
     title:
@@ -50,16 +57,25 @@ blocks:
             1 battery, 2 lamp 1, 3 lamp 2."
       - type: text
         text:
-          de: |
-            Daraus folgt:
-            - Ist **eine** Lampe kaputt oder herausgeschraubt, ist der Kreis unterbrochen, und **alle** Lampen gehen aus.
+          de: "Daraus folgt:
+
+            - Ist **eine** Lampe kaputt oder herausgeschraubt, ist der Kreis unterbrochen, und **alle** Lampen gehen
+            aus.
+
             - Ein Schalter in der Reihe schaltet **alle** Lampen zusammen ein und aus.
+
             - Je mehr Lampen du in Reihe schaltest, desto schwächer leuchten sie.
-          en: |
-            It follows that:
+
+            "
+          en: "It follows that:
+
             - If **one** lamp is broken or unscrewed, the circuit is broken and **all** lamps go out.
+
             - A switch in the series switches **all** lamps on and off together.
+
             - The more lamps you connect in series, the dimmer they shine.
+
+            "
   - type: section
     id: beispiel
     title:
@@ -73,12 +89,18 @@ blocks:
         blocks:
           - type: text
             text:
-              de: |
-                Bei manchen älteren Lichterketten sind alle Lämpchen in Reihe geschaltet. Dreht man ein Lämpchen heraus,
+              de:
+                "Bei manchen älteren Lichterketten sind alle Lämpchen in Reihe geschaltet. Dreht man ein Lämpchen heraus,
+
                 erlischt die ganze Kette. Dann sucht man das defekte Lämpchen, bis die Kette wieder leuchtet.
-              en: |
-                In some older strings of lights all the little bulbs are connected in series. If you unscrew one bulb,
+
+                "
+              en:
+                "In some older strings of lights all the little bulbs are connected in series. If you unscrew one bulb,
+
                 the whole string goes out. Then you look for the broken bulb until the string lights up again.
+
+                "
   - type: section
     id: uebung
     title:
@@ -139,43 +161,161 @@ blocks:
               de: Reihenschaltung (Wikipedia)
               en: Reihenschaltung (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Reihenschaltung
-      - type: ordering
-        id: rs-reihenfolge
+      - type: true-false
+        id: rs-schalterplatz
         text:
-          de:
-            Bringe die Bauteile in die Reihenfolge, in der der Strom sie in einer Reihenschaltung durchläuft, beginnend
-            an der Batterie.
-          en: Put the parts in the order in which the current passes through them in a series circuit, starting at the
-            battery.
-        items:
-          - de: Batterie
-            en: Battery
-          - de: Schalter
-            en: Switch
-          - de: Lampe 1
-            en: Lamp 1
-          - de: Lampe 2
-            en: Lamp 2
+          de: In einer Reihenschaltung mit Batterie, Schalter und zwei Lampen ist es egal, ob der Schalter vor, zwischen
+            oder hinter den Lampen sitzt.
+          en: In a series circuit with a battery, a switch and two lamps it does not matter whether the switch sits
+            before, between or after the lamps.
+        answer: true
         explanation:
-          de: In einer Reihenschaltung läuft der Strom nacheinander durch alle Bauteile und am Ende zurück zur Batterie.
-            Die Reihenfolge von Schalter und Lampen ändert nichts daran, dass alle zusammen an- und ausgehen.
-          en: In a series circuit the current runs through all parts one after the other and back to the battery at
-            the end. The order of the switch and the lamps does not change that they all go on and off together.
+          de: "Der Strom läuft nacheinander durch alle Bauteile. Wo der Schalter sitzt, ändert nichts: Öffnest du ihn,
+            ist der Kreis unterbrochen, und alle Lampen gehen aus."
+          en: "The current runs through all parts one after the other. It does not matter where the switch sits: when
+            you open it, the circuit is broken and all lamps go out."
         links:
           - title:
               de: Reihenschaltung (Wikipedia)
               en: Reihenschaltung (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Reihenschaltung
-      - type: note
-        title:
-          de: Probiere es aus
-          en: Try it out
-        blocks:
-          - type: text
-            text:
+      - type: vue-component
+        component: SchaltungBauen
+        props:
+          goals:
+            - reihe
+          texts:
+            battery:
+              de: Batterie
+              en: Battery
+            board:
+              de: "Schaltbrett mit sechs Plätzen: oben und unten die Hauptleitung, daneben zwei Zweige"
+              en: "Circuit board with six places: the main wire at the top and bottom, and two branches beside it"
+            tools:
+              de: Bauteil wählen
+              en: Choose a part
+            toolWire:
+              de: Kabel
+              en: Wire
+            toolLamp:
+              de: Lampe
+              en: Lamp
+            toolSwitch:
+              de: Schalter
+              en: Switch
+            slot:
+              de: Platz
+              en: Place
+            slotEmpty:
+              de: leer, nur Kabel
+              en: empty, just a wire
+            slotLamp:
+              de: Lampe
+              en: lamp
+            slotLampOut:
+              de: Lampe herausgeschraubt
+              en: lamp unscrewed
+            slotSwitchClosed:
+              de: Schalter geschlossen
+              en: switch closed
+            slotSwitchOpen:
+              de: Schalter offen
+              en: switch open
+            status:
+              de: "Leuchtende Lampen: {n}"
+              en: "Lamps shining: {n}"
+            short:
+              de: Kurzschluss! Ein Kabel ohne Lampe überbrückt die Lampen im anderen Zweig, und der Strom fließt an
+                ihnen vorbei.
+              en: Short circuit! A wire without a lamp bypasses the lamps in the other branch, and the current flows
+                past them.
+            taskLabel:
+              de: "Aufgabe:"
+              en: "Task:"
+            reset:
+              de: Neu anfangen
+              en: Start again
+            check:
+              de: Prüfen
+              en: Check
+            next:
+              de: Nächste Aufgabe
+              en: Next task
+            goalEine:
+              de: Baue einen Stromkreis mit einer Lampe. Wenn du den Strom einschaltest, soll die Lampe leuchten.
+              en: Build a circuit with one lamp. When you switch the power on, the lamp should shine.
+            goalSchalter:
+              de: Baue einen Stromkreis mit einer Lampe und einem Schalter. Mit dem Schalter sollst du die Lampe ein-
+                und ausschalten können.
+              en: Build a circuit with one lamp and one switch. You should be able to switch the lamp on and off with
+                the switch.
+            goalReihe:
               de:
-                Baue die Reihenschaltung im [Bau-Editor](/schaltungen/bau-editor/), schraube eine Lampe heraus und beobachte
-                die andere.
-              en:
-                Build the series circuit in the [circuit builder](/schaltungen/bau-editor/), unscrew one lamp and watch
-                the other.
+                Baue einen Stromkreis mit zwei Lampen hintereinander, also in Reihe. Wenn du eine Lampe herausschraubst,
+                soll auch die andere ausgehen.
+              en: Build a circuit with two lamps one behind the other, that is, in series. When you unscrew one lamp,
+                the other should go out too.
+            goalParallel:
+              de:
+                Baue einen Stromkreis mit zwei Lampen in den beiden Zweigen, also parallel. Wenn du eine Lampe herausschraubst,
+                soll die andere weiterleuchten.
+              en: Build a circuit with two lamps in the two branches, that is, in parallel. When you unscrew one lamp,
+                the other should keep shining.
+            goalJeSchalter:
+              de: Baue einen Stromkreis mit zwei Lampen in den beiden Zweigen. Jede Lampe soll einen eigenen Schalter
+                haben, mit dem du nur sie ein- und ausschaltest.
+              en: Build a circuit with two lamps in the two branches. Each lamp should have its own switch, with which
+                you switch only that lamp on and off.
+            goalHaupt:
+              de:
+                Baue einen Stromkreis mit zwei Lampen in den beiden Zweigen und einem Schalter, der beide Lampen gemeinsam
+                ein- und ausschaltet.
+              en: Build a circuit with two lamps in the two branches and one switch that switches both lamps on and
+                off together.
+            boardSimple:
+              de: Schaltbrett mit zwei Plätzen in einem Stromkreis
+              en: Circuit board with two places in one circuit
+            hintOff:
+              de: "So geht es: Wähle ein Bauteil und tippe auf einen Platz. Mit dem Schalter-Werkzeug klappst du einen
+                eingebauten Schalter auf oder zu. Wenn du fertig bist, schalte den Strom ein."
+              en: "How it works: choose a part and tap a place. With the switch tool you flip a switch that is already
+                built in. When you are done, switch the power on."
+            hintOn:
+              de: Der Strom ist an. Tippe auf einen Schalter, um ihn zu öffnen oder zu schließen, oder auf eine Lampe,
+                um sie herauszuschrauben. Zum Umbauen schaltest du den Strom wieder aus.
+              en: The power is on. Tap a switch to open or close it, or a lamp to unscrew it. To rebuild, switch the
+                power off again.
+            powerOn:
+              de: Strom einschalten
+              en: Switch the power on
+            powerOff:
+              de: Strom ausschalten
+              en: Switch the power off
+            statusOff:
+              de: Der Strom ist aus.
+              en: The power is off.
+            whyLamps:
+              de: "Die Anzahl der Lampen stimmt noch nicht. Lies die Aufgabe noch einmal: Wie viele Lampen sollen es
+                sein?"
+              en: "The number of lamps is not right yet. Read the task again: how many lamps should there be?"
+            whySwitches:
+              de: "Die Anzahl der Schalter stimmt noch nicht. Lies die Aufgabe noch einmal: Wie viele Schalter sollen
+                es sein?"
+              en: "The number of switches is not right yet. Read the task again: how many switches should there be?"
+            whyShort:
+              de: "Es gibt einen Kurzschluss: Ein Weg ohne Lampe überbrückt die Lampen. Setze in jeden Zweig ein Bauteil."
+              en: "There is a short circuit: a path without a lamp bypasses the lamps. Put a part into each branch."
+            whyDark:
+              de: Es leuchtet nicht alles, was leuchten soll. Ist ein Schalter offen oder eine Lampe herausgeschraubt?
+              en: Not everything that should shine does. Is a switch open or a lamp unscrewed?
+            whyBehaviour:
+              de:
+                "Die Bauteile sind da, aber die Schaltung verhält sich noch nicht wie verlangt. Teste sie bei eingeschaltetem
+                Strom: Schraube eine Lampe heraus und lege Schalter um."
+              en: "The parts are there, but the circuit does not behave as asked yet. Test it with the power on: unscrew
+                a lamp and flip the switches."
+        nojs:
+          de: Diese Aufgabe stellt die Übung. Das Schaltbrett ist ein Stromkreis mit zwei Plätzen. - **Zwei Lampen in
+            Reihe:** eine Lampe auf jeden der beiden Plätze. Schraubst du eine heraus, geht die andere aus.
+          en: The exercise sets this task. The circuit board is a circuit with two places. - **Two lamps in series:**
+            a lamp on each of the two places. If you unscrew one, the other goes out.
