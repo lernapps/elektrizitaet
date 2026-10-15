@@ -4,7 +4,7 @@
 # archetype: the kind of app, as in the app's first plan: set it when you start this plan. It never changes.
 archetype: explainer
 # phase: the phase you work in now: explore, plan, code or commit. Change it when you enter the next phase.
-phase: explore
+phase: plan
 # prePushFailures: failed runs of the pre-push hook during this increment. The hook counts them. Never change it.
 prePushFailures: 0
 ---
@@ -118,10 +118,10 @@ turn, in plain words. Do not ask what you can derive from earlier answers or fro
 - [x] Research the new content: follow the guide's curriculum and sources, and the skill `lernapps-content-research`
       for what the guide does not cover yet. Write the Lehrplan with its citation, the new competencies by chapter
       and the verified sources under "Notes".
-- [ ] **Checkpoint:** research. Explain to the creator, in plain words, what you found and how: the Lehrplan with its
+- [x] **Checkpoint:** research. Explain to the creator, in plain words, what you found and how: the Lehrplan with its
       citation, the new competencies by chapter, the sources and how you checked them, and what you could not check.
       Stop and wait for the creator. Change it if they ask, then ask again.
-- [ ] Set `phase: plan`.
+- [x] Set `phase: plan`.
 
 ### Answers
 
@@ -129,6 +129,7 @@ turn, in plain words. Do not ask what you can derive from earlier answers or fro
   Gesetz, später Leistung/Energie, Magnetismus): „Größen im Stromkreis klingt gut.“
 - Bau-Editor: „Ohne den Editor ist es lahm. Der sollte auch Übungen mit Variablen unterstützen, also so, dass man sinnvolle
   Werte nutzt, diese aber von Übung zu Übung variiert und dennoch geprüft werden können.“
+- Zum Checkpoint „Recherche“ (Kompetenzen, Kapitel, Editor mit Variablen, Quellen): „ich finde das so gut.“
 - Lehrplan: „nimm Bayern als Lehrplanzitat, aber im Inhalt sollte das nicht auftauchen.“
 
 ### Completed
@@ -142,17 +143,37 @@ creator's turns from here to the end are counted in the retrospective (target: a
 
 ### Tasks
 
-- [ ] Write the tasks of Code under "Code": one slice per competency, as the skill `lernapps-content-growth` says, in
+- [x] Write the tasks of Code under "Code": one slice per competency, as the skill `lernapps-content-growth` says, in
       the order the guide's procedure names. Each slice ends in a commit.
-- [ ] Write the content method under "Content method": which patterns, figures and components of the guide each
+- [x] Write the content method under "Content method": which patterns, figures and components of the guide each
       slice uses, and anything new, with the reason the guide's patterns do not fit.
-- [ ] Show the creator the goal, the new competencies by chapter and the slices, short. Explain in plain words what
+- [x] Show the creator the goal, the new competencies by chapter and the slices, short. Explain in plain words what
       learners will see and do, and anything new in how the content is made.
 - [ ] **Checkpoint:** confirm the plan and the content method. Stop and wait for the creator. Change the plan if they
       ask, then ask again.
 - [ ] Set `phase: code`.
 
 ### Content method
+
+- Seiten wie bisher: Sektionen `idee`, `merke`, `beispiel`, `uebung`; eine Kompetenz je Seite; Fachwörter als `definition`.
+- Muster Einordnen, Vorhersagen, Beurteilen (Quizfragen mit `info` je Option) für Messgeräte, Anschluss und Schaltungsregeln,
+  zum Beispiel „Wie wird das Amperemeter eingebaut?“ oder „Was zeigt Messgerät 3 an?“.
+- Neues Muster Rechnen: `generated`-Aufgaben mit Zahlen aus sinnvollen Listen (Spannung 3 bis 12 V, Widerstände 10 bis 100 Ω),
+  Einheiten mit `\pu{…}`, Antwort mit Einheit; typische Fehler mit Rückmeldung („U · I statt U / I“, „mA nicht
+  umgerechnet“, „Ströme in der Reihenschaltung addiert“). Der Build prüft jede Aufgabe an 200 festen Startwerten.
+- Figuren: eigene SVG-Zeichnungen in `src/images/`, ohne Wörter, nur Ziffern mit Legende in der Bildunterschrift, wie bisher;
+  Messgeräte als Kreis mit A oder V; Kennlinie als Zeichnung mit Ziffern an den Achsen. Kein Land, keine Marke.
+- Komponente `SchaltungMessen` (neu, neben `SchaltungBauen`): grafisches Schaltbrett mit Quelle, bis zu drei Widerständen und
+  Messgeräten auf festen Plätzen. Jede Aufgabe entsteht aus einem Startwert (`generate(seed, props)`): Quellspannung aus
+  6, 9 oder 12 V, Widerstände aus 10, 20, 30, 50, 100 Ω, Zielwert so gewählt, dass es eine Lösung gibt. Die Prüffunktion
+  rechnet, was die gebaute Schaltung am Messgerät zeigt, und vergleicht es mit dem Ziel (Toleranz, Rundung genannt); sie prüft
+  das Verhalten, nicht den Aufbau, daher gelten mehrere Lösungen. Der Build testet viele Startwerte: gleiche Aufgabe bei
+  gleichem Startwert, Lösbarkeit, keine Aufgabe, die schon im Ausgangszustand erfüllt ist. Ohne JavaScript zeigt `nojs`
+  eine Beispielaufgabe mit Lösung.
+- Was die Komponente nicht kann: Wechselstrom, Innenwiderstand von Quelle und Messgeräten, nicht-ohmsche Bauteile (Lampen
+  haben hier einen festen Widerstand), mehr als drei Widerstände, Leistung, Helligkeit.
+- Ein späterer Agent fügt Kapitel nach dem Abschnitt „Adding a chapter or round“ des Leitfadens hinzu; neue Werte-Listen
+  für die Aufgaben stehen in `SchaltungMessen.ts` und im Leitfaden.
 
 <!--
 One line each: the guide's patterns, figures and components this increment uses, and where; anything new (a pattern,
@@ -174,10 +195,28 @@ something, choose, mark it "(guess)" under "Key decisions" and go on.
 
 ### Tasks
 
-- [ ] Switch to a new branch from `main`: `git switch -c increment/<NN>-<short name>`. Commit this plan on it.
+- [x] Switch to a new branch from `main`: `git switch -c increment/02-groessen-im-stromkreis`. Commit this plan on it.
 - [ ] Update the app to the newest tooling and runtime: `npx --yes github:lernapps/tooling#main update`, then
-      `npm install`. Commit the update on its own, and fix what its checks report before you add content.
-- [ ] <the slices written in Plan, each: competency, content, exercise, the entry's topic, check, commit>
+      `npm install`. Move `.vibe/plan.md` to `.vibe/plans/01-elektrizitaet.md` (the update does it, else by hand).
+      Commit the update on its own, and fix what its checks report before you add content.
+- [ ] Slice 1: kapitel `groessen` (`chapter.yaml`, Eintrag in `src/app.yaml`) und Seite `groessen/stromstaerke`
+      (Amperemeter, A und mA); Bild der Messung in Reihe; drei Übungen; Thema im Katalogeintrag; Check; Commit.
+- [ ] Slice 2: Seite `groessen/spannung` (Spannung als Antrieb, Voltmeter parallel); Bild; drei Übungen; Thema; Check; Commit.
+- [ ] Slice 3: Seite `groessen/widerstand` (Material, Länge, Querschnitt, Ω); Bild; drei Übungen; Thema; Check; Commit.
+- [ ] Slice 4: Seite `groessen/ohmsches-gesetz` (R = U / I, Kennlinie); Bild der Kennlinie; Übungen mit `generated`
+      (Rechnen mit Einheiten, typische Fehler); Thema; Check; Commit.
+- [ ] Slice 5: Kapitel `schaltungen-messen` und Seite `reihenschaltung` (Stromstärke gleich, Spannungen addieren sich, bis
+      zu drei Widerstände); Bild; Übungen mit `generated`; Thema; Check; Commit.
+- [ ] Slice 6: Seite `schaltungen-messen/parallelschaltung` (Spannung gleich, Ströme addieren sich, zwei Zweige); Bild;
+      Übungen mit `generated`; Thema; Check; Commit.
+- [ ] Slice 7: Komponente `SchaltungMessen`: Logik in `SchaltungMessen.ts` (Schaltungsmodell, Rechner für Strom und
+      Spannung, Aufgaben aus einem Startwert, Prüffunktion), Test über viele Startwerte, dann Oberfläche
+      (`SchaltungMessen.vue`); Seite `schaltungen-messen/bau-editor` mit Quizfrage; Thema; Check; Commit.
+- [ ] Der Katalogeintrag (Entwurf unten): Klassen 5 bis 8, Zusammenfassung, Themen aller neuen Seiten; `src/app.yaml`
+      (Einleitung, Quellen) aktualisiert; kein Land in den Lerntexten.
+- [ ] The content guide describes the app as it is now: its competencies, chapters and patterns, and its procedure
+      for the next increment (`app-content-matches`). Lehrplanzitat Bayern steht im Abschnitt „Curriculum“.
+- [ ] Alle Texte in Deutsch und Englisch, beide vollständig.
 - [ ] The content guide describes the app as it is now: its competencies, chapters and patterns, and its procedure
       for the next increment (`app-content-matches`).
 - [ ] `npx lernapps check` passes.
