@@ -329,11 +329,12 @@ Listing.
 
 ### Creator turns after the plan
 
-7 Nachrichten nach der Bestätigung des Plans, Ziel höchstens 3 verfehlt: (1) Ja zur Anweisung der Tooling-Sitzung (Update, Pull Request);
+9 Nachrichten nach der Bestätigung des Plans, Ziel höchstens 3 verfehlt: (1) Ja zur Anweisung der Tooling-Sitzung (Update, Pull Request);
 (2) die Interaktivität sei nicht visuell, die Übungen deshalb nicht wertvoll; (3) der separate Bau-Editor sei nicht hilfreich, die
 Interaktion solle in die Übungen; (4) Ersetzen des alten Bau-Editors ist in Ordnung; (5) „A“; (6) Rückmeldung zur Vorschau: Bauen,
 dann Strom einschalten und prüfen, lange Beschreibung unter der Übung, unklare Bauaufgaben, „Lösung“ vor der Antwort; (7) Bildschirmfoto
-einer richtig gebauten Schaltung, die als falsch bewertet wurde.
+einer richtig gebauten Schaltung, die als falsch bewertet wurde; (8) Bildschirmfoto einer Sortierübung, deren Reihenfolge egal ist, mit dem Hinweis auf ein systematisches Problem der Modellierung
+der Prüfungen; (9) Bitte um Aufnahme in die Retrospektive, der Rest der Vorschau gefalle.
 Ursache der Nachrichten 2 bis 7: Die Interaktion wurde nach Wunsch „Bauen“ geplant (Rechner mit Kästchen und Texteingabe), ohne vorher ein
 Bild davon zu zeigen; der Ersteller sah sie erst in der Vorschau.
 
@@ -351,7 +352,10 @@ Für den nächsten Agenten (Beobachtungen aus der Vorschau; die erste hat der Er
   Lampe leuchtete (`meets("eine")` verlangte null Schalter, der Text sagt das nicht). Geprüft werden soll das, was der Aufgabentext
   sagt, und die Rückmeldung soll den Grund nennen: Das Template meldet nur „Leider nicht richtig.“, deshalb zeigt `SchaltungBauen` nach dem
   Prüfen selbst, was fehlt (`diagnose`). Die Prüfung jeder neuen Aufgabe an den Beispielen testen, die Lernende wirklich bauen.
-- **Systematisches Modellierungsproblem (Ersteller):** Mehrere Übungen prüften eine einzige Musterlösung, obwohl der Text mehr erlaubt:
+- **Systematisches Modellierungsproblem (Ersteller, in zwei Nachrichten bemerkt, nicht von der App oder den Prüfungen gemeldet):** Eine Prüfung
+  war Gleichheit mit einer Musterlösung statt die Eigenschaft, die der Text verlangt. Die Prüfungen der App fanden das nicht; erst der
+  Ersteller beim Ausprobieren der Vorschau, am Bildschirmfoto einer richtig gebauten, abgelehnten Schaltung.
+  Einzelheiten: Mehrere Übungen prüften eine einzige Musterlösung, obwohl der Text mehr erlaubt:
   `eine` Lampe lehnte einen Schalter ab, `reihe` und `parallel` ebenso; `rs-reihenfolge` (ordering) verlangte eine feste Reihenfolge von
   Schalter und Lampen, obwohl sie egal ist; die Tabelle ordnete die Glühlampe der Lichtwirkung zu, die Frage `wk-gluehlampe` der
   Wärmewirkung. Behoben: Prüfung auf Verhalten umgestellt, `rs-reihenfolge` durch eine Wahr-oder-falsch-Aussage ersetzt, Tabelle und Zuordnung
