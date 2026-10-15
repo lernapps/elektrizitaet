@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import Fluss from "./Fluss.vue";
 import {
   SLOTS,
   check,
   emptySlots,
+  flows,
   fromSlots,
   generate,
   lampSlots,
@@ -72,6 +74,7 @@ const mode = ref<"build" | "test">("build");
 const task = computed(() => generate(seed.value, props));
 const circuit = computed(() => fromSlots(slots.value));
 const sim = computed(() => simulate(circuit.value));
+const flow = computed(() => flows(slots.value, sim.value));
 const litSlots = computed(() => lampSlots(slots.value).filter((_, i) => sim.value.lit.includes(i)));
 
 const goalText = computed(() => {
@@ -153,9 +156,14 @@ const verify = () => emit("answered", { correct: check(task.value, circuit.value
       <svg viewBox="0 0 400 300" aria-hidden="true" focusable="false">
         <rect width="400" height="300" fill="#fff" />
         <g fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M50 40H330M50 260H330M50 40V126M50 174V260M220 40V260M330 40V260" />
-          <path d="M32 134H68" />
-          <path d="M20 152H80" stroke-width="7" />
+          <Fluss d="M50 126V40H220" :current="flow.total" :scale="1.5" />
+          <Fluss d="M220 40H330" :current="flow.second" :scale="1.5" />
+          <Fluss d="M220 40V260" :current="flow.first" :scale="1.5" />
+          <Fluss d="M330 40V260" :current="flow.second" :scale="1.5" />
+          <Fluss d="M330 260H220" :current="flow.second" :scale="1.5" />
+          <Fluss d="M220 260H50V174" :current="flow.total" :scale="1.5" />
+          <path d="M20 134H80" />
+          <path d="M32 152H68" stroke-width="7" />
           <template v-for="id in SLOTS" :key="id">
             <g :transform="`translate(${POS[id].x} ${POS[id].y}) rotate(${POS[id].rot})`">
               <rect
@@ -173,6 +181,7 @@ const verify = () => emit("answered", { correct: check(task.value, circuit.value
                 <rect x="-26" y="-26" width="52" height="52" rx="8" fill="#fff" stroke="#bbb" stroke-width="1.5" />
                 <template v-if="kind(id) === 'lamp'">
                   <path d="M-26 0H-14M14 0H26" />
+                  <circle v-if="isLit(id)" r="24" fill="#ffd400" opacity="0.35" stroke="none" />
                   <circle
                     r="14"
                     :fill="isLit(id) ? '#ffd400' : '#fff'"

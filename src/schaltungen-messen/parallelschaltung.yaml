@@ -108,6 +108,73 @@ blocks:
       de: Übung
       en: Practice
     blocks:
+      - type: vue-component
+        component: SchaltungVorhersage
+        props:
+          kinds:
+            - parallel-gesamt
+            - parallel-zweig
+          texts:
+            taskLabel:
+              de: "Aufgabe:"
+              en: "Task:"
+            reset:
+              de: Neu anfangen
+              en: Start again
+            check:
+              de: Prüfen
+              en: Check
+            next:
+              de: Nächste Aufgabe
+              en: Next task
+            decimal:
+              de: ","
+              en: .
+            board:
+              de: Stromkreis mit zwei Widerständen und einem Messgerät
+              en: Circuit with two resistors and a meter
+            prediction:
+              de: Deine Vorhersage
+              en: Your prediction
+            "on":
+              de: Der Stromkreis ist eingeschaltet.
+              en: The circuit is switched on.
+            "off":
+              de: "Schreibe deine Vorhersage auf und prüfe sie: Dann wird eingeschaltet, und das Messgerät zeigt den
+                Wert."
+              en: "Write down your prediction and check it: then the circuit is switched on and the meter shows the
+                value."
+            right:
+              de: Richtig! Das Messgerät zeigt {v}.
+              en: Correct! The meter shows {v}.
+            wrong:
+              de: Nicht ganz. Das Messgerät zeigt {v}. Rechne noch einmal nach.
+              en: Not quite. The meter shows {v}. Calculate again.
+            taskReiheStrom:
+              de: Zwei Widerstände von {R1} Ω und {R2} Ω liegen in Reihe an {U} V. Was zeigt das Amperemeter?
+              en: Two resistors of {R1} Ω and {R2} Ω are connected in series on {U} V. What does the ammeter show?
+            taskReiheSpannung:
+              de: Zwei Widerstände von {R1} Ω und {R2} Ω liegen in Reihe an {U} V. Was zeigt das Voltmeter am zweiten
+                Widerstand ({R2} Ω)?
+              en: Two resistors of {R1} Ω and {R2} Ω are connected in series on {U} V. What does the voltmeter show
+                across the second resistor ({R2} Ω)?
+            taskParallelGesamt:
+              de: Zwei Widerstände von {R1} Ω und {R2} Ω liegen parallel an {U} V. Was zeigt das Amperemeter in der
+                Hauptleitung?
+              en: Two resistors of {R1} Ω and {R2} Ω are connected in parallel on {U} V. What does the ammeter in the
+                main wire show?
+            taskParallelZweig:
+              de: Zwei Widerstände von {R1} Ω und {R2} Ω liegen parallel an {U} V. Was zeigt das Amperemeter im Zweig
+                mit dem zweiten Widerstand ({R2} Ω)?
+              en: Two resistors of {R1} Ω and {R2} Ω are connected in parallel on {U} V. What does the ammeter show
+                in the branch with the second resistor ({R2} Ω)?
+        nojs:
+          de: "Diese Übung zeigt zwei Widerstände parallel an einer Batterie. Du sagst vorher, was das Messgerät zeigt,
+            prüfst, und der Stromkreis schaltet sich ein. Beispiel: 12 V, 20 Ω und 30 Ω. Lösung: im ersten Zweig 0,6
+            A, im zweiten 0,4 A, in der Hauptleitung zusammen 1,0 A."
+          en: "This exercise shows two resistors in parallel on a battery. You predict what the meter shows, check,
+            and the circuit switches on. Example: 12 V, 20 Ω and 30 Ω. Solution: 0.6 A in the first branch, 0.4 A in
+            the second, 1.0 A together in the main wire."
       - type: generated
         id: pr-gesamtstrom
         given:

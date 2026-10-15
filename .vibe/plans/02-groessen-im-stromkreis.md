@@ -48,6 +48,8 @@ sie und wenden sie auf Reihen- und Parallelschaltungen an. Davor konnten sie Str
 - Kapitel heißen nach dem Thema („Größen im Stromkreis“, „Schaltungen mit Messgeräten“), nicht „Gleichstrom“: die Größen gelten
   auch für Wechselstrom. Die Einleitung und der Leitfaden sagen „Gleichstrom“; Wechselstrom kommt später als eigenes Kapitel
   `wechselstrom` hinter diesen (Vorschlag bestätigt).
+- Reihen- und Parallelschaltung üben „erst vorhersagen, dann messen“ (guess; vorgeschlagen, nicht ausdrücklich bestätigt).
+- Der alte Bau-Editor (Klasse 5/6) wird ersetzt, nicht behalten („A“): Logik bleibt, Anzeige und Platz auf den Seiten ändern sich.
 - Änderung nach der Vorschau (Wunsch der Auftraggeberin bzw. des Auftraggebers): Der separate „Bau-Editor mit Messgeräten“ und
   seine Texteingaben entfallen. Die Interaktion wird sichtbar und steckt in den Übungen jeder Seite: ein gezeichneter
   Stromkreis, in dem man Strom, Spannung und Messgeräte sieht, mit Aufgaben, deren Werte sich ändern und die geprüft werden.
@@ -113,14 +115,15 @@ laden, `entry-from-schema`):
 ```yaml
 grades: [5, 6, 7, 8]
 topics:
-  # neu:
+  # neu (der Bau-Editor `schaltungen/bau-editor/` ist entfallen: sein Thema im Katalogeintrag ersetzen durch die Seiten,
+  # auf denen die Bauaufgaben jetzt stehen: schaltungen/schalter-schaltzeichen/, schaltungen/reihenschaltung/,
+  # schaltungen/parallelschaltung/):
   - { title: Die Stromstärke, path: groessen/stromstaerke/ }
   - { title: Die Spannung, path: groessen/spannung/ }
   - { title: Der Widerstand, path: groessen/widerstand/ }
   - { title: Das ohmsche Gesetz, path: groessen/ohmsches-gesetz/ }
   - { title: Reihenschaltung mit Messgeräten, path: schaltungen-messen/reihenschaltung/ }
   - { title: Parallelschaltung mit Messgeräten, path: schaltungen-messen/parallelschaltung/ }
-  - { title: Bau-Editor mit Messgeräten, path: schaltungen-messen/bau-editor/ }
 keywords: [Stromstärke, Spannung, Widerstand, ohmsches Gesetz, Gleichstrom, Amperemeter, Voltmeter]
 ```
 
@@ -247,20 +250,27 @@ something, choose, mark it "(guess)" under "Key decisions" and go on.
 - [x] The content guide describes the app as it is now: its competencies, chapters and patterns, and its procedure
       for the next increment (`app-content-matches`). Lehrplanzitat Bayern steht im Abschnitt „Curriculum“.
 - [x] Alle Texte in Deutsch und Englisch, beide vollständig.
-- [ ] Umbau (Entwurf, vom Auftraggeber noch nicht bestätigt): eine gemeinsame, gezeichnete Ansicht des Stromkreises
-      (`StromkreisSicht`: Strom als laufende Punkte, Spannung als Höhenverlauf um den Kreis, Messgeräte mit Zeiger und Zahl,
-      Widerstände als Zickzack je nach Wert) und je Seite eine Übung damit:
-      - `groessen/stromstaerke`: Amperemeter in den Kreis ziehen (richtig: in Reihe), Strom ablesen, Widerstand so wählen, dass
-        ein Zielstrom fließt.
-      - `groessen/spannung`: Voltmeter parallel anschließen, Spannung ablesen, Spannungsverlauf sehen.
-      - `groessen/widerstand`: Draht nach Material, Länge und Dicke wählen und sehen, wie der Strom sich ändert.
-      - `groessen/ohmsches-gesetz`: U und R einstellen, Messpunkte setzen, die Kennlinie wächst; Aufgabe mit neuen Werten.
-      - `schaltungen-messen/reihenschaltung` und `parallelschaltung`: erst vorhersagen, dann messen: Werte eintragen, dann
-        zeigt der Kreis, was gemessen wird.
-      Jede Übung zieht ihre Zahlen aus einem Startwert und prüft, was die Messgeräte zeigen. Die Seite
-      `schaltungen-messen/bau-editor` und die Komponente `SchaltungMessen` entfallen (Kompetenz 7 steckt dann in den Übungen der
-      Seiten 5 und 6). Der Bau-Editor aus Klasse 5 und 6 (`schaltungen/bau-editor`) bleibt, bis die Auftraggeberin bzw. der
-      Auftraggeber anders entscheidet.
+- [x] Umbau (bestätigt): die Interaktion wird sichtbar und steckt in den Übungen jeder Seite; der separate Bau-Editor mit
+      Messgeräten entfällt, der alte Bau-Editor (Klasse 5/6) wird auf die Seiten verteilt. Gemeinsame Bausteine: `Fluss` (Strom
+      als laufende Punkte: Dichte und Tempo wachsen mit der Stromstärke, ohne Bewegung bei reduzierter Animation), `Zeiger`
+      (Messgerät mit Zeiger und Zahl). Jede Übung zieht ihre Zahlen aus einem Startwert und prüft, was die Messgeräte zeigen.
+- [x] Slice 8: Bausteine `src/components/Fluss.vue`, `Zeiger.vue`, `messen.ts` (Zufall, Runden, Formatieren, Flussdichte).
+- [x] Slice 9: `StromMessen` (Amperemeter an der richtigen Stelle einbauen, parallel zur Quelle ist ein Kurzschluss; Widerstand
+      wählen, bis der Zielstrom fließt) auf `groessen/stromstaerke`; Test; Check; Commit.
+- [x] Slice 10: `SpannungMessen` (Voltmeter an zwei Punkte des Kreises anschließen, die Leitungen sind nach Höhe der Spannung
+      gefärbt) auf `groessen/spannung`; Test; Check; Commit.
+- [x] Slice 11: `DrahtLabor` (Länge und Dicke eines Drahts einstellen, bis der Strom mindestens k-mal so groß ist) auf
+      `groessen/widerstand`; Test; Check; Commit.
+- [x] Slice 12: `OhmLabor` (Spannung einstellen, Messpunkte setzen, Kennlinie wächst, Widerstand angeben) auf
+      `groessen/ohmsches-gesetz`; Test; Check; Commit.
+- [x] Slice 13: `SchaltungVorhersage` (Strom oder Spannung vorhersagen, einschalten, vergleichen) auf
+      `schaltungen-messen/reihenschaltung` und `parallelschaltung`; Test; Check; Commit.
+- [x] Slice 14: `SchaltungBauen` bekommt laufende Punkte und wird auf `schaltungen/schalter-schaltzeichen` (Ziele `eine`,
+      `schalter`), `schaltungen/reihenschaltung` (`reihe`) und `schaltungen/parallelschaltung` (`parallel`, `je-schalter`,
+      `haupt`) eingesetzt, `be-kurzschluss` zieht auf `parallelschaltung`; die Seiten `schaltungen/bau-editor` und
+      `schaltungen-messen/bau-editor` und die Komponente `SchaltungMessen` entfallen (der Explainer kann keine Weiterleitung
+      schreiben: die alte Adresse gibt danach 404, und der Katalogeintrag muss den Themenpfad `schaltungen/bau-editor/` ersetzen);
+      Check; Commit.
 - [ ] The content guide describes the app as it is now: its competencies, chapters and patterns, and its procedure
       for the next increment (`app-content-matches`).
 - [x] `npx lernapps check` passes.

@@ -3,11 +3,11 @@ title:
   de: Schaltungen
   en: Circuits
 summary:
-  de: Schalter, Schaltzeichen, Reihen- und Parallelschaltung, und ein Bau-Editor, in dem du selbst Schaltungen baust.
-  en: Switches, circuit symbols, series and parallel circuits, and a circuit builder in which you build circuits
-    yourself.
+  de: Schalter, Schaltzeichen, Reihen- und Parallelschaltung. Auf den Seiten baust du selbst Schaltungen und siehst,
+    wie der Strom läuft.
+  en: Switches, circuit symbols, series and parallel circuits. On the pages you build circuits yourself and see
+    how the current runs.
 pages:
   - schalter-schaltzeichen
   - reihenschaltung
   - parallelschaltung
-  - bau-editor

@@ -124,6 +124,55 @@ blocks:
       de: Übung
       en: Practice
     blocks:
+      - type: vue-component
+        component: DrahtLabor
+        props:
+          texts:
+            taskLabel:
+              de: "Aufgabe:"
+              en: "Task:"
+            reset:
+              de: Neu anfangen
+              en: Start again
+            check:
+              de: Prüfen
+              en: Check
+            next:
+              de: Nächste Aufgabe
+              en: Next task
+            decimal:
+              de: ","
+              en: .
+            board:
+              de: Stromkreis mit Batterie und einem Draht, dessen Länge und Dicke du einstellst
+              en: Circuit with a battery and a wire whose length and thickness you set
+            length:
+              de: Länge des Drahts
+              en: Length of the wire
+            thickness:
+              de: Dicke des Drahts
+              en: Thickness of the wire
+            summary:
+              de: Der Draht ist {L} m lang und {A} mm² dick. Das Amperemeter zeigt {I} A bei {V} V.
+              en: The wire is {L} m long and {A} mm² thick. The ammeter shows {I} A at {V} V.
+            hint:
+              de: Verändere Länge und Dicke mit den Reglern. Beobachte die Punkte im Draht und das Amperemeter.
+              en: Change the length and thickness with the sliders. Watch the dots in the wire and the ammeter.
+            task:
+              de: Am Anfang zeigt das Amperemeter {I} A. Stelle Länge und Dicke des Drahts so ein, dass es mindestens
+                {K}-mal so viel zeigt.
+              en: At the start the ammeter shows {I} A. Set the length and thickness of the wire so that it shows at
+                least {K} times as much.
+        nojs:
+          de: "Diese Übung zeigt eine Batterie mit 3 V und einem Draht, den du mit zwei Reglern einstellst: Länge von
+            1 bis 6 m, Dicke von 0,1 bis 0,5 mm². Das Amperemeter zeigt den Strom. Ziel: ein Vielfaches des Anfangsstroms.
+            Beispiel: Anfang 5 m lang und 0,2 mm² dick, Ziel doppelt so viel. Lösung: halb so lang (2,5 m, also 2 m)
+            oder doppelt so dick (0,4 mm²) macht den Widerstand halb so groß und den Strom doppelt so groß."
+          en:
+            "This exercise shows a 3 V battery and a wire that you set with two sliders: length from 1 to 6 m, thickness
+            from 0.1 to 0.5 mm². The ammeter shows the current. Goal: a multiple of the starting current. Example: start
+            5 m long and 0.2 mm² thick, goal twice as much. Solution: half as long (2.5 m, so 2 m) or twice as thick
+            (0.4 mm²) halves the resistance and doubles the current."
       - type: single-choice
         id: wd-laenge
         text:

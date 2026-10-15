@@ -122,6 +122,64 @@ blocks:
       de: Übung
       en: Practice
     blocks:
+      - type: vue-component
+        component: OhmLabor
+        props:
+          texts:
+            taskLabel:
+              de: "Aufgabe:"
+              en: "Task:"
+            reset:
+              de: Neu anfangen
+              en: Start again
+            check:
+              de: Prüfen
+              en: Check
+            next:
+              de: Nächste Aufgabe
+              en: Next task
+            decimal:
+              de: ","
+              en: .
+            board:
+              de: Stromkreis mit einstellbarer Batterie, einem unbekannten Widerstand, Voltmeter und Amperemeter
+              en: Circuit with an adjustable battery, an unknown resistor, a voltmeter and an ammeter
+            plot:
+              de: Diagramm der Messpunkte, Stromstärke über Spannung.
+              en: Plot of the measuring points, current over voltage.
+            voltage:
+              de: "Spannung:"
+              en: "Voltage:"
+            record:
+              de: Messpunkt setzen
+              en: Record a measuring point
+            points:
+              de: "{n} Messpunkte gesetzt"
+              en: "{n} measuring points recorded"
+            resistance:
+              de: "Der Widerstand ist (in Ω):"
+              en: "The resistance is (in Ω):"
+            hint:
+              de: Stelle verschiedene Spannungen ein und setze jeweils einen Messpunkt. Die Punkte zeigen dir, wie der
+                Strom von der Spannung abhängt.
+              en: Set different voltages and record a point each time. The points show you how the current depends on
+                the voltage.
+            task:
+              de: Der Widerstand im Kreis ist unbekannt. Setze mindestens drei Messpunkte bei verschiedenen Spannungen,
+                rechne dann den Widerstand aus und trage ihn ein.
+              en: The resistor in the circuit is unknown. Record at least three measuring points at different voltages,
+                then calculate the resistance and enter it.
+        nojs:
+          de: 'Diese Übung zeigt eine einstellbare Batterie (0 bis 12 V in Schritten von 1,5 V) mit einem unbekannten
+            Widerstand, einem Voltmeter und einem Amperemeter. Du setzt mindestens drei Messpunkte, die Punkte (Spannung,
+            Stromstärke) liegen auf einer Geraden durch den Nullpunkt, und trägst den Widerstand ein. Beispiel: bei
+            6 V zeigt das Amperemeter 0,2 A, bei 9 V 0,3 A. Lösung: $R = \frac{6 \text{ V}}{0{,}2 \text{ A}} = 30 \text{
+            Ω}$.'
+          en:
+            'This exercise shows an adjustable battery (0 to 12 V in steps of 1.5 V) with an unknown resistor, a voltmeter
+            and an ammeter. You record at least three measuring points; the points (voltage, current) lie on a straight
+            line through the origin; and you enter the resistance. Example: at 6 V the ammeter shows 0.2 A, at 9 V 0.3
+            A. Solution: $R = \frac{6 \text{ V}}{0.2 \text{ A}} = 30 \text{ Ω}$.'
       - type: generated
         id: og-strom
         given:

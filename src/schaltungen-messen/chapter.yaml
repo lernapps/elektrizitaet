@@ -3,11 +3,9 @@ title:
   de: Schaltungen mit Messgeräten
   en: Circuits with meters
 summary:
-  de: Strom und Spannung in Reihen- und Parallelschaltungen vorhersagen, berechnen und messen, und im Bau-Editor
-    Schaltungen mit Messgeräten bauen.
-  en: Predict, calculate and measure current and voltage in series and parallel circuits, and build circuits with
-    meters in the circuit builder.
+  de: Strom und Spannung in Reihen- und Parallelschaltungen vorhersagen und berechnen, einschalten und am Messgerät
+    prüfen.
+  en: Predict and calculate current and voltage in series and parallel circuits, switch on and check on the meter.
 pages:
   - reihenschaltung
   - parallelschaltung
-  - bau-editor

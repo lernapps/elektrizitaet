@@ -1,0 +1,193 @@
+<script setup lang="ts">
+import { computed, ref } from "vue";
+import Fluss from "./Fluss.vue";
+import Zeiger from "./Zeiger.vue";
+import { fill, fmt } from "./Fluss.ts";
+import { STOCK, check, generate, measure, type Spot } from "./StromMessen.ts";
+
+interface Texts {
+  board: string;
+  resistors: string;
+  resistor: string;
+  spot: string;
+  spotA: string;
+  spotB: string;
+  spotPar: string;
+  spotFree: string;
+  spotTaken: string;
+  hint: string;
+  short: string;
+  ammeter: string;
+  noAmmeter: string;
+  taskLabel: string;
+  task: string;
+  reset: string;
+  check: string;
+  next: string;
+  decimal: string;
+}
+const props = defineProps<{ texts: Texts }>();
+const emit = defineEmits<{ answered: [{ correct: boolean }] }>();
+defineOptions({ nojs: "caption" });
+
+// The first render is the same on the server and in the browser: the task of the seed 1.
+const seed = ref(1);
+const task = computed(() => generate(seed.value));
+const spot = ref<Spot>(null);
+const ohm = ref(generate(1).start);
+
+const answer = computed(() => ({ spot: spot.value, ohm: ohm.value }));
+const reading = computed(() => measure(task.value.volts, answer.value));
+const scale = computed(() => task.value.volts / STOCK[0]!);
+const sep = computed(() => props.texts.decimal);
+
+const POS = { a: { x: 130, y: 40 }, b: { x: 200, y: 230 }, par: { x: 100, y: 135 } };
+const NAMES = computed(() => ({ a: props.texts.spotA, b: props.texts.spotB, par: props.texts.spotPar }));
+const spots = ["a", "b", "par"] as const;
+
+const taskText = computed(() =>
+  fill(props.texts.task, { U: fmt(task.value.volts, 0, sep.value), T: fmt(task.value.target, 3, sep.value) }),
+);
+const spotLabel = (id: (typeof spots)[number]) =>
+  `${props.texts.spot} ${spots.indexOf(id) + 1}: ${NAMES.value[id]}, ${spot.value === id ? props.texts.spotTaken : props.texts.spotFree}`;
+const press = (id: (typeof spots)[number]) => {
+  spot.value = spot.value === id ? null : id;
+};
+const readingText = computed(() =>
+  reading.value.short
+    ? props.texts.short
+    : reading.value.ammeter === null
+      ? props.texts.noAmmeter
+      : fill(props.texts.ammeter, { v: `${fmt(reading.value.ammeter, 3, sep.value)} A` }),
+);
+const reset = () => {
+  spot.value = null;
+  ohm.value = task.value.start;
+};
+const next = () => {
+  seed.value += 1;
+  reset();
+};
+const verify = () => emit("answered", { correct: check(task.value, answer.value) });
+</script>
+
+<template>
+  <div class="sm">
+    <p>
+      <strong>{{ texts.taskLabel }}</strong> {{ taskText }}
+    </p>
+    <p class="sm-hint">{{ texts.hint }}</p>
+
+    <div class="sm-board" role="group" :aria-label="texts.board">
+      <svg viewBox="0 0 400 310" aria-hidden="true" focusable="false">
+        <rect width="400" height="310" fill="#fff" />
+        <Fluss d="M50 128V40H220" :current="reading.loop" :scale="scale" />
+        <Fluss d="M280 40H350V230H50V146" :current="reading.loop" :scale="scale" />
+        <Fluss v-if="reading.short" d="M100 40V230" :current="scale * 4" :scale="scale" colour="#b00020" />
+        <path d="M30 128H70" stroke="#111" stroke-width="3" />
+        <path d="M40 146H60" stroke="#111" stroke-width="7" />
+        <text x="82" y="150" font-size="14" fill="#111">{{ fmt(task.volts, 0, sep) }} V</text>
+        <rect x="220" y="28" width="60" height="24" fill="#fff" stroke="#111" stroke-width="3" />
+        <text x="250" y="20" text-anchor="middle" font-size="14" fill="#111">{{ ohm }} Ω</text>
+        <template v-for="(id, i) in spots" :key="id">
+          <circle
+            v-if="spot !== id"
+            :cx="POS[id].x"
+            :cy="POS[id].y"
+            r="18"
+            fill="#fff"
+            stroke="#666"
+            stroke-width="2"
+            stroke-dasharray="5 4"
+          />
+          <text v-if="spot !== id" :x="POS[id].x" :y="POS[id].y + 5" text-anchor="middle" font-size="14" fill="#444">
+            {{ i + 1 }}
+          </text>
+        </template>
+        <Zeiger
+          v-if="spot !== null"
+          :x="POS[spot].x"
+          :y="POS[spot].y"
+          kind="A"
+          :value="reading.ammeter ?? 0"
+          :blank="reading.ammeter === null"
+          :max="scale"
+          :decimals="3"
+          :separator="sep"
+        />
+      </svg>
+      <button
+        v-for="id in spots"
+        :key="id"
+        type="button"
+        class="sm-spot"
+        :style="{ left: `${(POS[id].x / 400) * 100}%`, top: `${(POS[id].y / 310) * 100}%` }"
+        :aria-label="spotLabel(id)"
+        @click="press(id)"
+      ></button>
+    </div>
+
+    <div class="sm-bar" role="group" :aria-label="texts.resistors">
+      <button v-for="value in STOCK" :key="value" type="button" :aria-pressed="ohm === value" @click="ohm = value">
+        {{ fill(texts.resistor, { n: String(value) }) }}
+      </button>
+    </div>
+    <p role="status" :class="{ 'sm-warn': reading.short }">{{ readingText }}</p>
+    <div class="sm-bar">
+      <button type="button" @click="verify()">{{ texts.check }}</button>
+      <button type="button" @click="reset()">{{ texts.reset }}</button>
+      <button type="button" @click="next()">{{ texts.next }}</button>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.sm-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+.sm-bar button {
+  min-height: 2.75rem;
+  padding: 0.25rem 0.75rem;
+}
+.sm-bar button[aria-pressed="true"] {
+  font-weight: bold;
+  outline: 3px solid currentColor;
+  outline-offset: 1px;
+}
+.sm-board {
+  position: relative;
+  max-width: 28rem;
+  border: 1px solid currentColor;
+  border-radius: 0.4rem;
+  overflow: hidden;
+}
+.sm-board svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.sm-spot {
+  position: absolute;
+  width: 16%;
+  min-width: 2.75rem;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.sm-spot:hover {
+  background: rgba(0, 90, 220, 0.12);
+}
+.sm-spot:focus-visible {
+  outline: 3px solid #0050d0;
+  outline-offset: 1px;
+}
+.sm-warn {
+  font-weight: bold;
+}
+</style>

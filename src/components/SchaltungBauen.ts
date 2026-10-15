@@ -224,3 +224,34 @@ export const solution = (task: Task): Circuit => fromSlots(solutionSlots(task));
 export function wrong(_task: Task): Circuit {
   return [];
 }
+
+export interface Flows {
+  /** How strongly current flows through the main wire and each branch, 0 for none; 1 is a normal current. */
+  total: number;
+  first: number;
+  second: number;
+}
+
+/**
+ * How the current runs on the board, for the picture: through the main wire when the loop conducts, in each branch that
+ * conducts, and only through a bare branch when there is a short circuit. A section of bare branches is just wire.
+ */
+export function flows(slots: Slots, sim: Simulation): Flows {
+  if (!sim.conducts) return { total: 0, first: 0, second: 0 };
+  const branch = (ids: SlotId[]) => {
+    const parts = ids.flatMap((id) => (slots[id] === null ? [] : [slots[id]!]));
+    const conducts = parts.every((p) => (p.kind === "lamp" ? p.out !== true : p.closed));
+    return { bare: parts.length === 0, conducts };
+  };
+  const first = branch(["p1a", "p1b"]);
+  const second = branch(["p2a", "p2b"]);
+  if (first.bare && second.bare) return { total: 1, first: 1, second: 0 };
+  const open = [first, second].filter((b) => b.conducts);
+  const bypass = open.filter((b) => b.bare);
+  if (bypass.length > 0) {
+    const level = (b: { bare: boolean; conducts: boolean }) => (bypass.includes(b) ? 1.5 : 0);
+    return { total: 1.5, first: level(first), second: level(second) };
+  }
+  const level = (b: { conducts: boolean }) => (b.conducts ? 1 / open.length : 0);
+  return { total: 1, first: level(first), second: level(second) };
+}

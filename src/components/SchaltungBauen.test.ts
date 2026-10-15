@@ -2,6 +2,7 @@ import { describe, expect, it } from "vite-plus/test";
 import {
   check,
   emptySlots,
+  flows,
   fromSlots,
   generate,
   lampSlots,
@@ -110,5 +111,42 @@ describe("fromSlots", () => {
   });
   it("solves every goal with its solution board", () => {
     for (const goal of GOALS) expect(meets(goal, fromSlots(solutionSlots({ goal })))).toBe(true);
+  });
+});
+
+describe("flows", () => {
+  const run = (set: (s: ReturnType<typeof emptySlots>) => void) => {
+    const slots = emptySlots();
+    set(slots);
+    return flows(slots, simulate(fromSlots(slots)));
+  };
+  it("runs nowhere when the loop does not conduct", () => {
+    expect(run((s) => (s.m1 = { kind: "switch", closed: false }))).toEqual({ total: 0, first: 0, second: 0 });
+  });
+  it("runs through the main wire and every branch with a lamp", () => {
+    const f = run((s) => {
+      s.p1a = { kind: "lamp" };
+      s.p2a = { kind: "lamp" };
+    });
+    expect(f.total).toBe(1);
+    expect(f.first).toBe(0.5);
+    expect(f.second).toBe(0.5);
+  });
+  it("leaves out a branch with an unscrewed lamp", () => {
+    const f = run((s) => {
+      s.p1a = { kind: "lamp", out: true };
+      s.p2a = { kind: "lamp" };
+    });
+    expect(f.first).toBe(0);
+    expect(f.second).toBe(1);
+  });
+  it("runs a short circuit through the bare branch only", () => {
+    const f = run((s) => (s.p1a = { kind: "lamp" }));
+    expect(f.first).toBe(0);
+    expect(f.second).toBe(1.5);
+  });
+  it("treats two bare branches as one wire", () => {
+    const f = run((s) => (s.m1 = { kind: "lamp" }));
+    expect(f).toEqual({ total: 1, first: 1, second: 0 });
   });
 });

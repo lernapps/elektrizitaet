@@ -120,6 +120,79 @@ blocks:
       de: Übung
       en: Practice
     blocks:
+      - type: vue-component
+        component: StromMessen
+        props:
+          texts:
+            taskLabel:
+              de: "Aufgabe:"
+              en: "Task:"
+            reset:
+              de: Neu anfangen
+              en: Start again
+            check:
+              de: Prüfen
+              en: Check
+            next:
+              de: Nächste Aufgabe
+              en: Next task
+            decimal:
+              de: ","
+              en: .
+            resistor:
+              de: "{n} Ω"
+              en: "{n} Ω"
+            board:
+              de: Stromkreis mit Batterie und Widerstand und drei Stellen für das Amperemeter
+              en: Circuit with battery and resistor and three places for the ammeter
+            resistors:
+              de: Widerstand wählen
+              en: Choose the resistor
+            spot:
+              de: Stelle
+              en: Place
+            spotA:
+              de: in der oberen Leitung
+              en: in the top wire
+            spotB:
+              de: in der unteren Leitung
+              en: in the bottom wire
+            spotPar:
+              de: quer über der Batterie
+              en: straight across the battery
+            spotFree:
+              de: frei
+              en: free
+            spotTaken:
+              de: Amperemeter eingebaut
+              en: ammeter built in
+            hint:
+              de: Tippe auf eine Stelle, um das Amperemeter dort einzubauen. Noch einmal tippen nimmt es wieder heraus.
+                Wähle dann den Widerstand.
+              en: Tap a place to build the ammeter in there. Tapping again takes it out. Then choose the resistor.
+            short:
+              de: Kurzschluss! Das Amperemeter überbrückt die Batterie, und es fließt viel zu viel Strom.
+              en: Short circuit! The ammeter bridges the battery, and far too much current flows.
+            ammeter:
+              de: Das Amperemeter zeigt {v}.
+              en: The ammeter shows {v}.
+            noAmmeter:
+              de: Noch kein Amperemeter eingebaut.
+              en: No ammeter built in yet.
+            task:
+              de: Die Batterie hat {U} V. Baue das Amperemeter richtig ein und wähle den Widerstand so, dass es {T}
+                A zeigt.
+              en: The battery has {U} V. Build the ammeter in correctly and choose the resistor so that it shows {T}
+                A.
+        nojs:
+          de: "Diese Übung zeigt einen Stromkreis mit Batterie und Widerstand, in dem der Strom als laufende Punkte
+            zu sehen ist. Du baust ein Amperemeter an eine von drei Stellen ein und wählst den Widerstand, bis es den
+            Zielwert zeigt. Beispiel: Batterie 12 V, Ziel 0,4 A. Lösung: das Amperemeter in die obere oder untere Leitung,
+            nie quer über die Batterie, und ein Widerstand von 30 Ω, denn 12 V : 30 Ω = 0,4 A."
+          en: "This exercise shows a circuit with a battery and a resistor in which the current can be seen as running
+            dots. You build an ammeter in at one of three places and choose the resistor until it shows the target.
+            Example: battery 12 V, target 0.4 A. Solution: the ammeter in the top or bottom wire, never straight across
+            the battery, and a resistor of 30 Ω, because 12 V : 30 Ω = 0.4 A."
       - type: single-choice
         id: sa-einbau
         text:

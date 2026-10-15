@@ -14,12 +14,17 @@ blocks:
     blocks:
       - type: text
         text:
-          de: |
-            Wer einen Stromkreis aufschreiben will, muss keine Kabel und Lampen malen. Es gibt für jedes Bauteil ein
+          de: "Wer einen Stromkreis aufschreiben will, muss keine Kabel und Lampen malen. Es gibt für jedes Bauteil
+            ein
+
             kurzes **Schaltzeichen**. So lesen Menschen auf der ganzen Welt denselben Plan.
-          en: |
-            If you want to write down a circuit, you do not have to draw cables and lamps. Every part has a short
+
+            "
+          en: "If you want to write down a circuit, you do not have to draw cables and lamps. Every part has a short
+
             **circuit symbol**. That way people all over the world read the same diagram.
+
+            "
   - type: section
     id: merke
     title:
@@ -95,14 +100,21 @@ blocks:
         blocks:
           - type: text
             text:
-              de: |
-                Ein Schaltplan zeigt: Batterie, dann ein Schalter, dann eine Lampe, dann zurück zur Batterie. Ist das
+              de: "Ein Schaltplan zeigt: Batterie, dann ein Schalter, dann eine Lampe, dann zurück zur Batterie. Ist das
+
                 Schaltzeichen des Schalters durchgehend, ist der Schalter geschlossen und die Lampe leuchtet. Zeigt es
+
                 eine Lücke, ist er offen, und die Lampe bleibt dunkel.
-              en: |
-                A circuit diagram shows: battery, then a switch, then a lamp, then back to the battery. If the circuit
+
+                "
+              en:
+                "A circuit diagram shows: battery, then a switch, then a lamp, then back to the battery. If the circuit
+
                 symbol of the switch is unbroken, the switch is closed and the lamp lights up. If it shows a gap, the
+
                 switch is open and the lamp stays dark.
+
+                "
   - type: section
     id: uebung
     title:
@@ -192,3 +204,112 @@ blocks:
               de: Elektrischer Schalter (Wikipedia)
               en: Elektrischer Schalter (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Elektrischer_Schalter
+      - type: vue-component
+        component: SchaltungBauen
+        props:
+          goals:
+            - eine
+            - schalter
+          texts:
+            battery:
+              de: Batterie
+              en: Battery
+            board:
+              de: Schaltbrett mit sechs Plätzen
+              en: Circuit board with six places
+            tools:
+              de: Bauteil wählen
+              en: Choose a part
+            toolWire:
+              de: Kabel
+              en: Wire
+            toolLamp:
+              de: Lampe
+              en: Lamp
+            toolSwitch:
+              de: Schalter
+              en: Switch
+            modes:
+              de: Betriebsart
+              en: Mode
+            modeBuild:
+              de: Bauen
+              en: Build
+            modeTest:
+              de: Testen
+              en: Test
+            hintBuild:
+              de: Wähle ein Bauteil und tippe auf einen Platz im Schaltbrett. Mit Kabel machst du einen Platz wieder
+                leer.
+              en: Choose a part and tap a place on the circuit board. With the wire you make a place empty again.
+            hintTest:
+              de:
+                Tippe auf einen Schalter, um ihn zu öffnen oder zu schließen, und auf eine Lampe, um sie herauszuschrauben
+                oder wieder einzuschrauben.
+              en: Tap a switch to open or close it, and tap a lamp to unscrew it or screw it back in.
+            slot:
+              de: Platz
+              en: Place
+            slotEmpty:
+              de: leer, nur Kabel
+              en: empty, just a wire
+            slotLamp:
+              de: Lampe
+              en: lamp
+            slotLampOut:
+              de: Lampe herausgeschraubt
+              en: lamp unscrewed
+            slotSwitchClosed:
+              de: Schalter geschlossen
+              en: switch closed
+            slotSwitchOpen:
+              de: Schalter offen
+              en: switch open
+            status:
+              de: "Leuchtende Lampen: {n}"
+              en: "Lamps shining: {n}"
+            short:
+              de: Kurzschluss! Ein Kabel ohne Lampe überbrückt die Lampen im anderen Zweig, und der Strom fließt an
+                ihnen vorbei.
+              en: Short circuit! A wire without a lamp bypasses the lamps in the other branch, and the current flows
+                past them.
+            taskLabel:
+              de: "Aufgabe:"
+              en: "Task:"
+            reset:
+              de: Neu anfangen
+              en: Start again
+            check:
+              de: Prüfen
+              en: Check
+            next:
+              de: Nächste Aufgabe
+              en: Next task
+            goalEine:
+              de: Baue einen Stromkreis, in dem eine Lampe leuchtet.
+              en: Build a circuit in which one lamp shines.
+            goalSchalter:
+              de: Baue einen Stromkreis, in dem du eine Lampe mit einem Schalter ein- und ausschaltest.
+              en: Build a circuit in which you switch a lamp on and off with a switch.
+            goalReihe:
+              de: Baue einen Stromkreis mit zwei Lampen in Reihe. Wird eine herausgeschraubt, geht auch die andere aus.
+              en: Build a circuit with two lamps in series. If one is unscrewed, the other goes out too.
+            goalParallel:
+              de: Baue einen Stromkreis mit zwei Lampen parallel. Wird eine herausgeschraubt, leuchtet die andere weiter.
+              en: Build a circuit with two lamps in parallel. If one is unscrewed, the other keeps shining.
+            goalJeSchalter:
+              de: Baue einen Stromkreis mit zwei Lampen, die du mit je einem eigenen Schalter einzeln ein- und ausschaltest.
+              en: Build a circuit with two lamps that you switch on and off separately, each with its own switch.
+            goalHaupt:
+              de: Baue einen Stromkreis mit zwei parallelen Lampen und einem Schalter, der beide gemeinsam ein- und
+                ausschaltet.
+              en: Build a circuit with two parallel lamps and one switch that switches both on and off together.
+        nojs:
+          de: "Diese Aufgaben stellt die Übung, jeweils mit ihrer Lösung. Das Schaltbrett hat sechs Plätze: 1 und
+            6 in der Hauptleitung, 2 bis 5 in zwei Zweigen. Die Punkte laufen, solange der Stromkreis geschlossen ist
+            und die Lampe leuchtet. - **Eine Lampe leuchtet:** Lampe auf Platz 1. - **Lampe mit Schalter:** Schalter
+            auf Platz 1, Lampe auf Platz 6."
+          en: "These are the tasks the exercise sets, each with its solution. The circuit board has six places:
+            1 and 6 in the main wire, 2 to 5 in two branches. The dots run as long as the circuit is closed and the
+            lamp shines. - **One lamp shines:** a lamp on place 1. - **Lamp with a switch:** a switch on place 1, a
+            lamp on place 6."

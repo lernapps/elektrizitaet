@@ -130,6 +130,60 @@ blocks:
       de: Übung
       en: Practice
     blocks:
+      - type: vue-component
+        component: SpannungMessen
+        props:
+          texts:
+            taskLabel:
+              de: "Aufgabe:"
+              en: "Task:"
+            reset:
+              de: Neu anfangen
+              en: Start again
+            check:
+              de: Prüfen
+              en: Check
+            next:
+              de: Nächste Aufgabe
+              en: Next task
+            decimal:
+              de: ","
+              en: .
+            board:
+              de: Stromkreis mit Batterie und zwei Widerständen und vier Punkten, an die du das Voltmeter anschließt
+              en: Circuit with a battery and two resistors and four points to connect the voltmeter to
+            node:
+              de: Punkt
+              en: Point
+            nodeFirst:
+              de: erster Anschluss des Voltmeters
+              en: first terminal of the voltmeter
+            nodeBoth:
+              de: zweiter Anschluss des Voltmeters
+              en: second terminal of the voltmeter
+            hint:
+              de: "Tippe nacheinander auf zwei Punkte: Dort schließt du das Voltmeter an. Die Leitung ist rot, wo die
+                Spannung hoch ist, und blau, wo sie niedrig ist."
+              en: "Tap two points one after the other: that is where you connect the voltmeter. The wire is red where
+                the voltage is high and blue where it is low."
+            voltmeter:
+              de: Das Voltmeter zeigt {v}.
+              en: The voltmeter shows {v}.
+            noVoltmeter:
+              de: Wähle zwei Punkte für das Voltmeter.
+              en: Choose two points for the voltmeter.
+            task:
+              de: Die Batterie hat {U} V. Schließe das Voltmeter so an, dass es {T} V zeigt.
+              en: The battery has {U} V. Connect the voltmeter so that it shows {T} V.
+        nojs:
+          de: "Diese Übung zeigt eine Batterie mit zwei Widerständen in Reihe und vier nummerierten Punkten: 1 vor dem
+            ersten Widerstand, 2 zwischen den Widerständen, 3 hinter dem zweiten, 4 in der unteren Leitung. Du schließt
+            ein Voltmeter an zwei Punkte an, bis es den Zielwert zeigt. Beispiel: Batterie 12 V, Widerstände 10 Ω und
+            30 Ω, Ziel 3 V. Lösung: das Voltmeter an Punkt 1 und 2, also parallel zum 10-Ω-Widerstand."
+          en: "This exercise shows a battery with two resistors in series and four numbered points: 1 before the first
+            resistor, 2 between the resistors, 3 after the second, 4 in the bottom wire. You connect a voltmeter to
+            two points until it shows the target. Example: battery 12 V, resistors 10 Ω and 30 Ω, target 3 V. Solution:
+            the voltmeter at points 1 and 2, that is, in parallel with the 10 Ω resistor."
       - type: single-choice
         id: sp-anschluss
         text:

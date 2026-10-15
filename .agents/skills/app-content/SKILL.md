@@ -43,8 +43,9 @@ Kapitel `schaltungen` (Schaltungen)
   `schaltungen/reihenschaltung`; `rs-ausfall`, `rs-wege`, `rs-reihenfolge`.
 - Ich kann eine Parallelschaltung erkennen und von der Reihenschaltung unterscheiden. Seite
   `schaltungen/parallelschaltung`; `ps-ausfall`, `ps-zuordnen`, `ps-haus`.
-- Ich kann Stromkreise planen und bauen, die eine vorgegebene Aufgabe erfüllen. Seite `schaltungen/bau-editor`;
-  Komponente `SchaltungBauen` (Ziele `eine`, `schalter`, `reihe`, `parallel`, `je-schalter`, `haupt`), `be-kurzschluss`.
+- Ich kann Stromkreise planen und bauen, die eine vorgegebene Aufgabe erfüllen. Komponente `SchaltungBauen`, auf den Seiten
+  verteilt: `schaltungen/schalter-schaltzeichen` (Ziele `eine`, `schalter`), `schaltungen/reihenschaltung` (`reihe`),
+  `schaltungen/parallelschaltung` (`parallel`, `je-schalter`, `haupt`; dort auch `be-kurzschluss`).
 
 Kapitel `alltag` (Strom im Alltag)
 - Ich kann Wärme-, Licht- und Magnetwirkung des Stroms an Geräten zuordnen. Seite `alltag/wirkungen`; `wk-zuordnen`,
@@ -54,30 +55,29 @@ Kapitel `alltag` (Strom im Alltag)
 
 Kapitel `groessen` (Größen im Stromkreis)
 - Ich kann die Stromstärke in A und mA angeben, am Amperemeter ablesen und das Amperemeter richtig einbauen. Seite
-  `groessen/stromstaerke`; `sa-einbau`, `sa-umrechnen`, `sa-rechnen` (`generated`).
+  `groessen/stromstaerke`; Komponente `StromMessen`, `sa-einbau`, `sa-umrechnen`, `sa-rechnen` (`generated`).
 - Ich kann Spannung als „Antrieb“ des Stroms erklären, in V angeben und das Voltmeter richtig anschließen. Seite
-  `groessen/spannung`; `sp-anschluss`, `sp-offen`, `sp-zuordnen`.
+  `groessen/spannung`; Komponente `SpannungMessen`, `sp-anschluss`, `sp-offen`, `sp-zuordnen`.
 - Ich kann erklären, wovon der Widerstand eines Drahts abhängt (Material, Länge, Querschnitt), und ihn in Ω angeben. Seite
-  `groessen/widerstand`; `wd-laenge`, `wd-kleiner`, `wd-ordnen`.
+  `groessen/widerstand`; Komponente `DrahtLabor`, `wd-laenge`, `wd-kleiner`, `wd-ordnen`.
 - Ich kann mit R = U / I eine fehlende Größe berechnen und eine Kennlinie lesen. Seite `groessen/ohmsches-gesetz`;
-  `og-strom`, `og-widerstand` (beide `generated`), `og-doppelt`.
+  Komponente `OhmLabor`, `og-strom`, `og-widerstand` (beide `generated`), `og-doppelt`.
 
 Kapitel `schaltungen-messen` (Schaltungen mit Messgeräten)
-- Ich kann Stromstärke und Spannung in einer Reihenschaltung mit bis zu drei Widerständen vorhersagen und berechnen. Seite
-  `schaltungen-messen/reihenschaltung`; `rr-strom`, `rr-teilspannung` (beide `generated`), `rr-ampere`.
+- Ich kann Stromstärke und Spannung in einer Reihenschaltung mit zwei Widerständen vorhersagen und berechnen. Seite
+  `schaltungen-messen/reihenschaltung`; Komponente `SchaltungVorhersage` (`reihe-strom`, `reihe-spannung`), `rr-strom`,
+  `rr-teilspannung` (beide `generated`), `rr-ampere`.
 - Ich kann Stromstärke und Spannung in einer Parallelschaltung (zwei Zweige) vorhersagen und berechnen. Seite
-  `schaltungen-messen/parallelschaltung`; `pr-gesamtstrom`, `pr-zweigstrom` (beide `generated`), `pr-spannung`.
-- Ich kann eine Schaltung mit Messgeräten und Widerständen bauen, die vorgegebene Werte erfüllt. Seite
-  `schaltungen-messen/bau-editor`; Komponente `SchaltungMessen` (Aufgabenarten `strom`, `spannung`, `parallel`),
-  `be-kurzschluss`.
+  `schaltungen-messen/parallelschaltung`; Komponente `SchaltungVorhersage` (`parallel-gesamt`, `parallel-zweig`),
+  `pr-gesamtstrom`, `pr-zweigstrom` (beide `generated`), `pr-spannung`.
 
 
 ## Content structure
 
 Jede Seite hat dieselben vier Sektionen in dieser Reihenfolge: `idee` (Die Idee: 2 bis 4 Sätze, Alltagsbezug),
 `merke` (Das merkst du dir: `definition`-Blöcke für Fachwörter, Tabelle oder Figur, Regeln als Liste), `beispiel`
-(ein `example`-Kasten) und `uebung` (3 Übungen, auf den Seiten `schaltungen/bau-editor` und `schaltungen-messen/bau-editor` die
-Komponente plus eine Frage). Eine Seite
+(ein `example`-Kasten) und `uebung` (3 Quizübungen und, wo die Kompetenz es verlangt, dazu eine Komponente als erste Übung: seit Klasse 7 und 8 hat jede Seite der
+Kapitel `groessen` und `schaltungen-messen` eine; die Seiten von Klasse 5 und 6 haben eine für das Bauen). Eine Seite
 umfasst eine Kompetenz und passt auf einen Bildschirm voll Text. Kapitel haben 2 bis 4 Seiten.
 
 
@@ -118,21 +118,34 @@ diagram, series circuit, parallel circuit, short circuit, fuse, conductor, insul
   (die Einheit ist eine Sprachtabelle). Jede Aufgabe hat zwei typische Fehler mit Rückmeldung („R / U statt U / R“, „nur den
   ersten Widerstand genommen“, „Parallelschaltung gerechnet“, „mA nicht umgerechnet“), einen Tipp und die Schritte mit Formel.
   Beispiel: `src/groessen/ohmsches-gesetz.yaml`, `og-strom`.
-- **Bauen mit Messgeräten** (Kompetenz: Schaltungen mit vorgegebenen Werten bauen): Komponente `SchaltungMessen`
-  (`src/components/SchaltungMessen.vue`, Logik `SchaltungMessen.ts`). Vier feste Plätze (1 = `a` und 4 = `b` in der Hauptleitung,
-  2 = `p` und 3 = `q` die zwei Zweige einer Parallelschaltung); ein Platz ist ein Widerstand (10, 20, 30, 50 oder 100 Ω) oder
-  leer (Draht). Werkzeuge: Widerstand, Draht, Amperemeter (in Reihe zum Platz) und Voltmeter (parallel zum Platz), jeweils per
-  Tippen auf einen Platz. Der Rechner (`measure`) kennt Gleichstrom, ideale Quelle und ideale Messgeräte: ein Zweig ohne
-  Widerstand überbrückt den anderen, ohne Widerstand im Kreis ist es ein Kurzschluss (keine Anzeige). Aufgaben entstehen aus
-  einem Startwert (`generate(seed, props)`, Quelle 6, 9 oder 12 V, Widerstände aus `STOCK`); das Ziel wird aus einer echten Lösung
-  gerechnet und muss auf drei (Ampere) bzw. zwei (Volt) Stellen genau sein. Die drei Arten: `strom` (Amperemeter in der
-  Hauptleitung zeigt einen Strom), `spannung` (Voltmeter an einem Widerstand zeigt eine Spannung), `parallel` (zwei Zweige mit
-  Widerstand, Amperemeter in der Hauptleitung). Geprüft wird, was die Messgeräte anzeigen (`check`), nicht der Aufbau: mehrere
-  Lösungen gelten. Eine neue Aufgabenart braucht: einen Eintrag in `Kind`, `draw` und `check` (Logik), einen Test, den Text
-  `task…` in den `texts` der Seite (beide Sprachen) und einen Eintrag in `kinds`. Sie kann nicht: Wechselstrom, Innenwiderstände,
-  nicht-ohmsche Bauteile, mehr als drei Widerstände, Leistung, Helligkeit.
+- **Sehen und messen** (Kompetenz: Größen ablesen, Messgeräte richtig anschließen, Zusammenhänge erkennen): Komponenten, in
+  denen man den Stromkreis sieht, statt Zahlen zu tippen. Gemeinsam ist ihnen die Darstellung: der Strom läuft als Punkte durch
+  die Leitungen, dichter und schneller bei größerer Stromstärke (`Fluss.vue`, Aussehen in `Fluss.ts`, bei reduzierter Bewegung
+  stehen die Punkte still und tragen die Stärke noch in ihrer Dichte); Messgeräte haben Zeiger und Zahl (`Zeiger.vue`); die
+  Zahlen jeder Aufgabe kommen aus einem Startwert, Ziele sind runde Werte und werden aus einer echten Lösung gerechnet; geprüft
+  wird, was die Messgeräte zeigen, nicht der Aufbau. Eine Komponente je Kompetenz:
+  - `StromMessen` (`groessen/stromstaerke`): ein Amperemeter an einer von drei Stellen einbauen (obere oder untere Leitung:
+    richtig, quer über der Batterie: Kurzschluss), dann den Widerstand wählen, bis der Zielstrom fließt.
+  - `SpannungMessen` (`groessen/spannung`): ein Voltmeter an zwei der vier Punkte eines Kreises mit zwei Widerständen
+    anschließen, bis es den Zielwert zeigt; die Leitungen sind nach der Höhe der Spannung rot bis blau gefärbt.
+  - `DrahtLabor` (`groessen/widerstand`): Länge (1 bis 6 m) und Dicke (0,1 bis 0,5 mm²) eines Drahts bei 3 V einstellen, bis der
+    Strom mindestens k-mal so groß ist wie am Anfang; der Draht wird so lang und dick gezeichnet, wie er eingestellt ist.
+  - `OhmLabor` (`groessen/ohmsches-gesetz`): Spannung einstellen (0 bis 12 V in Schritten von 1,5 V), Messpunkte setzen, die ein
+    Diagramm füllen, und den unbekannten Widerstand angeben (mindestens drei Punkte, Abweichung höchstens 0,5 Ω).
+  - `SchaltungVorhersage` (`schaltungen-messen/reihenschaltung` und `parallelschaltung`): erst eine Zahl vorhersagen (Aufgabenarten
+    `reihe-strom`, `reihe-spannung`, `parallel-gesamt`, `parallel-zweig`), dann einschalten: Punkte laufen, das Messgerät zeigt
+    den Wert, die Rückmeldung nennt ihn.
+  Jede Komponente liegt als `<Name>.vue`, `<Name>.ts` (Logik: `generate`, `check`, `solution`, `wrong`) und `<Name>.test.ts` in
+  `src/components/` (der Build erlaubt nur diese Namensform). Gemeinsame Hilfen (Zufall, Runden, Zahlenformat mit Dezimalzeichen
+  der Sprache, Texte füllen, Aussehen des Flusses) stehen in `Fluss.ts`, die des Zeigers in `Zeiger.ts`. Die Props einer
+  Komponente sind einfache Typen (`string`, `number`, Literal-Unions im Text von `defineProps`, kein `null`). Die Komponenten
+  können nicht: Wechselstrom, Innenwiderstände, nicht-ohmsche Bauteile, mehr als zwei Widerstände (außer dem Draht), Leistung. Eine
+  neue Aufgabenart braucht: einen Eintrag in `generate`, `check` und der Darstellung, einen Test, den Text `task…` in den `texts`
+  der Seite (beide Sprachen).
 - **Bauen** (Kompetenz: Schaltungen planen): Komponente `SchaltungBauen` (`src/components/SchaltungBauen.vue`, Logik
-  `SchaltungBauen.ts`). Sechs Aufgaben (Ziele `eine`, `schalter`, `reihe`, `parallel`, `je-schalter`, `haupt`). Grafisches Schaltbrett (SVG) mit sechs festen Plätzen: zwei in der Hauptleitung (Platz 1 = `m1`,
+  `SchaltungBauen.ts`), auf den Seiten `schalter-schaltzeichen`, `reihenschaltung` und `parallelschaltung` jeweils mit den Zielen
+  dieser Seite (Prop `goals`); der Strom läuft als Punkte (`flows` verteilt ihn auf Hauptleitung und Zweige), leuchtende Lampen
+  haben einen Schein. Sechs Aufgaben (Ziele `eine`, `schalter`, `reihe`, `parallel`, `je-schalter`, `haupt`). Grafisches Schaltbrett (SVG) mit sechs festen Plätzen: zwei in der Hauptleitung (Platz 1 = `m1`,
   Platz 6 = `m2`) und zwei je senkrechtem Zweig einer Parallelschaltung (Plätze 2 bis 5 = `p1a`, `p1b`, `p2a`, `p2b`). Man
   wählt Kabel, Lampe oder Schalter und tippt auf einen Platz; im Modus „Testen“ legt man Schalter um und schraubt Lampen
   heraus. Ein leerer Platz ist ein Kabel; sind beide Zweige ganz leer, entfällt die Parallelschaltung. Der Simulator prüft pro
@@ -148,7 +161,7 @@ Eine Datendatei in `src/data/` gibt es noch nicht; sobald Stoffe oder Bauteile i
 
 Schaltbilder sind eigene SVG-Zeichnungen in `src/images/` (`stromkreis`, `reihenschaltung`, `parallelschaltung`,
 `schaltzeichen`), schwarze Linien auf weißem Grund. Seit Klasse 7 und 8 auch `amperemeter`, `voltmeter`, `kennlinie`, `reihe-messen`, `parallel-messen`: Messgeräte als Kreis mit dem
-Buchstaben A oder V (Symbol, kein Wort), Widerstände als Rechteck, die Kennlinie mit den Achsenzeichen I und U und Ziffern 1, 2
+Buchstaben A oder V (Symbol, kein Wort); die Batterie mit langer dünner Platte oben (Plus) und kurzer dicker darunter (Minus), Widerstände als Rechteck, die Kennlinie mit den Achsenzeichen I und U und Ziffern 1, 2
 für gleiche Schritte. Die Bilder enthalten **keine Wörter**, nur Ziffern (1, 2, 3 …), damit sie in
 beiden Sprachen gelten; die Legende („Beschriftung: 1 Batterie, 2 Lampe …“) steht in der Bildunterschrift, je Sprache. In der
 Parallelschaltung gibt es keine Querleitung, die die Zweige überbrückt, Schaltzeichen nach der üblichen Norm
@@ -185,6 +198,10 @@ das Lehrplanzitat prüfen (Bayern, Gymnasium, Jahrgangsstufe 9 oder 10, nicht ge
 - Eine `unit` in `compare.number` ist eine Sprachtabelle `{ de: A, en: A }`, kein String.
 - Die Props einer Komponente nutzen Literal-Unions im Text von `defineProps` (`("strom" | "spannung")[]`), keinen importierten
   Typ-Alias (`vue-component-props-valid`).
+- `src/components/` enthält nur `<Name>.vue`, `<Name>.ts` und `<Name>.test.ts` (PascalCase, jede `.vue` mit Test): gemeinsame Hilfen
+  gehören in die `.ts` einer Komponente, die die anderen importieren.
+- Der Explainer schreibt keine Weiterleitungen: eine entfernte Seite (hier `schaltungen/bau-editor`) gibt danach 404; der Themenpfad
+  im Katalogeintrag muss dann in demselben Zug ersetzt werden.
 - Vor dem Commit `npx vp fmt src`, sonst scheitert die Formatprüfung.
 
 - Kommas in YAML-Flow-Listen (`[a, b]`, `{ left: a, right: b }`) trennen Zellen und Felder: Texte mit Komma in Anführungszeichen.
