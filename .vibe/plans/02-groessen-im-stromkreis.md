@@ -48,6 +48,9 @@ sie und wenden sie auf Reihen- und Parallelschaltungen an. Davor konnten sie Str
 - Kapitel heißen nach dem Thema („Größen im Stromkreis“, „Schaltungen mit Messgeräten“), nicht „Gleichstrom“: die Größen gelten
   auch für Wechselstrom. Die Einleitung und der Leitfaden sagen „Gleichstrom“; Wechselstrom kommt später als eigenes Kapitel
   `wechselstrom` hinter diesen (Vorschlag bestätigt).
+- Änderung nach der Vorschau (Wunsch der Auftraggeberin bzw. des Auftraggebers): Der separate „Bau-Editor mit Messgeräten“ und
+  seine Texteingaben entfallen. Die Interaktion wird sichtbar und steckt in den Übungen jeder Seite: ein gezeichneter
+  Stromkreis, in dem man Strom, Spannung und Messgeräte sieht, mit Aufgaben, deren Werte sich ändern und die geprüft werden.
 - Erweiterung als Kapitel „Größen im Stromkreis“ für Klasse 7 und 8 (Wunsch der Auftraggeberin bzw. des Auftraggebers).
 
 <!--
@@ -154,6 +157,8 @@ turn, in plain words. Do not ask what you can derive from earlier answers or fro
 - Bau-Editor: „Ohne den Editor ist es lahm. Der sollte auch Übungen mit Variablen unterstützen, also so, dass man sinnvolle
   Werte nutzt, diese aber von Übung zu Übung variiert und dennoch geprüft werden können.“
 - Zum Checkpoint „Recherche“ (Kompetenzen, Kapitel, Editor mit Variablen, Quellen): „ich finde das so gut.“
+- Nach der Vorschau: „die Interaktivität ist überhaupt nicht visuell. so sind die Übungen überhaupt nicht wertvoll“; „ich finde den
+  separaten Bau-Editor ehrlicherweise nicht hilfreich: Ich würde das gerne in die Übungen integrieren“.
 - Zum Checkpoint „Plan“ (Wunsch: später Wechselstrom ergänzen können; Vorschlag mit Themennamen): „Dein Vorschlag ist ok. leg los.“
 - Lehrplan: „nimm Bayern als Lehrplanzitat, aber im Inhalt sollte das nicht auftauchen.“
 
@@ -242,6 +247,20 @@ something, choose, mark it "(guess)" under "Key decisions" and go on.
 - [x] The content guide describes the app as it is now: its competencies, chapters and patterns, and its procedure
       for the next increment (`app-content-matches`). Lehrplanzitat Bayern steht im Abschnitt „Curriculum“.
 - [x] Alle Texte in Deutsch und Englisch, beide vollständig.
+- [ ] Umbau (Entwurf, vom Auftraggeber noch nicht bestätigt): eine gemeinsame, gezeichnete Ansicht des Stromkreises
+      (`StromkreisSicht`: Strom als laufende Punkte, Spannung als Höhenverlauf um den Kreis, Messgeräte mit Zeiger und Zahl,
+      Widerstände als Zickzack je nach Wert) und je Seite eine Übung damit:
+      - `groessen/stromstaerke`: Amperemeter in den Kreis ziehen (richtig: in Reihe), Strom ablesen, Widerstand so wählen, dass
+        ein Zielstrom fließt.
+      - `groessen/spannung`: Voltmeter parallel anschließen, Spannung ablesen, Spannungsverlauf sehen.
+      - `groessen/widerstand`: Draht nach Material, Länge und Dicke wählen und sehen, wie der Strom sich ändert.
+      - `groessen/ohmsches-gesetz`: U und R einstellen, Messpunkte setzen, die Kennlinie wächst; Aufgabe mit neuen Werten.
+      - `schaltungen-messen/reihenschaltung` und `parallelschaltung`: erst vorhersagen, dann messen: Werte eintragen, dann
+        zeigt der Kreis, was gemessen wird.
+      Jede Übung zieht ihre Zahlen aus einem Startwert und prüft, was die Messgeräte zeigen. Die Seite
+      `schaltungen-messen/bau-editor` und die Komponente `SchaltungMessen` entfallen (Kompetenz 7 steckt dann in den Übungen der
+      Seiten 5 und 6). Der Bau-Editor aus Klasse 5 und 6 (`schaltungen/bau-editor`) bleibt, bis die Auftraggeberin bzw. der
+      Auftraggeber anders entscheidet.
 - [ ] The content guide describes the app as it is now: its competencies, chapters and patterns, and its procedure
       for the next increment (`app-content-matches`).
 - [x] `npx lernapps check` passes.
