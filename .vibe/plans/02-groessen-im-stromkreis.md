@@ -316,22 +316,47 @@ runs and increments. It stays in the creator's repo.
 
 ### Phases reached
 
-<!-- The last phase you completed and the checkpoints the creator passed. Example: "commit; confirmed, published". -->
+Stand vor der Veröffentlichung (Pull Request #3 offen, Vorschau mehrfach vom Ersteller geprüft): Code abgeschlossen, Commit begonnen.
+Bestätigt: Recherche, Plan und Inhaltsmethode, Umbau der Interaktion, Ersetzen des alten Bau-Editors. Noch offen: Veröffentlichung,
+Listing.
 
 ### Failed checks
 
-<!--
-Each check that failed, with its rule id and how often. Example: "`no-request-before-click`: 2".
-Leave out the failed pre-push runs: the hook counts them in the front matter.
--->
+- `checks-pass`: 1 (Typfehler im Test der ersten Messen-Komponente, `vue-tsc`; der Commit lief trotzdem durch, die volle Prüfung
+  meldete ihn danach).
+- `explainer-content-valid`: 6 beim Bauen (Prop-Typ als importierter Alias, Prop mit `null`, Text `resistor` ohne Feld in der Komponente,
+  Übersetzung der Einheit fehlte, Einrückung in `chapter.yaml`, Hilfsdateien in `src/components/` ohne zugehörige Komponente und Test).
 
 ### Creator turns after the plan
 
-<!-- How many messages the creator sent after confirming the plan, and what each was about. Target: at most 3. -->
+7 Nachrichten nach der Bestätigung des Plans, Ziel höchstens 3 verfehlt: (1) Ja zur Anweisung der Tooling-Sitzung (Update, Pull Request);
+(2) die Interaktivität sei nicht visuell, die Übungen deshalb nicht wertvoll; (3) der separate Bau-Editor sei nicht hilfreich, die
+Interaktion solle in die Übungen; (4) Ersetzen des alten Bau-Editors ist in Ordnung; (5) „A“; (6) Rückmeldung zur Vorschau: Bauen,
+dann Strom einschalten und prüfen, lange Beschreibung unter der Übung, unklare Bauaufgaben, „Lösung“ vor der Antwort; (7) Bildschirmfoto
+einer richtig gebauten Schaltung, die als falsch bewertet wurde.
+Ursache der Nachrichten 2 bis 7: Die Interaktion wurde nach Wunsch „Bauen“ geplant (Rechner mit Kästchen und Texteingabe), ohne vorher ein
+Bild davon zu zeigen; der Ersteller sah sie erst in der Vorschau.
 
 ### Where I had to guess
 
-<!--
-Each place where this plan, a skill, the content guide, a message or the creator's answers did not tell you what to
-do, and what you chose. Write "None" if there was none.
--->
+- Reihen- und Parallelschaltung üben „erst vorhersagen, dann messen“ (nicht ausdrücklich bestätigt).
+- Typische Werte im Text (Föhn etwa 9 A, Taschenlampenlämpchen etwa 200 mA) stehen nicht in den geprüften Quellen.
+- Das ohmsche Gesetz steht im zitierten Lehrplan nicht ausdrücklich; aufgenommen, weil andere Länder es in diesen Jahrgängen behandeln.
+- Wasserbild als Modell für Strom, Spannung und Widerstand, mit dem Hinweis auf seine Grenzen.
+- Die Batterie ist in den neuen und geänderten Bildern einheitlich gezeichnet (lange dünne Platte oben als Plus); die älteren Bilder
+  hatten sie vertauscht.
+
+Für den nächsten Agenten (Beobachtungen aus der Vorschau; die erste hat der Ersteller zur Aufnahme in die Retrospektive vorgegeben):
+- **Zu strenge Prüfung:** Die Aufgabe „Baue einen Stromkreis mit einer Lampe“ lehnte eine Schaltung mit Lampe und Schalter ab, obwohl die
+  Lampe leuchtete (`meets("eine")` verlangte null Schalter, der Text sagt das nicht). Geprüft werden soll das, was der Aufgabentext
+  sagt, und die Rückmeldung soll den Grund nennen: Das Template meldet nur „Leider nicht richtig.“, deshalb zeigt `SchaltungBauen` nach dem
+  Prüfen selbst, was fehlt (`diagnose`). Die Prüfung jeder neuen Aufgabe an den Beispielen testen, die Lernende wirklich bauen.
+- **Template:** Unter jeder Quizübung steht ein aufklappbares „Lösung“ schon vor der Antwort, und `generated`-Aufgaben zeigen vorab drei
+  Beispielaufgaben mit „Tipp“ und „Lösung“. Das ist didaktisch ungünstig und aus dem Inhalt nicht zu ändern; es gehört als Issue zu
+  `lernapps/app-templates` (Text: Lösungen erst nach dem Beantworten zeigen, ohne JavaScript dürfen sie bleiben).
+- **Template:** `defineOptions({ nojs: "caption" })` lässt den `nojs`-Text als lange Beschreibung unter der Übung stehen, auch mit
+  JavaScript. Ohne die Option ersetzt die laufende Komponente ihn. Das steht im Skill als Möglichkeit, nicht als Vorsicht.
+- **Template:** Weiterleitungen gibt es nicht. Eine entfernte Seite gibt 404, und ein Katalogeintrag mit ihrem Themenpfad bricht; der
+  Eintrag muss im selben Zug geändert werden.
+- **Ablauf:** Vor dem Bauen einer Interaktion ein Bild oder einen Ablauf zeigen (Bauen, einschalten, prüfen; was man sieht). Ein Rechner mit Kästchen und
+  Texteingabe ist keine Visualisierung.

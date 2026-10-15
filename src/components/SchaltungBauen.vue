@@ -4,6 +4,7 @@ import Fluss from "./Fluss.vue";
 import {
   SLOTS,
   check,
+  diagnose,
   emptySlots,
   flows,
   fromSlots,
@@ -35,6 +36,11 @@ interface Texts {
   status: string;
   statusOff: string;
   short: string;
+  whyLamps: string;
+  whySwitches: string;
+  whyShort: string;
+  whyDark: string;
+  whyBehaviour: string;
   taskLabel: string;
   reset: string;
   check: string;
@@ -75,6 +81,8 @@ const seed = ref(1);
 const slots = ref<Slots>(emptySlots());
 const tool = ref<Tool>("lamp");
 const powered = ref(false);
+// What is still missing after the last check; cleared by the next change.
+const reason = ref<string | null>(null);
 
 const task = computed(() => generate(seed.value, props));
 const simple = computed(() => ["eine", "schalter", "reihe"].includes(task.value.goal));
@@ -128,6 +136,7 @@ const label = (id: SlotId) => {
 };
 
 function press(id: SlotId) {
+  reason.value = null;
   const part = slots.value[id];
   // With the power on, a tap tests: it flips a switch and unscrews or screws in a lamp.
   if (powered.value) {
@@ -142,6 +151,7 @@ function press(id: SlotId) {
       tool.value === "wire" ? null : tool.value === "lamp" ? { kind: "lamp" } : { kind: "switch", closed: true };
 }
 const reset = () => {
+  reason.value = null;
   slots.value = emptySlots();
   powered.value = false;
 };
@@ -151,6 +161,14 @@ const next = () => {
 };
 const verify = () => {
   powered.value = true;
+  const why = diagnose(task.value.goal, circuit.value);
+  const t = props.texts;
+  reason.value =
+    why === null
+      ? null
+      : { lamps: t.whyLamps, switches: t.whySwitches, short: t.whyShort, dark: t.whyDark, behaviour: t.whyBehaviour }[
+          why
+        ];
   emit("answered", { correct: check(task.value, circuit.value) });
 };
 </script>
@@ -171,7 +189,7 @@ const verify = () => {
       <button type="button" :aria-pressed="tool === 'wire'" :disabled="powered" @click="tool = 'wire'">
         {{ texts.toolWire }}
       </button>
-      <button type="button" class="bau-power" :aria-pressed="powered" @click="powered = !powered">
+      <button type="button" class="bau-power" :aria-pressed="powered" @click="((powered = !powered), (reason = null))">
         {{ powered ? texts.powerOff : texts.powerOn }}
       </button>
     </div>
@@ -245,6 +263,7 @@ const verify = () => {
 
     <p class="bau-status" role="status">{{ status }}</p>
     <p v-if="powered && sim.short" class="bau-short" role="status">{{ texts.short }}</p>
+    <p v-if="reason !== null" role="status">{{ reason }}</p>
     <div class="bau-bar">
       <button type="button" @click="verify()">{{ texts.check }}</button>
       <button type="button" @click="reset()">{{ texts.reset }}</button>

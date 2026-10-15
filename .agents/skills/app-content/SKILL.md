@@ -204,6 +204,9 @@ das Lehrplanzitat prüfen (Bayern, Gymnasium, Jahrgangsstufe 9 oder 10, nicht ge
   im Katalogeintrag muss dann in demselben Zug ersetzt werden.
 - Komponenten setzen **kein** `defineOptions({ nojs: "caption" })`: sonst bleibt der `nojs`-Text als lange Beschreibung unter der Übung
   stehen. Ohne diese Option ersetzt die laufende Komponente ihn.
+- Die Prüfung einer Bauaufgabe urteilt nur über das, was ihr Text verlangt: die Aufgabe `eine` erlaubt zum Beispiel einen Schalter im
+  Kreis, solange die Lampe leuchtet. Nach dem Prüfen sagt `diagnose` (Text `why…`), was fehlt: Zahl der Lampen, Zahl der Schalter,
+  Kurzschluss, etwas dunkel (offener Schalter) oder Verhalten; das Template meldet selbst nur „Leider nicht richtig.“.
 - Messen und Bauen folgen der Reihenfolge „bauen, dann Strom einschalten, dann prüfen“: Vor dem Einschalten fließt nichts, leuchtet
   nichts und zeigt kein Messgerät etwas, Kurzschluss-Warnungen kommen erst mit dem Strom; „Prüfen“ schaltet selbst ein. Beim Bauen
   wählt man ein Bauteil und tippt auf einen Platz; das Schalter-Werkzeug klappt einen eingebauten Schalter auf und zu, bei

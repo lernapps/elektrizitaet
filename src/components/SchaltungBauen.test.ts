@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vite-plus/test";
 import {
   check,
+  diagnose,
   emptySlots,
   flows,
   fromSlots,
@@ -148,5 +149,38 @@ describe("flows", () => {
   it("treats two bare branches as one wire", () => {
     const f = run((s) => (s.m1 = { kind: "lamp" }));
     expect(f).toEqual({ total: 1, first: 1, second: 0 });
+  });
+});
+
+describe("one lamp", () => {
+  it("accepts a switch in the loop when the lamp shines", () => {
+    expect(meets("eine", [shut, lamp])).toBe(true);
+  });
+  it("rejects a switch that is open, so that the lamp stays dark", () => {
+    expect(meets("eine", [open, lamp])).toBe(false);
+  });
+  it("rejects a loop without a lamp", () => {
+    expect(meets("eine", [])).toBe(false);
+    expect(meets("eine", [shut])).toBe(false);
+  });
+});
+
+describe("diagnose", () => {
+  it("says nothing for a circuit that meets the goal", () => {
+    for (const goal of GOALS) expect(diagnose(goal, solution({ goal }))).toBeNull();
+  });
+  it("names the wrong number of lamps and switches", () => {
+    expect(diagnose("reihe", [lamp])).toBe("lamps");
+    expect(diagnose("schalter", [lamp])).toBe("switches");
+    expect(diagnose("reihe", [lamp, lamp, shut])).toBe("switches");
+    expect(diagnose("reihe", [lamp, lamp, lamp])).toBe("lamps");
+  });
+  it("names a short circuit and a dark lamp", () => {
+    expect(diagnose("parallel", [{ kind: "parallel", branches: [[lamp], []] }, lamp])).toBe("short");
+    expect(diagnose("parallel", [{ kind: "parallel", branches: [[lamp, lamp], []] }])).toBe("short");
+    expect(diagnose("eine", [open, lamp])).toBe("dark");
+  });
+  it("names a circuit with the right parts that behaves differently", () => {
+    expect(diagnose("reihe", [{ kind: "parallel", branches: [[lamp], [lamp]] }])).toBe("behaviour");
   });
 });

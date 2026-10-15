@@ -320,6 +320,26 @@ blocks:
             statusOff:
               de: Der Strom ist aus.
               en: The power is off.
+            whyLamps:
+              de: "Die Anzahl der Lampen stimmt noch nicht. Lies die Aufgabe noch einmal: Wie viele Lampen sollen es
+                sein?"
+              en: "The number of lamps is not right yet. Read the task again: how many lamps should there be?"
+            whySwitches:
+              de: "Die Anzahl der Schalter stimmt noch nicht. Lies die Aufgabe noch einmal: Wie viele Schalter sollen
+                es sein?"
+              en: "The number of switches is not right yet. Read the task again: how many switches should there be?"
+            whyShort:
+              de: "Es gibt einen Kurzschluss: Ein Weg ohne Lampe überbrückt die Lampen. Setze in jeden Zweig ein Bauteil."
+              en: "There is a short circuit: a path without a lamp bypasses the lamps. Put a part into each branch."
+            whyDark:
+              de: Es leuchtet nicht alles, was leuchten soll. Ist ein Schalter offen oder eine Lampe herausgeschraubt?
+              en: Not everything that should shine does. Is a switch open or a lamp unscrewed?
+            whyBehaviour:
+              de:
+                "Die Bauteile sind da, aber die Schaltung verhält sich noch nicht wie verlangt. Teste sie bei eingeschaltetem
+                Strom: Schraube eine Lampe heraus und lege Schalter um."
+              en: "The parts are there, but the circuit does not behave as asked yet. Test it with the power on: unscrew
+                a lamp and flip the switches."
         nojs:
           de: Diese Aufgaben stellt die Übung. Das Schaltbrett ist ein Stromkreis mit zwei Plätzen. Du setzt Bauteile
             ein, schaltest den Strom ein und prüfst. - **Eine Lampe:** Lampe auf einen der beiden Plätze, der andere
