@@ -52,7 +52,14 @@ Mark a choice you made without asking the creator with "(guess)", and list it in
 
 ## Notes
 
-- Lehrplan: noch nicht geprüft (Land und Schulform offen, siehe Answers).
+- Lehrplan (Kandidat, vom Auftraggeber noch nicht bestätigt): „Fachlehrplan Physik 8 – Phänomene experimentell untersuchen
+  und modellieren“, Gymnasium Bayern, Jahrgangsstufe 8, ISB, LehrplanPLUS,
+  https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/8/physik (geöffnet 2026-10-15), Lernbereich 1 „Elektrischer
+  Strom“, ca. 14 Std.: Stromkreismodell, Stromstärke, Spannung, Widerstand (Definitionsgleichung), Kennlinien, Reihen- und
+  Parallelschaltung (höchstens drei Widerstände), Kurzschluss, Haushaltsinstallation. Das ohmsche Gesetz steht dort nicht
+  ausdrücklich (nur „Ohm'scher und nicht-Ohm'scher Widerstand“).
+- Weitere Länder: nicht geöffnet. Sachsen (Klasse 7/8, Stromstärke und Spannung, 18 Std.), Baden-Württemberg und NRW
+  (Heft 3411, Gymnasium 2019) nur in Suchtreffern gesehen, nicht geprüft.
 - Vorläufige Kompetenzen (Entwurf, noch nicht bestätigt), Kapitel `groessen` (Größen im Stromkreis):
   Stromstärke und Amperemeter; Spannung und Voltmeter; Widerstand; ohmsches Gesetz (U = R · I); Reihen- und
   Parallelschaltung mit Größen; Bau-Editor mit Messgeräten.
