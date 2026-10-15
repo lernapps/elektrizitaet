@@ -161,28 +161,19 @@ blocks:
               de: Reihenschaltung (Wikipedia)
               en: Reihenschaltung (German Wikipedia)
             url: https://de.wikipedia.org/wiki/Reihenschaltung
-      - type: ordering
-        id: rs-reihenfolge
+      - type: true-false
+        id: rs-schalterplatz
         text:
-          de:
-            Bringe die Bauteile in die Reihenfolge, in der der Strom sie in einer Reihenschaltung durchläuft, beginnend
-            an der Batterie.
-          en: Put the parts in the order in which the current passes through them in a series circuit, starting at the
-            battery.
-        items:
-          - de: Batterie
-            en: Battery
-          - de: Schalter
-            en: Switch
-          - de: Lampe 1
-            en: Lamp 1
-          - de: Lampe 2
-            en: Lamp 2
+          de: In einer Reihenschaltung mit Batterie, Schalter und zwei Lampen ist es egal, ob der Schalter vor, zwischen
+            oder hinter den Lampen sitzt.
+          en: In a series circuit with a battery, a switch and two lamps it does not matter whether the switch sits
+            before, between or after the lamps.
+        answer: true
         explanation:
-          de: In einer Reihenschaltung läuft der Strom nacheinander durch alle Bauteile und am Ende zurück zur Batterie.
-            Die Reihenfolge von Schalter und Lampen ändert nichts daran, dass alle zusammen an- und ausgehen.
-          en: In a series circuit the current runs through all parts one after the other and back to the battery at
-            the end. The order of the switch and the lamps does not change that they all go on and off together.
+          de: "Der Strom läuft nacheinander durch alle Bauteile. Wo der Schalter sitzt, ändert nichts: Öffnest du ihn,
+            ist der Kreis unterbrochen, und alle Lampen gehen aus."
+          en: "The current runs through all parts one after the other. It does not matter where the switch sits: when
+            you open it, the circuit is broken and all lamps go out."
         links:
           - title:
               de: Reihenschaltung (Wikipedia)

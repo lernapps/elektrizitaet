@@ -204,6 +204,13 @@ das Lehrplanzitat prüfen (Bayern, Gymnasium, Jahrgangsstufe 9 oder 10, nicht ge
   im Katalogeintrag muss dann in demselben Zug ersetzt werden.
 - Komponenten setzen **kein** `defineOptions({ nojs: "caption" })`: sonst bleibt der `nojs`-Text als lange Beschreibung unter der Übung
   stehen. Ohne diese Option ersetzt die laufende Komponente ihn.
+- **Eindeutigkeit der Prüfung (systematische Regel):** Eine Übung prüft die Eigenschaft, die ihr Text verlangt, nicht eine einzige
+  Musterlösung. Vor jeder neuen Übung fragen: Gibt es andere Antworten, die der Text ebenso erlaubt? Dann (1) die Prüfung auf
+  Verhalten oder Eigenschaft umstellen (Bauaufgaben, Mess- und Vorhersageübungen tun das und werden mit mehreren gleichwertigen Lösungen
+  getestet), (2) die Aufgabe so umformulieren, dass es genau eine Antwort gibt, oder (3) den Fragetyp wechseln. `ordering` nur, wenn
+  die Reihenfolge eindeutig ist (nach Größe, nach Zeit), nicht bei Bauteilen in Reihe: dort ist die Reihenfolge egal und wird als
+  Wahr-oder-falsch-Aussage geübt. `matching` nur mit je genau einem passenden Partner; zwei Übungen dürfen sich nicht widersprechen
+  (die Glühlampe ist Wärmewirkung, die LED Lichtwirkung). Ein Test je Bauziel prüft mehrere gleichwertige Aufbauten.
 - Die Prüfung einer Bauaufgabe urteilt nur über das, was ihr Text verlangt: die Aufgabe `eine` erlaubt zum Beispiel einen Schalter im
   Kreis, solange die Lampe leuchtet. Nach dem Prüfen sagt `diagnose` (Text `why…`), was fehlt: Zahl der Lampen, Zahl der Schalter,
   Kurzschluss, etwas dunkel (offener Schalter) oder Verhalten; das Template meldet selbst nur „Leider nicht richtig.“.

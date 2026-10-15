@@ -351,6 +351,13 @@ Für den nächsten Agenten (Beobachtungen aus der Vorschau; die erste hat der Er
   Lampe leuchtete (`meets("eine")` verlangte null Schalter, der Text sagt das nicht). Geprüft werden soll das, was der Aufgabentext
   sagt, und die Rückmeldung soll den Grund nennen: Das Template meldet nur „Leider nicht richtig.“, deshalb zeigt `SchaltungBauen` nach dem
   Prüfen selbst, was fehlt (`diagnose`). Die Prüfung jeder neuen Aufgabe an den Beispielen testen, die Lernende wirklich bauen.
+- **Systematisches Modellierungsproblem (Ersteller):** Mehrere Übungen prüften eine einzige Musterlösung, obwohl der Text mehr erlaubt:
+  `eine` Lampe lehnte einen Schalter ab, `reihe` und `parallel` ebenso; `rs-reihenfolge` (ordering) verlangte eine feste Reihenfolge von
+  Schalter und Lampen, obwohl sie egal ist; die Tabelle ordnete die Glühlampe der Lichtwirkung zu, die Frage `wk-gluehlampe` der
+  Wärmewirkung. Behoben: Prüfung auf Verhalten umgestellt, `rs-reihenfolge` durch eine Wahr-oder-falsch-Aussage ersetzt, Tabelle und Zuordnung
+  vereinheitlicht, Test mit gleichwertigen Aufbauten je Bauziel, Regel „Eindeutigkeit der Prüfung“ im Inhaltsleitfaden. Das Skill
+  `lernapps-exercise-patterns` sollte die Frage „Welche anderen Antworten erlaubt der Text?“ vor jedem Muster stellen, und die Prüfung der
+  App sollte Übungen mit mehreren gleichwertigen Antworten melden können (z. B. `ordering` über austauschbaren Bauteilen).
 - **Template:** Unter jeder Quizübung steht ein aufklappbares „Lösung“ schon vor der Antwort, und `generated`-Aufgaben zeigen vorab drei
   Beispielaufgaben mit „Tipp“ und „Lösung“. Das ist didaktisch ungünstig und aus dem Inhalt nicht zu ändern; es gehört als Issue zu
   `lernapps/app-templates` (Text: Lösungen erst nach dem Beantworten zeigen, ohne JavaScript dürfen sie bleiben).

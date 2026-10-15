@@ -14,6 +14,7 @@ import {
   wrong,
   type Circuit,
   type Goal,
+  type Part,
 } from "./SchaltungBauen.ts";
 
 const GOALS: Goal[] = ["eine", "schalter", "reihe", "parallel", "je-schalter", "haupt"];
@@ -172,8 +173,8 @@ describe("diagnose", () => {
   it("names the wrong number of lamps and switches", () => {
     expect(diagnose("reihe", [lamp])).toBe("lamps");
     expect(diagnose("schalter", [lamp])).toBe("switches");
-    expect(diagnose("reihe", [lamp, lamp, shut])).toBe("switches");
     expect(diagnose("reihe", [lamp, lamp, lamp])).toBe("lamps");
+    expect(diagnose("haupt", [{ kind: "parallel", branches: [[lamp], [lamp]] }])).toBe("switches");
   });
   it("names a short circuit and a dark lamp", () => {
     expect(diagnose("parallel", [{ kind: "parallel", branches: [[lamp], []] }, lamp])).toBe("short");
@@ -182,5 +183,36 @@ describe("diagnose", () => {
   });
   it("names a circuit with the right parts that behaves differently", () => {
     expect(diagnose("reihe", [{ kind: "parallel", branches: [[lamp], [lamp]] }])).toBe("behaviour");
+  });
+});
+
+describe("equivalent solutions", () => {
+  // The goals say what the circuit must do, not how it is built: every build that does it counts.
+  it("accepts a series circuit in any order and with a switch anywhere", () => {
+    expect(meets("reihe", [lamp, lamp])).toBe(true);
+    expect(meets("reihe", [shut, lamp, lamp])).toBe(true);
+    expect(meets("reihe", [lamp, shut, lamp])).toBe(true);
+    expect(meets("reihe", [lamp, lamp, shut])).toBe(true);
+  });
+  it("accepts parallel lamps with a switch in the main wire, in either branch order", () => {
+    const branches = (a: Part[], b: Part[]): Circuit => [{ kind: "parallel", branches: [a, b] }];
+    expect(meets("parallel", branches([lamp], [lamp]))).toBe(true);
+    expect(meets("parallel", [shut, ...branches([lamp], [lamp])])).toBe(true);
+    expect(meets("parallel", branches([lamp, shut], [shut, lamp]))).toBe(true);
+  });
+  it("accepts the lamp and the switch in either order, and the switch in the other half of the loop", () => {
+    expect(meets("schalter", [shut, lamp])).toBe(true);
+    expect(meets("schalter", [lamp, shut])).toBe(true);
+    expect(meets("eine", [lamp, shut])).toBe(true);
+  });
+  it("accepts either lamp with its own switch in either branch, and either order inside the branch", () => {
+    const branches = (a: Part[], b: Part[]): Circuit => [{ kind: "parallel", branches: [a, b] }];
+    expect(meets("je-schalter", branches([shut, lamp], [shut, lamp]))).toBe(true);
+    expect(meets("je-schalter", branches([lamp, shut], [shut, lamp]))).toBe(true);
+  });
+  it("accepts the common switch before or after the parallel lamps", () => {
+    const parallel: Circuit = [{ kind: "parallel", branches: [[lamp], [lamp]] }];
+    expect(meets("haupt", [shut, ...parallel])).toBe(true);
+    expect(meets("haupt", [...parallel, shut])).toBe(true);
   });
 });

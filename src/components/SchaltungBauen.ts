@@ -113,7 +113,6 @@ export function meets(goal: Goal, circuit: Circuit): boolean {
     case "reihe":
       return (
         all.lamps === 2 &&
-        all.switches === 0 &&
         sameSet(all.lit, [0, 1]) &&
         !all.short &&
         unscrewed(0).lit.length === 0 &&
@@ -122,7 +121,6 @@ export function meets(goal: Goal, circuit: Circuit): boolean {
     case "parallel":
       return (
         all.lamps === 2 &&
-        all.switches === 0 &&
         sameSet(all.lit, [0, 1]) &&
         !all.short &&
         sameSet(unscrewed(0).lit, [1]) &&
@@ -262,8 +260,8 @@ export type Reason = "lamps" | "switches" | "short" | "dark" | "behaviour";
 const EXPECTED: Record<Goal, { lamps: number; switches: number | null }> = {
   eine: { lamps: 1, switches: null },
   schalter: { lamps: 1, switches: 1 },
-  reihe: { lamps: 2, switches: 0 },
-  parallel: { lamps: 2, switches: 0 },
+  reihe: { lamps: 2, switches: null },
+  parallel: { lamps: 2, switches: null },
   "je-schalter": { lamps: 2, switches: 2 },
   haupt: { lamps: 2, switches: 1 },
 };

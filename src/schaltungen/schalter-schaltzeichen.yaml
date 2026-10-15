@@ -172,8 +172,8 @@ blocks:
       - type: single-choice
         id: sz-schalter
         text:
-          de: Die Lampe in einem Stromkreis mit Schalter leuchtet. Was weißt du über den Schalter?
-          en: The lamp in a circuit with a switch is lit. What do you know about the switch?
+          de: Eine Lampe und ein Schalter liegen in Reihe in einem Stromkreis. Die Lampe leuchtet. Was weißt du über den Schalter?
+          en: A lamp and a switch are in series in a circuit. The lamp is lit. What do you know about the switch?
         options:
           - text:
               de: Er ist geschlossen.
