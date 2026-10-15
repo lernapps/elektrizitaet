@@ -209,9 +209,9 @@ something, choose, mark it "(guess)" under "Key decisions" and go on.
 - [x] Slice 3: Seite `groessen/widerstand` (Material, Länge, Querschnitt, Ω); Bild; drei Übungen; Thema; Check; Commit.
 - [x] Slice 4: Seite `groessen/ohmsches-gesetz` (R = U / I, Kennlinie); Bild der Kennlinie; Übungen mit `generated`
       (Rechnen mit Einheiten, typische Fehler); Thema; Check; Commit.
-- [ ] Slice 5: Kapitel `schaltungen-messen` und Seite `reihenschaltung` (Stromstärke gleich, Spannungen addieren sich, bis
+- [x] Slice 5: Kapitel `schaltungen-messen` und Seite `reihenschaltung` (Stromstärke gleich, Spannungen addieren sich, bis
       zu drei Widerstände); Bild; Übungen mit `generated`; Thema; Check; Commit.
-- [ ] Slice 6: Seite `schaltungen-messen/parallelschaltung` (Spannung gleich, Ströme addieren sich, zwei Zweige); Bild;
+- [x] Slice 6: Seite `schaltungen-messen/parallelschaltung` (Spannung gleich, Ströme addieren sich, zwei Zweige); Bild;
       Übungen mit `generated`; Thema; Check; Commit.
 - [ ] Slice 7: Komponente `SchaltungMessen`: Logik in `SchaltungMessen.ts` (Schaltungsmodell, Rechner für Strom und
       Spannung, Aufgaben aus einem Startwert, Prüffunktion), Test über viele Startwerte, dann Oberfläche

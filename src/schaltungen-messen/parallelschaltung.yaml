@@ -1,0 +1,256 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+title:
+  de: Parallelschaltung mit Messgeräten
+  en: Parallel circuit with meters
+description:
+  de: In der Parallelschaltung liegt an jedem Zweig dieselbe Spannung, und die Zweigströme addieren sich zum Gesamtstrom.
+  en: In a parallel circuit every branch has the same voltage, and the branch currents add up to the total current.
+blocks:
+  - type: section
+    id: idee
+    title:
+      de: Die Idee
+      en: The idea
+    blocks:
+      - type: text
+        text:
+          de:
+            "Zwei Widerstände liegen nebeneinander an einer Batterie, jeder in einem eigenen Zweig. Du misst die Stromstärke
+            in der Hauptleitung und in einem Zweig. Der Strom teilt sich am Verzweigungspunkt auf, und beide Zweige
+            liegen an der vollen Spannung. Wie eine [Parallelschaltung](/schaltungen/parallelschaltung/) gebaut ist,
+            weißt du schon.
+
+            "
+          en: "Two resistors sit side by side on a battery, each in a branch of its own. You measure the current in
+            the main wire and in one branch. The current splits at the junction, and both branches have the full voltage.
+            You already know how a [parallel circuit](/schaltungen/parallelschaltung/) is built.
+
+            "
+  - type: section
+    id: merke
+    title:
+      de: Das merkst du dir
+      en: What to remember
+    blocks:
+      - type: text
+        text:
+          de: 'In einer Parallelschaltung gilt: - An jedem Zweig liegt dieselbe **Spannung**: $U = U_1 = U_2$. - Die
+            **Zweigströme** addieren sich zur Stromstärke in der Hauptleitung: $I = I_1 + I_2$. - Jeder Zweigstrom ist
+            $I_1 = \frac{U}{R_1}$ und $I_2 = \frac{U}{R_2}$. - Der Gesamtwiderstand ist **kleiner** als jeder einzelne
+            Widerstand, denn der Strom hat mehr Wege.
+
+            '
+          en:
+            'In a parallel circuit: - Every branch has the same **voltage**: $U = U_1 = U_2$. - The **branch currents**
+            add up to the current in the main wire: $I = I_1 + I_2$. - Each branch current is $I_1 = \frac{U}{R_1}$
+            and $I_2 = \frac{U}{R_2}$. - The total resistance is **smaller** than each single resistance, because the
+            current has more paths.
+
+            '
+      - type: figure
+        image: images/parallel-messen.svg
+        source: https://github.com/lernapps/elektrizitaet
+        licence: CC0-1.0
+        alt:
+          de: Ein Rechteck aus Kabeln mit einer Batterie links. Oben liegt ein Kreis mit A in der Hauptleitung, dann
+            teilt sich der Stromkreis in zwei senkrechte Zweige mit je einem Widerstand. Im rechten Zweig sitzt ein
+            zweiter Kreis mit A.
+          en: A rectangle of wires with a battery on the left. At the top a circle with A sits in the main wire, then
+            the circuit divides into two vertical branches with one resistor each. A second circle with A sits in the
+            right branch.
+        caption:
+          de: "Zwei Widerstände parallel. Amperemeter 4 misst den Gesamtstrom, Amperemeter 5 nur den Strom im rechten
+            Zweig. Beschriftung: 1 Batterie, 2 und 3 Widerstände, 4 Amperemeter in der Hauptleitung, 5 Amperemeter im
+            Zweig."
+          en: "Two resistors in parallel. Ammeter 4 measures the total current, ammeter 5 only the current in the right
+            branch. Labels: 1 battery, 2 and 3 resistors, 4 ammeter in the main wire, 5 ammeter in the branch."
+      - type: note
+        title:
+          de: Der kleinere Widerstand zieht mehr Strom
+          en: The smaller resistor draws more current
+        blocks:
+          - type: text
+            text:
+              de:
+                "Weil jeder Zweig dieselbe Spannung hat, fließt im Zweig mit dem kleineren Widerstand der größere Strom.
+
+                "
+              en: "Because every branch has the same voltage, the larger current flows in the branch with the smaller
+                resistance.
+
+                "
+  - type: section
+    id: beispiel
+    title:
+      de: Beispiel
+      en: Example
+    blocks:
+      - type: example
+        title:
+          de: Zwei Zweige an 12 V
+          en: Two branches on 12 V
+        blocks:
+          - type: text
+            text:
+              de: 'Ein Widerstand mit 20 Ω und einer mit 30 Ω liegen parallel an 12 V. Zweig 1: $I_1 = \frac{12}{20} =
+                0{,}6$ A. Zweig 2: $I_2 = \frac{12}{30} = 0{,}4$ A. Das Amperemeter in der Hauptleitung zeigt $0{,}6 +
+                0{,}4 = 1{,}0$ A.
+
+                '
+              en: 'A resistor of 20 Ω and one of 30 Ω are connected in parallel on 12 V. Branch 1: $I_1 = \frac{12}{20}
+                = 0.6$ A. Branch 2: $I_2 = \frac{12}{30} = 0.4$ A. The ammeter in the main wire shows $0.6 + 0.4 = 1.0$
+                A.
+
+                '
+  - type: section
+    id: uebung
+    title:
+      de: Übung
+      en: Practice
+    blocks:
+      - type: generated
+        id: pr-gesamtstrom
+        given:
+          U:
+            oneOf:
+              - 6
+              - 12
+          R1:
+            oneOf:
+              - 10
+              - 20
+              - 30
+              - 60
+          R2:
+            oneOf:
+              - 10
+              - 20
+              - 30
+              - 60
+        where:
+          - decimals(U / R1 + U / R2) <= 2
+        task:
+          text:
+            de: Zwei Widerstände von {{R1}} Ω und {{R2}} Ω liegen parallel an {{U}} V. Wie groß ist die Stromstärke
+              in der Hauptleitung in Ampere?
+            en: Two resistors of {{R1}} Ω and {{R2}} Ω are connected in parallel on {{U}} V. What is the current in
+              the main wire in amperes?
+        answer:
+          value: U / R1 + U / R2
+          compare:
+            number:
+              format: decimal
+              decimals: 2
+              unit:
+                de: A
+                en: A
+        mistakes:
+          - value: U / (R1 + R2)
+            message:
+              de: So rechnest du bei einer Reihenschaltung. Hier liegt an jedem Widerstand die volle Spannung, und die
+                Zweigströme addieren sich.
+              en: That is how you calculate a series circuit. Here each resistor has the full voltage, and the branch
+                currents add up.
+          - value: U / R1
+            message:
+              de: Das ist nur der Strom im ersten Zweig. Der Strom in der Hauptleitung ist die Summe aller Zweigströme.
+              en: That is only the current in the first branch. The current in the main wire is the sum of all branch
+                currents.
+        hint:
+          de: Rechne erst jeden Zweigstrom aus, dann addiere.
+          en: First calculate each branch current, then add.
+        steps:
+          - de: $I_1 = \frac{U}{R_1}$, $I_2 = \frac{U}{R_2}$
+            en: $I_1 = \frac{U}{R_1}$, $I_2 = \frac{U}{R_2}$
+          - de: $I = I_1 + I_2 = \frac{{{U}}}{{{R1}}} + \frac{{{U}}}{{{R2}}} = {{answer}}\text{ A}$
+            en: $I = I_1 + I_2 = \frac{{{U}}}{{{R1}}} + \frac{{{U}}}{{{R2}}} = {{answer}}\text{ A}$
+      - type: generated
+        id: pr-zweigstrom
+        given:
+          I:
+            oneOf:
+              - 0.5
+              - 0.6
+              - 0.8
+              - 1.0
+              - 1.2
+          I1:
+            oneOf:
+              - 0.2
+              - 0.3
+              - 0.4
+        where:
+          - I != 2 * I1
+          - I > I1
+        task:
+          text:
+            de:
+              In der Hauptleitung einer Parallelschaltung fließen {{I}} A. Im ersten Zweig zeigt das Amperemeter {{I1}}
+              A. Wie groß ist die Stromstärke im zweiten Zweig in Ampere?
+            en: In the main wire of a parallel circuit {{I}} A flows. In the first branch the ammeter shows {{I1}} A.
+              What is the current in the second branch in amperes?
+        answer:
+          value: I - I1
+          compare:
+            number:
+              format: decimal
+              decimals: 1
+              unit:
+                de: A
+                en: A
+        mistakes:
+          - value: I1
+            message:
+              de: Das ist der Strom im ersten Zweig. Beide Zweigströme zusammen ergeben die Stromstärke in der Hauptleitung.
+              en: That is the current in the first branch. Both branch currents together make the current in the main
+                wire.
+          - value: I + I1
+            message:
+              de:
+                Du hast addiert. Der Strom in der Hauptleitung ist die Summe der Zweigströme, also ziehst du den bekannten
+                Zweigstrom ab.
+              en: You added. The current in the main wire is the sum of the branch currents, so you subtract the known
+                branch current.
+        hint:
+          de: $I = I_1 + I_2$, also $I_2 = I - I_1$.
+          en: $I = I_1 + I_2$, so $I_2 = I - I_1$.
+        steps:
+          - de: $I_2 = I - I_1 = {{I}}\text{ A} - {{I1}}\text{ A} = {{answer}}\text{ A}$
+            en: $I_2 = I - I_1 = {{I}}\text{ A} - {{I1}}\text{ A} = {{answer}}\text{ A}$
+      - type: single-choice
+        id: pr-spannung
+        text:
+          de: Zwei Widerstände liegen parallel an 6 V. Das Voltmeter am ersten Widerstand zeigt 6 V. Was zeigt es am
+            zweiten Widerstand?
+          en: Two resistors are connected in parallel on 6 V. The voltmeter at the first resistor shows 6 V. What does
+            it show at the second resistor?
+        options:
+          - text:
+              de: 6 V
+              en: 6 V
+            correct: true
+            info:
+              de: In einer Parallelschaltung liegt an jedem Zweig die volle Spannung der Quelle.
+              en: In a parallel circuit every branch has the full voltage of the source.
+          - text:
+              de: 3 V
+              en: 3 V
+            correct: false
+            info:
+              de: Die Spannung teilt sich nur in der Reihenschaltung auf. In der Parallelschaltung nicht.
+              en: The voltage is only shared in a series circuit. Not in a parallel circuit.
+          - text:
+              de: 12 V
+              en: 12 V
+            correct: false
+            info:
+              de: Die Spannungen addieren sich nicht. Beide Zweige liegen an denselben 6 V.
+              en: The voltages do not add up. Both branches are across the same 6 V.
+        explanation:
+          de: In der Parallelschaltung ist die Spannung an allen Zweigen gleich groß.
+          en: In a parallel circuit the voltage is the same across all branches.
+        links:
+          - title:
+              de: Parallelschaltung (Wikipedia)
+              en: Parallelschaltung (German Wikipedia)
+            url: https://de.wikipedia.org/wiki/Parallelschaltung
