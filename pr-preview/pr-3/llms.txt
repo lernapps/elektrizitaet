@@ -1,6 +1,6 @@
 # Elektrizität
 
-> Wie funktioniert ein Stromkreis? Warum leitet Kupfer den Strom und Gummi nicht? Was ist der Unterschied zwischen Reihen- und Parallelschaltung? Und wie hängen Stromstärke, Spannung und Widerstand zusammen? Hier erklärst du dir die Grundlagen der Elektrizität Schritt für Schritt und übst auf jeder Seite. In den Bau-Editoren baust du selbst Schaltungen. Für die Klassen 5 bis 8: erst der Stromkreis, dann die Größen mit dem ohmschen Gesetz. Es geht um Gleichstrom, wie ihn Batterien liefern; Wechselstrom kommt später.
+> Wie funktioniert ein Stromkreis? Warum leitet Kupfer den Strom und Gummi nicht? Was ist der Unterschied zwischen Reihen- und Parallelschaltung? Und wie hängen Stromstärke, Spannung und Widerstand zusammen? Hier erklärst du dir die Grundlagen der Elektrizität Schritt für Schritt und übst auf jeder Seite. In den Übungen baust du selbst Schaltungen. Für die Klassen 5 bis 8: erst der Stromkreis, dann die Größen mit dem ohmschen Gesetz. Es geht um Gleichstrom, wie ihn Batterien liefern; Wechselstrom kommt später.
 
 English: en/llms.txt
 
@@ -34,11 +34,6 @@ English: en/llms.txt
   - [Das merkst du dir](schaltungen/parallelschaltung/#merke)
   - [Beispiel](schaltungen/parallelschaltung/#beispiel)
   - [Übung](schaltungen/parallelschaltung/#uebung)
-- [Bau-Editor](schaltungen/bau-editor/): Baue Schaltungen mit Batterie, Lampen und Schaltern, schalte sie ein und aus und prüfe, ob sie die Aufgabe erfüllen.
-  - [Die Idee](schaltungen/bau-editor/#idee)
-  - [Das merkst du dir](schaltungen/bau-editor/#merke)
-  - [Beispiel](schaltungen/bau-editor/#beispiel)
-  - [Übung](schaltungen/bau-editor/#uebung)
 
 ## Strom im Alltag
 
@@ -88,11 +83,6 @@ English: en/llms.txt
   - [Das merkst du dir](schaltungen-messen/parallelschaltung/#merke)
   - [Beispiel](schaltungen-messen/parallelschaltung/#beispiel)
   - [Übung](schaltungen-messen/parallelschaltung/#uebung)
-- [Bau-Editor mit Messgeräten](schaltungen-messen/bau-editor/): Baue Schaltungen mit Widerständen und Messgeräten, die vorgegebene Werte erreichen. Bei jeder Aufgabe sind die Zahlen neu.
-  - [Die Idee](schaltungen-messen/bau-editor/#idee)
-  - [Das merkst du dir](schaltungen-messen/bau-editor/#merke)
-  - [Beispiel](schaltungen-messen/bau-editor/#beispiel)
-  - [Übung](schaltungen-messen/bau-editor/#uebung)
 
 ## Glossar
 

@@ -1,6 +1,6 @@
 # Electricity
 
-> How does an electric circuit work? Why does copper conduct electricity and rubber does not? What is the difference between series and parallel circuits? And how are current, voltage and resistance related? Here you work out the basics of electricity step by step and practise on every page. In the circuit builders you build circuits yourself. For grades 5 to 8: first the circuit, then the quantities with Ohm's law. It is about direct current, as batteries supply it; alternating current comes later.
+> How does an electric circuit work? Why does copper conduct electricity and rubber does not? What is the difference between series and parallel circuits? And how are current, voltage and resistance related? Here you work out the basics of electricity step by step and practise on every page. In the exercises you build circuits yourself. For grades 5 to 8: first the circuit, then the quantities with Ohm's law. It is about direct current, as batteries supply it; alternating current comes later.
 
 Deutsch: ../llms.txt
 
@@ -34,11 +34,6 @@ Deutsch: ../llms.txt
   - [What to remember](schaltungen/parallelschaltung/#merke)
   - [Example](schaltungen/parallelschaltung/#beispiel)
   - [Practice](schaltungen/parallelschaltung/#uebung)
-- [Circuit builder](schaltungen/bau-editor/): Build circuits with a battery, lamps and switches, switch them on and off and check whether they solve the task.
-  - [The idea](schaltungen/bau-editor/#idee)
-  - [What to remember](schaltungen/bau-editor/#merke)
-  - [Example](schaltungen/bau-editor/#beispiel)
-  - [Practice](schaltungen/bau-editor/#uebung)
 
 ## Electricity in everyday life
 
@@ -88,11 +83,6 @@ Deutsch: ../llms.txt
   - [What to remember](schaltungen-messen/parallelschaltung/#merke)
   - [Example](schaltungen-messen/parallelschaltung/#beispiel)
   - [Practice](schaltungen-messen/parallelschaltung/#uebung)
-- [Circuit builder with meters](schaltungen-messen/bau-editor/): Build circuits with resistors and meters that reach given values. The numbers are new with every task.
-  - [The idea](schaltungen-messen/bau-editor/#idee)
-  - [What to remember](schaltungen-messen/bau-editor/#merke)
-  - [Example](schaltungen-messen/bau-editor/#beispiel)
-  - [Practice](schaltungen-messen/bau-editor/#uebung)
 
 ## Glossary
 
