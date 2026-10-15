@@ -4,7 +4,7 @@
 # archetype: the kind of app, as in the app's first plan: set it when you start this plan. It never changes.
 archetype: explainer
 # phase: the phase you work in now: explore, plan, code or commit. Change it when you enter the next phase.
-phase: code
+phase: commit
 # prePushFailures: failed runs of the pre-push hook during this increment. The hook counts them. Never change it.
 prePushFailures: 0
 ---
@@ -237,15 +237,15 @@ something, choose, mark it "(guess)" under "Key decisions" and go on.
 - [x] Slice 7: Komponente `SchaltungMessen`: Logik in `SchaltungMessen.ts` (Schaltungsmodell, Rechner für Strom und
       Spannung, Aufgaben aus einem Startwert, Prüffunktion), Test über viele Startwerte, dann Oberfläche
       (`SchaltungMessen.vue`); Seite `schaltungen-messen/bau-editor` mit Quizfrage; Thema; Check; Commit.
-- [ ] Der Katalogeintrag (Entwurf unten): Klassen 5 bis 8, Zusammenfassung, Themen aller neuen Seiten; `src/app.yaml`
+- [x] Der Katalogeintrag (Entwurf unten): Klassen 5 bis 8, Zusammenfassung, Themen aller neuen Seiten; `src/app.yaml`
       (Einleitung, Quellen) aktualisiert; kein Land in den Lerntexten.
 - [x] The content guide describes the app as it is now: its competencies, chapters and patterns, and its procedure
       for the next increment (`app-content-matches`). Lehrplanzitat Bayern steht im Abschnitt „Curriculum“.
 - [x] Alle Texte in Deutsch und Englisch, beide vollständig.
 - [ ] The content guide describes the app as it is now: its competencies, chapters and patterns, and its procedure
       for the next increment (`app-content-matches`).
-- [ ] `npx lernapps check` passes.
-- [ ] Set `phase: commit`.
+- [x] `npx lernapps check` passes.
+- [x] Set `phase: commit`.
 
 ### Completed
 

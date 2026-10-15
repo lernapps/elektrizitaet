@@ -2,7 +2,11 @@ import { describe, expect, it } from "vite-plus/test";
 import { check, emptyBoard, generate, measure, solution, wrong, type Board, type Kind } from "./SchaltungMessen.ts";
 
 const KINDS: Kind[] = ["strom", "spannung", "parallel"];
-const board = (b: Partial<Board> & { slots?: Partial<Board["slots"]> }): Board => {
+const board = (b: {
+  slots?: Partial<Board["slots"]>;
+  ammeters?: Board["ammeters"];
+  voltmeters?: Board["voltmeters"];
+}): Board => {
   const base = emptyBoard();
   return { ...base, ...b, slots: { ...base.slots, ...b.slots } };
 };
