@@ -1,6 +1,6 @@
 # Elektrizität
 
-> Wie funktioniert ein Stromkreis? Warum leitet Kupfer den Strom und Gummi nicht? Was ist der Unterschied zwischen Reihen- und Parallelschaltung? Hier erklärst du dir die Grundlagen der Elektrizität Schritt für Schritt und übst auf jeder Seite. Am Ende baust du selbst Schaltungen im Bau-Editor. Für die Klassen 5 und 6; später kommen höhere Klassen dazu.
+> Wie funktioniert ein Stromkreis? Warum leitet Kupfer den Strom und Gummi nicht? Was ist der Unterschied zwischen Reihen- und Parallelschaltung? Und wie hängen Stromstärke, Spannung und Widerstand zusammen? Hier erklärst du dir die Grundlagen der Elektrizität Schritt für Schritt und übst auf jeder Seite. In den Übungen baust du selbst Schaltungen. Für die Klassen 5 bis 8: erst der Stromkreis, dann die Größen mit dem ohmschen Gesetz. Es geht um Gleichstrom, wie ihn Batterien liefern; Wechselstrom kommt später.
 
 English: en/llms.txt
 
@@ -34,11 +34,6 @@ English: en/llms.txt
   - [Das merkst du dir](schaltungen/parallelschaltung/#merke)
   - [Beispiel](schaltungen/parallelschaltung/#beispiel)
   - [Übung](schaltungen/parallelschaltung/#uebung)
-- [Bau-Editor](schaltungen/bau-editor/): Baue Schaltungen mit Batterie, Lampen und Schaltern, schalte sie ein und aus und prüfe, ob sie die Aufgabe erfüllen.
-  - [Die Idee](schaltungen/bau-editor/#idee)
-  - [Das merkst du dir](schaltungen/bau-editor/#merke)
-  - [Beispiel](schaltungen/bau-editor/#beispiel)
-  - [Übung](schaltungen/bau-editor/#uebung)
 
 ## Strom im Alltag
 
@@ -52,6 +47,42 @@ English: en/llms.txt
   - [Das merkst du dir](alltag/sicherheit/#merke)
   - [Beispiel](alltag/sicherheit/#beispiel)
   - [Übung](alltag/sicherheit/#uebung)
+
+## Größen im Stromkreis
+
+- [Die Stromstärke](groessen/stromstaerke/): Die Stromstärke sagt, wie viel Strom fließt. Du misst sie mit dem Amperemeter, in Ampere (A) und Milliampere (mA).
+  - [Die Idee](groessen/stromstaerke/#idee)
+  - [Das merkst du dir](groessen/stromstaerke/#merke)
+  - [Beispiel](groessen/stromstaerke/#beispiel)
+  - [Übung](groessen/stromstaerke/#uebung)
+- [Die Spannung](groessen/spannung/): Die Spannung treibt den Strom an. Du misst sie mit dem Voltmeter, in Volt (V), parallel zu dem Bauteil.
+  - [Die Idee](groessen/spannung/#idee)
+  - [Das merkst du dir](groessen/spannung/#merke)
+  - [Beispiel](groessen/spannung/#beispiel)
+  - [Übung](groessen/spannung/#uebung)
+- [Der Widerstand](groessen/widerstand/): Der Widerstand sagt, wie stark ein Bauteil den Strom hemmt. Er wird in Ohm (Ω) gemessen und hängt von Material, Länge und Dicke ab.
+  - [Die Idee](groessen/widerstand/#idee)
+  - [Das merkst du dir](groessen/widerstand/#merke)
+  - [Beispiel](groessen/widerstand/#beispiel)
+  - [Übung](groessen/widerstand/#uebung)
+- [Das ohmsche Gesetz](groessen/ohmsches-gesetz/): Spannung, Stromstärke und Widerstand hängen zusammen: R = U / I. Damit berechnest du eine fehlende Größe.
+  - [Die Idee](groessen/ohmsches-gesetz/#idee)
+  - [Das merkst du dir](groessen/ohmsches-gesetz/#merke)
+  - [Beispiel](groessen/ohmsches-gesetz/#beispiel)
+  - [Übung](groessen/ohmsches-gesetz/#uebung)
+
+## Schaltungen mit Messgeräten
+
+- [Reihenschaltung mit Messgeräten](schaltungen-messen/reihenschaltung/): In der Reihenschaltung ist die Stromstärke überall gleich, und die Spannungen der Widerstände addieren sich.
+  - [Die Idee](schaltungen-messen/reihenschaltung/#idee)
+  - [Das merkst du dir](schaltungen-messen/reihenschaltung/#merke)
+  - [Beispiel](schaltungen-messen/reihenschaltung/#beispiel)
+  - [Übung](schaltungen-messen/reihenschaltung/#uebung)
+- [Parallelschaltung mit Messgeräten](schaltungen-messen/parallelschaltung/): In der Parallelschaltung liegt an jedem Zweig dieselbe Spannung, und die Zweigströme addieren sich zum Gesamtstrom.
+  - [Die Idee](schaltungen-messen/parallelschaltung/#idee)
+  - [Das merkst du dir](schaltungen-messen/parallelschaltung/#merke)
+  - [Beispiel](schaltungen-messen/parallelschaltung/#beispiel)
+  - [Übung](schaltungen-messen/parallelschaltung/#uebung)
 
 ## Glossar
 

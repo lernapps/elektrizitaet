@@ -1,6 +1,6 @@
 # Electricity
 
-> How does an electric circuit work? Why does copper conduct electricity and rubber does not? What is the difference between series and parallel circuits? Here you work out the basics of electricity step by step and practise on every page. At the end you build circuits yourself in the circuit builder. For grades 5 and 6; higher grades will follow.
+> How does an electric circuit work? Why does copper conduct electricity and rubber does not? What is the difference between series and parallel circuits? And how are current, voltage and resistance related? Here you work out the basics of electricity step by step and practise on every page. In the exercises you build circuits yourself. For grades 5 to 8: first the circuit, then the quantities with Ohm's law. It is about direct current, as batteries supply it; alternating current comes later.
 
 Deutsch: ../llms.txt
 
@@ -34,11 +34,6 @@ Deutsch: ../llms.txt
   - [What to remember](schaltungen/parallelschaltung/#merke)
   - [Example](schaltungen/parallelschaltung/#beispiel)
   - [Practice](schaltungen/parallelschaltung/#uebung)
-- [Circuit builder](schaltungen/bau-editor/): Build circuits with a battery, lamps and switches, switch them on and off and check whether they solve the task.
-  - [The idea](schaltungen/bau-editor/#idee)
-  - [What to remember](schaltungen/bau-editor/#merke)
-  - [Example](schaltungen/bau-editor/#beispiel)
-  - [Practice](schaltungen/bau-editor/#uebung)
 
 ## Electricity in everyday life
 
@@ -52,6 +47,42 @@ Deutsch: ../llms.txt
   - [What to remember](alltag/sicherheit/#merke)
   - [Example](alltag/sicherheit/#beispiel)
   - [Practice](alltag/sicherheit/#uebung)
+
+## Quantities in the circuit
+
+- [Current](groessen/stromstaerke/): The current tells you how much electric current flows. You measure it with an ammeter, in amperes (A) and milliamperes (mA).
+  - [The idea](groessen/stromstaerke/#idee)
+  - [What to remember](groessen/stromstaerke/#merke)
+  - [Example](groessen/stromstaerke/#beispiel)
+  - [Practice](groessen/stromstaerke/#uebung)
+- [Voltage](groessen/spannung/): The voltage drives the current. You measure it with a voltmeter, in volts (V), in parallel with the part.
+  - [The idea](groessen/spannung/#idee)
+  - [What to remember](groessen/spannung/#merke)
+  - [Example](groessen/spannung/#beispiel)
+  - [Practice](groessen/spannung/#uebung)
+- [Resistance](groessen/widerstand/): The resistance tells how strongly a part hinders the current. It is measured in ohms (Ω) and depends on the material, length and thickness.
+  - [The idea](groessen/widerstand/#idee)
+  - [What to remember](groessen/widerstand/#merke)
+  - [Example](groessen/widerstand/#beispiel)
+  - [Practice](groessen/widerstand/#uebung)
+- [Ohm's law](groessen/ohmsches-gesetz/): Voltage, current and resistance are linked: R = U / I. With it you calculate a missing quantity.
+  - [The idea](groessen/ohmsches-gesetz/#idee)
+  - [What to remember](groessen/ohmsches-gesetz/#merke)
+  - [Example](groessen/ohmsches-gesetz/#beispiel)
+  - [Practice](groessen/ohmsches-gesetz/#uebung)
+
+## Circuits with meters
+
+- [Series circuit with meters](schaltungen-messen/reihenschaltung/): In a series circuit the current is the same everywhere, and the voltages of the resistors add up.
+  - [The idea](schaltungen-messen/reihenschaltung/#idee)
+  - [What to remember](schaltungen-messen/reihenschaltung/#merke)
+  - [Example](schaltungen-messen/reihenschaltung/#beispiel)
+  - [Practice](schaltungen-messen/reihenschaltung/#uebung)
+- [Parallel circuit with meters](schaltungen-messen/parallelschaltung/): In a parallel circuit every branch has the same voltage, and the branch currents add up to the total current.
+  - [The idea](schaltungen-messen/parallelschaltung/#idee)
+  - [What to remember](schaltungen-messen/parallelschaltung/#merke)
+  - [Example](schaltungen-messen/parallelschaltung/#beispiel)
+  - [Practice](schaltungen-messen/parallelschaltung/#uebung)
 
 ## Glossary
 
