@@ -121,5 +121,5 @@ bleibt lokal und wird nie committet.
   stattdessen `figure` mit Ziffern im Bild und Legende in der Bildunterschrift.
 - Texte in YAML-Flow-Listen mit „?“ in Anführungszeichen setzen.
 - Eine Seite braucht mindestens eine Quiz-Übung, auch wenn sie eine Komponente enthält.
-- `vue-tsc` braucht `@types/node` (als devDependency ergänzt).
+- `vue-tsc` prüft nur `src/` (`tsconfig.json` mit `"include": ["src"]`); ein Behelf mit `@types/node` ist nicht mehr nötig.
 

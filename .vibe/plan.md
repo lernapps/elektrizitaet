@@ -164,6 +164,8 @@ dem Plan (2); das Ziel von höchstens 3 ist verfehlt.
 ### Where I had to guess
 
 - `@types/node` ergänzt, weil `vue-tsc` sonst an Dateien aus `node_modules` scheitert (Fehler der Vorlage?).
+  Mit der neuen Version (`app-templates` 98cfbc4) entfernt: `tsconfig.json` hat jetzt `"include": ["src"]`, `@types/node` ist
+  nicht mehr nötig.
 - Schaltbilder selbst gezeichnet; Lizenz CC0-1.0.
 - Lehrplan nicht zitiert, weil kein offizielles Dokument gefunden wurde.
 - Englische Fassung der Fragen verlinkt auf deutsche Wikipedia-Artikel (die Linkadresse hat keine Sprachvariante).
