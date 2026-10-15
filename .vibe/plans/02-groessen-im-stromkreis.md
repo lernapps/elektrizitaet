@@ -4,7 +4,7 @@
 # archetype: the kind of app, as in the app's first plan: set it when you start this plan. It never changes.
 archetype: explainer
 # phase: the phase you work in now: explore, plan, code or commit. Change it when you enter the next phase.
-phase: plan
+phase: code
 # prePushFailures: failed runs of the pre-push hook during this increment. The hook counts them. Never change it.
 prePushFailures: 0
 ---
@@ -45,6 +45,9 @@ sie und wenden sie auf Reihen- und Parallelschaltungen an. Davor konnten sie Str
 - Archetyp `explainer` wie in Plan 01; Inhaltsleitfaden `app-content` und seine Muster gelten weiter.
 - Lehrplanzitat Bayern (Gymnasium, Jahrgangsstufe 8) nur in Plan und Leitfaden; die Lerntexte nennen kein Land (Wunsch der
   Auftraggeberin bzw. des Auftraggebers).
+- Kapitel heißen nach dem Thema („Größen im Stromkreis“, „Schaltungen mit Messgeräten“), nicht „Gleichstrom“: die Größen gelten
+  auch für Wechselstrom. Die Einleitung und der Leitfaden sagen „Gleichstrom“; Wechselstrom kommt später als eigenes Kapitel
+  `wechselstrom` hinter diesen (Vorschlag bestätigt).
 - Erweiterung als Kapitel „Größen im Stromkreis“ für Klasse 7 und 8 (Wunsch der Auftraggeberin bzw. des Auftraggebers).
 
 <!--
@@ -84,7 +87,7 @@ Mark a choice you made without asking the creator with "(guess)", and list it in
   - Ich kann erklären, wovon der Widerstand eines Drahts abhängt (Material, Länge, Querschnitt), und ihn in Ω angeben.
     Seite `groessen/widerstand`.
   - Ich kann mit R = U / I eine fehlende Größe berechnen und eine Kennlinie lesen. Seite `groessen/ohmsches-gesetz`.
-  Kapitel `schaltungen-messen` (Schaltungen mit Größen)
+  Kapitel `schaltungen-messen` (Schaltungen mit Messgeräten)
   - Ich kann Stromstärke und Spannung in einer Reihenschaltung mit bis zu drei Widerständen vorhersagen und berechnen.
     Seite `schaltungen-messen/reihenschaltung`.
   - Ich kann dasselbe in einer Parallelschaltung (zwei Zweige, in einem bis zu zwei Widerstände). Seite
@@ -130,6 +133,7 @@ turn, in plain words. Do not ask what you can derive from earlier answers or fro
 - Bau-Editor: „Ohne den Editor ist es lahm. Der sollte auch Übungen mit Variablen unterstützen, also so, dass man sinnvolle
   Werte nutzt, diese aber von Übung zu Übung variiert und dennoch geprüft werden können.“
 - Zum Checkpoint „Recherche“ (Kompetenzen, Kapitel, Editor mit Variablen, Quellen): „ich finde das so gut.“
+- Zum Checkpoint „Plan“ (Wunsch: später Wechselstrom ergänzen können; Vorschlag mit Themennamen): „Dein Vorschlag ist ok. leg los.“
 - Lehrplan: „nimm Bayern als Lehrplanzitat, aber im Inhalt sollte das nicht auftauchen.“
 
 ### Completed
@@ -149,9 +153,9 @@ creator's turns from here to the end are counted in the retrospective (target: a
       slice uses, and anything new, with the reason the guide's patterns do not fit.
 - [x] Show the creator the goal, the new competencies by chapter and the slices, short. Explain in plain words what
       learners will see and do, and anything new in how the content is made.
-- [ ] **Checkpoint:** confirm the plan and the content method. Stop and wait for the creator. Change the plan if they
+- [x] **Checkpoint:** confirm the plan and the content method. Stop and wait for the creator. Change the plan if they
       ask, then ask again.
-- [ ] Set `phase: code`.
+- [x] Set `phase: code`.
 
 ### Content method
 
