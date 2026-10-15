@@ -43,6 +43,8 @@ sie und wenden sie auf Reihen- und Parallelschaltungen an. Davor konnten sie Str
 ## Key decisions
 
 - Archetyp `explainer` wie in Plan 01; Inhaltsleitfaden `app-content` und seine Muster gelten weiter.
+- Lehrplanzitat Bayern (Gymnasium, Jahrgangsstufe 8) nur in Plan und Leitfaden; die Lerntexte nennen kein Land (Wunsch der
+  Auftraggeberin bzw. des Auftraggebers).
 - Erweiterung als Kapitel „Größen im Stromkreis“ für Klasse 7 und 8 (Wunsch der Auftraggeberin bzw. des Auftraggebers).
 
 <!--
@@ -52,7 +54,7 @@ Mark a choice you made without asking the creator with "(guess)", and list it in
 
 ## Notes
 
-- Lehrplan (Kandidat, vom Auftraggeber noch nicht bestätigt): „Fachlehrplan Physik 8 – Phänomene experimentell untersuchen
+- Lehrplan (vom Auftraggeber bestätigt; nur hier und im Inhaltsleitfaden zitiert, nicht in den Lerntexten): „Fachlehrplan Physik 8 – Phänomene experimentell untersuchen
   und modellieren“, Gymnasium Bayern, Jahrgangsstufe 8, ISB, LehrplanPLUS,
   https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/8/physik (geöffnet 2026-10-15), Lernbereich 1 „Elektrischer
   Strom“, ca. 14 Std.: Stromkreismodell, Stromstärke, Spannung, Widerstand (Definitionsgleichung), Kennlinien, Reihen- und
@@ -69,7 +71,10 @@ Mark a choice you made without asking the creator with "(guess)", and list it in
   - https://de.wikipedia.org/wiki/Elektrische_Spannung, „Elektrische Spannung“ (Volt).
   - https://de.wikipedia.org/wiki/Elektrischer_Widerstand, „Elektrischer Widerstand“ (Ohm; R = ρ · l / A).
   - https://de.wikipedia.org/wiki/Ohmsches_Gesetz, „Ohmsches Gesetz“ (U = R · I).
-  - Serlo und LeifiPhysik: noch nicht geprüft, nicht verwendet.
+  - Serlo (geöffnet 2026-10-15): Physik ist dort „Fächer im Aufbau“; „Grundbegriffe der Elektrizitätslehre“ und „Stromkreise mit
+    ohmschen Widerständen“ sind nur Seiten mit Titel ohne Inhalt. Kein Artikel zu Stromstärke, Spannung, Widerstand, ohmschem
+    Gesetz: nicht verwendet.
+  - LeifiPhysik: HTTP 403, nicht geprüft, nicht verwendet (kein Umgehen).
 - Vorgeschlagene Kompetenzen (Entwurf für den Checkpoint „Recherche“):
   Kapitel `groessen` (Größen im Stromkreis)
   - Ich kann die Stromstärke in A und mA angeben, am Amperemeter ablesen und das Amperemeter richtig einbauen.
@@ -124,7 +129,7 @@ turn, in plain words. Do not ask what you can derive from earlier answers or fro
   Gesetz, später Leistung/Energie, Magnetismus): „Größen im Stromkreis klingt gut.“
 - Bau-Editor: „Ohne den Editor ist es lahm. Der sollte auch Übungen mit Variablen unterstützen, also so, dass man sinnvolle
   Werte nutzt, diese aber von Übung zu Übung variiert und dennoch geprüft werden können.“
-- Offen: ob Bayern (Gymnasium, Jahrgangsstufe 8) als Lehrplanzitat genügt und der Text sonst länderübergreifend bleibt.
+- Lehrplan: „nimm Bayern als Lehrplanzitat, aber im Inhalt sollte das nicht auftauchen.“
 
 ### Completed
 
