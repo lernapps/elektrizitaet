@@ -139,6 +139,15 @@ blocks:
             decimal:
               de: ","
               en: .
+            switchOn:
+              de: Strom einschalten
+              en: Switch the power on
+            switchOff:
+              de: Strom ausschalten
+              en: Switch the power off
+            "off":
+              de: Der Strom ist aus. Schalte ihn ein oder prüfe, dann wird gemessen.
+              en: The power is off. Switch it on or check, then it measures.
             resistor:
               de: "{n} Ω"
               en: "{n} Ω"
@@ -167,9 +176,11 @@ blocks:
               de: Amperemeter eingebaut
               en: ammeter built in
             hint:
-              de: Tippe auf eine Stelle, um das Amperemeter dort einzubauen. Noch einmal tippen nimmt es wieder heraus.
-                Wähle dann den Widerstand.
-              en: Tap a place to build the ammeter in there. Tapping again takes it out. Then choose the resistor.
+              de: "So geht es: Tippe auf eine Stelle, um das Amperemeter dort einzubauen. Noch einmal tippen nimmt es
+                wieder heraus. Wähle den Widerstand. Dann schalte den Strom ein und lies das Amperemeter ab."
+              en:
+                "How it works: tap a place to build the ammeter in there. Tapping again takes it out. Choose the resistor.
+                Then switch the power on and read the ammeter."
             short:
               de: Kurzschluss! Das Amperemeter überbrückt die Batterie, und es fließt viel zu viel Strom.
               en: Short circuit! The ammeter bridges the battery, and far too much current flows.

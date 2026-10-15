@@ -202,6 +202,14 @@ das Lehrplanzitat prüfen (Bayern, Gymnasium, Jahrgangsstufe 9 oder 10, nicht ge
   gehören in die `.ts` einer Komponente, die die anderen importieren.
 - Der Explainer schreibt keine Weiterleitungen: eine entfernte Seite (hier `schaltungen/bau-editor`) gibt danach 404; der Themenpfad
   im Katalogeintrag muss dann in demselben Zug ersetzt werden.
+- Komponenten setzen **kein** `defineOptions({ nojs: "caption" })`: sonst bleibt der `nojs`-Text als lange Beschreibung unter der Übung
+  stehen. Ohne diese Option ersetzt die laufende Komponente ihn.
+- Messen und Bauen folgen der Reihenfolge „bauen, dann Strom einschalten, dann prüfen“: Vor dem Einschalten fließt nichts, leuchtet
+  nichts und zeigt kein Messgerät etwas, Kurzschluss-Warnungen kommen erst mit dem Strom; „Prüfen“ schaltet selbst ein. Beim Bauen
+  wählt man ein Bauteil und tippt auf einen Platz; das Schalter-Werkzeug klappt einen eingebauten Schalter auf und zu, bei
+  eingeschaltetem Strom prüft jedes Tippen (Schalter umlegen, Lampe herausschrauben).
+- Ein Brett zeigt nur die Plätze, die die Aufgabe braucht: die Ziele `eine`, `schalter`, `reihe` haben zwei Plätze in einem
+  Stromkreis (beide Plätze sind gültig), nur die Ziele mit parallelen Lampen haben die zwei Zweige.
 - Vor dem Commit `npx vp fmt src`, sonst scheitert die Formatprüfung.
 
 - Kommas in YAML-Flow-Listen (`[a, b]`, `{ left: a, right: b }`) trennen Zellen und Felder: Texte mit Komma in Anführungszeichen.

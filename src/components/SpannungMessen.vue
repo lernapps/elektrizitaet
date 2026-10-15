@@ -19,21 +19,25 @@ interface Texts {
   check: string;
   next: string;
   decimal: string;
+  switchOn: string;
+  switchOff: string;
+  off: string;
 }
 const props = defineProps<{ texts: Texts }>();
 const emit = defineEmits<{ answered: [{ correct: boolean }] }>();
-defineOptions({ nojs: "caption" });
 
 // The first render is the same on the server and in the browser: the task of the seed 1.
 const seed = ref(1);
 const task = computed(() => generate(seed.value));
 const from = ref<Node | null>(null);
 const to = ref<Node | null>(null);
+const powered = ref(false);
 
 const answer = computed(() => ({ from: from.value, to: to.value }));
 const shown = computed(() => measure(task.value, answer.value));
 const level = computed(() => potentials(task.value));
-const amps = computed(() => current(task.value));
+// Nothing flows and the voltmeter shows nothing until the power is on.
+const amps = computed(() => (powered.value ? current(task.value) : 0));
 const scale = computed(() => task.value.volts / 20);
 const sep = computed(() => props.texts.decimal);
 
@@ -63,9 +67,12 @@ function press(n: Node) {
 const status = computed(() =>
   shown.value === null
     ? props.texts.noVoltmeter
-    : fill(props.texts.voltmeter, { v: `${fmt(shown.value, 2, sep.value)} V` }),
+    : !powered.value
+      ? props.texts.off
+      : fill(props.texts.voltmeter, { v: `${fmt(shown.value, 2, sep.value)} V` }),
 );
 const reset = () => {
+  powered.value = false;
   from.value = null;
   to.value = null;
 };
@@ -73,7 +80,10 @@ const next = () => {
   seed.value += 1;
   reset();
 };
-const verify = () => emit("answered", { correct: check(task.value, answer.value) });
+const verify = () => {
+  powered.value = true;
+  emit("answered", { correct: check(task.value, answer.value) });
+};
 </script>
 
 <template>
@@ -106,7 +116,7 @@ const verify = () => emit("answered", { correct: check(task.value, answer.value)
           :y="METER.y"
           kind="V"
           :value="shown ?? 0"
-          :blank="shown === null"
+          :blank="shown === null || !powered"
           :max="task.volts"
           :decimals="2"
           :separator="sep"
@@ -138,6 +148,9 @@ const verify = () => emit("answered", { correct: check(task.value, answer.value)
 
     <p role="status">{{ status }}</p>
     <div class="sp-bar">
+      <button type="button" :aria-pressed="powered" @click="powered = !powered">
+        {{ powered ? texts.switchOff : texts.switchOn }}
+      </button>
       <button type="button" @click="verify()">{{ texts.check }}</button>
       <button type="button" @click="reset()">{{ texts.reset }}</button>
       <button type="button" @click="next()">{{ texts.next }}</button>

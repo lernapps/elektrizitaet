@@ -25,19 +25,25 @@ interface Texts {
   check: string;
   next: string;
   decimal: string;
+  switchOn: string;
+  switchOff: string;
+  off: string;
 }
 const props = defineProps<{ texts: Texts }>();
 const emit = defineEmits<{ answered: [{ correct: boolean }] }>();
-defineOptions({ nojs: "caption" });
 
 // The first render is the same on the server and in the browser: the task of the seed 1.
 const seed = ref(1);
 const task = computed(() => generate(seed.value));
 const spot = ref<Spot>(null);
+const powered = ref(false);
 const ohm = ref(generate(1).start);
 
 const answer = computed(() => ({ spot: spot.value, ohm: ohm.value }));
 const reading = computed(() => measure(task.value.volts, answer.value));
+// Nothing flows and no meter shows anything until the power is on.
+const current = computed(() => (powered.value ? reading.value.loop : 0));
+const shown = computed(() => (powered.value ? reading.value.ammeter : null));
 const scale = computed(() => task.value.volts / STOCK[0]!);
 const sep = computed(() => props.texts.decimal);
 
@@ -54,13 +60,16 @@ const press = (id: (typeof spots)[number]) => {
   spot.value = spot.value === id ? null : id;
 };
 const readingText = computed(() =>
-  reading.value.short
-    ? props.texts.short
-    : reading.value.ammeter === null
-      ? props.texts.noAmmeter
-      : fill(props.texts.ammeter, { v: `${fmt(reading.value.ammeter, 3, sep.value)} A` }),
+  !powered.value
+    ? props.texts.off
+    : reading.value.short
+      ? props.texts.short
+      : reading.value.ammeter === null
+        ? props.texts.noAmmeter
+        : fill(props.texts.ammeter, { v: `${fmt(reading.value.ammeter, 3, sep.value)} A` }),
 );
 const reset = () => {
+  powered.value = false;
   spot.value = null;
   ohm.value = task.value.start;
 };
@@ -68,7 +77,10 @@ const next = () => {
   seed.value += 1;
   reset();
 };
-const verify = () => emit("answered", { correct: check(task.value, answer.value) });
+const verify = () => {
+  powered.value = true;
+  emit("answered", { correct: check(task.value, answer.value) });
+};
 </script>
 
 <template>
@@ -81,9 +93,9 @@ const verify = () => emit("answered", { correct: check(task.value, answer.value)
     <div class="sm-board" role="group" :aria-label="texts.board">
       <svg viewBox="0 0 400 310" aria-hidden="true" focusable="false">
         <rect width="400" height="310" fill="#fff" />
-        <Fluss d="M50 128V40H220" :current="reading.loop" :scale="scale" />
-        <Fluss d="M280 40H350V230H50V146" :current="reading.loop" :scale="scale" />
-        <Fluss v-if="reading.short" d="M100 40V230" :current="scale * 4" :scale="scale" colour="#b00020" />
+        <Fluss d="M50 128V40H220" :current="current" :scale="scale" />
+        <Fluss d="M280 40H350V230H50V146" :current="current" :scale="scale" />
+        <Fluss v-if="powered && reading.short" d="M100 40V230" :current="scale * 4" :scale="scale" colour="#b00020" />
         <path d="M30 128H70" stroke="#111" stroke-width="3" />
         <path d="M40 146H60" stroke="#111" stroke-width="7" />
         <text x="82" y="150" font-size="14" fill="#111">{{ fmt(task.volts, 0, sep) }} V</text>
@@ -109,8 +121,8 @@ const verify = () => emit("answered", { correct: check(task.value, answer.value)
           :x="POS[spot].x"
           :y="POS[spot].y"
           kind="A"
-          :value="reading.ammeter ?? 0"
-          :blank="reading.ammeter === null"
+          :value="shown ?? 0"
+          :blank="shown === null"
           :max="scale"
           :decimals="3"
           :separator="sep"
@@ -132,8 +144,11 @@ const verify = () => emit("answered", { correct: check(task.value, answer.value)
         {{ fill(texts.resistor, { n: String(value) }) }}
       </button>
     </div>
-    <p role="status" :class="{ 'sm-warn': reading.short }">{{ readingText }}</p>
+    <p role="status" :class="{ 'sm-warn': powered && reading.short }">{{ readingText }}</p>
     <div class="sm-bar">
+      <button type="button" :aria-pressed="powered" @click="powered = !powered">
+        {{ powered ? texts.switchOff : texts.switchOn }}
+      </button>
       <button type="button" @click="verify()">{{ texts.check }}</button>
       <button type="button" @click="reset()">{{ texts.reset }}</button>
       <button type="button" @click="next()">{{ texts.next }}</button>

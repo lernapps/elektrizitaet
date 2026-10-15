@@ -149,6 +149,15 @@ blocks:
             decimal:
               de: ","
               en: .
+            switchOn:
+              de: Strom einschalten
+              en: Switch the power on
+            switchOff:
+              de: Strom ausschalten
+              en: Switch the power off
+            "off":
+              de: Der Strom ist aus. Schalte ihn ein oder prüfe, dann wird gemessen.
+              en: The power is off. Switch it on or check, then it measures.
             board:
               de: Stromkreis mit Batterie und zwei Widerständen und vier Punkten, an die du das Voltmeter anschließt
               en: Circuit with a battery and two resistors and four points to connect the voltmeter to
@@ -162,10 +171,13 @@ blocks:
               de: zweiter Anschluss des Voltmeters
               en: second terminal of the voltmeter
             hint:
-              de: "Tippe nacheinander auf zwei Punkte: Dort schließt du das Voltmeter an. Die Leitung ist rot, wo die
-                Spannung hoch ist, und blau, wo sie niedrig ist."
-              en: "Tap two points one after the other: that is where you connect the voltmeter. The wire is red where
-                the voltage is high and blue where it is low."
+              de: "So geht es: Tippe nacheinander auf zwei Punkte, dort schließt du das Voltmeter an. Dann schalte den
+                Strom ein und lies das Voltmeter ab. Die Leitung ist rot, wo die Spannung hoch ist, und blau, wo sie
+                niedrig ist."
+              en:
+                "How it works: tap two points one after the other, that is where you connect the voltmeter. Then switch
+                the power on and read the voltmeter. The wire is red where the voltage is high and blue where it is
+                low."
             voltmeter:
               de: Das Voltmeter zeigt {v}.
               en: The voltmeter shows {v}.

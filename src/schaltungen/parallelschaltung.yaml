@@ -218,8 +218,8 @@ blocks:
               de: Batterie
               en: Battery
             board:
-              de: Schaltbrett mit sechs Plätzen
-              en: Circuit board with six places
+              de: "Schaltbrett mit sechs Plätzen: oben und unten die Hauptleitung, daneben zwei Zweige"
+              en: "Circuit board with six places: the main wire at the top and bottom, and two branches beside it"
             tools:
               de: Bauteil wählen
               en: Choose a part
@@ -232,24 +232,6 @@ blocks:
             toolSwitch:
               de: Schalter
               en: Switch
-            modes:
-              de: Betriebsart
-              en: Mode
-            modeBuild:
-              de: Bauen
-              en: Build
-            modeTest:
-              de: Testen
-              en: Test
-            hintBuild:
-              de: Wähle ein Bauteil und tippe auf einen Platz im Schaltbrett. Mit Kabel machst du einen Platz wieder
-                leer.
-              en: Choose a part and tap a place on the circuit board. With the wire you make a place empty again.
-            hintTest:
-              de:
-                Tippe auf einen Schalter, um ihn zu öffnen oder zu schließen, und auf eine Lampe, um sie herauszuschrauben
-                oder wieder einzuschrauben.
-              en: Tap a switch to open or close it, and tap a lamp to unscrew it or screw it back in.
             slot:
               de: Platz
               en: Place
@@ -289,33 +271,67 @@ blocks:
               de: Nächste Aufgabe
               en: Next task
             goalEine:
-              de: Baue einen Stromkreis, in dem eine Lampe leuchtet.
-              en: Build a circuit in which one lamp shines.
+              de: Baue einen Stromkreis mit einer Lampe. Wenn du den Strom einschaltest, soll die Lampe leuchten.
+              en: Build a circuit with one lamp. When you switch the power on, the lamp should shine.
             goalSchalter:
-              de: Baue einen Stromkreis, in dem du eine Lampe mit einem Schalter ein- und ausschaltest.
-              en: Build a circuit in which you switch a lamp on and off with a switch.
+              de: Baue einen Stromkreis mit einer Lampe und einem Schalter. Mit dem Schalter sollst du die Lampe ein-
+                und ausschalten können.
+              en: Build a circuit with one lamp and one switch. You should be able to switch the lamp on and off with
+                the switch.
             goalReihe:
-              de: Baue einen Stromkreis mit zwei Lampen in Reihe. Wird eine herausgeschraubt, geht auch die andere aus.
-              en: Build a circuit with two lamps in series. If one is unscrewed, the other goes out too.
+              de:
+                Baue einen Stromkreis mit zwei Lampen hintereinander, also in Reihe. Wenn du eine Lampe herausschraubst,
+                soll auch die andere ausgehen.
+              en: Build a circuit with two lamps one behind the other, that is, in series. When you unscrew one lamp,
+                the other should go out too.
             goalParallel:
-              de: Baue einen Stromkreis mit zwei Lampen parallel. Wird eine herausgeschraubt, leuchtet die andere weiter.
-              en: Build a circuit with two lamps in parallel. If one is unscrewed, the other keeps shining.
+              de:
+                Baue einen Stromkreis mit zwei Lampen in den beiden Zweigen, also parallel. Wenn du eine Lampe herausschraubst,
+                soll die andere weiterleuchten.
+              en: Build a circuit with two lamps in the two branches, that is, in parallel. When you unscrew one lamp,
+                the other should keep shining.
             goalJeSchalter:
-              de: Baue einen Stromkreis mit zwei Lampen, die du mit je einem eigenen Schalter einzeln ein- und ausschaltest.
-              en: Build a circuit with two lamps that you switch on and off separately, each with its own switch.
+              de: Baue einen Stromkreis mit zwei Lampen in den beiden Zweigen. Jede Lampe soll einen eigenen Schalter
+                haben, mit dem du nur sie ein- und ausschaltest.
+              en: Build a circuit with two lamps in the two branches. Each lamp should have its own switch, with which
+                you switch only that lamp on and off.
             goalHaupt:
-              de: Baue einen Stromkreis mit zwei parallelen Lampen und einem Schalter, der beide gemeinsam ein- und
-                ausschaltet.
-              en: Build a circuit with two parallel lamps and one switch that switches both on and off together.
+              de:
+                Baue einen Stromkreis mit zwei Lampen in den beiden Zweigen und einem Schalter, der beide Lampen gemeinsam
+                ein- und ausschaltet.
+              en: Build a circuit with two lamps in the two branches and one switch that switches both lamps on and
+                off together.
+            boardSimple:
+              de: Schaltbrett mit zwei Plätzen in einem Stromkreis
+              en: Circuit board with two places in one circuit
+            hintOff:
+              de: "So geht es: Wähle ein Bauteil und tippe auf einen Platz. Mit dem Schalter-Werkzeug klappst du einen
+                eingebauten Schalter auf oder zu. Wenn du fertig bist, schalte den Strom ein."
+              en: "How it works: choose a part and tap a place. With the switch tool you flip a switch that is already
+                built in. When you are done, switch the power on."
+            hintOn:
+              de: Der Strom ist an. Tippe auf einen Schalter, um ihn zu öffnen oder zu schließen, oder auf eine Lampe,
+                um sie herauszuschrauben. Zum Umbauen schaltest du den Strom wieder aus.
+              en: The power is on. Tap a switch to open or close it, or a lamp to unscrew it. To rebuild, switch the
+                power off again.
+            powerOn:
+              de: Strom einschalten
+              en: Switch the power on
+            powerOff:
+              de: Strom ausschalten
+              en: Switch the power off
+            statusOff:
+              de: Der Strom ist aus.
+              en: The power is off.
         nojs:
-          de: "Diese Aufgaben stellt die Übung, jeweils mit ihrer Lösung. Das Schaltbrett hat sechs Plätze: 1 und
-            6 in der Hauptleitung, 2 bis 5 in zwei Zweigen. - **Zwei Lampen parallel:** eine Lampe in jedem Zweig, zum
-            Beispiel auf Platz 2 und 4. - **Zwei Lampen mit je einem Schalter:** In jedem Zweig ein Schalter und eine
-            Lampe. - **Ein Schalter für zwei parallele Lampen:** Schalter auf Platz 1, Lampe in jedem Zweig."
-          en: "These are the tasks the exercise sets, each with its solution. The circuit board has six places:
-            1 and 6 in the main wire, 2 to 5 in two branches. - **Two lamps in parallel:** a lamp in each branch, for
-            example on places 2 and 4. - **Two lamps, each with its own switch:** a switch and a lamp in each branch.
-            - **One switch for two parallel lamps:** a switch on place 1, a lamp in each branch."
+          de: "Diese Aufgaben stellt die Übung. Das Schaltbrett hat sechs Plätze: 1 und 6 in der Hauptleitung, 2 bis
+            5 in zwei Zweigen (2 und 3 im ersten, 4 und 5 im zweiten). - **Zwei Lampen parallel:** eine Lampe in jedem
+            Zweig, zum Beispiel auf Platz 2 und 4. - **Zwei Lampen mit je einem Schalter:** In jedem Zweig ein Schalter
+            und eine Lampe. - **Ein Schalter für zwei parallele Lampen:** Schalter auf Platz 1, Lampe in jedem Zweig."
+          en: "The exercise sets these tasks. The circuit board has six places: 1 and 6 in the main wire, 2 to 5 in
+            two branches (2 and 3 in the first, 4 and 5 in the second). - **Two lamps in parallel:** a lamp in each
+            branch, for example on places 2 and 4. - **Two lamps, each with its own switch:** a switch and a lamp in
+            each branch. - **One switch for two parallel lamps:** a switch on place 1, a lamp in each branch."
       - type: single-choice
         id: be-kurzschluss
         text:

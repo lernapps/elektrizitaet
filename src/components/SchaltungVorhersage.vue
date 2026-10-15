@@ -27,7 +27,6 @@ const props = defineProps<{
   texts: Texts;
 }>();
 const emit = defineEmits<{ answered: [{ correct: boolean }] }>();
-defineOptions({ nojs: "caption" });
 
 // The first render is the same on the server and in the browser: the task of the seed 1.
 const seed = ref(1);

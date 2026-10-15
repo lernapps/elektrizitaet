@@ -17,15 +17,15 @@ import {
 interface Texts {
   battery: string;
   board: string;
+  boardSimple: string;
   tools: string;
   toolWire: string;
   toolLamp: string;
   toolSwitch: string;
-  modes: string;
-  modeBuild: string;
-  modeTest: string;
-  hintBuild: string;
-  hintTest: string;
+  hintOff: string;
+  hintOn: string;
+  powerOn: string;
+  powerOff: string;
   slot: string;
   slotEmpty: string;
   slotLamp: string;
@@ -33,6 +33,7 @@ interface Texts {
   slotSwitchClosed: string;
   slotSwitchOpen: string;
   status: string;
+  statusOff: string;
   short: string;
   taskLabel: string;
   reset: string;
@@ -51,12 +52,12 @@ const props = defineProps<{
   texts: Texts;
 }>();
 const emit = defineEmits<{ answered: [{ correct: boolean }] }>();
-defineOptions({ nojs: "caption" });
 
 type Tool = "wire" | "lamp" | "switch";
 
-// Place of each slot on the board (viewBox 400 x 300) and the turn of its symbol.
-const POS: Record<SlotId, { x: number; y: number; rot: number }> = {
+// Place of each slot on the board (viewBox 400 x 300) and the turn of its symbol. The goals with one loop only get
+// a board with two places in it; the goals with parallel lamps get the board with two branches.
+const PARALLEL: Record<SlotId, { x: number; y: number; rot: number }> = {
   m1: { x: 130, y: 40, rot: 0 },
   m2: { x: 130, y: 260, rot: 0 },
   p1a: { x: 220, y: 105, rot: 90 },
@@ -64,18 +65,27 @@ const POS: Record<SlotId, { x: number; y: number; rot: number }> = {
   p2a: { x: 330, y: 105, rot: 90 },
   p2b: { x: 330, y: 195, rot: 90 },
 };
+const SIMPLE: Partial<Record<SlotId, { x: number; y: number; rot: number }>> = {
+  m1: { x: 150, y: 40, rot: 0 },
+  m2: { x: 270, y: 40, rot: 0 },
+};
 
 // The first render is the same on the server and in the browser: the task of the seed 1.
 const seed = ref(1);
 const slots = ref<Slots>(emptySlots());
 const tool = ref<Tool>("lamp");
-const mode = ref<"build" | "test">("build");
+const powered = ref(false);
 
 const task = computed(() => generate(seed.value, props));
+const simple = computed(() => ["eine", "schalter", "reihe"].includes(task.value.goal));
+const places = computed(() => (simple.value ? (["m1", "m2"] as SlotId[]) : [...SLOTS]));
+const POS = computed(() => (simple.value ? SIMPLE : PARALLEL) as Record<SlotId, { x: number; y: number; rot: number }>);
 const circuit = computed(() => fromSlots(slots.value));
 const sim = computed(() => simulate(circuit.value));
-const flow = computed(() => flows(slots.value, sim.value));
-const litSlots = computed(() => lampSlots(slots.value).filter((_, i) => sim.value.lit.includes(i)));
+const flow = computed(() => (powered.value ? flows(slots.value, sim.value) : { total: 0, first: 0, second: 0 }));
+const litSlots = computed(() =>
+  powered.value ? lampSlots(slots.value).filter((_, i) => sim.value.lit.includes(i)) : [],
+);
 
 const goalText = computed(() => {
   const t = props.texts;
@@ -88,7 +98,9 @@ const goalText = computed(() => {
     haupt: t.goalHaupt,
   }[task.value.goal];
 });
-const status = computed(() => props.texts.status.replace("{n}", String(litSlots.value.length)));
+const status = computed(() =>
+  powered.value ? props.texts.status.replace("{n}", String(litSlots.value.length)) : props.texts.statusOff,
+);
 
 const kind = (id: SlotId) => slots.value[id]?.kind ?? "wire";
 const isLit = (id: SlotId) => litSlots.value.includes(id);
@@ -112,27 +124,35 @@ const label = (id: SlotId) => {
           ? t.slotSwitchClosed
           : t.slotSwitchOpen
         : t.slotEmpty;
-  return `${t.slot} ${SLOTS.indexOf(id) + 1}: ${what}`;
+  return `${t.slot} ${places.value.indexOf(id) + 1}: ${what}`;
 };
 
 function press(id: SlotId) {
   const part = slots.value[id];
-  if (mode.value === "test") {
+  // With the power on, a tap tests: it flips a switch and unscrews or screws in a lamp.
+  if (powered.value) {
     if (part?.kind === "switch") part.closed = !part.closed;
     else if (part?.kind === "lamp") part.out = part.out !== true;
     return;
   }
-  slots.value[id] =
-    tool.value === "wire" ? null : tool.value === "lamp" ? { kind: "lamp" } : { kind: "switch", closed: true };
+  // While building, a tap puts the chosen part in place; the switch tool also flips a switch that is already there.
+  if (tool.value === "switch" && part?.kind === "switch") part.closed = !part.closed;
+  else
+    slots.value[id] =
+      tool.value === "wire" ? null : tool.value === "lamp" ? { kind: "lamp" } : { kind: "switch", closed: true };
 }
 const reset = () => {
   slots.value = emptySlots();
+  powered.value = false;
 };
 const next = () => {
   seed.value += 1;
   reset();
 };
-const verify = () => emit("answered", { correct: check(task.value, circuit.value) });
+const verify = () => {
+  powered.value = true;
+  emit("answered", { correct: check(task.value, circuit.value) });
+};
 </script>
 
 <template>
@@ -142,29 +162,39 @@ const verify = () => emit("answered", { correct: check(task.value, circuit.value
     </p>
 
     <div class="bau-bar" role="group" :aria-label="texts.tools">
-      <button type="button" :aria-pressed="tool === 'lamp'" @click="tool = 'lamp'">{{ texts.toolLamp }}</button>
-      <button type="button" :aria-pressed="tool === 'switch'" @click="tool = 'switch'">{{ texts.toolSwitch }}</button>
-      <button type="button" :aria-pressed="tool === 'wire'" @click="tool = 'wire'">{{ texts.toolWire }}</button>
+      <button type="button" :aria-pressed="tool === 'lamp'" :disabled="powered" @click="tool = 'lamp'">
+        {{ texts.toolLamp }}
+      </button>
+      <button type="button" :aria-pressed="tool === 'switch'" :disabled="powered" @click="tool = 'switch'">
+        {{ texts.toolSwitch }}
+      </button>
+      <button type="button" :aria-pressed="tool === 'wire'" :disabled="powered" @click="tool = 'wire'">
+        {{ texts.toolWire }}
+      </button>
+      <button type="button" class="bau-power" :aria-pressed="powered" @click="powered = !powered">
+        {{ powered ? texts.powerOff : texts.powerOn }}
+      </button>
     </div>
-    <div class="bau-bar" role="group" :aria-label="texts.modes">
-      <button type="button" :aria-pressed="mode === 'build'" @click="mode = 'build'">{{ texts.modeBuild }}</button>
-      <button type="button" :aria-pressed="mode === 'test'" @click="mode = 'test'">{{ texts.modeTest }}</button>
-    </div>
-    <p class="bau-hint">{{ mode === "build" ? texts.hintBuild : texts.hintTest }}</p>
+    <p class="bau-hint">{{ powered ? texts.hintOn : texts.hintOff }}</p>
 
-    <div class="bau-board" role="group" :aria-label="texts.board">
+    <div class="bau-board" role="group" :aria-label="simple ? texts.boardSimple : texts.board">
       <svg viewBox="0 0 400 300" aria-hidden="true" focusable="false">
         <rect width="400" height="300" fill="#fff" />
         <g fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <Fluss d="M50 126V40H220" :current="flow.total" :scale="1.5" />
-          <Fluss d="M220 40H330" :current="flow.second" :scale="1.5" />
-          <Fluss d="M220 40V260" :current="flow.first" :scale="1.5" />
-          <Fluss d="M330 40V260" :current="flow.second" :scale="1.5" />
-          <Fluss d="M330 260H220" :current="flow.second" :scale="1.5" />
-          <Fluss d="M220 260H50V174" :current="flow.total" :scale="1.5" />
+          <template v-if="simple">
+            <Fluss d="M50 126V40H330V260H50V174" :current="flow.total" :scale="1.5" />
+          </template>
+          <template v-else>
+            <Fluss d="M50 126V40H220" :current="flow.total" :scale="1.5" />
+            <Fluss d="M220 40H330" :current="flow.second" :scale="1.5" />
+            <Fluss d="M220 40V260" :current="flow.first" :scale="1.5" />
+            <Fluss d="M330 40V260" :current="flow.second" :scale="1.5" />
+            <Fluss d="M330 260H220" :current="flow.second" :scale="1.5" />
+            <Fluss d="M220 260H50V174" :current="flow.total" :scale="1.5" />
+          </template>
           <path d="M20 134H80" />
           <path d="M32 152H68" stroke-width="7" />
-          <template v-for="id in SLOTS" :key="id">
+          <template v-for="id in places" :key="id">
             <g :transform="`translate(${POS[id].x} ${POS[id].y}) rotate(${POS[id].rot})`">
               <rect
                 v-if="kind(id) === 'wire'"
@@ -203,7 +233,7 @@ const verify = () => emit("answered", { correct: check(task.value, circuit.value
         <text x="90" y="156" font-size="15" fill="#111">{{ texts.battery }}</text>
       </svg>
       <button
-        v-for="id in SLOTS"
+        v-for="id in places"
         :key="id"
         type="button"
         class="bau-slot"
@@ -214,7 +244,7 @@ const verify = () => emit("answered", { correct: check(task.value, circuit.value
     </div>
 
     <p class="bau-status" role="status">{{ status }}</p>
-    <p v-if="sim.short" class="bau-short" role="status">{{ texts.short }}</p>
+    <p v-if="powered && sim.short" class="bau-short" role="status">{{ texts.short }}</p>
     <div class="bau-bar">
       <button type="button" @click="verify()">{{ texts.check }}</button>
       <button type="button" @click="reset()">{{ texts.reset }}</button>
