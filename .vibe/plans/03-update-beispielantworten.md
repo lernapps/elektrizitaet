@@ -4,7 +4,7 @@
 # archetype: the kind of app, as in the app's first plan: set it when you start this plan. It never changes.
 archetype: explainer
 # phase: the phase you work in now: explore, plan, code or commit. Change it when you enter the next phase.
-phase: code
+phase: commit
 # prePushFailures: failed runs of the pre-push hook during this increment. The hook counts them. Never change it.
 prePushFailures: 0
 ---
@@ -158,8 +158,8 @@ something, choose, mark it "(guess)" under "Key decisions" and go on.
 - [x] Optional: `tutor.rules` in `src/app.yaml` (App-eigene Regeln an den Tutor, zum Beispiel: Gleichstrom, keine Elektronen, Wasserbild).
 - [x] The content guide describes the app as it is now: its competencies, chapters and patterns, and its procedure
       for the next increment (`app-content-matches`).
-- [ ] `npx lernapps check` passes.
-- [ ] Set `phase: commit`.
+- [x] `npx lernapps check` passes.
+- [x] Set `phase: commit`.
 
 ### Completed
 
