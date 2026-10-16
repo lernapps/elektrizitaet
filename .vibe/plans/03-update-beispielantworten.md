@@ -56,6 +56,10 @@ Mark a choice you made without asking the creator with "(guess)", and list it in
 
 ## Notes
 
+- Kein neuer Lernstoff: keine neue Lehrplanrecherche, keine neuen Kompetenzen, keine neuen Quellen.
+- Anlass: Beobachtungen aus Inkrement 02 (Retrospektive in `.vibe/plans/02-groessen-im-stromkreis.md`): Lösung vor der Antwort, nur „Leider nicht richtig.“,
+  Prüfungen gegen eine Musterlösung.
+
 <!-- What you need later: sources and licences of content, links, open questions. -->
 
 ## Explore
@@ -68,24 +72,26 @@ turn, in plain words. Do not ask what you can derive from earlier answers or fro
 
 ### Tasks
 
-- [ ] Set `archetype` as in the app's first plan in `.vibe/plans/`.
-- [ ] The skills are in the app's repo, in `.agents/skills/`. Only if they are missing, install them:
+- [x] Set `archetype` as in the app's first plan in `.vibe/plans/`.
+- [x] The skills are in the app's repo, in `.agents/skills/`. Only if they are missing, install them:
       `npx skills add lernapps/tooling`.
-- [ ] Load the content guide `.agents/skills/app-content/SKILL.md` and the skill `lernapps-content-growth`, and read
+- [x] Load the content guide `.agents/skills/app-content/SKILL.md` and the skill `lernapps-content-growth`, and read
       the plans in `.vibe/plans/`: what the app teaches, how its content is made, and what earlier increments left
       open.
-- [ ] Ask what this increment adds or changes: which competencies, chapters or rounds, for which school years.
-- [ ] Research the new content: follow the guide's curriculum and sources, and the skill `lernapps-content-research`
+- [x] (beantwortet von der Tooling-Sitzung und vom Ersteller) Ask what this increment adds or changes: which competencies, chapters or rounds, for which school years.
+- [x] (entfällt: kein neuer Lernstoff) Research the new content: follow the guide's curriculum and sources, and the skill `lernapps-content-research`
       for what the guide does not cover yet. Write the curriculum orientation (the Lehrplan, cited where you used
       one), the new competencies by chapter and the verified sources under "Notes".
-- [ ] **Checkpoint:** research. Explain to the creator, in plain words, what you found and how: the curriculum
+- [x] (entfällt: kein neuer Lernstoff) **Checkpoint:** research. Explain to the creator, in plain words, what you found and how: the curriculum
       orientation, the new competencies by chapter, the sources and how you checked them, and what you could not check.
       Stop and wait for the creator. Change it if they ask, then ask again.
-- [ ] Set `phase: plan`.
+- [x] Set `phase: plan`.
 
 ### Answers
 
-<!-- The creator's answers, in their words, one bullet per question. -->
+- Tooling-Sitzung, im Auftrag des Erstellers: beide Versionssprünge in ein Inkrement 03 „Update und Beispielantworten“ aufnehmen.
+- Ersteller: „leg los“ (nach meiner Beschreibung des Ablaufs: Plan, Update, Beispielantworten, Umbau von sechs Komponenten, Prüfung,
+  Pull Request, Vorschau, Veröffentlichung nur nach seinem Ja).
 
 ### Completed
 
@@ -98,25 +104,27 @@ creator's turns from here to the end are counted in the retrospective (target: a
 
 ### Tasks
 
-- [ ] Write the tasks of Code under "Code": one slice per competency, as the skill `lernapps-content-growth` says, in
+- [x] Write the tasks of Code under "Code": one slice per competency, as the skill `lernapps-content-growth` says, in
       the order the guide's procedure names. Each slice ends in a commit.
-- [ ] Write the content method under "Content method": which patterns, figures and components of the guide each
+- [x] Write the content method under "Content method": which patterns, figures and components of the guide each
       slice uses, and anything new, with the reason the guide's patterns do not fit.
-- [ ] Show the creator the goal, the new competencies by chapter and the slices, short. Explain in plain words what
+- [x] Show the creator the goal, the new competencies by chapter and the slices, short. Explain in plain words what
       learners will see and do, and anything new in how the content is made.
-- [ ] For every new component and interactive exercise, show a sketch: a static SVG or image of what learners see,
+- [x] For every new component and interactive exercise, show a sketch: a static SVG or image of what learners see,
       or the steps (what they do, what they see after each). A description in words alone is not enough.
-- [ ] **Checkpoint:** confirm the plan and the content method. Stop and wait for the creator. Change the plan if they
+- [x] **Checkpoint:** confirm the plan and the content method. Stop and wait for the creator. Change the plan if they
       ask, then ask again.
-- [ ] Set `phase: code`.
+- [x] Set `phase: code`.
 
 ### Content method
 
-<!--
-One line each: the guide's patterns, figures and components this increment uses, and where; anything new (a pattern,
-a figure type, a component, a source rule), what it does and what it cannot do. New things go into the guide in
-the slice that adds them.
--->
+- Unverändert: alle Muster, Figuren und Komponenten des Leitfadens.
+- Neu in jeder der sechs Übungskomponenten: die Prop `seed` statt eigenem Startwert und eigenem „Nächste Aufgabe“-Knopf; im Logikmodul
+  `describe(task, props, lang)` (Aufgabe und Lösung als eingeschränktes Markdown, genau wie auf dem Bildschirm) und `about`
+  (Aufgabe, Antwortformat, was als richtig zählt, typische Fehler, je Sprache); `answered` meldet `{ correct, reason }`.
+- Beispielantworten `examples: { accepted, rejected }` an jeder Übung mit Komponente: erst überlegen, was der Text erlaubt (auch andere
+  richtige Antworten als die Musterlösung) und welche typischen falschen es gibt, dann eintragen. Wird ein akzeptiertes Beispiel
+  abgelehnt, ist die Prüfung falsch.
 
 ### Completed
 
@@ -132,11 +140,18 @@ something, choose, mark it "(guess)" under "Key decisions" and go on.
 
 ### Tasks
 
-- [ ] Switch to a new branch from `main`: `git switch -c increment/<NN>-<short name>`. Commit this plan on it.
+- [x] Switch to a new branch from `main`: `git switch -c increment/03-update-beispielantworten`. Commit this plan on it.
 - [ ] Update the app to the newest tooling and runtime: `npx --yes github:lernapps/tooling#main update`, then
       `npm install`. It also replaces the `lernapps-*` skills: read the ones you use again. Commit the update on its
       own, and fix what its checks report before you add content.
-- [ ] <the slices written in Plan, each: competency, content, exercise, the entry's topic, check, commit>
+- [ ] Beispielantworten (`examples`) für die 9 Übungsblöcke mit Komponente: `SchaltungBauen` ×3, `SchaltungVorhersage` ×2, `DrahtLabor`,
+      `OhmLabor`, `SpannungMessen`, `StromMessen`. Zuerst überlegen, was der Text erlaubt; dann eintragen; Prüfungen korrigieren, wo ein
+      richtiges Beispiel abgelehnt wird. Commit.
+- [ ] Die sechs Komponenten auf den Vertrag der neuen Laufzeit umbauen (`seed`, `describe`, `about`, `answered { correct, reason }`,
+      Meldungen der Regel `vue-component-exercise-contract`), eine nach der anderen, je mit Test und Commit; `nojs` an den Komponenten
+      entfällt, wo die Laufzeit es verlangt.
+- [ ] Quizfragen, Rechenaufgaben: `hint`, `mistakes`, `info` ergänzen, wo die Rückmeldung bisher nur „Leider nicht richtig.“ wäre.
+- [ ] Optional: `tutor.rules` in `src/app.yaml` (App-eigene Regeln an den Tutor, zum Beispiel: Gleichstrom, keine Elektronen, Wasserbild).
 - [ ] The content guide describes the app as it is now: its competencies, chapters and patterns, and its procedure
       for the next increment (`app-content-matches`).
 - [ ] `npx lernapps check` passes.
