@@ -198,38 +198,32 @@ das Lehrplanzitat prüfen (Bayern, Gymnasium, Jahrgangsstufe 9 oder 10, nicht ge
 - **KI-Tutor:** `tutor.rules` in `src/app.yaml` gibt der App eigene Regeln an den Tutor (Wasserbild mit Grenzen, keine Elektronen, Gleichstrom, Rechenwege
   auf Papier, jeder gleichwertige Aufbau zählt). Die Anbieter bleiben bei der Voreinstellung (Claude); die App lädt vor einem Klick nichts.
 
-- Eine `unit` in `compare.number` ist eine Sprachtabelle `{ de: A, en: A }`, kein String.
-- Die Props einer Komponente nutzen Literal-Unions im Text von `defineProps` (`("strom" | "spannung")[]`), keinen importierten
-  Typ-Alias (`vue-component-props-valid`).
-- `src/components/` enthält nur `<Name>.vue`, `<Name>.ts` und `<Name>.test.ts` (PascalCase, jede `.vue` mit Test): gemeinsame Hilfen
-  gehören in die `.ts` einer Komponente, die die anderen importieren.
-- Der Explainer schreibt keine Weiterleitungen: eine entfernte Seite (hier `schaltungen/bau-editor`) gibt danach 404; der Themenpfad
-  im Katalogeintrag muss dann in demselben Zug ersetzt werden.
-- **Vertrag der Übungskomponenten** (die sechs Komponenten, die `answered` melden: `StromMessen`, `SpannungMessen`, `DrahtLabor`,
-  `OhmLabor`, `SchaltungVorhersage`, `SchaltungBauen`):
-  - Die Prop `seed: number` bekommt die Komponente von der Laufzeit (Aufgabe Nr. n, Adresse `?seed=<n>#<id>`); sie zeigt
-    `generate(props.seed, props)` und setzt ihren Zustand zurück, wenn sich der Seed ändert. Sie hat keinen eigenen Seed und keinen
-    „Nächste Aufgabe“-Knopf; ein „Neu anfangen“-Knopf darf bleiben.
-  - Sie meldet `answered { correct, reason }`. `reason` ist ein Satz in der Sprache der Seite, der sagt, was fehlt: die Texte `why…`
-    in den `texts` der Seite; die Funktion `diagnose` im Logikmodul wählt den Grund. Mit `exactOptionalPropertyTypes` kein
-    `reason: undefined` melden, sondern `reason` weglassen.
-  - Das Logikmodul exportiert `generate`, `check`, `solution`, `wrong`, außerdem `describe(task, props, lang)` (die Aufgabe, wie sie auf dem
-    Bildschirm steht, und ihre Lösung, als Markdown in der Sprache `lang`) und `about = { task, answer, correct, mistakes }` (Texte je
-    Sprache: was zu tun ist, Antwortformat, was als richtig zählt, typische Fehler, passend zu den abgelehnten Beispielen). Daraus entstehen
-    der Text ohne JavaScript und die `tutor.md` jeder Seite. `nojs` an Übungskomponenten entfällt und ist verboten.
-  - Der Block hat `examples: { accepted, rejected }`, vom Build geprüft, für Lernende unsichtbar: akzeptierte Antworten (auch andere richtige
-    als die Musterlösung: Lampe plus Schalter bei „eine Lampe“, die beiden Punkte des Voltmeters vertauscht, Amperemeter oben oder unten) und
-    abgelehnte (die typischen Fehler). `{ answer, seed? }`; ohne `seed` gilt das Beispiel für alle Aufgaben der Seeds 1 bis 50, sonst nur
-    für den Seed. Wird ein akzeptiertes Beispiel abgelehnt, stimmt die Prüfung nicht, nicht das Beispiel. Die Beispiele für die vier
-    Komponenten mit eigenen Aufgabenwerten entstanden mit einem Skript, das die Lösung je Seed aus dem Logikmodul rechnet.
+- **Übungskomponenten:** Die Regeln für Komponenten, die `answered` melden (Prop `seed`, `describe`, `about`, `reason`, `examples`, kein
+  `nojs`, die Namen in `src/components/`), stehen im allgemeinen Skill `lernapps-explainer` und gelten unverändert; hier steht nur, was
+  diese App dazu entschieden hat:
+  - Die sechs Komponenten sind `StromMessen`, `SpannungMessen`, `DrahtLabor`, `OhmLabor`, `SchaltungVorhersage` und `SchaltungBauen`; sie
+    teilen sich Hilfen in `Fluss.ts` (Zufall, Zahlenformat mit Dezimalzeichen der Sprache, Texte füllen, Aussehen des Flusses) und
+    `Zeiger.ts`. Die Gründe für falsche Antworten (`reason`) stehen als Texte `why…` in den `texts` der Seite, die Auswahl macht
+    `diagnose` im Logikmodul.
+  - Beispielantworten (`examples`): je Komponente zuerst überlegen, was der Text erlaubt (Lampe plus Schalter bei „eine Lampe“, die beiden
+    Punkte des Voltmeters vertauscht, Amperemeter oben oder unten, jeder Zweig-Aufbau mit gleichem Verhalten) und was typisch falsch
+    ist; die Beispiele der Komponenten mit eigenen Aufgabenwerten rechnet man mit einem kleinen Skript aus den Logikmodulen, je Seed.
   - Figuren verraten die Antwort nicht: die Stromachse in `OhmLabor` wächst mit den Messpunkten, sie hängt nicht vom Widerstand ab.
+- **Eindeutigkeit der Prüfung:** Der allgemeine Skill verlangt, die Eigenschaft zu prüfen, die der Text sagt, nicht die Musterlösung. In dieser
+  App heißt das: `ordering` nur, wenn die Reihenfolge eindeutig ist (nach Größe, nach Zeit), nicht bei Bauteilen in Reihe, wo sie egal ist
+  (dort Wahr-oder-falsch); `matching` nur mit je genau einem passenden Partner; zwei Übungen dürfen sich nicht widersprechen (die
+  Glühlampe ist Wärmewirkung, die LED Lichtwirkung); ein Test je Bauziel prüft mehrere gleichwertige Aufbauten.
+- Die Prüfung einer Bauaufgabe urteilt nur über das, was ihr Text verlangt: die Aufgabe `eine` erlaubt zum Beispiel einen Schalter im
+  Kreis, solange die Lampe leuchtet. Nach dem Prüfen sagt `diagnose` (Text `why…`), was fehlt: Zahl der Lampen, Zahl der Schalter,
+  Kurzschluss, etwas dunkel (offener Schalter) oder Verhalten.
+- Der Explainer schreibt keine Weiterleitungen: eine entfernte Seite (hier `schaltungen/bau-editor`) gibt danach 404, und der Themenpfad
+  im Katalogeintrag muss im selben Zug ersetzt werden.
 - Messen und Bauen folgen der Reihenfolge „bauen, dann Strom einschalten, dann prüfen“: Vor dem Einschalten fließt nichts, leuchtet
   nichts und zeigt kein Messgerät etwas, Kurzschluss-Warnungen kommen erst mit dem Strom; „Prüfen“ schaltet selbst ein. Beim Bauen
   wählt man ein Bauteil und tippt auf einen Platz; das Schalter-Werkzeug klappt einen eingebauten Schalter auf und zu, bei
   eingeschaltetem Strom prüft jedes Tippen (Schalter umlegen, Lampe herausschrauben).
 - Ein Brett zeigt nur die Plätze, die die Aufgabe braucht: die Ziele `eine`, `schalter`, `reihe` haben zwei Plätze in einem
   Stromkreis (beide Plätze sind gültig), nur die Ziele mit parallelen Lampen haben die zwei Zweige.
-- Vor dem Commit `npx vp fmt src`, sonst scheitert die Formatprüfung.
 
 - Kommas in YAML-Flow-Listen (`[a, b]`, `{ left: a, right: b }`) trennen Zellen und Felder: Texte mit Komma in Anführungszeichen.
 - Links zwischen Seiten haben die Form `/<kapitel>/<seite>/`, nicht relativ.

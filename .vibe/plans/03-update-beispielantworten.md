@@ -50,6 +50,10 @@ Lernende können einen KI-Tutor mitbringen. Am Lernstoff ändert sich nichts.
 - `tutor.rules` in `src/app.yaml` mit vier App-eigenen Regeln (Wasserbild mit Grenzen, Gleichstrom, Rechenwege auf Papier, jeder gleichwertige Aufbau zählt) und die
   Anbieter der Voreinstellung (guess; der Ersteller hat es nicht ausdrücklich verlangt).
 - Die Skala der Stromachse in `OhmLabor` hing vom Widerstand ab und verriet die Antwort; jetzt wächst sie mit den Messpunkten (beim Umbau aufgefallen).
+- Der Inhaltsleitfaden `app-content` enthält nur, was diese App entschieden hat; die allgemeinen Regeln für Komponenten stehen im Skill
+  `lernapps-explainer` und werden dort nachgeschlagen, nicht kopiert (Hinweis des Erstellers: „sind die Inhalte nicht schon im allgemeinen Skill?“).
+  Beim ersten Einfügen hatte ich dabei zwei Absätze (Eindeutigkeit der Prüfung, Prüfung der Bauaufgaben) versehentlich gelöscht und im nächsten Commit
+  wiederhergestellt.
 - Wo ein akzeptiertes Beispiel abgelehnt wird, wird die Prüfung (`check`) korrigiert, nicht das Beispiel; der Ersteller wird informiert.
 
 <!--
