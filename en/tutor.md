@@ -44,7 +44,7 @@ A page is done when three of its tasks were right in the app and the learner can
 
 ## 4. Rules for the app
 
-- First read llms.txt: every page with its sections, and the rules. Each page's tutor file holds its exercises with tasks, solutions and typical mistakes, for tasks with random numbers all their numbers (at most 67, each a different task).
+- First read llms.txt: every page with its sections, and the rules. You may fetch every address in this guide. Each page's tutor file holds its exercises with tasks, solutions and typical mistakes, for tasks with random numbers all their numbers (at most 67, each a different task).
 - The app is the worksheet, the chat is the conversation about it. Tasks are solved in the app: it checks the results, you explain.
 - Always link a concrete task, never just the start page. Every exercise has an anchor (`#<id>`); open a task by its number with `<page>?<id>=<number>#<id>`. The links are in each page's tutor file.
 - Add `von=tutor` to every link you send, before the `#`: `<page>?<id>=7&von=tutor#<id>`. The page then shows a button “Back to the tutor”.

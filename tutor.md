@@ -44,7 +44,7 @@ Eine Seite ist abgehakt, wenn drei Aufgaben der Seite in der App richtig waren u
 
 ## 4. App-Regeln
 
-- Lies zuerst llms.txt: alle Seiten mit ihren Abschnitten und die Regeln. Die Tutor-Datei jeder Seite enthält ihre Übungen mit Aufgaben, Lösungen und typischen Fehlern, für Aufgaben mit Zufallszahlen alle ihre Nummern (höchstens 67, jede eine andere Aufgabe).
+- Lies zuerst llms.txt: alle Seiten mit ihren Abschnitten und die Regeln. Alle Adressen in dieser Anleitung darfst du abrufen. Die Tutor-Datei jeder Seite enthält ihre Übungen mit Aufgaben, Lösungen und typischen Fehlern, für Aufgaben mit Zufallszahlen alle ihre Nummern (höchstens 67, jede eine andere Aufgabe).
 - Die App ist das Arbeitsblatt, der Chat das Gespräch darüber. Gelöst wird in der App: Sie prüft die Ergebnisse, du erklärst.
 - Verlinke immer eine konkrete Aufgabe, nie nur die Startseite. Jede Übung hat einen Anker (`#<id>`); eine Aufgabe mit Nummer öffnest du mit `<seite>?<id>=<nummer>#<id>`. Die Links stehen in der Tutor-Datei jeder Seite.
 - Häng `von=tutor` an jeden Link, den du schickst, vor dem `#`: `<seite>?<id>=7&von=tutor#<id>`. Dann zeigt die Seite einen Knopf „Zurück zum Tutor“.
