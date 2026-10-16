@@ -184,13 +184,13 @@ bundle. A pull request to `main` runs the same checks without publishing.
 - [ ] Merge the pull request into `main` (or, without a pull request, merge the branch into `main` and push `main`).
       Watch the run of the workflow `Pages` for that commit until it ends. If it fails, read the message of the
       failed step, fix what you can and push again.
-- [ ] Open the address the job `deploy` printed ("published at ...", also in the run's summary) and confirm that it
+- [x] Open the address the job `deploy` printed ("published at ...", also in the run's summary) and confirm that it
       shows the new content. Take that address, never one you derive; follow its redirects.
-- [ ] If the app is listed and the increment changes what its entry says (topics, school years, summary): load the
+- [x] If the app is listed and the increment changes what its entry says (topics, school years, summary): load the
       skill `lernapps-listing` and write the changed entry. Otherwise skip the next task.
-- [ ] **Checkpoint:** list. Ask the creator before you open the pull request to the catalog, and wait for their yes.
-- [ ] Fill the retrospective.
-- [ ] Commit this plan on `main` and push it. A push that changes only `.vibe/` publishes nothing again.
+- [x] **Checkpoint:** list (no entry change). Ask the creator before you open the pull request to the catalog, and wait for their yes.
+- [x] Fill the retrospective.
+- [x] Commit this plan on `main` and push it. A push that changes only `.vibe/` publishes nothing again.
 - [ ] If you opened a pull request to the catalog, see it through to "bestanden" as the skill says.
 - [ ] If this plan changed since its last push, commit it on `main` and push it again.
 
@@ -205,22 +205,16 @@ runs and increments. It stays in the creator's repo.
 
 ### Phases reached
 
-<!-- The last phase you completed and the checkpoints the creator passed. Example: "commit; confirmed, published". -->
+commit; creator confirmed ("leg los", then "ja, #4 passt"), merged, published, live on lernapps.net/elektrizitaet.
 
 ### Failed checks
 
-<!--
-Each check that failed, with its rule id and how often. Example: "`no-request-before-click`: 2".
-Leave out the failed pre-push runs: the hook counts them in the front matter.
--->
+Pre-commit type error in a component test (1, fixed, hook never bypassed). One earlier commit passed the hook although the full check failed (tooling observation).
 
 ### Creator turns after the plan
 
-<!-- How many messages the creator sent after confirming the plan, and what each was about. Target: at most 3. -->
+About 6: tutor prompt origin, duplication of the content guide with the general skill, tutor.md not fetchable from a claude.ai chat, new tooling session for fetch + seeds in URL, merge.
 
 ### Where I had to guess
 
-<!--
-Each place where this plan, a skill, the content guide, a message or the creator's answers did not tell you what to
-do, and what you chose. Write "None" if there was none.
--->
+`tutor.rules` wording in `src/app.yaml` (no template for it); which alternative correct answers to list as `examples`. Open: the tutor needs the page fetchable and the seeds of all exercises in the URL; handed to a tooling session.
