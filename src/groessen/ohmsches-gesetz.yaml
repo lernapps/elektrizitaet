@@ -135,12 +135,21 @@ blocks:
             check:
               de: Prüfen
               en: Check
-            next:
-              de: Nächste Aufgabe
-              en: Next task
             decimal:
               de: ","
               en: .
+            whyPoints:
+              de: Setze mindestens drei Messpunkte bei verschiedenen Spannungen über 0 V.
+              en: Record at least three measuring points at different voltages above 0 V.
+            whyAnswer:
+              de: Trage den Widerstand ein, den du aus den Messpunkten ausrechnest.
+              en: Enter the resistance that you calculate from the measuring points.
+            whyValue:
+              de:
+                Der Widerstand stimmt noch nicht. Rechne Spannung geteilt durch Stromstärke, am besten mit einem Messpunkt,
+                und gib die Stromstärke in A an.
+              en: The resistance is not right yet. Calculate voltage divided by current, best with one measuring point,
+                and use the current in A.
             board:
               de: Stromkreis mit einstellbarer Batterie, einem unbekannten Widerstand, Voltmeter und Amperemeter
               en: Circuit with an adjustable battery, an unknown resistor, a voltmeter and an ammeter
@@ -169,17 +178,244 @@ blocks:
                 rechne dann den Widerstand aus und trage ihn ein.
               en: The resistor in the circuit is unknown. Record at least three measuring points at different voltages,
                 then calculate the resistance and enter it.
-        nojs:
-          de: 'Diese Übung zeigt eine einstellbare Batterie (0 bis 12 V in Schritten von 1,5 V) mit einem unbekannten
-            Widerstand, einem Voltmeter und einem Amperemeter. Du setzt mindestens drei Messpunkte, die Punkte (Spannung,
-            Stromstärke) liegen auf einer Geraden durch den Nullpunkt, und trägst den Widerstand ein. Beispiel: bei
-            6 V zeigt das Amperemeter 0,2 A, bei 9 V 0,3 A. Lösung: $R = \frac{6 \text{ V}}{0{,}2 \text{ A}} = 30 \text{
-            Ω}$.'
-          en:
-            'This exercise shows an adjustable battery (0 to 12 V in steps of 1.5 V) with an unknown resistor, a voltmeter
-            and an ammeter. You record at least three measuring points; the points (voltage, current) lie on a straight
-            line through the origin; and you enter the resistance. Example: at 6 V the ammeter shows 0.2 A, at 9 V 0.3
-            A. Solution: $R = \frac{6 \text{ V}}{0.2 \text{ A}} = 30 \text{ Ω}$.'
+        examples:
+          accepted:
+            - seed: 1
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 6
+                    amps: 0.12
+                  - volts: 9
+                    amps: 0.18
+                ohm: 50
+            - seed: 1
+              answer:
+                points:
+                  - volts: 4.5
+                    amps: 0.09
+                  - volts: 7.5
+                    amps: 0.15
+                  - volts: 12
+                    amps: 0.24
+                ohm: 50.3
+            - seed: 2
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 6
+                    amps: 0.12
+                  - volts: 9
+                    amps: 0.18
+                ohm: 50
+            - seed: 2
+              answer:
+                points:
+                  - volts: 4.5
+                    amps: 0.09
+                  - volts: 7.5
+                    amps: 0.15
+                  - volts: 12
+                    amps: 0.24
+                ohm: 50.3
+            - seed: 3
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 6
+                    amps: 0.12
+                  - volts: 9
+                    amps: 0.18
+                ohm: 50
+            - seed: 3
+              answer:
+                points:
+                  - volts: 4.5
+                    amps: 0.09
+                  - volts: 7.5
+                    amps: 0.15
+                  - volts: 12
+                    amps: 0.24
+                ohm: 50.3
+            - seed: 4
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.03
+                  - volts: 6
+                    amps: 0.06
+                  - volts: 9
+                    amps: 0.09
+                ohm: 100
+            - seed: 4
+              answer:
+                points:
+                  - volts: 4.5
+                    amps: 0.045
+                  - volts: 7.5
+                    amps: 0.075
+                  - volts: 12
+                    amps: 0.12
+                ohm: 100.3
+          rejected:
+            - answer:
+                points: []
+                ohm: null
+            - seed: 1
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 6
+                    amps: 0.12
+                ohm: 50
+            - seed: 1
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 3
+                    amps: 0.06
+                ohm: 50
+            - seed: 1
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 6
+                    amps: 0.12
+                  - volts: 9
+                    amps: 0.18
+                ohm: null
+            - seed: 1
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 6
+                    amps: 0.12
+                  - volts: 9
+                    amps: 0.18
+                ohm: 100
+            - seed: 2
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 6
+                    amps: 0.12
+                ohm: 50
+            - seed: 2
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 3
+                    amps: 0.06
+                ohm: 50
+            - seed: 2
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 6
+                    amps: 0.12
+                  - volts: 9
+                    amps: 0.18
+                ohm: null
+            - seed: 2
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 6
+                    amps: 0.12
+                  - volts: 9
+                    amps: 0.18
+                ohm: 100
+            - seed: 3
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 6
+                    amps: 0.12
+                ohm: 50
+            - seed: 3
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 3
+                    amps: 0.06
+                ohm: 50
+            - seed: 3
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 6
+                    amps: 0.12
+                  - volts: 9
+                    amps: 0.18
+                ohm: null
+            - seed: 3
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.06
+                  - volts: 6
+                    amps: 0.12
+                  - volts: 9
+                    amps: 0.18
+                ohm: 100
+            - seed: 4
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.03
+                  - volts: 6
+                    amps: 0.06
+                ohm: 100
+            - seed: 4
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.03
+                  - volts: 3
+                    amps: 0.03
+                  - volts: 3
+                    amps: 0.03
+                ohm: 100
+            - seed: 4
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.03
+                  - volts: 6
+                    amps: 0.06
+                  - volts: 9
+                    amps: 0.09
+                ohm: null
+            - seed: 4
+              answer:
+                points:
+                  - volts: 3
+                    amps: 0.03
+                  - volts: 6
+                    amps: 0.06
+                  - volts: 9
+                    amps: 0.09
+                ohm: 200
       - type: generated
         id: og-strom
         given:

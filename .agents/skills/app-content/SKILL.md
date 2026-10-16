@@ -195,32 +195,35 @@ das Lehrplanzitat prüfen (Bayern, Gymnasium, Jahrgangsstufe 9 oder 10, nicht ge
 
 ## Rules learned from mistakes
 
-- Eine `unit` in `compare.number` ist eine Sprachtabelle `{ de: A, en: A }`, kein String.
-- Die Props einer Komponente nutzen Literal-Unions im Text von `defineProps` (`("strom" | "spannung")[]`), keinen importierten
-  Typ-Alias (`vue-component-props-valid`).
-- `src/components/` enthält nur `<Name>.vue`, `<Name>.ts` und `<Name>.test.ts` (PascalCase, jede `.vue` mit Test): gemeinsame Hilfen
-  gehören in die `.ts` einer Komponente, die die anderen importieren.
-- Der Explainer schreibt keine Weiterleitungen: eine entfernte Seite (hier `schaltungen/bau-editor`) gibt danach 404; der Themenpfad
-  im Katalogeintrag muss dann in demselben Zug ersetzt werden.
-- Komponenten setzen **kein** `defineOptions({ nojs: "caption" })`: sonst bleibt der `nojs`-Text als lange Beschreibung unter der Übung
-  stehen. Ohne diese Option ersetzt die laufende Komponente ihn.
-- **Eindeutigkeit der Prüfung (systematische Regel):** Eine Übung prüft die Eigenschaft, die ihr Text verlangt, nicht eine einzige
-  Musterlösung. Vor jeder neuen Übung fragen: Gibt es andere Antworten, die der Text ebenso erlaubt? Dann (1) die Prüfung auf
-  Verhalten oder Eigenschaft umstellen (Bauaufgaben, Mess- und Vorhersageübungen tun das und werden mit mehreren gleichwertigen Lösungen
-  getestet), (2) die Aufgabe so umformulieren, dass es genau eine Antwort gibt, oder (3) den Fragetyp wechseln. `ordering` nur, wenn
-  die Reihenfolge eindeutig ist (nach Größe, nach Zeit), nicht bei Bauteilen in Reihe: dort ist die Reihenfolge egal und wird als
-  Wahr-oder-falsch-Aussage geübt. `matching` nur mit je genau einem passenden Partner; zwei Übungen dürfen sich nicht widersprechen
-  (die Glühlampe ist Wärmewirkung, die LED Lichtwirkung). Ein Test je Bauziel prüft mehrere gleichwertige Aufbauten.
+- **KI-Tutor:** `tutor.rules` in `src/app.yaml` gibt der App eigene Regeln an den Tutor (Wasserbild mit Grenzen, keine Elektronen, Gleichstrom, Rechenwege
+  auf Papier, jeder gleichwertige Aufbau zählt). Die Anbieter bleiben bei der Voreinstellung (Claude); die App lädt vor einem Klick nichts.
+
+- **Übungskomponenten:** Die Regeln für Komponenten, die `answered` melden (Prop `seed`, `describe`, `about`, `reason`, `examples`, kein
+  `nojs`, die Namen in `src/components/`), stehen im allgemeinen Skill `lernapps-explainer` und gelten unverändert; hier steht nur, was
+  diese App dazu entschieden hat:
+  - Die sechs Komponenten sind `StromMessen`, `SpannungMessen`, `DrahtLabor`, `OhmLabor`, `SchaltungVorhersage` und `SchaltungBauen`; sie
+    teilen sich Hilfen in `Fluss.ts` (Zufall, Zahlenformat mit Dezimalzeichen der Sprache, Texte füllen, Aussehen des Flusses) und
+    `Zeiger.ts`. Die Gründe für falsche Antworten (`reason`) stehen als Texte `why…` in den `texts` der Seite, die Auswahl macht
+    `diagnose` im Logikmodul.
+  - Beispielantworten (`examples`): je Komponente zuerst überlegen, was der Text erlaubt (Lampe plus Schalter bei „eine Lampe“, die beiden
+    Punkte des Voltmeters vertauscht, Amperemeter oben oder unten, jeder Zweig-Aufbau mit gleichem Verhalten) und was typisch falsch
+    ist; die Beispiele der Komponenten mit eigenen Aufgabenwerten rechnet man mit einem kleinen Skript aus den Logikmodulen, je Seed.
+  - Figuren verraten die Antwort nicht: die Stromachse in `OhmLabor` wächst mit den Messpunkten, sie hängt nicht vom Widerstand ab.
+- **Eindeutigkeit der Prüfung:** Der allgemeine Skill verlangt, die Eigenschaft zu prüfen, die der Text sagt, nicht die Musterlösung. In dieser
+  App heißt das: `ordering` nur, wenn die Reihenfolge eindeutig ist (nach Größe, nach Zeit), nicht bei Bauteilen in Reihe, wo sie egal ist
+  (dort Wahr-oder-falsch); `matching` nur mit je genau einem passenden Partner; zwei Übungen dürfen sich nicht widersprechen (die
+  Glühlampe ist Wärmewirkung, die LED Lichtwirkung); ein Test je Bauziel prüft mehrere gleichwertige Aufbauten.
 - Die Prüfung einer Bauaufgabe urteilt nur über das, was ihr Text verlangt: die Aufgabe `eine` erlaubt zum Beispiel einen Schalter im
   Kreis, solange die Lampe leuchtet. Nach dem Prüfen sagt `diagnose` (Text `why…`), was fehlt: Zahl der Lampen, Zahl der Schalter,
-  Kurzschluss, etwas dunkel (offener Schalter) oder Verhalten; das Template meldet selbst nur „Leider nicht richtig.“.
+  Kurzschluss, etwas dunkel (offener Schalter) oder Verhalten.
+- Der Explainer schreibt keine Weiterleitungen: eine entfernte Seite (hier `schaltungen/bau-editor`) gibt danach 404, und der Themenpfad
+  im Katalogeintrag muss im selben Zug ersetzt werden.
 - Messen und Bauen folgen der Reihenfolge „bauen, dann Strom einschalten, dann prüfen“: Vor dem Einschalten fließt nichts, leuchtet
   nichts und zeigt kein Messgerät etwas, Kurzschluss-Warnungen kommen erst mit dem Strom; „Prüfen“ schaltet selbst ein. Beim Bauen
   wählt man ein Bauteil und tippt auf einen Platz; das Schalter-Werkzeug klappt einen eingebauten Schalter auf und zu, bei
   eingeschaltetem Strom prüft jedes Tippen (Schalter umlegen, Lampe herausschrauben).
 - Ein Brett zeigt nur die Plätze, die die Aufgabe braucht: die Ziele `eine`, `schalter`, `reihe` haben zwei Plätze in einem
   Stromkreis (beide Plätze sind gültig), nur die Ziele mit parallelen Lampen haben die zwei Zweige.
-- Vor dem Commit `npx vp fmt src`, sonst scheitert die Formatprüfung.
 
 - Kommas in YAML-Flow-Listen (`[a, b]`, `{ left: a, right: b }`) trennen Zellen und Felder: Texte mit Komma in Anführungszeichen.
 - Links zwischen Seiten haben die Form `/<kapitel>/<seite>/`, nicht relativ.

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import Fluss from "./Fluss.vue";
 import Zeiger from "./Zeiger.vue";
 import { fill, fmt } from "./Fluss.ts";
-import { branches, check, decimals, generate, unit } from "./SchaltungVorhersage.ts";
+import { branches, check, decimals, diagnose, generate, unit } from "./SchaltungVorhersage.ts";
 
 interface Texts {
   board: string;
@@ -17,20 +17,26 @@ interface Texts {
   taskParallelGesamt: string;
   taskParallelZweig: string;
   taskLabel: string;
+  whyEmpty: string;
+  whySeries: string;
+  whyParallel: string;
+  whyOne: string;
+  whyWhole: string;
+  whyHalf: string;
+  whyOther: string;
   reset: string;
   check: string;
-  next: string;
   decimal: string;
 }
 const props = defineProps<{
+  seed: number;
   kinds: ("reihe-strom" | "reihe-spannung" | "parallel-gesamt" | "parallel-zweig")[];
   texts: Texts;
 }>();
-const emit = defineEmits<{ answered: [{ correct: boolean }] }>();
+const emit = defineEmits<{ answered: [{ correct: boolean; reason?: string }] }>();
 
-// The first render is the same on the server and in the browser: the task of the seed 1.
-const seed = ref(1);
-const task = computed(() => generate(seed.value, props));
+// The explainer gives the seed: the number of the task.
+const task = computed(() => generate(props.seed, props));
 const typed = ref("");
 const on = ref(false);
 const result = ref<boolean | null>(null);
@@ -73,18 +79,27 @@ const reset = () => {
   on.value = false;
   result.value = null;
 };
-const next = () => {
-  seed.value += 1;
-  reset();
-};
+watch(() => props.seed, reset);
 function verify() {
   if (named.value === null) {
     result.value = null;
+    emit("answered", { correct: false, reason: props.texts.whyEmpty });
     return;
   }
   on.value = true;
   result.value = check(task.value, { value: named.value });
-  emit("answered", { correct: result.value });
+  const t = props.texts;
+  const why = diagnose(task.value, { value: named.value });
+  const reasons = {
+    empty: t.whyEmpty,
+    series: t.whySeries,
+    parallel: t.whyParallel,
+    one: t.whyOne,
+    whole: t.whyWhole,
+    half: t.whyHalf,
+    other: t.whyOther,
+  };
+  emit("answered", why === null ? { correct: result.value } : { correct: result.value, reason: reasons[why] });
 }
 </script>
 
@@ -176,7 +191,6 @@ function verify() {
     <div class="sv-bar">
       <button type="button" :disabled="on" @click="verify()">{{ texts.check }}</button>
       <button type="button" @click="reset()">{{ texts.reset }}</button>
-      <button type="button" @click="next()">{{ texts.next }}</button>
     </div>
   </div>
 </template>

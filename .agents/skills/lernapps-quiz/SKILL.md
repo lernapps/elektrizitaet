@@ -106,6 +106,11 @@ What the quiz asks and how its rounds are built is decided once, in the app's co
 | `ordering` | gives each item its place, e.g. by height | `items` in the right order; the page mixes them |
 | `matching` | matches each left entry with a right one | `pairs` as they belong; the page mixes the right entries |
 
+A question may carry `examples: { accepted, rejected }` when more than one answer could count or a typical wrong
+answer is worth pinning down: options and items by index from 0 or by their German text, numbers as a number or as
+typed (`"12,5"`; a point is the decimal mark, so write `8900`, never `8.900`). The build checks them; learners never
+see them. Mistakes and the `info` of wrong options already count as rejected.
+
 Every question has an `id`, its `text`, an `explanation` and at least one link in `links`. Types without options
 (true/false, number, ordering, matching) carry their background in `explanation`. The quiz may list its `sources`.
 
@@ -200,7 +205,10 @@ severity: hint
 Give every option an `info` of one to three sentences about the option itself. It must be true whether or not the
 option is the right answer, so that a learner who chose it learns something real. Example: "Der Nil fließt durch
 mehrere Länder Afrikas und mündet in Ägypten ins Mittelmeer." The `explanation` says in one to three sentences why the
-right answer is right. For true/false, number, ordering and matching it also carries the background.
+right answer is right. For true/false, number, ordering and matching it also carries the background. For a wrong
+option, say in its `info` why it does not fit: a learner who chose it reads it as the reason. Give a `number` question
+its typical wrong numbers as `mistakes` (`answer`, `message`), and any question an optional `hint` that points to
+where to look without giving the answer away.
 
 ### `quiz-further-reading`: Every question links to further reading
 
@@ -263,7 +271,8 @@ Choose the type from what the learner should do:
 - connect things that belong together: `matching`;
 - judge a statement: `true-false`.
 
-Mix types across the quiz.
+Mix types across the quiz. Choose a type that accepts every answer the text allows: an `ordering` only where the
+order is fixed (skill `lernapps-exercise-patterns`, "How an exercise checks success").
 
 ### `quiz-answers-checked`: Check every fact
 

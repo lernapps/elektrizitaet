@@ -65,3 +65,15 @@ sources:
       de: Ohmsches Gesetz (Wikipedia)
       en: Ohmsches Gesetz (German Wikipedia)
     url: https://de.wikipedia.org/wiki/Ohmsches_Gesetz
+tutor:
+  rules:
+    de: |
+      - Erkläre Strom, Spannung und Widerstand mit dem Wasserbild (Pumpe, Rohr) und sag dazu, dass jedes Bild Grenzen hat. Elektronen und Atome kommen in dieser App nicht vor.
+      - Die App behandelt Gleichstrom, wie ihn Batterien liefern. Wechselstrom kommt später. Über die Steckdose sprichst du nur als Warnung: nie damit experimentieren.
+      - Rechenwege auf Papier, das Ergebnis in die App. Achte auf die Einheiten: Ampere (nicht Milliampere), Volt, Ohm.
+      - Bei Bauaufgaben und Messübungen gilt jeder Aufbau, der tut, was die Aufgabe sagt, nicht nur die Musterlösung. Lass die Lernenden begründen, statt zu raten.
+    en: |
+      - Explain current, voltage and resistance with the water picture (pump, pipe) and say that every picture has limits. Electrons and atoms do not appear in this app.
+      - The app is about direct current, as batteries supply it. Alternating current comes later. Talk about the socket only as a warning: never experiment with it.
+      - Calculations on paper, the result in the app. Watch the units: amperes (not milliamperes), volts, ohms.
+      - For building tasks and measuring exercises, any build that does what the task says counts, not only the model solution. Let the learners give reasons instead of guessing.

@@ -1,6 +1,6 @@
 // Logic of the current exercise: build an ammeter into the circuit at the right place and choose the resistor that
 // gives the target current.
-import { nice, pick, random, same } from "./Fluss.ts";
+import { fill, fmt, nice, pick, random, same } from "./Fluss.ts";
 
 /** Where the learner built the ammeter in: the top wire (a), the bottom wire (b), across the source (par) or nowhere. */
 export type Spot = "a" | "b" | "par" | null;
@@ -58,3 +58,69 @@ export function check(task: Task, answer: Answer): boolean {
 
 export const solution = (task: Task): Answer => ({ spot: "a", ohm: task.ohm });
 export const wrong = (task: Task): Answer => ({ spot: null, ohm: task.start });
+
+/** Why an answer is wrong, for the hint under the feedback; null when it is right. */
+export function diagnose(task: Task, answer: Answer): "ammeter" | "short" | "value" | null {
+  if (check(task, answer)) return null;
+  if (answer.spot === null) return "ammeter";
+  if (answer.spot === "par") return "short";
+  return "value";
+}
+
+interface DescribeProps {
+  texts: Record<string, string>;
+}
+const WORDS: Record<string, { places: string; solution: string }> = {
+  de: {
+    places:
+      "Das Amperemeter lässt sich an drei Stellen einbauen: 1 obere Leitung, 2 untere Leitung, 3 quer über der Batterie. Der Widerstand ist 10, 20, 30, 50 oder 100 Ω.",
+    solution:
+      "Das Amperemeter in die obere oder untere Leitung (Stelle 1 oder 2), nie quer über die Batterie, und ein Widerstand von {R} Ω, denn {U} V : {R} Ω = {T} A.",
+  },
+  en: {
+    places:
+      "The ammeter can be built in at three places: 1 top wire, 2 bottom wire, 3 straight across the battery. The resistor is 10, 20, 30, 50 or 100 Ω.",
+    solution:
+      "The ammeter in the top or bottom wire (place 1 or 2), never straight across the battery, and a resistor of {R} Ω, because {U} V : {R} Ω = {T} A.",
+  },
+};
+
+/** The task as the learner sees it, and its solution, in the language lang. */
+export function describe(task: Task, props: DescribeProps, lang: string) {
+  const words = WORDS[lang] ?? WORDS["de"]!;
+  const sep = props.texts["decimal"]!;
+  const values = { U: fmt(task.volts, 0, sep), T: fmt(task.target, 3, sep), R: String(task.ohm) };
+  return {
+    task: `${fill(props.texts["task"]!, values)}\n\n${words.places}`,
+    solution: fill(words.solution, values),
+  };
+}
+
+export const about = {
+  task: {
+    de: "Du baust ein Amperemeter in einen Stromkreis mit Batterie und Widerstand ein und wählst den Widerstand, bis es den Zielstrom zeigt.",
+    en: "You build an ammeter into a circuit with a battery and a resistor and choose the resistor until it shows the target current.",
+  },
+  answer: {
+    de: "Die Stelle des Amperemeters (eine von drei) und der Widerstand (10, 20, 30, 50 oder 100 Ω); dann „Prüfen“.",
+    en: "The place of the ammeter (one of three) and the resistor (10, 20, 30, 50 or 100 Ω); then “Check”.",
+  },
+  correct: {
+    de: "Das Amperemeter sitzt in der Leitung, nicht quer über der Batterie, und zeigt den Zielstrom: Spannung geteilt durch Widerstand. Die obere und die untere Leitung gelten gleich.",
+    en: "The ammeter sits in the wire, not straight across the battery, and shows the target current: voltage divided by resistance. The top and the bottom wire count the same.",
+  },
+  mistakes: [
+    {
+      de: "Das Amperemeter quer über die Batterie: Kurzschluss, es zeigt nichts an.",
+      en: "The ammeter straight across the battery: a short circuit, it shows nothing.",
+    },
+    {
+      de: "Kein Amperemeter eingebaut.",
+      en: "No ammeter built in.",
+    },
+    {
+      de: "Den falschen Widerstand gewählt: Strom = Spannung : Widerstand, ein größerer Widerstand gibt einen kleineren Strom.",
+      en: "The wrong resistor chosen: current = voltage : resistance, a larger resistance gives a smaller current.",
+    },
+  ],
+};

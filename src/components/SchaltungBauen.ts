@@ -277,3 +277,88 @@ export function diagnose(goal: Goal, circuit: Circuit): Reason | null {
   if (simulate(circuit).lit.length < all.lamps) return "dark";
   return "behaviour";
 }
+
+interface DescribeProps {
+  texts: Record<string, string>;
+}
+const GOAL_KEYS: Record<Goal, string> = {
+  eine: "goalEine",
+  schalter: "goalSchalter",
+  reihe: "goalReihe",
+  parallel: "goalParallel",
+  "je-schalter": "goalJeSchalter",
+  haupt: "goalHaupt",
+};
+const WORDS: Record<string, { simple: string; branches: string; solution: Record<Goal, string> }> = {
+  de: {
+    simple:
+      "Das Schaltbrett ist ein Stromkreis mit zwei Plätzen. Du wählst Lampe, Schalter oder Kabel, tippst auf einen Platz und schaltest dann den Strom ein.",
+    branches:
+      "Das Schaltbrett hat sechs Plätze: 1 und 6 in der Hauptleitung, 2 und 3 im ersten Zweig, 4 und 5 im zweiten. Du wählst Lampe, Schalter oder Kabel, tippst auf einen Platz und schaltest dann den Strom ein.",
+    solution: {
+      eine: "Eine Lampe auf einen der beiden Plätze. Ein zusätzlicher Schalter ist erlaubt, wenn er geschlossen ist.",
+      schalter: "Die Lampe auf einen Platz, der Schalter auf den anderen: Mit dem Schalter geht die Lampe an und aus.",
+      reihe:
+        "Eine Lampe auf jeden der beiden Plätze, ein Schalter ist erlaubt. Schraubst du eine heraus, geht die andere aus.",
+      parallel:
+        "Eine Lampe in jeden Zweig, zum Beispiel auf Platz 2 und 4. Schraubst du eine heraus, leuchtet die andere weiter.",
+      "je-schalter":
+        "In jeden Zweig ein Schalter und eine Lampe, zum Beispiel Schalter auf Platz 2 und 4, Lampen auf Platz 3 und 5.",
+      haupt: "Ein Schalter in die Hauptleitung (Platz 1) und eine Lampe in jeden Zweig (zum Beispiel Platz 2 und 4).",
+    },
+  },
+  en: {
+    simple:
+      "The circuit board is a circuit with two places. You choose lamp, switch or wire, tap a place and then switch the power on.",
+    branches:
+      "The circuit board has six places: 1 and 6 in the main wire, 2 and 3 in the first branch, 4 and 5 in the second. You choose lamp, switch or wire, tap a place and then switch the power on.",
+    solution: {
+      eine: "A lamp on one of the two places. An additional switch is allowed if it is closed.",
+      schalter: "The lamp on one place, the switch on the other: the switch turns the lamp on and off.",
+      reihe: "A lamp on each of the two places, a switch is allowed. If you unscrew one, the other goes out.",
+      parallel: "A lamp in each branch, for example on places 2 and 4. If you unscrew one, the other keeps shining.",
+      "je-schalter":
+        "A switch and a lamp in each branch, for example switches on places 2 and 4, lamps on places 3 and 5.",
+      haupt: "A switch in the main wire (place 1) and a lamp in each branch (for example places 2 and 4).",
+    },
+  },
+};
+
+/** The task as the learner sees it, and its solution, in the language lang. */
+export function describe(task: Task, props: DescribeProps, lang: string) {
+  const words = WORDS[lang] ?? WORDS["de"]!;
+  const simple = ["eine", "schalter", "reihe"].includes(task.goal);
+  return {
+    task: `${props.texts[GOAL_KEYS[task.goal]]!}\n\n${simple ? words.simple : words.branches}`,
+    solution: words.solution[task.goal],
+  };
+}
+
+export const about = {
+  task: {
+    de: "Du baust einen Stromkreis aus Lampen, Schaltern und Kabeln, der tut, was die Aufgabe verlangt, schaltest den Strom ein und testest ihn.",
+    en: "You build a circuit from lamps, switches and wires that does what the task asks, switch the power on and test it.",
+  },
+  answer: {
+    de: "Der gebaute Stromkreis auf dem Schaltbrett (Lampe, Schalter oder Kabel pro Platz); dann „Prüfen“.",
+    en: "The circuit built on the board (lamp, switch or wire per place); then “Check”.",
+  },
+  correct: {
+    de: "Der Stromkreis verhält sich so, wie die Aufgabe es sagt: Lampen leuchten, Schalter und herausgeschraubte Lampen wirken wie verlangt. Jeder Aufbau zählt, der das tut, nicht nur die Musterlösung; ein zusätzlicher Schalter ist nur dort ein Fehler, wo die Aufgabe eine feste Zahl nennt.",
+    en: "The circuit behaves as the task says: lamps shine, switches and unscrewed lamps act as asked. Any build that does this counts, not only the model solution; an additional switch is only a mistake where the task names a fixed number.",
+  },
+  mistakes: [
+    {
+      de: "Falsche Zahl von Lampen oder Schaltern.",
+      en: "The wrong number of lamps or switches.",
+    },
+    {
+      de: "Ein Zweig bleibt leer, während im anderen eine Lampe sitzt: ein Kurzschluss, die Lampen bleiben dunkel.",
+      en: "One branch stays empty while the other holds a lamp: a short circuit, the lamps stay dark.",
+    },
+    {
+      de: "Die Teile stimmen, aber ein Schalter schaltet die falschen Lampen oder die Lampen hängen in Reihe statt parallel.",
+      en: "The parts are right, but a switch switches the wrong lamps or the lamps are in series instead of parallel.",
+    },
+  ],
+};

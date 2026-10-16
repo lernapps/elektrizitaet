@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import Fluss from "./Fluss.vue";
 import Zeiger from "./Zeiger.vue";
 import { fill, fmt } from "./Fluss.ts";
-import { MAX, STEPS, STOCK, check, generate, measure, type Point } from "./OhmLabor.ts";
+import { MAX, STEPS, STOCK, check, diagnose, generate, measure, type Point } from "./OhmLabor.ts";
 
 interface Texts {
   board: string;
@@ -15,17 +15,18 @@ interface Texts {
   hint: string;
   taskLabel: string;
   task: string;
+  whyPoints: string;
+  whyAnswer: string;
+  whyValue: string;
   reset: string;
   check: string;
-  next: string;
   decimal: string;
 }
-const props = defineProps<{ texts: Texts }>();
-const emit = defineEmits<{ answered: [{ correct: boolean }] }>();
+const props = defineProps<{ seed: number; texts: Texts }>();
+const emit = defineEmits<{ answered: [{ correct: boolean; reason?: string }] }>();
 
-// The first render is the same on the server and in the browser: the task of the seed 1.
-const seed = ref(1);
-const task = computed(() => generate(seed.value));
+// The explainer gives the seed: the number of the task.
+const task = computed(() => generate(props.seed, props));
 const step = ref(0);
 const points = ref<Point[]>([]);
 const typed = ref("");
@@ -43,9 +44,11 @@ const named = computed(() => {
 const X0 = 60;
 const Y0 = 225;
 const px = (v: number) => X0 + 25 * v;
-const py = (a: number) => Y0 - (190 * a) / (MAX / task.value.ohm);
+// The scale of the current grows with the points; it must not depend on the resistor, which would give it away.
+const yMax = computed(() => Math.max(0.1, ...points.value.map((p) => p.amps)) * 1.2);
+const py = (a: number) => Y0 - (190 * a) / yMax.value;
 const xTicks = [0, 3, 6, 9, 12];
-const yTicks = computed(() => [0, 1, 2, 3, 4].map((i) => (i / 4) * (MAX / task.value.ohm)));
+const yTicks = computed(() => [0, 1, 2, 3, 4].map((i) => (i / 4) * yMax.value));
 
 const taskText = computed(() => props.texts.task);
 const recordedText = computed(() => fill(props.texts.points, { n: String(points.value.length) }));
@@ -57,11 +60,17 @@ const reset = () => {
   points.value = [];
   typed.value = "";
 };
-const next = () => {
-  seed.value += 1;
-  reset();
+watch(() => props.seed, reset);
+const reason = computed(() => {
+  const why = diagnose(task.value, { points: points.value, ohm: named.value });
+  const t = props.texts;
+  if (why === null) return undefined;
+  return why === "points" ? t.whyPoints : why === "answer" ? t.whyAnswer : t.whyValue;
+});
+const verify = () => {
+  const correct = check(task.value, { points: points.value, ohm: named.value });
+  emit("answered", reason.value === undefined ? { correct } : { correct, reason: reason.value });
 };
-const verify = () => emit("answered", { correct: check(task.value, { points: points.value, ohm: named.value }) });
 </script>
 
 <template>
@@ -131,7 +140,6 @@ const verify = () => emit("answered", { correct: check(task.value, { points: poi
     <div class="ol-bar">
       <button type="button" @click="verify()">{{ texts.check }}</button>
       <button type="button" @click="reset()">{{ texts.reset }}</button>
-      <button type="button" @click="next()">{{ texts.next }}</button>
     </div>
   </div>
 </template>

@@ -133,9 +133,6 @@ blocks:
             check:
               de: Prüfen
               en: Check
-            next:
-              de: Nächste Aufgabe
-              en: Next task
             decimal:
               de: ","
               en: .
@@ -148,6 +145,17 @@ blocks:
             "off":
               de: Der Strom ist aus. Schalte ihn ein oder prüfe, dann wird gemessen.
               en: The power is off. Switch it on or check, then it measures.
+            whyAmmeter:
+              de: Es ist noch kein Amperemeter eingebaut.
+              en: No ammeter is built in yet.
+            whyShort:
+              de: "Das Amperemeter liegt quer über der Batterie: Das ist ein Kurzschluss, und es fließt kein Strom durch
+                das Gerät."
+              en: "The ammeter is straight across the battery: that is a short circuit, and no current flows through
+                the device."
+            whyValue:
+              de: Das Amperemeter zeigt {v}, verlangt sind {T} A. Der Strom ist die Spannung geteilt durch den Widerstand.
+              en: The ammeter shows {v}, but {T} A are asked. The current is the voltage divided by the resistance.
             resistor:
               de: "{n} Ω"
               en: "{n} Ω"
@@ -195,15 +203,95 @@ blocks:
                 A zeigt.
               en: The battery has {U} V. Build the ammeter in correctly and choose the resistor so that it shows {T}
                 A.
-        nojs:
-          de: "Diese Übung zeigt einen Stromkreis mit Batterie und Widerstand, in dem der Strom als laufende Punkte
-            zu sehen ist. Du baust ein Amperemeter an eine von drei Stellen ein und wählst den Widerstand, bis es den
-            Zielwert zeigt. Beispiel: Batterie 12 V, Ziel 0,4 A. Lösung: das Amperemeter in die obere oder untere Leitung,
-            nie quer über die Batterie, und ein Widerstand von 30 Ω, denn 12 V : 30 Ω = 0,4 A."
-          en: "This exercise shows a circuit with a battery and a resistor in which the current can be seen as running
-            dots. You build an ammeter in at one of three places and choose the resistor until it shows the target.
-            Example: battery 12 V, target 0.4 A. Solution: the ammeter in the top or bottom wire, never straight across
-            the battery, and a resistor of 30 Ω, because 12 V : 30 Ω = 0.4 A."
+        examples:
+          accepted:
+            - seed: 1
+              answer:
+                spot: a
+                ohm: 10
+            - seed: 1
+              answer:
+                spot: b
+                ohm: 10
+            - seed: 2
+              answer:
+                spot: a
+                ohm: 100
+            - seed: 2
+              answer:
+                spot: b
+                ohm: 100
+            - seed: 3
+              answer:
+                spot: a
+                ohm: 10
+            - seed: 3
+              answer:
+                spot: b
+                ohm: 10
+            - seed: 4
+              answer:
+                spot: a
+                ohm: 20
+            - seed: 4
+              answer:
+                spot: b
+                ohm: 20
+          rejected:
+            - answer:
+                spot: null
+                ohm: 10
+            - answer:
+                spot: par
+                ohm: 10
+            - seed: 1
+              answer:
+                spot: null
+                ohm: 10
+            - seed: 1
+              answer:
+                spot: par
+                ohm: 10
+            - seed: 1
+              answer:
+                spot: a
+                ohm: 30
+            - seed: 2
+              answer:
+                spot: null
+                ohm: 100
+            - seed: 2
+              answer:
+                spot: par
+                ohm: 100
+            - seed: 2
+              answer:
+                spot: a
+                ohm: 50
+            - seed: 3
+              answer:
+                spot: null
+                ohm: 10
+            - seed: 3
+              answer:
+                spot: par
+                ohm: 10
+            - seed: 3
+              answer:
+                spot: a
+                ohm: 30
+            - seed: 4
+              answer:
+                spot: null
+                ohm: 20
+            - seed: 4
+              answer:
+                spot: par
+                ohm: 20
+            - seed: 4
+              answer:
+                spot: a
+                ohm: 30
       - type: single-choice
         id: sa-einbau
         text:

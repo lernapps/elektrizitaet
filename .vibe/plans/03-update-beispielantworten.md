@@ -1,0 +1,226 @@
+---
+# Read by the git hooks, the review and the evals.
+# Schema: @lernapps/tooling/guidance/plan-front-matter.v1.schema.json. Keep all three keys.
+# archetype: the kind of app, as in the app's first plan: set it when you start this plan. It never changes.
+archetype: explainer
+# phase: the phase you work in now: explore, plan, code or commit. Change it when you enter the next phase.
+phase: commit
+# prePushFailures: failed runs of the pre-push hook during this increment. The hook counts them. Never change it.
+prePushFailures: 0
+---
+
+# Increment: Update, Beispielantworten und Tutor
+
+<!--
+This file guides you, the assistant, through one increment of an app that is already published: new competencies,
+chapters, pages, rounds or questions, or a correction. It shows the creator where you are.
+- Keep it at .vibe/plans/<NN>-<short name>.md, NN one more than the highest number there (02 after 01). The plan with
+  the highest number is the current one; the others record earlier increments: never change them. In an app made
+  before plans per piece of work, `.vibe/plan.md` is plan 01: start this one as 02; the update in Code moves it.
+- Read each skill and page this plan names in full, from its file: a skill from the app's `.agents/skills/`, a page
+  downloaded unchanged. Never work from the summary of a fetch tool: it loses tasks and rules.
+- The decisions of the first version stand: the archetype, the content method and the content guide
+  `.agents/skills/app-content/SKILL.md`. Follow the guide; change it only where this increment needs a new pattern,
+  figure type or source rule, and say so at the checkpoints.
+- Work through one phase at a time: Explore, Plan, Code, Commit. Do the tasks of the current phase in order.
+- Tick a task when it is done and move it to "Completed" of its phase. Add tasks as you find them.
+- A task marked as a checkpoint means: stop, show the creator what they need to decide, and wait for their answer.
+- A push to `main` publishes the app. Work on the branch `increment/<NN>-<short name>` until the creator says yes to
+  publishing; if your environment asks you to push, push that branch only. While a check fails, tell the creator
+  instead of pushing.
+- Write the plan in the language you talk to the creator in. Keep the headings and the front matter keys as they
+  are: the review reads them.
+- Delete these comments only where you have filled the part they explain.
+-->
+
+*Gestartet am 2026-10-16. Workflow: Explore, Plan, Code, Commit.*
+
+## Goal
+
+Die App läuft auf der neuen Version von Tooling und Laufzeit: Lösungen erscheinen erst nach der Antwort, falsche Antworten nennen den
+Grund, jede Übung mit eigener Komponente hat vom Build geprüfte Beispielantworten (auch andere richtige als die Musterlösung), und
+Lernende können einen KI-Tutor mitbringen. Am Lernstoff ändert sich nichts.
+
+## Key decisions
+
+- Archetyp `explainer`, Inhaltsleitfaden `app-content` und seine Muster gelten weiter; kein neuer Lernstoff, keine neuen Kompetenzen.
+- Zwei Versionssprünge in einem Inkrement (Tooling-Sitzung, bestätigt vom Ersteller mit „leg los“): `lernapps/tooling#81` (app-templates
+  `1f9b585`: Lösung erst nach der Antwort, Gründe, Beispielantworten `examples`) und `#82` (app-templates `3b20249`: Aufgabennummer,
+  Prop `seed`, `describe` und `about`, KI-Tutor). So geht man nur einmal durch die Komponenten.
+- `tutor.rules` in `src/app.yaml` mit vier App-eigenen Regeln (Wasserbild mit Grenzen, Gleichstrom, Rechenwege auf Papier, jeder gleichwertige Aufbau zählt) und die
+  Anbieter der Voreinstellung (guess; der Ersteller hat es nicht ausdrücklich verlangt).
+- Die Skala der Stromachse in `OhmLabor` hing vom Widerstand ab und verriet die Antwort; jetzt wächst sie mit den Messpunkten (beim Umbau aufgefallen).
+- Der Inhaltsleitfaden `app-content` enthält nur, was diese App entschieden hat; die allgemeinen Regeln für Komponenten stehen im Skill
+  `lernapps-explainer` und werden dort nachgeschlagen, nicht kopiert (Hinweis des Erstellers: „sind die Inhalte nicht schon im allgemeinen Skill?“).
+  Beim ersten Einfügen hatte ich dabei zwei Absätze (Eindeutigkeit der Prüfung, Prüfung der Bauaufgaben) versehentlich gelöscht und im nächsten Commit
+  wiederhergestellt.
+- Wo ein akzeptiertes Beispiel abgelehnt wird, wird die Prüfung (`check`) korrigiert, nicht das Beispiel; der Ersteller wird informiert.
+
+<!--
+One line each: the decision and why. Add decisions in any phase.
+Mark a choice you made without asking the creator with "(guess)", and list it in the retrospective.
+-->
+
+## Notes
+
+- Kein neuer Lernstoff: keine neue Lehrplanrecherche, keine neuen Kompetenzen, keine neuen Quellen.
+- Anlass: Beobachtungen aus Inkrement 02 (Retrospektive in `.vibe/plans/02-groessen-im-stromkreis.md`): Lösung vor der Antwort, nur „Leider nicht richtig.“,
+  Prüfungen gegen eine Musterlösung.
+
+<!-- What you need later: sources and licences of content, links, open questions. -->
+
+## Explore
+
+<!--
+Find out what this increment adds, and research it. Ask the creator; write no code. Ask one or two questions per
+turn, in plain words. Do not ask what you can derive from earlier answers or from the app. Write each answer under
+"Answers".
+-->
+
+### Tasks
+
+- [x] Set `archetype` as in the app's first plan in `.vibe/plans/`.
+- [x] The skills are in the app's repo, in `.agents/skills/`. Only if they are missing, install them:
+      `npx skills add lernapps/tooling`.
+- [x] Load the content guide `.agents/skills/app-content/SKILL.md` and the skill `lernapps-content-growth`, and read
+      the plans in `.vibe/plans/`: what the app teaches, how its content is made, and what earlier increments left
+      open.
+- [x] (beantwortet von der Tooling-Sitzung und vom Ersteller) Ask what this increment adds or changes: which competencies, chapters or rounds, for which school years.
+- [x] (entfällt: kein neuer Lernstoff) Research the new content: follow the guide's curriculum and sources, and the skill `lernapps-content-research`
+      for what the guide does not cover yet. Write the curriculum orientation (the Lehrplan, cited where you used
+      one), the new competencies by chapter and the verified sources under "Notes".
+- [x] (entfällt: kein neuer Lernstoff) **Checkpoint:** research. Explain to the creator, in plain words, what you found and how: the curriculum
+      orientation, the new competencies by chapter, the sources and how you checked them, and what you could not check.
+      Stop and wait for the creator. Change it if they ask, then ask again.
+- [x] Set `phase: plan`.
+
+### Answers
+
+- Tooling-Sitzung, im Auftrag des Erstellers: beide Versionssprünge in ein Inkrement 03 „Update und Beispielantworten“ aufnehmen.
+- Ersteller: „leg los“ (nach meiner Beschreibung des Ablaufs: Plan, Update, Beispielantworten, Umbau von sechs Komponenten, Prüfung,
+  Pull Request, Vorschau, Veröffentlichung nur nach seinem Ja).
+
+### Completed
+
+## Plan
+
+<!--
+Turn the answers into tasks the creator can confirm in one read. After the confirmation you work on your own: the
+creator's turns from here to the end are counted in the retrospective (target: at most 3).
+-->
+
+### Tasks
+
+- [x] Write the tasks of Code under "Code": one slice per competency, as the skill `lernapps-content-growth` says, in
+      the order the guide's procedure names. Each slice ends in a commit.
+- [x] Write the content method under "Content method": which patterns, figures and components of the guide each
+      slice uses, and anything new, with the reason the guide's patterns do not fit.
+- [x] Show the creator the goal, the new competencies by chapter and the slices, short. Explain in plain words what
+      learners will see and do, and anything new in how the content is made.
+- [x] For every new component and interactive exercise, show a sketch: a static SVG or image of what learners see,
+      or the steps (what they do, what they see after each). A description in words alone is not enough.
+- [x] **Checkpoint:** confirm the plan and the content method. Stop and wait for the creator. Change the plan if they
+      ask, then ask again.
+- [x] Set `phase: code`.
+
+### Content method
+
+- Unverändert: alle Muster, Figuren und Komponenten des Leitfadens.
+- Neu in jeder der sechs Übungskomponenten: die Prop `seed` statt eigenem Startwert und eigenem „Nächste Aufgabe“-Knopf; im Logikmodul
+  `describe(task, props, lang)` (Aufgabe und Lösung als eingeschränktes Markdown, genau wie auf dem Bildschirm) und `about`
+  (Aufgabe, Antwortformat, was als richtig zählt, typische Fehler, je Sprache); `answered` meldet `{ correct, reason }`.
+- Beispielantworten `examples: { accepted, rejected }` an jeder Übung mit Komponente: erst überlegen, was der Text erlaubt (auch andere
+  richtige Antworten als die Musterlösung) und welche typischen falschen es gibt, dann eintragen. Wird ein akzeptiertes Beispiel
+  abgelehnt, ist die Prüfung falsch.
+
+### Completed
+
+## Code
+
+<!--
+Build the increment slice by slice. Load the skill lernapps-app, the skill of the archetype and the content guide
+before you write content. Commit after each slice: the git hooks run the checks. The pre-commit hook is quiet: when
+it fails, it prints one line naming the step and its log, `node_modules/.cache/lernapps/pre-commit.log`; read that
+log for the messages. Fix every failed check from its message; never bypass a hook. When you cannot decide
+something, choose, mark it "(guess)" under "Key decisions" and go on.
+-->
+
+### Tasks
+
+- [x] Switch to a new branch from `main`: `git switch -c increment/03-update-beispielantworten`. Commit this plan on it.
+- [x] Update the app to the newest tooling and runtime: `npx --yes github:lernapps/tooling#main update`, then
+      `npm install`. It also replaces the `lernapps-*` skills: read the ones you use again. Commit the update on its
+      own, and fix what its checks report before you add content.
+- [x] Beispielantworten (`examples`) für die 9 Übungsblöcke mit Komponente: `SchaltungBauen` ×3, `SchaltungVorhersage` ×2, `DrahtLabor`,
+      `OhmLabor`, `SpannungMessen`, `StromMessen`. Zuerst überlegen, was der Text erlaubt; dann eintragen; Prüfungen korrigieren, wo ein
+      richtiges Beispiel abgelehnt wird. Commit.
+- [x] Die sechs Komponenten auf den Vertrag der neuen Laufzeit umbauen (`seed`, `describe`, `about`, `answered { correct, reason }`,
+      Meldungen der Regel `vue-component-exercise-contract`), eine nach der anderen, je mit Test und Commit; `nojs` an den Komponenten
+      entfällt, wo die Laufzeit es verlangt.
+- [x] Quizfragen, Rechenaufgaben: `hint`, `mistakes`, `info` ergänzen, wo die Rückmeldung bisher nur „Leider nicht richtig.“ wäre (geprüft: die Quizfragen haben je Option eine `info`,
+      die Rechenaufgaben `mistakes` und `hint`; nur die Komponenten brauchten Gründe, jetzt `reason`).
+- [x] Optional: `tutor.rules` in `src/app.yaml` (App-eigene Regeln an den Tutor, zum Beispiel: Gleichstrom, keine Elektronen, Wasserbild).
+- [x] The content guide describes the app as it is now: its competencies, chapters and patterns, and its procedure
+      for the next increment (`app-content-matches`).
+- [x] `npx lernapps check` passes.
+- [x] Set `phase: commit`.
+
+### Completed
+
+## Commit
+
+<!--
+Publish the increment and update the app's entry, each only after the creator says yes. Then fill the retrospective.
+A push to `main` publishes the app: the workflow `Pages` checks it and, in its job `deploy`, publishes the checked
+bundle. A pull request to `main` runs the same checks without publishing.
+-->
+
+### Tasks
+
+- [ ] Push the branch and open a pull request to `main` in the app's repo. The pre-push hook runs the heavy checks;
+      fix what fails. See the checks of the pull request through to green.
+- [ ] **Checkpoint:** publish. Show the creator what the increment adds and the link to its preview from the comment
+      "Vorschau der App" on the pull request, and ask whether it may go online. Wait for their yes.
+- [ ] Merge the pull request into `main` (or, without a pull request, merge the branch into `main` and push `main`).
+      Watch the run of the workflow `Pages` for that commit until it ends. If it fails, read the message of the
+      failed step, fix what you can and push again.
+- [ ] Open the address the job `deploy` printed ("published at ...", also in the run's summary) and confirm that it
+      shows the new content. Take that address, never one you derive; follow its redirects.
+- [ ] If the app is listed and the increment changes what its entry says (topics, school years, summary): load the
+      skill `lernapps-listing` and write the changed entry. Otherwise skip the next task.
+- [ ] **Checkpoint:** list. Ask the creator before you open the pull request to the catalog, and wait for their yes.
+- [ ] Fill the retrospective.
+- [ ] Commit this plan on `main` and push it. A push that changes only `.vibe/` publishes nothing again.
+- [ ] If you opened a pull request to the catalog, see it through to "bestanden" as the skill says.
+- [ ] If this plan changed since its last push, commit it on `main` and push it again.
+
+### Completed
+
+## Retrospective
+
+<!--
+Fill it at the end of Commit: facts, short, no names of people. The review reads it; the evals compare it across
+runs and increments. It stays in the creator's repo.
+-->
+
+### Phases reached
+
+<!-- The last phase you completed and the checkpoints the creator passed. Example: "commit; confirmed, published". -->
+
+### Failed checks
+
+<!--
+Each check that failed, with its rule id and how often. Example: "`no-request-before-click`: 2".
+Leave out the failed pre-push runs: the hook counts them in the front matter.
+-->
+
+### Creator turns after the plan
+
+<!-- How many messages the creator sent after confirming the plan, and what each was about. Target: at most 3. -->
+
+### Where I had to guess
+
+<!--
+Each place where this plan, a skill, the content guide, a message or the creator's answers did not tell you what to
+do, and what you chose. Write "None" if there was none.
+-->

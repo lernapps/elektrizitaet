@@ -238,9 +238,6 @@ blocks:
             check:
               de: Prüfen
               en: Check
-            next:
-              de: Nächste Aufgabe
-              en: Next task
             goalEine:
               de: Baue einen Stromkreis mit einer Lampe. Wenn du den Strom einschaltest, soll die Lampe leuchten.
               en: Build a circuit with one lamp. When you switch the power on, the lamp should shine.
@@ -314,8 +311,37 @@ blocks:
                 Strom: Schraube eine Lampe heraus und lege Schalter um."
               en: "The parts are there, but the circuit does not behave as asked yet. Test it with the power on: unscrew
                 a lamp and flip the switches."
-        nojs:
-          de: Diese Aufgabe stellt die Übung. Das Schaltbrett ist ein Stromkreis mit zwei Plätzen. - **Zwei Lampen in
-            Reihe:** eine Lampe auf jeden der beiden Plätze. Schraubst du eine heraus, geht die andere aus.
-          en: The exercise sets this task. The circuit board is a circuit with two places. - **Two lamps in series:**
-            a lamp on each of the two places. If you unscrew one, the other goes out.
+        examples:
+          accepted:
+            - answer:
+                - &id001
+                  kind: lamp
+                - *id001
+            - answer:
+                - kind: switch
+                  closed: true
+                - *id001
+                - *id001
+            - answer:
+                - *id001
+                - kind: switch
+                  closed: true
+                - *id001
+            - answer:
+                - *id001
+                - *id001
+                - kind: switch
+                  closed: true
+          rejected:
+            - answer: []
+            - answer:
+                - *id001
+            - answer:
+                - *id001
+                - *id001
+                - *id001
+            - answer:
+                - kind: parallel
+                  branches:
+                    - - *id001
+                    - - *id001

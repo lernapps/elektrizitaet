@@ -267,9 +267,6 @@ blocks:
             check:
               de: Prüfen
               en: Check
-            next:
-              de: Nächste Aufgabe
-              en: Next task
             goalEine:
               de: Baue einen Stromkreis mit einer Lampe. Wenn du den Strom einschaltest, soll die Lampe leuchten.
               en: Build a circuit with one lamp. When you switch the power on, the lamp should shine.
@@ -343,15 +340,102 @@ blocks:
                 Strom: Schraube eine Lampe heraus und lege Schalter um."
               en: "The parts are there, but the circuit does not behave as asked yet. Test it with the power on: unscrew
                 a lamp and flip the switches."
-        nojs:
-          de: "Diese Aufgaben stellt die Übung. Das Schaltbrett hat sechs Plätze: 1 und 6 in der Hauptleitung, 2 bis
-            5 in zwei Zweigen (2 und 3 im ersten, 4 und 5 im zweiten). - **Zwei Lampen parallel:** eine Lampe in jedem
-            Zweig, zum Beispiel auf Platz 2 und 4. - **Zwei Lampen mit je einem Schalter:** In jedem Zweig ein Schalter
-            und eine Lampe. - **Ein Schalter für zwei parallele Lampen:** Schalter auf Platz 1, Lampe in jedem Zweig."
-          en: "The exercise sets these tasks. The circuit board has six places: 1 and 6 in the main wire, 2 to 5 in
-            two branches (2 and 3 in the first, 4 and 5 in the second). - **Two lamps in parallel:** a lamp in each
-            branch, for example on places 2 and 4. - **Two lamps, each with its own switch:** a switch and a lamp in
-            each branch. - **One switch for two parallel lamps:** a switch on place 1, a lamp in each branch."
+        examples:
+          accepted:
+            - seed: 3
+              answer:
+                - kind: parallel
+                  branches:
+                    - - &id001
+                        kind: lamp
+                    - - *id001
+            - seed: 3
+              answer:
+                - kind: switch
+                  closed: true
+                - kind: parallel
+                  branches:
+                    - - *id001
+                    - - *id001
+            - seed: 1
+              answer:
+                - kind: parallel
+                  branches:
+                    - - kind: switch
+                        closed: true
+                      - *id001
+                    - - kind: switch
+                        closed: true
+                      - *id001
+            - seed: 1
+              answer:
+                - kind: parallel
+                  branches:
+                    - - *id001
+                      - kind: switch
+                        closed: true
+                    - - kind: switch
+                        closed: true
+                      - *id001
+            - seed: 2
+              answer:
+                - kind: switch
+                  closed: true
+                - kind: parallel
+                  branches:
+                    - - *id001
+                    - - *id001
+            - seed: 2
+              answer:
+                - kind: parallel
+                  branches:
+                    - - *id001
+                    - - *id001
+                - kind: switch
+                  closed: true
+          rejected:
+            - seed: 3
+              answer: []
+            - seed: 3
+              answer:
+                - *id001
+                - *id001
+            - seed: 3
+              answer:
+                - kind: parallel
+                  branches:
+                    - - *id001
+                    - []
+            - seed: 1
+              answer:
+                - kind: parallel
+                  branches:
+                    - - *id001
+                    - - *id001
+            - seed: 1
+              answer:
+                - kind: switch
+                  closed: true
+                - kind: parallel
+                  branches:
+                    - - *id001
+                    - - *id001
+            - seed: 2
+              answer:
+                - kind: parallel
+                  branches:
+                    - - kind: switch
+                        closed: true
+                      - *id001
+                    - - kind: switch
+                        closed: true
+                      - *id001
+            - seed: 2
+              answer:
+                - kind: parallel
+                  branches:
+                    - - *id001
+                    - - *id001
       - type: single-choice
         id: be-kurzschluss
         text:

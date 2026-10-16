@@ -172,7 +172,8 @@ blocks:
       - type: single-choice
         id: sz-schalter
         text:
-          de: Eine Lampe und ein Schalter liegen in Reihe in einem Stromkreis. Die Lampe leuchtet. Was weißt du über den Schalter?
+          de: Eine Lampe und ein Schalter liegen in Reihe in einem Stromkreis. Die Lampe leuchtet. Was weißt du über
+            den Schalter?
           en: A lamp and a switch are in series in a circuit. The lamp is lit. What do you know about the switch?
         options:
           - text:
@@ -264,9 +265,6 @@ blocks:
             check:
               de: Prüfen
               en: Check
-            next:
-              de: Nächste Aufgabe
-              en: Next task
             goalEine:
               de: Baue einen Stromkreis mit einer Lampe. Wenn du den Strom einschaltest, soll die Lampe leuchten.
               en: Build a circuit with one lamp. When you switch the power on, the lamp should shine.
@@ -340,10 +338,62 @@ blocks:
                 Strom: Schraube eine Lampe heraus und lege Schalter um."
               en: "The parts are there, but the circuit does not behave as asked yet. Test it with the power on: unscrew
                 a lamp and flip the switches."
-        nojs:
-          de: Diese Aufgaben stellt die Übung. Das Schaltbrett ist ein Stromkreis mit zwei Plätzen. Du setzt Bauteile
-            ein, schaltest den Strom ein und prüfst. - **Eine Lampe:** Lampe auf einen der beiden Plätze, der andere
-            bleibt leer. - **Lampe mit Schalter:** Schalter auf einen Platz, Lampe auf den anderen.
-          en: The exercise sets these tasks. The circuit board is a circuit with two places. You put in parts, switch
-            the power on and check. - **One lamp:** a lamp on one of the two places, the other stays empty. - **Lamp
-            with a switch:** a switch on one place, a lamp on the other.
+        examples:
+          accepted:
+            - seed: 2
+              answer:
+                - &id001
+                  kind: lamp
+            - seed: 2
+              answer:
+                - *id001
+                - kind: switch
+                  closed: true
+            - seed: 2
+              answer:
+                - kind: switch
+                  closed: true
+                - *id001
+            - seed: 1
+              answer:
+                - kind: switch
+                  closed: true
+                - *id001
+            - seed: 1
+              answer:
+                - *id001
+                - kind: switch
+                  closed: true
+            - seed: 1
+              answer:
+                - *id001
+                - kind: switch
+                  closed: false
+          rejected:
+            - seed: 2
+              answer: []
+            - seed: 2
+              answer:
+                - kind: switch
+                  closed: true
+            - seed: 2
+              answer:
+                - *id001
+                - *id001
+            - seed: 2
+              answer:
+                - kind: switch
+                  closed: false
+                - *id001
+            - seed: 1
+              answer:
+                - *id001
+            - seed: 1
+              answer:
+                - kind: switch
+                  closed: true
+                - kind: switch
+                  closed: true
+                - *id001
+            - seed: 1
+              answer: []

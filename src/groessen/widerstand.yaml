@@ -137,12 +137,18 @@ blocks:
             check:
               de: Prüfen
               en: Check
-            next:
-              de: Nächste Aufgabe
-              en: Next task
             decimal:
               de: ","
               en: .
+            whySame:
+              de: "Du hast noch nichts verändert: Der Strom ist so groß wie am Anfang."
+              en: "You have not changed anything yet: the current is as large as at the start."
+            whyLess:
+              de:
+                Der Strom ist erst das {X}-Fache des Anfangsstroms, verlangt ist mindestens das {K}-Fache. Ein kürzerer
+                oder dickerer Draht hat weniger Widerstand.
+              en: The current is only {X} times the starting current, but at least {K} times is asked. A shorter or
+                thicker wire has less resistance.
             board:
               de: Stromkreis mit Batterie und einem Draht, dessen Länge und Dicke du einstellst
               en: Circuit with a battery and a wire whose length and thickness you set
@@ -163,16 +169,60 @@ blocks:
                 {K}-mal so viel zeigt.
               en: At the start the ammeter shows {I} A. Set the length and thickness of the wire so that it shows at
                 least {K} times as much.
-        nojs:
-          de: "Diese Übung zeigt eine Batterie mit 3 V und einem Draht, den du mit zwei Reglern einstellst: Länge von
-            1 bis 6 m, Dicke von 0,1 bis 0,5 mm². Das Amperemeter zeigt den Strom. Ziel: ein Vielfaches des Anfangsstroms.
-            Beispiel: Anfang 5 m lang und 0,2 mm² dick, Ziel doppelt so viel. Lösung: halb so lang (2,5 m, also 2 m)
-            oder doppelt so dick (0,4 mm²) macht den Widerstand halb so groß und den Strom doppelt so groß."
-          en:
-            "This exercise shows a 3 V battery and a wire that you set with two sliders: length from 1 to 6 m, thickness
-            from 0.1 to 0.5 mm². The ammeter shows the current. Goal: a multiple of the starting current. Example: start
-            5 m long and 0.2 mm² thick, goal twice as much. Solution: half as long (2.5 m, so 2 m) or twice as thick
-            (0.4 mm²) halves the resistance and doubles the current."
+        examples:
+          accepted:
+            - seed: 1
+              answer:
+                length: 1
+                tenths: 5
+            - seed: 1
+              answer:
+                length: 5
+                tenths: 3
+            - seed: 2
+              answer:
+                length: 1
+                tenths: 5
+            - seed: 2
+              answer:
+                length: 6
+                tenths: 2
+            - seed: 3
+              answer:
+                length: 1
+                tenths: 5
+            - seed: 3
+              answer:
+                length: 6
+                tenths: 3
+            - seed: 4
+              answer:
+                length: 1
+                tenths: 5
+            - seed: 4
+              answer:
+                length: 6
+                tenths: 2
+          rejected:
+            - answer:
+                length: 6
+                tenths: 1
+            - seed: 1
+              answer:
+                length: 5
+                tenths: 1
+            - seed: 2
+              answer:
+                length: 6
+                tenths: 1
+            - seed: 3
+              answer:
+                length: 6
+                tenths: 1
+            - seed: 4
+              answer:
+                length: 6
+                tenths: 1
       - type: single-choice
         id: wd-laenge
         text:

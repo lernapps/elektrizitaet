@@ -11,25 +11,25 @@
       "source": "lernapps/tooling",
       "sourceType": "github",
       "skillPath": "skills/lernapps-content-growth/SKILL.md",
-      "computedHash": "4fdbc619f1d61f8f49b2935e194b04748273f110ca9024d4fc56f2b9dc85a9c4"
+      "computedHash": "e84d94a6e5e422266866ce00140663627d6612680a85b4fde780a6f1a7082ed4"
     },
     "lernapps-content-research": {
       "source": "lernapps/tooling",
       "sourceType": "github",
       "skillPath": "skills/lernapps-content-research/SKILL.md",
-      "computedHash": "71a3eaab1f8ccd8047d706e2746cced3fd9d392f5b042dc5ff26c25925b01d7d"
+      "computedHash": "4e7fc504d5a4e7e23c666970ea4c2412a71f166117b75e80440ea6ec6341f6d8"
     },
     "lernapps-exercise-patterns": {
       "source": "lernapps/tooling",
       "sourceType": "github",
       "skillPath": "skills/lernapps-exercise-patterns/SKILL.md",
-      "computedHash": "3867363cae533d9bdf2d29a39771cc7f439dd50b7a2655f1fce62ea9859dcf93"
+      "computedHash": "06bf162cccb678afac1c220e6d0f292b454a97756009ec00a25f3fbdb4079d53"
     },
     "lernapps-explainer": {
       "source": "lernapps/tooling",
       "sourceType": "github",
       "skillPath": "skills/lernapps-explainer/SKILL.md",
-      "computedHash": "23f2c8efebf7f7cad16a7de48ecb928967fbd8ebe236c9b015858c14dc167ace"
+      "computedHash": "773e1b6cf7e2b1d7ed695ba4174605ac417fff323051c11c3a4e991486177799"
     },
     "lernapps-listing": {
       "source": "lernapps/tooling",
@@ -41,7 +41,7 @@
       "source": "lernapps/tooling",
       "sourceType": "github",
       "skillPath": "skills/lernapps-quiz/SKILL.md",
-      "computedHash": "88fd5e0dd463cfb49331ac6fb0092ec7cbc0fd254ee431710f259660cdabf1c6"
+      "computedHash": "164c71bbdf9473e143c8c8f85ffc9d68228a5f090426b80f65b8b67f1aa1e907"
     },
     "rules-review": {
       "source": "lernapps/tooling",

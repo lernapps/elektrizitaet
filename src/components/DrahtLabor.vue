@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import Fluss from "./Fluss.vue";
 import Zeiger from "./Zeiger.vue";
 import { fill, fmt } from "./Fluss.ts";
-import { LENGTHS, TENTHS, VOLTS, check, current, generate } from "./DrahtLabor.ts";
+import { LENGTHS, TENTHS, VOLTS, check, current, diagnose, generate, ratio } from "./DrahtLabor.ts";
 
 interface Texts {
   board: string;
@@ -13,19 +13,19 @@ interface Texts {
   hint: string;
   taskLabel: string;
   task: string;
+  whySame: string;
+  whyLess: string;
   reset: string;
   check: string;
-  next: string;
   decimal: string;
 }
-const props = defineProps<{ texts: Texts }>();
-const emit = defineEmits<{ answered: [{ correct: boolean }] }>();
+const props = defineProps<{ seed: number; texts: Texts }>();
+const emit = defineEmits<{ answered: [{ correct: boolean; reason?: string }] }>();
 
-// The first render is the same on the server and in the browser: the task of the seed 1.
-const seed = ref(1);
-const task = computed(() => generate(seed.value));
-const length = ref(generate(1).length);
-const tenths = ref(generate(1).tenths);
+// The explainer gives the seed: the number of the task.
+const task = computed(() => generate(props.seed, props));
+const length = ref(task.value.length);
+const tenths = ref(task.value.tenths);
 
 const sep = computed(() => props.texts.decimal);
 const start = computed(() => current(task.value.length, task.value.tenths));
@@ -51,11 +51,21 @@ const reset = () => {
   length.value = task.value.length;
   tenths.value = task.value.tenths;
 };
-const next = () => {
-  seed.value += 1;
-  reset();
+watch(() => props.seed, reset);
+const reason = computed(() => {
+  const answer = { length: length.value, tenths: tenths.value };
+  const why = diagnose(task.value, answer);
+  if (why === null) return undefined;
+  if (why === "same") return props.texts.whySame;
+  return fill(props.texts.whyLess, {
+    X: fmt(ratio(task.value, answer), 1, sep.value),
+    K: String(task.value.factor),
+  });
+});
+const verify = () => {
+  const correct = check(task.value, { length: length.value, tenths: tenths.value });
+  emit("answered", reason.value === undefined ? { correct } : { correct, reason: reason.value });
 };
-const verify = () => emit("answered", { correct: check(task.value, { length: length.value, tenths: tenths.value }) });
 </script>
 
 <template>
@@ -102,7 +112,6 @@ const verify = () => emit("answered", { correct: check(task.value, { length: len
     <div class="dl-bar">
       <button type="button" @click="verify()">{{ texts.check }}</button>
       <button type="button" @click="reset()">{{ texts.reset }}</button>
-      <button type="button" @click="next()">{{ texts.next }}</button>
     </div>
   </div>
 </template>
