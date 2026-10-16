@@ -143,9 +143,6 @@ blocks:
             check:
               de: Prüfen
               en: Check
-            next:
-              de: Nächste Aufgabe
-              en: Next task
             decimal:
               de: ","
               en: .
@@ -158,6 +155,17 @@ blocks:
             "off":
               de: Der Strom ist aus. Schalte ihn ein oder prüfe, dann wird gemessen.
               en: The power is off. Switch it on or check, then it measures.
+            whyPoints:
+              de: Das Voltmeter ist noch nicht an zwei Punkten angeschlossen.
+              en: The voltmeter is not connected to two points yet.
+            whyWire:
+              de: "Das Voltmeter zeigt 0 V: Zwischen zwei Punkten an derselben Leitung liegt keine Spannung."
+              en: "The voltmeter shows 0 V: there is no voltage between two points on the same wire."
+            whyValue:
+              de: "Das Voltmeter zeigt {v}, verlangt sind {T} V. Miss an einem Widerstand: einen Punkt davor, einen
+                dahinter."
+              en: "The voltmeter shows {v}, but {T} V are asked. Measure across one resistor: one point before it, one
+                after it."
             board:
               de: Stromkreis mit Batterie und zwei Widerständen und vier Punkten, an die du das Voltmeter anschließt
               en: Circuit with a battery and two resistors and four points to connect the voltmeter to
@@ -187,15 +195,56 @@ blocks:
             task:
               de: Die Batterie hat {U} V. Schließe das Voltmeter so an, dass es {T} V zeigt.
               en: The battery has {U} V. Connect the voltmeter so that it shows {T} V.
-        nojs:
-          de: "Diese Übung zeigt eine Batterie mit zwei Widerständen in Reihe und vier nummerierten Punkten: 1 vor dem
-            ersten Widerstand, 2 zwischen den Widerständen, 3 hinter dem zweiten, 4 in der unteren Leitung. Du schließt
-            ein Voltmeter an zwei Punkte an, bis es den Zielwert zeigt. Beispiel: Batterie 12 V, Widerstände 10 Ω und
-            30 Ω, Ziel 3 V. Lösung: das Voltmeter an Punkt 1 und 2, also parallel zum 10-Ω-Widerstand."
-          en: "This exercise shows a battery with two resistors in series and four numbered points: 1 before the first
-            resistor, 2 between the resistors, 3 after the second, 4 in the bottom wire. You connect a voltmeter to
-            two points until it shows the target. Example: battery 12 V, resistors 10 Ω and 30 Ω, target 3 V. Solution:
-            the voltmeter at points 1 and 2, that is, in parallel with the 10 Ω resistor."
+        examples:
+          accepted:
+            - seed: 1
+              answer:
+                from: n1
+                to: n2
+            - seed: 1
+              answer:
+                from: n2
+                to: n1
+            - seed: 2
+              answer:
+                from: n1
+                to: n2
+            - seed: 2
+              answer:
+                from: n2
+                to: n1
+            - seed: 3
+              answer:
+                from: n0
+                to: n1
+            - seed: 3
+              answer:
+                from: n1
+                to: n0
+            - seed: 4
+              answer:
+                from: n0
+                to: n1
+            - seed: 4
+              answer:
+                from: n1
+                to: n0
+          rejected:
+            - answer:
+                from: null
+                to: null
+            - answer:
+                from: n0
+                to: null
+            - answer:
+                from: n2
+                to: n3
+            - answer:
+                from: n0
+                to: n2
+            - answer:
+                from: n0
+                to: n3
       - type: single-choice
         id: sp-anschluss
         text:

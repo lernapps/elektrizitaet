@@ -47,6 +47,9 @@ Lernende können einen KI-Tutor mitbringen. Am Lernstoff ändert sich nichts.
 - Zwei Versionssprünge in einem Inkrement (Tooling-Sitzung, bestätigt vom Ersteller mit „leg los“): `lernapps/tooling#81` (app-templates
   `1f9b585`: Lösung erst nach der Antwort, Gründe, Beispielantworten `examples`) und `#82` (app-templates `3b20249`: Aufgabennummer,
   Prop `seed`, `describe` und `about`, KI-Tutor). So geht man nur einmal durch die Komponenten.
+- `tutor.rules` in `src/app.yaml` mit vier App-eigenen Regeln (Wasserbild mit Grenzen, Gleichstrom, Rechenwege auf Papier, jeder gleichwertige Aufbau zählt) und die
+  Anbieter der Voreinstellung (guess; der Ersteller hat es nicht ausdrücklich verlangt).
+- Die Skala der Stromachse in `OhmLabor` hing vom Widerstand ab und verriet die Antwort; jetzt wächst sie mit den Messpunkten (beim Umbau aufgefallen).
 - Wo ein akzeptiertes Beispiel abgelehnt wird, wird die Prüfung (`check`) korrigiert, nicht das Beispiel; der Ersteller wird informiert.
 
 <!--
@@ -141,18 +144,19 @@ something, choose, mark it "(guess)" under "Key decisions" and go on.
 ### Tasks
 
 - [x] Switch to a new branch from `main`: `git switch -c increment/03-update-beispielantworten`. Commit this plan on it.
-- [ ] Update the app to the newest tooling and runtime: `npx --yes github:lernapps/tooling#main update`, then
+- [x] Update the app to the newest tooling and runtime: `npx --yes github:lernapps/tooling#main update`, then
       `npm install`. It also replaces the `lernapps-*` skills: read the ones you use again. Commit the update on its
       own, and fix what its checks report before you add content.
-- [ ] Beispielantworten (`examples`) für die 9 Übungsblöcke mit Komponente: `SchaltungBauen` ×3, `SchaltungVorhersage` ×2, `DrahtLabor`,
+- [x] Beispielantworten (`examples`) für die 9 Übungsblöcke mit Komponente: `SchaltungBauen` ×3, `SchaltungVorhersage` ×2, `DrahtLabor`,
       `OhmLabor`, `SpannungMessen`, `StromMessen`. Zuerst überlegen, was der Text erlaubt; dann eintragen; Prüfungen korrigieren, wo ein
       richtiges Beispiel abgelehnt wird. Commit.
-- [ ] Die sechs Komponenten auf den Vertrag der neuen Laufzeit umbauen (`seed`, `describe`, `about`, `answered { correct, reason }`,
+- [x] Die sechs Komponenten auf den Vertrag der neuen Laufzeit umbauen (`seed`, `describe`, `about`, `answered { correct, reason }`,
       Meldungen der Regel `vue-component-exercise-contract`), eine nach der anderen, je mit Test und Commit; `nojs` an den Komponenten
       entfällt, wo die Laufzeit es verlangt.
-- [ ] Quizfragen, Rechenaufgaben: `hint`, `mistakes`, `info` ergänzen, wo die Rückmeldung bisher nur „Leider nicht richtig.“ wäre.
-- [ ] Optional: `tutor.rules` in `src/app.yaml` (App-eigene Regeln an den Tutor, zum Beispiel: Gleichstrom, keine Elektronen, Wasserbild).
-- [ ] The content guide describes the app as it is now: its competencies, chapters and patterns, and its procedure
+- [x] Quizfragen, Rechenaufgaben: `hint`, `mistakes`, `info` ergänzen, wo die Rückmeldung bisher nur „Leider nicht richtig.“ wäre (geprüft: die Quizfragen haben je Option eine `info`,
+      die Rechenaufgaben `mistakes` und `hint`; nur die Komponenten brauchten Gründe, jetzt `reason`).
+- [x] Optional: `tutor.rules` in `src/app.yaml` (App-eigene Regeln an den Tutor, zum Beispiel: Gleichstrom, keine Elektronen, Wasserbild).
+- [x] The content guide describes the app as it is now: its competencies, chapters and patterns, and its procedure
       for the next increment (`app-content-matches`).
 - [ ] `npx lernapps check` passes.
 - [ ] Set `phase: commit`.

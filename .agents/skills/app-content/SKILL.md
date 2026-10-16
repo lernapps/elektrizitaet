@@ -195,6 +195,9 @@ das Lehrplanzitat prüfen (Bayern, Gymnasium, Jahrgangsstufe 9 oder 10, nicht ge
 
 ## Rules learned from mistakes
 
+- **KI-Tutor:** `tutor.rules` in `src/app.yaml` gibt der App eigene Regeln an den Tutor (Wasserbild mit Grenzen, keine Elektronen, Gleichstrom, Rechenwege
+  auf Papier, jeder gleichwertige Aufbau zählt). Die Anbieter bleiben bei der Voreinstellung (Claude); die App lädt vor einem Klick nichts.
+
 - Eine `unit` in `compare.number` ist eine Sprachtabelle `{ de: A, en: A }`, kein String.
 - Die Props einer Komponente nutzen Literal-Unions im Text von `defineProps` (`("strom" | "spannung")[]`), keinen importierten
   Typ-Alias (`vue-component-props-valid`).
@@ -202,18 +205,24 @@ das Lehrplanzitat prüfen (Bayern, Gymnasium, Jahrgangsstufe 9 oder 10, nicht ge
   gehören in die `.ts` einer Komponente, die die anderen importieren.
 - Der Explainer schreibt keine Weiterleitungen: eine entfernte Seite (hier `schaltungen/bau-editor`) gibt danach 404; der Themenpfad
   im Katalogeintrag muss dann in demselben Zug ersetzt werden.
-- Komponenten setzen **kein** `defineOptions({ nojs: "caption" })`: sonst bleibt der `nojs`-Text als lange Beschreibung unter der Übung
-  stehen. Ohne diese Option ersetzt die laufende Komponente ihn.
-- **Eindeutigkeit der Prüfung (systematische Regel):** Eine Übung prüft die Eigenschaft, die ihr Text verlangt, nicht eine einzige
-  Musterlösung. Vor jeder neuen Übung fragen: Gibt es andere Antworten, die der Text ebenso erlaubt? Dann (1) die Prüfung auf
-  Verhalten oder Eigenschaft umstellen (Bauaufgaben, Mess- und Vorhersageübungen tun das und werden mit mehreren gleichwertigen Lösungen
-  getestet), (2) die Aufgabe so umformulieren, dass es genau eine Antwort gibt, oder (3) den Fragetyp wechseln. `ordering` nur, wenn
-  die Reihenfolge eindeutig ist (nach Größe, nach Zeit), nicht bei Bauteilen in Reihe: dort ist die Reihenfolge egal und wird als
-  Wahr-oder-falsch-Aussage geübt. `matching` nur mit je genau einem passenden Partner; zwei Übungen dürfen sich nicht widersprechen
-  (die Glühlampe ist Wärmewirkung, die LED Lichtwirkung). Ein Test je Bauziel prüft mehrere gleichwertige Aufbauten.
-- Die Prüfung einer Bauaufgabe urteilt nur über das, was ihr Text verlangt: die Aufgabe `eine` erlaubt zum Beispiel einen Schalter im
-  Kreis, solange die Lampe leuchtet. Nach dem Prüfen sagt `diagnose` (Text `why…`), was fehlt: Zahl der Lampen, Zahl der Schalter,
-  Kurzschluss, etwas dunkel (offener Schalter) oder Verhalten; das Template meldet selbst nur „Leider nicht richtig.“.
+- **Vertrag der Übungskomponenten** (die sechs Komponenten, die `answered` melden: `StromMessen`, `SpannungMessen`, `DrahtLabor`,
+  `OhmLabor`, `SchaltungVorhersage`, `SchaltungBauen`):
+  - Die Prop `seed: number` bekommt die Komponente von der Laufzeit (Aufgabe Nr. n, Adresse `?seed=<n>#<id>`); sie zeigt
+    `generate(props.seed, props)` und setzt ihren Zustand zurück, wenn sich der Seed ändert. Sie hat keinen eigenen Seed und keinen
+    „Nächste Aufgabe“-Knopf; ein „Neu anfangen“-Knopf darf bleiben.
+  - Sie meldet `answered { correct, reason }`. `reason` ist ein Satz in der Sprache der Seite, der sagt, was fehlt: die Texte `why…`
+    in den `texts` der Seite; die Funktion `diagnose` im Logikmodul wählt den Grund. Mit `exactOptionalPropertyTypes` kein
+    `reason: undefined` melden, sondern `reason` weglassen.
+  - Das Logikmodul exportiert `generate`, `check`, `solution`, `wrong`, außerdem `describe(task, props, lang)` (die Aufgabe, wie sie auf dem
+    Bildschirm steht, und ihre Lösung, als Markdown in der Sprache `lang`) und `about = { task, answer, correct, mistakes }` (Texte je
+    Sprache: was zu tun ist, Antwortformat, was als richtig zählt, typische Fehler, passend zu den abgelehnten Beispielen). Daraus entstehen
+    der Text ohne JavaScript und die `tutor.md` jeder Seite. `nojs` an Übungskomponenten entfällt und ist verboten.
+  - Der Block hat `examples: { accepted, rejected }`, vom Build geprüft, für Lernende unsichtbar: akzeptierte Antworten (auch andere richtige
+    als die Musterlösung: Lampe plus Schalter bei „eine Lampe“, die beiden Punkte des Voltmeters vertauscht, Amperemeter oben oder unten) und
+    abgelehnte (die typischen Fehler). `{ answer, seed? }`; ohne `seed` gilt das Beispiel für alle Aufgaben der Seeds 1 bis 50, sonst nur
+    für den Seed. Wird ein akzeptiertes Beispiel abgelehnt, stimmt die Prüfung nicht, nicht das Beispiel. Die Beispiele für die vier
+    Komponenten mit eigenen Aufgabenwerten entstanden mit einem Skript, das die Lösung je Seed aus dem Logikmodul rechnet.
+  - Figuren verraten die Antwort nicht: die Stromachse in `OhmLabor` wächst mit den Messpunkten, sie hängt nicht vom Widerstand ab.
 - Messen und Bauen folgen der Reihenfolge „bauen, dann Strom einschalten, dann prüfen“: Vor dem Einschalten fließt nichts, leuchtet
   nichts und zeigt kein Messgerät etwas, Kurzschluss-Warnungen kommen erst mit dem Strom; „Prüfen“ schaltet selbst ein. Beim Bauen
   wählt man ein Bauteil und tippt auf einen Platz; das Schalter-Werkzeug klappt einen eingebauten Schalter auf und zu, bei

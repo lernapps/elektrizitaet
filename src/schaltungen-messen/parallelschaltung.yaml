@@ -124,12 +124,38 @@ blocks:
             check:
               de: Prüfen
               en: Check
-            next:
-              de: Nächste Aufgabe
-              en: Next task
             decimal:
               de: ","
               en: .
+            whyEmpty:
+              de: Schreibe zuerst eine Zahl als Vorhersage.
+              en: First write a number as your prediction.
+            whySeries:
+              de: Du hast gerechnet wie bei einer Reihenschaltung. In der Parallelschaltung liegt an jedem Zweig die
+                volle Spannung.
+              en: You calculated as for a series circuit. In a parallel circuit every branch has the full voltage.
+            whyParallel:
+              de: Du hast die Zweigströme addiert wie bei einer Parallelschaltung. In der Reihenschaltung gibt es nur
+                einen Strom durch beide Widerstände.
+              en: You added branch currents as for a parallel circuit. In a series circuit there is only one current
+                through both resistors.
+            whyOne:
+              de: Du hast nur einen Widerstand benutzt. Frag dich, welche Widerstände der Strom in dieser Schaltung
+                durchläuft.
+              en: You used only one resistor. Ask yourself which resistors the current passes in this circuit.
+            whyWhole:
+              de: Das ist die ganze Spannung der Batterie. Am zweiten Widerstand liegt nur ein Teil davon.
+              en: That is the whole voltage of the battery. Across the second resistor there is only a share of it.
+            whyHalf:
+              de: "Die Spannung teilt sich nicht zu gleichen Teilen, wenn die Widerstände verschieden sind: der größere
+                bekommt mehr."
+              en: "The voltage is not shared equally when the resistors differ: the larger one gets more."
+            whyOther:
+              de:
+                "Das stimmt noch nicht. Rechne Schritt für Schritt: erst den Strom oder die Spannung des ganzen Kreises,
+                dann den gesuchten Teil."
+              en: "That is not right yet. Calculate step by step: first the current or voltage of the whole circuit,
+                then the part you want."
             board:
               de: Stromkreis mit zwei Widerständen und einem Messgerät
               en: Circuit with two resistors and a meter
@@ -168,13 +194,63 @@ blocks:
                 mit dem zweiten Widerstand ({R2} Ω)?
               en: Two resistors of {R1} Ω and {R2} Ω are connected in parallel on {U} V. What does the ammeter show
                 in the branch with the second resistor ({R2} Ω)?
-        nojs:
-          de: "Diese Übung zeigt zwei Widerstände parallel an einer Batterie. Du sagst vorher, was das Messgerät zeigt,
-            prüfst, und der Stromkreis schaltet sich ein. Beispiel: 12 V, 20 Ω und 30 Ω. Lösung: im ersten Zweig 0,6
-            A, im zweiten 0,4 A, in der Hauptleitung zusammen 1,0 A."
-          en: "This exercise shows two resistors in parallel on a battery. You predict what the meter shows, check,
-            and the circuit switches on. Example: 12 V, 20 Ω and 30 Ω. Solution: 0.6 A in the first branch, 0.4 A in
-            the second, 1.0 A together in the main wire."
+        examples:
+          accepted:
+            - seed: 1
+              answer:
+                value: 0.3
+            - seed: 1
+              answer:
+                value: 0.3004
+            - seed: 2
+              answer:
+                value: 1.2
+            - seed: 2
+              answer:
+                value: 1.2004
+            - seed: 3
+              answer:
+                value: 0.4
+            - seed: 3
+              answer:
+                value: 0.40040000000000003
+            - seed: 4
+              answer:
+                value: 1.2
+            - seed: 4
+              answer:
+                value: 1.2004
+          rejected:
+            - answer:
+                value: null
+            - answer:
+                value: 0
+            - answer:
+                value: 100
+            - seed: 1
+              answer:
+                value: 0.225
+            - seed: 1
+              answer:
+                value: 0.9
+            - seed: 2
+              answer:
+                value: 0.3
+            - seed: 2
+              answer:
+                value: 0.6
+            - seed: 3
+              answer:
+                value: 0.3
+            - seed: 3
+              answer:
+                value: 1.2
+            - seed: 4
+              answer:
+                value: 0.3
+            - seed: 4
+              answer:
+                value: 0.6
       - type: generated
         id: pr-gesamtstrom
         given:

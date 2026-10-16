@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import Fluss from "./Fluss.vue";
 import Zeiger from "./Zeiger.vue";
 import { fill, fmt } from "./Fluss.ts";
-import { NODES, check, current, generate, measure, potentials, type Node } from "./SpannungMessen.ts";
+import { NODES, check, current, diagnose, generate, measure, potentials, type Node } from "./SpannungMessen.ts";
 
 interface Texts {
   board: string;
@@ -15,20 +15,21 @@ interface Texts {
   noVoltmeter: string;
   taskLabel: string;
   task: string;
+  whyPoints: string;
+  whyWire: string;
+  whyValue: string;
   reset: string;
   check: string;
-  next: string;
   decimal: string;
   switchOn: string;
   switchOff: string;
   off: string;
 }
-const props = defineProps<{ texts: Texts }>();
-const emit = defineEmits<{ answered: [{ correct: boolean }] }>();
+const props = defineProps<{ seed: number; texts: Texts }>();
+const emit = defineEmits<{ answered: [{ correct: boolean; reason?: string }] }>();
 
-// The first render is the same on the server and in the browser: the task of the seed 1.
-const seed = ref(1);
-const task = computed(() => generate(seed.value));
+// The explainer gives the seed: the number of the task.
+const task = computed(() => generate(props.seed, props));
 const from = ref<Node | null>(null);
 const to = ref<Node | null>(null);
 const powered = ref(false);
@@ -76,13 +77,23 @@ const reset = () => {
   from.value = null;
   to.value = null;
 };
-const next = () => {
-  seed.value += 1;
-  reset();
-};
+watch(() => props.seed, reset);
+const reason = computed(() => {
+  const why = diagnose(task.value, answer.value);
+  const t = props.texts;
+  if (why === null) return undefined;
+  if (why === "value") {
+    return fill(t.whyValue, {
+      v: `${fmt(shown.value ?? 0, 2, sep.value)} V`,
+      T: fmt(task.value.target, 2, sep.value),
+    });
+  }
+  return why === "points" ? t.whyPoints : t.whyWire;
+});
 const verify = () => {
   powered.value = true;
-  emit("answered", { correct: check(task.value, answer.value) });
+  const correct = check(task.value, answer.value);
+  emit("answered", reason.value === undefined ? { correct } : { correct, reason: reason.value });
 };
 </script>
 
@@ -153,7 +164,6 @@ const verify = () => {
       </button>
       <button type="button" @click="verify()">{{ texts.check }}</button>
       <button type="button" @click="reset()">{{ texts.reset }}</button>
-      <button type="button" @click="next()">{{ texts.next }}</button>
     </div>
   </div>
 </template>

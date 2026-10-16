@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import Fluss from "./Fluss.vue";
 import {
   SLOTS,
@@ -44,7 +44,6 @@ interface Texts {
   taskLabel: string;
   reset: string;
   check: string;
-  next: string;
   goalEine: string;
   goalSchalter: string;
   goalReihe: string;
@@ -54,10 +53,11 @@ interface Texts {
 }
 
 const props = defineProps<{
+  seed: number;
   goals: ("eine" | "schalter" | "reihe" | "parallel" | "je-schalter" | "haupt")[];
   texts: Texts;
 }>();
-const emit = defineEmits<{ answered: [{ correct: boolean }] }>();
+const emit = defineEmits<{ answered: [{ correct: boolean; reason?: string }] }>();
 
 type Tool = "wire" | "lamp" | "switch";
 
@@ -76,15 +76,13 @@ const SIMPLE: Partial<Record<SlotId, { x: number; y: number; rot: number }>> = {
   m2: { x: 270, y: 40, rot: 0 },
 };
 
-// The first render is the same on the server and in the browser: the task of the seed 1.
-const seed = ref(1);
 const slots = ref<Slots>(emptySlots());
 const tool = ref<Tool>("lamp");
 const powered = ref(false);
 // What is still missing after the last check; cleared by the next change.
 const reason = ref<string | null>(null);
 
-const task = computed(() => generate(seed.value, props));
+const task = computed(() => generate(props.seed, props));
 const simple = computed(() => ["eine", "schalter", "reihe"].includes(task.value.goal));
 const places = computed(() => (simple.value ? (["m1", "m2"] as SlotId[]) : [...SLOTS]));
 const POS = computed(() => (simple.value ? SIMPLE : PARALLEL) as Record<SlotId, { x: number; y: number; rot: number }>);
@@ -155,10 +153,7 @@ const reset = () => {
   slots.value = emptySlots();
   powered.value = false;
 };
-const next = () => {
-  seed.value += 1;
-  reset();
-};
+watch(() => props.seed, reset);
 const verify = () => {
   powered.value = true;
   const why = diagnose(task.value.goal, circuit.value);
@@ -169,7 +164,8 @@ const verify = () => {
       : { lamps: t.whyLamps, switches: t.whySwitches, short: t.whyShort, dark: t.whyDark, behaviour: t.whyBehaviour }[
           why
         ];
-  emit("answered", { correct: check(task.value, circuit.value) });
+  const correct = check(task.value, circuit.value);
+  emit("answered", reason.value === null ? { correct } : { correct, reason: reason.value });
 };
 </script>
 
@@ -267,7 +263,6 @@ const verify = () => {
     <div class="bau-bar">
       <button type="button" @click="verify()">{{ texts.check }}</button>
       <button type="button" @click="reset()">{{ texts.reset }}</button>
-      <button type="button" @click="next()">{{ texts.next }}</button>
     </div>
   </div>
 </template>
