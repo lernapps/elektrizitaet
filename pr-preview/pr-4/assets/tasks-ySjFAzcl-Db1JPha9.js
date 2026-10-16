@@ -1,1 +1,0 @@
-var e=(e,t)=>((Math.trunc(e)-1)%t+t)%t+1,t=(e,t)=>e%t+1,n=e=>1+Math.floor(Math.random()*e);function r(e,t){let n=new URL(e),r=Number(n.searchParams.get(`seed`));return decodeURIComponent(n.hash.slice(1))===t&&Number.isInteger(r)&&r>0?r:void 0}function i(e,t,n){let r=new URL(e);return r.searchParams.set(`seed`,String(n)),r.hash=t,r.href}export{e as a,n as i,t as n,r,i as t};
