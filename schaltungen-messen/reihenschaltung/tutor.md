@@ -1,0 +1,279 @@
+# Reihenschaltung mit Messgeräten – Tutor-Datei
+
+> In der Reihenschaltung ist die Stromstärke überall gleich, und die Spannungen der Widerstände addieren sich.
+
+App: Elektrizität. Seite: [Reihenschaltung mit Messgeräten](./)
+
+Diese Datei ist für einen KI-Tutor. Sie enthält die Lösungen: Nutze sie, um anzuleiten und Fehler zu erkennen, nicht um vorzusagen. Die Regeln stehen in llms.txt.
+
+## Abschnitte
+
+- [Die Idee](./#idee)
+- [Das merkst du dir](./#merke)
+- [Beispiel](./#beispiel)
+- [Übung](./#uebung)
+
+## Übungen
+
+### schaltung-vorhersage (interaktive Übung SchaltungVorhersage)
+
+- Link: [./#schaltung-vorhersage](./#schaltung-vorhersage), im Abschnitt „Übung“
+- Was zu tun ist: Du sagst vorher, was ein Messgerät in einer Reihen- oder Parallelschaltung mit zwei Widerständen zeigt, und schaltest dann ein.
+- Antwortformat: Eine Zahl: die Stromstärke in A oder die Spannung in V, je nach Aufgabe (mit Komma oder Punkt); dann „Prüfen“.
+- Was als richtig zählt: Die Zahl stimmt auf drei Stellen (Ampere) beziehungsweise zwei Stellen (Volt) mit der Anzeige überein. Der Weg zur Zahl ist frei.
+- Typische Fehler und die Meldung der App:
+  - Reihenschaltung: nur einen Widerstand benutzt (Spannung : R1), statt R1 und R2 zu addieren; oder die Zweigströme addiert wie bei einer Parallelschaltung.
+  - Teilspannung: die ganze Spannung genommen oder die Spannung zu gleichen Teilen geteilt, obwohl die Widerstände verschieden sind.
+  - Parallelschaltung: wie eine Reihenschaltung gerechnet (Spannung : (R1 + R2)) oder nur einen Zweig betrachtet.
+- Aufgaben nach Nummer, 1 bis 67: jede eine andere (die App zeigt „Aufgabe Nr. …“):
+  - [Aufgabe Nr. 1](./?seed=1#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 30 Ω liegen in Reihe an 9 V. Was zeigt das Voltmeter am zweiten Widerstand (30 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 9 V : (10 + 30) Ω; am zweiten Widerstand liegen 30 Ω · Strom = 6,75 V.
+  - [Aufgabe Nr. 2](./?seed=2#schaltung-vorhersage): Zwei Widerstände von 20 Ω und 20 Ω liegen in Reihe an 12 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 20 Ω + 20 Ω; der Strom ist 12 V : (20 + 20) Ω = 0,3 A, überall im Kreis.
+  - [Aufgabe Nr. 3](./?seed=3#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 30 Ω liegen in Reihe an 12 V. Was zeigt das Voltmeter am zweiten Widerstand (30 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 12 V : (10 + 30) Ω; am zweiten Widerstand liegen 30 Ω · Strom = 9 V.
+  - [Aufgabe Nr. 4](./?seed=4#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 50 Ω liegen in Reihe an 9 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 10 Ω + 50 Ω; der Strom ist 9 V : (10 + 50) Ω = 0,15 A, überall im Kreis.
+  - [Aufgabe Nr. 5](./?seed=5#schaltung-vorhersage): Zwei Widerstände von 30 Ω und 30 Ω liegen in Reihe an 12 V. Was zeigt das Voltmeter am zweiten Widerstand (30 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 12 V : (30 + 30) Ω; am zweiten Widerstand liegen 30 Ω · Strom = 6 V.
+  - [Aufgabe Nr. 6](./?seed=6#schaltung-vorhersage): Zwei Widerstände von 30 Ω und 30 Ω liegen in Reihe an 12 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 30 Ω + 30 Ω; der Strom ist 12 V : (30 + 30) Ω = 0,2 A, überall im Kreis.
+  - [Aufgabe Nr. 7](./?seed=7#schaltung-vorhersage): Zwei Widerstände von 50 Ω und 50 Ω liegen in Reihe an 12 V. Was zeigt das Voltmeter am zweiten Widerstand (50 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 12 V : (50 + 50) Ω; am zweiten Widerstand liegen 50 Ω · Strom = 6 V.
+  - [Aufgabe Nr. 8](./?seed=8#schaltung-vorhersage): Zwei Widerstände von 100 Ω und 50 Ω liegen in Reihe an 9 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 100 Ω + 50 Ω; der Strom ist 9 V : (100 + 50) Ω = 0,06 A, überall im Kreis.
+  - [Aufgabe Nr. 9](./?seed=9#schaltung-vorhersage): Zwei Widerstände von 30 Ω und 50 Ω liegen in Reihe an 6 V. Was zeigt das Voltmeter am zweiten Widerstand (50 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 6 V : (30 + 50) Ω; am zweiten Widerstand liegen 50 Ω · Strom = 3,75 V.
+  - [Aufgabe Nr. 10](./?seed=10#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 30 Ω liegen in Reihe an 6 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 10 Ω + 30 Ω; der Strom ist 6 V : (10 + 30) Ω = 0,15 A, überall im Kreis.
+  - [Aufgabe Nr. 11](./?seed=11#schaltung-vorhersage): Zwei Widerstände von 20 Ω und 10 Ω liegen in Reihe an 9 V. Was zeigt das Voltmeter am zweiten Widerstand (10 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 9 V : (20 + 10) Ω; am zweiten Widerstand liegen 10 Ω · Strom = 3 V.
+  - [Aufgabe Nr. 12](./?seed=12#schaltung-vorhersage): Zwei Widerstände von 30 Ω und 30 Ω liegen in Reihe an 9 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 30 Ω + 30 Ω; der Strom ist 9 V : (30 + 30) Ω = 0,15 A, überall im Kreis.
+  - [Aufgabe Nr. 13](./?seed=13#schaltung-vorhersage): Zwei Widerstände von 30 Ω und 30 Ω liegen in Reihe an 6 V. Was zeigt das Voltmeter am zweiten Widerstand (30 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 6 V : (30 + 30) Ω; am zweiten Widerstand liegen 30 Ω · Strom = 3 V.
+  - [Aufgabe Nr. 14](./?seed=14#schaltung-vorhersage): Zwei Widerstände von 20 Ω und 10 Ω liegen in Reihe an 12 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 20 Ω + 10 Ω; der Strom ist 12 V : (20 + 10) Ω = 0,4 A, überall im Kreis.
+  - [Aufgabe Nr. 15](./?seed=15#schaltung-vorhersage): Zwei Widerstände von 20 Ω und 30 Ω liegen in Reihe an 6 V. Was zeigt das Voltmeter am zweiten Widerstand (30 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 6 V : (20 + 30) Ω; am zweiten Widerstand liegen 30 Ω · Strom = 3,6 V.
+  - [Aufgabe Nr. 16](./?seed=16#schaltung-vorhersage): Zwei Widerstände von 20 Ω und 30 Ω liegen in Reihe an 12 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 20 Ω + 30 Ω; der Strom ist 12 V : (20 + 30) Ω = 0,24 A, überall im Kreis.
+  - [Aufgabe Nr. 17](./?seed=17#schaltung-vorhersage): Zwei Widerstände von 30 Ω und 20 Ω liegen in Reihe an 9 V. Was zeigt das Voltmeter am zweiten Widerstand (20 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 9 V : (30 + 20) Ω; am zweiten Widerstand liegen 20 Ω · Strom = 3,6 V.
+  - [Aufgabe Nr. 18](./?seed=18#schaltung-vorhersage): Zwei Widerstände von 20 Ω und 20 Ω liegen in Reihe an 9 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 20 Ω + 20 Ω; der Strom ist 9 V : (20 + 20) Ω = 0,225 A, überall im Kreis.
+  - [Aufgabe Nr. 19](./?seed=19#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 50 Ω liegen in Reihe an 6 V. Was zeigt das Voltmeter am zweiten Widerstand (50 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 6 V : (10 + 50) Ω; am zweiten Widerstand liegen 50 Ω · Strom = 5 V.
+  - [Aufgabe Nr. 20](./?seed=20#schaltung-vorhersage): Zwei Widerstände von 100 Ω und 20 Ω liegen in Reihe an 6 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 100 Ω + 20 Ω; der Strom ist 6 V : (100 + 20) Ω = 0,05 A, überall im Kreis.
+  - [Aufgabe Nr. 21](./?seed=21#schaltung-vorhersage): Zwei Widerstände von 20 Ω und 10 Ω liegen in Reihe an 12 V. Was zeigt das Voltmeter am zweiten Widerstand (10 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 12 V : (20 + 10) Ω; am zweiten Widerstand liegen 10 Ω · Strom = 4 V.
+  - [Aufgabe Nr. 22](./?seed=22#schaltung-vorhersage): Zwei Widerstände von 50 Ω und 100 Ω liegen in Reihe an 12 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 50 Ω + 100 Ω; der Strom ist 12 V : (50 + 100) Ω = 0,08 A, überall im Kreis.
+  - [Aufgabe Nr. 23](./?seed=23#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 10 Ω liegen in Reihe an 9 V. Was zeigt das Voltmeter am zweiten Widerstand (10 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 9 V : (10 + 10) Ω; am zweiten Widerstand liegen 10 Ω · Strom = 4,5 V.
+  - [Aufgabe Nr. 24](./?seed=24#schaltung-vorhersage): Zwei Widerstände von 50 Ω und 50 Ω liegen in Reihe an 9 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 50 Ω + 50 Ω; der Strom ist 9 V : (50 + 50) Ω = 0,09 A, überall im Kreis.
+  - [Aufgabe Nr. 25](./?seed=25#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 20 Ω liegen in Reihe an 6 V. Was zeigt das Voltmeter am zweiten Widerstand (20 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 6 V : (10 + 20) Ω; am zweiten Widerstand liegen 20 Ω · Strom = 4 V.
+  - [Aufgabe Nr. 26](./?seed=26#schaltung-vorhersage): Zwei Widerstände von 100 Ω und 50 Ω liegen in Reihe an 12 V. Was zeigt das Voltmeter am zweiten Widerstand (50 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 12 V : (100 + 50) Ω; am zweiten Widerstand liegen 50 Ω · Strom = 4 V.
+  - [Aufgabe Nr. 27](./?seed=27#schaltung-vorhersage): Zwei Widerstände von 50 Ω und 50 Ω liegen in Reihe an 9 V. Was zeigt das Voltmeter am zweiten Widerstand (50 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 9 V : (50 + 50) Ω; am zweiten Widerstand liegen 50 Ω · Strom = 4,5 V.
+  - [Aufgabe Nr. 28](./?seed=28#schaltung-vorhersage): Zwei Widerstände von 100 Ω und 20 Ω liegen in Reihe an 12 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 100 Ω + 20 Ω; der Strom ist 12 V : (100 + 20) Ω = 0,1 A, überall im Kreis.
+  - [Aufgabe Nr. 29](./?seed=29#schaltung-vorhersage): Zwei Widerstände von 50 Ω und 30 Ω liegen in Reihe an 6 V. Was zeigt das Voltmeter am zweiten Widerstand (30 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 6 V : (50 + 30) Ω; am zweiten Widerstand liegen 30 Ω · Strom = 2,25 V.
+  - [Aufgabe Nr. 30](./?seed=30#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 10 Ω liegen in Reihe an 9 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 10 Ω + 10 Ω; der Strom ist 9 V : (10 + 10) Ω = 0,45 A, überall im Kreis.
+  - [Aufgabe Nr. 31](./?seed=31#schaltung-vorhersage): Zwei Widerstände von 30 Ω und 50 Ω liegen in Reihe an 12 V. Was zeigt das Voltmeter am zweiten Widerstand (50 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 12 V : (30 + 50) Ω; am zweiten Widerstand liegen 50 Ω · Strom = 7,5 V.
+  - [Aufgabe Nr. 32](./?seed=32#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 30 Ω liegen in Reihe an 12 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 10 Ω + 30 Ω; der Strom ist 12 V : (10 + 30) Ω = 0,3 A, überall im Kreis.
+  - [Aufgabe Nr. 33](./?seed=33#schaltung-vorhersage): Zwei Widerstände von 20 Ω und 30 Ω liegen in Reihe an 12 V. Was zeigt das Voltmeter am zweiten Widerstand (30 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 12 V : (20 + 30) Ω; am zweiten Widerstand liegen 30 Ω · Strom = 7,2 V.
+  - [Aufgabe Nr. 34](./?seed=34#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 10 Ω liegen in Reihe an 12 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 10 Ω + 10 Ω; der Strom ist 12 V : (10 + 10) Ω = 0,6 A, überall im Kreis.
+  - [Aufgabe Nr. 35](./?seed=35#schaltung-vorhersage): Zwei Widerstände von 100 Ω und 50 Ω liegen in Reihe an 6 V. Was zeigt das Voltmeter am zweiten Widerstand (50 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 6 V : (100 + 50) Ω; am zweiten Widerstand liegen 50 Ω · Strom = 2 V.
+  - [Aufgabe Nr. 36](./?seed=36#schaltung-vorhersage): Zwei Widerstände von 30 Ω und 20 Ω liegen in Reihe an 12 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 30 Ω + 20 Ω; der Strom ist 12 V : (30 + 20) Ω = 0,24 A, überall im Kreis.
+  - [Aufgabe Nr. 37](./?seed=37#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 20 Ω liegen in Reihe an 9 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 10 Ω + 20 Ω; der Strom ist 9 V : (10 + 20) Ω = 0,3 A, überall im Kreis.
+  - [Aufgabe Nr. 38](./?seed=38#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 30 Ω liegen in Reihe an 6 V. Was zeigt das Voltmeter am zweiten Widerstand (30 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 6 V : (10 + 30) Ω; am zweiten Widerstand liegen 30 Ω · Strom = 4,5 V.
+  - [Aufgabe Nr. 39](./?seed=39#schaltung-vorhersage): Zwei Widerstände von 50 Ω und 100 Ω liegen in Reihe an 9 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 50 Ω + 100 Ω; der Strom ist 9 V : (50 + 100) Ω = 0,06 A, überall im Kreis.
+  - [Aufgabe Nr. 40](./?seed=40#schaltung-vorhersage): Zwei Widerstände von 100 Ω und 50 Ω liegen in Reihe an 9 V. Was zeigt das Voltmeter am zweiten Widerstand (50 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 9 V : (100 + 50) Ω; am zweiten Widerstand liegen 50 Ω · Strom = 3 V.
+  - [Aufgabe Nr. 41](./?seed=41#schaltung-vorhersage): Zwei Widerstände von 30 Ω und 50 Ω liegen in Reihe an 6 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 30 Ω + 50 Ω; der Strom ist 6 V : (30 + 50) Ω = 0,075 A, überall im Kreis.
+  - [Aufgabe Nr. 42](./?seed=42#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 20 Ω liegen in Reihe an 6 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 10 Ω + 20 Ω; der Strom ist 6 V : (10 + 20) Ω = 0,2 A, überall im Kreis.
+  - [Aufgabe Nr. 43](./?seed=43#schaltung-vorhersage): Zwei Widerstände von 50 Ω und 100 Ω liegen in Reihe an 9 V. Was zeigt das Voltmeter am zweiten Widerstand (100 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 9 V : (50 + 100) Ω; am zweiten Widerstand liegen 100 Ω · Strom = 6 V.
+  - [Aufgabe Nr. 44](./?seed=44#schaltung-vorhersage): Zwei Widerstände von 30 Ω und 50 Ω liegen in Reihe an 12 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 30 Ω + 50 Ω; der Strom ist 12 V : (30 + 50) Ω = 0,15 A, überall im Kreis.
+  - [Aufgabe Nr. 45](./?seed=45#schaltung-vorhersage): Zwei Widerstände von 20 Ω und 20 Ω liegen in Reihe an 12 V. Was zeigt das Voltmeter am zweiten Widerstand (20 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 12 V : (20 + 20) Ω; am zweiten Widerstand liegen 20 Ω · Strom = 6 V.
+  - [Aufgabe Nr. 46](./?seed=46#schaltung-vorhersage): Zwei Widerstände von 20 Ω und 10 Ω liegen in Reihe an 9 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 20 Ω + 10 Ω; der Strom ist 9 V : (20 + 10) Ω = 0,3 A, überall im Kreis.
+  - [Aufgabe Nr. 47](./?seed=47#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 50 Ω liegen in Reihe an 12 V. Was zeigt das Voltmeter am zweiten Widerstand (50 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 12 V : (10 + 50) Ω; am zweiten Widerstand liegen 50 Ω · Strom = 10 V.
+  - [Aufgabe Nr. 48](./?seed=48#schaltung-vorhersage): Zwei Widerstände von 100 Ω und 100 Ω liegen in Reihe an 12 V. Was zeigt das Voltmeter am zweiten Widerstand (100 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 12 V : (100 + 100) Ω; am zweiten Widerstand liegen 100 Ω · Strom = 6 V.
+  - [Aufgabe Nr. 49](./?seed=49#schaltung-vorhersage): Zwei Widerstände von 50 Ω und 100 Ω liegen in Reihe an 6 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 50 Ω + 100 Ω; der Strom ist 6 V : (50 + 100) Ω = 0,04 A, überall im Kreis.
+  - [Aufgabe Nr. 50](./?seed=50#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 50 Ω liegen in Reihe an 9 V. Was zeigt das Voltmeter am zweiten Widerstand (50 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 9 V : (10 + 50) Ω; am zweiten Widerstand liegen 50 Ω · Strom = 7,5 V.
+  - [Aufgabe Nr. 51](./?seed=51#schaltung-vorhersage): Zwei Widerstände von 50 Ω und 50 Ω liegen in Reihe an 12 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 50 Ω + 50 Ω; der Strom ist 12 V : (50 + 50) Ω = 0,12 A, überall im Kreis.
+  - [Aufgabe Nr. 52](./?seed=52#schaltung-vorhersage): Zwei Widerstände von 30 Ω und 20 Ω liegen in Reihe an 9 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 30 Ω + 20 Ω; der Strom ist 9 V : (30 + 20) Ω = 0,18 A, überall im Kreis.
+  - [Aufgabe Nr. 53](./?seed=53#schaltung-vorhersage): Zwei Widerstände von 50 Ω und 10 Ω liegen in Reihe an 9 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 50 Ω + 10 Ω; der Strom ist 9 V : (50 + 10) Ω = 0,15 A, überall im Kreis.
+  - [Aufgabe Nr. 54](./?seed=54#schaltung-vorhersage): Zwei Widerstände von 100 Ω und 50 Ω liegen in Reihe an 6 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 100 Ω + 50 Ω; der Strom ist 6 V : (100 + 50) Ω = 0,04 A, überall im Kreis.
+  - [Aufgabe Nr. 55](./?seed=55#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 10 Ω liegen in Reihe an 12 V. Was zeigt das Voltmeter am zweiten Widerstand (10 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 12 V : (10 + 10) Ω; am zweiten Widerstand liegen 10 Ω · Strom = 6 V.
+  - [Aufgabe Nr. 56](./?seed=56#schaltung-vorhersage): Zwei Widerstände von 20 Ω und 20 Ω liegen in Reihe an 6 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 20 Ω + 20 Ω; der Strom ist 6 V : (20 + 20) Ω = 0,15 A, überall im Kreis.
+  - [Aufgabe Nr. 57](./?seed=57#schaltung-vorhersage): Zwei Widerstände von 20 Ω und 100 Ω liegen in Reihe an 12 V. Was zeigt das Voltmeter am zweiten Widerstand (100 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 12 V : (20 + 100) Ω; am zweiten Widerstand liegen 100 Ω · Strom = 10 V.
+  - [Aufgabe Nr. 58](./?seed=58#schaltung-vorhersage): Zwei Widerstände von 20 Ω und 100 Ω liegen in Reihe an 9 V. Was zeigt das Voltmeter am zweiten Widerstand (100 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 9 V : (20 + 100) Ω; am zweiten Widerstand liegen 100 Ω · Strom = 7,5 V.
+  - [Aufgabe Nr. 59](./?seed=59#schaltung-vorhersage): Zwei Widerstände von 20 Ω und 30 Ω liegen in Reihe an 6 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 20 Ω + 30 Ω; der Strom ist 6 V : (20 + 30) Ω = 0,12 A, überall im Kreis.
+  - [Aufgabe Nr. 60](./?seed=60#schaltung-vorhersage): Zwei Widerstände von 100 Ω und 50 Ω liegen in Reihe an 12 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 100 Ω + 50 Ω; der Strom ist 12 V : (100 + 50) Ω = 0,08 A, überall im Kreis.
+  - [Aufgabe Nr. 61](./?seed=61#schaltung-vorhersage): Zwei Widerstände von 20 Ω und 100 Ω liegen in Reihe an 6 V. Was zeigt das Voltmeter am zweiten Widerstand (100 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 6 V : (20 + 100) Ω; am zweiten Widerstand liegen 100 Ω · Strom = 5 V.
+  - [Aufgabe Nr. 62](./?seed=62#schaltung-vorhersage): Zwei Widerstände von 50 Ω und 10 Ω liegen in Reihe an 6 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 50 Ω + 10 Ω; der Strom ist 6 V : (50 + 10) Ω = 0,1 A, überall im Kreis.
+  - [Aufgabe Nr. 63](./?seed=63#schaltung-vorhersage): Zwei Widerstände von 100 Ω und 20 Ω liegen in Reihe an 9 V. Was zeigt das Voltmeter am zweiten Widerstand (20 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 9 V : (100 + 20) Ω; am zweiten Widerstand liegen 20 Ω · Strom = 1,5 V.
+  - [Aufgabe Nr. 64](./?seed=64#schaltung-vorhersage): Zwei Widerstände von 10 Ω und 50 Ω liegen in Reihe an 6 V. Was zeigt das Amperemeter? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Amperemeter sitzt im Kreis. → Lösung: Der Gesamtwiderstand ist 10 Ω + 50 Ω; der Strom ist 6 V : (10 + 50) Ω = 0,1 A, überall im Kreis.
+  - [Aufgabe Nr. 65](./?seed=65#schaltung-vorhersage): Zwei Widerstände von 50 Ω und 30 Ω liegen in Reihe an 12 V. Was zeigt das Voltmeter am zweiten Widerstand (30 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 12 V : (50 + 30) Ω; am zweiten Widerstand liegen 30 Ω · Strom = 4,5 V.
+  - [Aufgabe Nr. 66](./?seed=66#schaltung-vorhersage): Zwei Widerstände von 100 Ω und 100 Ω liegen in Reihe an 6 V. Was zeigt das Voltmeter am zweiten Widerstand (100 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 6 V : (100 + 100) Ω; am zweiten Widerstand liegen 100 Ω · Strom = 3 V.
+  - [Aufgabe Nr. 67](./?seed=67#schaltung-vorhersage): Zwei Widerstände von 50 Ω und 100 Ω liegen in Reihe an 6 V. Was zeigt das Voltmeter am zweiten Widerstand (100 Ω)? Die Schaltung ist ausgeschaltet. Sag die Zahl vorher, schalte dann ein: Das Voltmeter liegt am zweiten Widerstand. → Lösung: Der Strom ist 6 V : (50 + 100) Ω; am zweiten Widerstand liegen 100 Ω · Strom = 4 V.
+
+### rr-strom (generated, number)
+
+- Link: [./#rr-strom](./#rr-strom), im Abschnitt „Übung“
+- Antwortformat: eine Zahl eintippen (A)
+- Tipp, den die App zeigt (Vorlage: {{…}} sind die Werte der Aufgabe): Rechne erst den Gesamtwiderstand $R_1 + R_2$ aus.
+- Lösungsweg (Vorlage: {{…}} sind die Werte der Aufgabe):
+  - $R = R_1 + R_2 = {{R1}}\text{ Ω} + {{R2}}\text{ Ω}$
+  - $I = \frac{U}{R} = \frac{{{U}}\text{ V}}{{{R1}} + {{R2}}\text{ Ω}} = {{answer}}\text{ A}$
+- Aufgaben nach Nummer, 1 bis 40: jede eine andere (die App zeigt „Aufgabe Nr. …“):
+  - [Aufgabe Nr. 1](./?seed=1#rr-strom): Zwei Widerstände von 10 Ω und 10 Ω liegen in Reihe an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,45 A
+    - ✗ 0,9: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1,8: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 2](./?seed=2#rr-strom): Zwei Widerstände von 50 Ω und 50 Ω liegen in Reihe an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,06 A
+    - ✗ 0,12: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,24: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 3](./?seed=3#rr-strom): Zwei Widerstände von 20 Ω und 10 Ω liegen in Reihe an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,3 A
+    - ✗ 0,45: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1,35: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 4](./?seed=4#rr-strom): Zwei Widerstände von 30 Ω und 50 Ω liegen in Reihe an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,15 A
+    - ✗ 0,4: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,64: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 5](./?seed=5#rr-strom): Zwei Widerstände von 10 Ω und 10 Ω liegen in Reihe an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,3 A
+    - ✗ 0,6: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1,2: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 6](./?seed=6#rr-strom): Zwei Widerstände von 10 Ω und 10 Ω liegen in Reihe an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,6 A
+    - ✗ 1,2: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 2,4: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 7](./?seed=7#rr-strom): Zwei Widerstände von 50 Ω und 30 Ω liegen in Reihe an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,075 A
+    - ✗ 0,12: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,32: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 8](./?seed=8#rr-strom): Zwei Widerstände von 10 Ω und 30 Ω liegen in Reihe an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,15 A
+    - ✗ 0,6: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,8: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 9](./?seed=9#rr-strom): Zwei Widerstände von 20 Ω und 10 Ω liegen in Reihe an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,2 A
+    - ✗ 0,3: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,9: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 10](./?seed=10#rr-strom): Zwei Widerstände von 10 Ω und 20 Ω liegen in Reihe an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,3 A
+    - ✗ 0,9: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1,35: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 11](./?seed=11#rr-strom): Zwei Widerstände von 50 Ω und 50 Ω liegen in Reihe an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,12 A
+    - ✗ 0,24: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,48: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 12](./?seed=12#rr-strom): Zwei Widerstände von 30 Ω und 10 Ω liegen in Reihe an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,3 A
+    - ✗ 0,4: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1,6: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 13](./?seed=13#rr-strom): Zwei Widerstände von 20 Ω und 30 Ω liegen in Reihe an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,18 A
+    - ✗ 0,45: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,75: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 14](./?seed=14#rr-strom): Zwei Widerstände von 30 Ω und 10 Ω liegen in Reihe an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,15 A
+    - ✗ 0,2: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,8: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 15](./?seed=15#rr-strom): Zwei Widerstände von 20 Ω und 30 Ω liegen in Reihe an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,24 A
+    - ✗ 0,6: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 16](./?seed=16#rr-strom): Zwei Widerstände von 30 Ω und 30 Ω liegen in Reihe an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,15 A
+    - ✗ 0,3: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,6: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 17](./?seed=17#rr-strom): Zwei Widerstände von 30 Ω und 30 Ω liegen in Reihe an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,1 A
+    - ✗ 0,2: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,4: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 18](./?seed=18#rr-strom): Zwei Widerstände von 50 Ω und 10 Ω liegen in Reihe an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,2 A
+    - ✗ 0,24: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1,44: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 19](./?seed=19#rr-strom): Zwei Widerstände von 30 Ω und 20 Ω liegen in Reihe an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,18 A
+    - ✗ 0,3: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,75: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 20](./?seed=20#rr-strom): Zwei Widerstände von 30 Ω und 10 Ω liegen in Reihe an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,225 A
+    - ✗ 0,3: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1,2: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 21](./?seed=21#rr-strom): Zwei Widerstände von 50 Ω und 10 Ω liegen in Reihe an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,15 A
+    - ✗ 0,18: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1,08: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 22](./?seed=22#rr-strom): Zwei Widerstände von 30 Ω und 20 Ω liegen in Reihe an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,24 A
+    - ✗ 0,4: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 23](./?seed=23#rr-strom): Zwei Widerstände von 30 Ω und 20 Ω liegen in Reihe an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,12 A
+    - ✗ 0,2: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,5: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 24](./?seed=24#rr-strom): Zwei Widerstände von 10 Ω und 30 Ω liegen in Reihe an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,225 A
+    - ✗ 0,9: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1,2: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 25](./?seed=25#rr-strom): Zwei Widerstände von 30 Ω und 30 Ω liegen in Reihe an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,2 A
+    - ✗ 0,4: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,8: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 26](./?seed=26#rr-strom): Zwei Widerstände von 30 Ω und 50 Ω liegen in Reihe an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,075 A
+    - ✗ 0,2: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,32: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 27](./?seed=27#rr-strom): Zwei Widerstände von 10 Ω und 50 Ω liegen in Reihe an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,2 A
+    - ✗ 1,2: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1,44: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 28](./?seed=28#rr-strom): Zwei Widerstände von 20 Ω und 10 Ω liegen in Reihe an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,4 A
+    - ✗ 0,6: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1,8: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 29](./?seed=29#rr-strom): Zwei Widerstände von 10 Ω und 20 Ω liegen in Reihe an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,4 A
+    - ✗ 1,2: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1,8: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 30](./?seed=30#rr-strom): Zwei Widerstände von 20 Ω und 20 Ω liegen in Reihe an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,15 A
+    - ✗ 0,3: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,6: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 31](./?seed=31#rr-strom): Zwei Widerstände von 50 Ω und 30 Ω liegen in Reihe an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,15 A
+    - ✗ 0,24: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,64: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 32](./?seed=32#rr-strom): Zwei Widerstände von 10 Ω und 50 Ω liegen in Reihe an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,1 A
+    - ✗ 0,6: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,72: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 33](./?seed=33#rr-strom): Zwei Widerstände von 10 Ω und 30 Ω liegen in Reihe an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,3 A
+    - ✗ 1,2: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1,6: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 34](./?seed=34#rr-strom): Zwei Widerstände von 10 Ω und 20 Ω liegen in Reihe an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,2 A
+    - ✗ 0,6: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,9: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 35](./?seed=35#rr-strom): Zwei Widerstände von 50 Ω und 50 Ω liegen in Reihe an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,09 A
+    - ✗ 0,18: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,36: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 36](./?seed=36#rr-strom): Zwei Widerstände von 50 Ω und 10 Ω liegen in Reihe an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,1 A
+    - ✗ 0,12: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,72: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 37](./?seed=37#rr-strom): Zwei Widerstände von 10 Ω und 50 Ω liegen in Reihe an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,15 A
+    - ✗ 0,9: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1,08: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 38](./?seed=38#rr-strom): Zwei Widerstände von 20 Ω und 30 Ω liegen in Reihe an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,12 A
+    - ✗ 0,3: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,5: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 39](./?seed=39#rr-strom): Zwei Widerstände von 20 Ω und 20 Ω liegen in Reihe an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,3 A
+    - ✗ 0,6: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 1,2: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+  - [Aufgabe Nr. 40](./?seed=40#rr-strom): Zwei Widerstände von 20 Ω und 20 Ω liegen in Reihe an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,225 A
+    - ✗ 0,45: Du hast nur den ersten Widerstand genommen. In einer Reihenschaltung gehören beide Widerstände zusammen: $R = R_1 + R_2$.
+    - ✗ 0,9: So rechnest du bei einer Parallelschaltung. In der Reihenschaltung gibt es nur einen Strom, er fließt durch beide Widerstände.
+
+### rr-teilspannung (generated, number)
+
+- Link: [./#rr-teilspannung](./#rr-teilspannung), im Abschnitt „Übung“
+- Antwortformat: eine Zahl eintippen (V)
+- Tipp, den die App zeigt (Vorlage: {{…}} sind die Werte der Aufgabe): $U = U_1 + U_2$, also $U_2 = U - U_1$.
+- Lösungsweg (Vorlage: {{…}} sind die Werte der Aufgabe):
+  - $U_2 = U - U_1 = {{U}}\text{ V} - {{U1}}\text{ V} = {{answer}}\text{ V}$
+- Aufgaben nach Nummer, 1 bis 11: jede eine andere (die App zeigt „Aufgabe Nr. …“):
+  - [Aufgabe Nr. 1](./?seed=1#rr-teilspannung): Zwei Widerstände liegen in Reihe an 6 V. Das Voltmeter am ersten Widerstand zeigt 2 V. Wie groß ist die Spannung am zweiten Widerstand in Volt? → Lösung: 4 V
+    - ✗ 2: Das ist die Spannung am ersten Widerstand. Die Spannungen in der Reihenschaltung sind verschieden und ergeben zusammen die Gesamtspannung.
+    - ✗ 8: Du hast addiert. Die Gesamtspannung ist die Summe der Teilspannungen, also ziehst du die bekannte Teilspannung ab.
+  - [Aufgabe Nr. 2](./?seed=2#rr-teilspannung): Zwei Widerstände liegen in Reihe an 9 V. Das Voltmeter am ersten Widerstand zeigt 4 V. Wie groß ist die Spannung am zweiten Widerstand in Volt? → Lösung: 5 V
+    - ✗ 4: Das ist die Spannung am ersten Widerstand. Die Spannungen in der Reihenschaltung sind verschieden und ergeben zusammen die Gesamtspannung.
+    - ✗ 13: Du hast addiert. Die Gesamtspannung ist die Summe der Teilspannungen, also ziehst du die bekannte Teilspannung ab.
+  - [Aufgabe Nr. 3](./?seed=3#rr-teilspannung): Zwei Widerstände liegen in Reihe an 9 V. Das Voltmeter am ersten Widerstand zeigt 1 V. Wie groß ist die Spannung am zweiten Widerstand in Volt? → Lösung: 8 V
+    - ✗ 1: Das ist die Spannung am ersten Widerstand. Die Spannungen in der Reihenschaltung sind verschieden und ergeben zusammen die Gesamtspannung.
+    - ✗ 10: Du hast addiert. Die Gesamtspannung ist die Summe der Teilspannungen, also ziehst du die bekannte Teilspannung ab.
+  - [Aufgabe Nr. 4](./?seed=4#rr-teilspannung): Zwei Widerstände liegen in Reihe an 12 V. Das Voltmeter am ersten Widerstand zeigt 4 V. Wie groß ist die Spannung am zweiten Widerstand in Volt? → Lösung: 8 V
+    - ✗ 4: Das ist die Spannung am ersten Widerstand. Die Spannungen in der Reihenschaltung sind verschieden und ergeben zusammen die Gesamtspannung.
+    - ✗ 16: Du hast addiert. Die Gesamtspannung ist die Summe der Teilspannungen, also ziehst du die bekannte Teilspannung ab.
+  - [Aufgabe Nr. 5](./?seed=5#rr-teilspannung): Zwei Widerstände liegen in Reihe an 12 V. Das Voltmeter am ersten Widerstand zeigt 2 V. Wie groß ist die Spannung am zweiten Widerstand in Volt? → Lösung: 10 V
+    - ✗ 2: Das ist die Spannung am ersten Widerstand. Die Spannungen in der Reihenschaltung sind verschieden und ergeben zusammen die Gesamtspannung.
+    - ✗ 14: Du hast addiert. Die Gesamtspannung ist die Summe der Teilspannungen, also ziehst du die bekannte Teilspannung ab.
+  - [Aufgabe Nr. 6](./?seed=6#rr-teilspannung): Zwei Widerstände liegen in Reihe an 6 V. Das Voltmeter am ersten Widerstand zeigt 4 V. Wie groß ist die Spannung am zweiten Widerstand in Volt? → Lösung: 2 V
+    - ✗ 4: Das ist die Spannung am ersten Widerstand. Die Spannungen in der Reihenschaltung sind verschieden und ergeben zusammen die Gesamtspannung.
+    - ✗ 10: Du hast addiert. Die Gesamtspannung ist die Summe der Teilspannungen, also ziehst du die bekannte Teilspannung ab.
+  - [Aufgabe Nr. 7](./?seed=7#rr-teilspannung): Zwei Widerstände liegen in Reihe an 9 V. Das Voltmeter am ersten Widerstand zeigt 2 V. Wie groß ist die Spannung am zweiten Widerstand in Volt? → Lösung: 7 V
+    - ✗ 2: Das ist die Spannung am ersten Widerstand. Die Spannungen in der Reihenschaltung sind verschieden und ergeben zusammen die Gesamtspannung.
+    - ✗ 11: Du hast addiert. Die Gesamtspannung ist die Summe der Teilspannungen, also ziehst du die bekannte Teilspannung ab.
+  - [Aufgabe Nr. 8](./?seed=8#rr-teilspannung): Zwei Widerstände liegen in Reihe an 6 V. Das Voltmeter am ersten Widerstand zeigt 1 V. Wie groß ist die Spannung am zweiten Widerstand in Volt? → Lösung: 5 V
+    - ✗ 1: Das ist die Spannung am ersten Widerstand. Die Spannungen in der Reihenschaltung sind verschieden und ergeben zusammen die Gesamtspannung.
+    - ✗ 7: Du hast addiert. Die Gesamtspannung ist die Summe der Teilspannungen, also ziehst du die bekannte Teilspannung ab.
+  - [Aufgabe Nr. 9](./?seed=9#rr-teilspannung): Zwei Widerstände liegen in Reihe an 12 V. Das Voltmeter am ersten Widerstand zeigt 1 V. Wie groß ist die Spannung am zweiten Widerstand in Volt? → Lösung: 11 V
+    - ✗ 1: Das ist die Spannung am ersten Widerstand. Die Spannungen in der Reihenschaltung sind verschieden und ergeben zusammen die Gesamtspannung.
+    - ✗ 13: Du hast addiert. Die Gesamtspannung ist die Summe der Teilspannungen, also ziehst du die bekannte Teilspannung ab.
+  - [Aufgabe Nr. 10](./?seed=10#rr-teilspannung): Zwei Widerstände liegen in Reihe an 12 V. Das Voltmeter am ersten Widerstand zeigt 3 V. Wie groß ist die Spannung am zweiten Widerstand in Volt? → Lösung: 9 V
+    - ✗ 3: Das ist die Spannung am ersten Widerstand. Die Spannungen in der Reihenschaltung sind verschieden und ergeben zusammen die Gesamtspannung.
+    - ✗ 15: Du hast addiert. Die Gesamtspannung ist die Summe der Teilspannungen, also ziehst du die bekannte Teilspannung ab.
+  - [Aufgabe Nr. 11](./?seed=11#rr-teilspannung): Zwei Widerstände liegen in Reihe an 9 V. Das Voltmeter am ersten Widerstand zeigt 3 V. Wie groß ist die Spannung am zweiten Widerstand in Volt? → Lösung: 6 V
+    - ✗ 3: Das ist die Spannung am ersten Widerstand. Die Spannungen in der Reihenschaltung sind verschieden und ergeben zusammen die Gesamtspannung.
+    - ✗ 12: Du hast addiert. Die Gesamtspannung ist die Summe der Teilspannungen, also ziehst du die bekannte Teilspannung ab.
+
+### rr-ampere (single-choice)
+
+- Link: [./#rr-ampere](./#rr-ampere), im Abschnitt „Übung“
+- Aufgabe: In einer Reihenschaltung zeigt das Amperemeter vor dem ersten Widerstand 0,2 A. Was zeigt ein Amperemeter hinter dem zweiten Widerstand?
+- Antwortformat: eine Antwort wählen
+- Antworten zur Wahl (✓ richtig, ✗ falsch, mit der Meldung der App):
+  - ✓ 0,2 A – In einer Reihenschaltung gibt es nur einen Strom, er ist überall gleich groß.
+  - ✗ weniger als 0,2 A – Der Strom wird in den Widerständen nicht verbraucht. Es kommt genauso viel an, wie hineinfließt.
+  - ✗ 0,4 A – Der Strom verdoppelt sich nicht. Hinter dem zweiten Widerstand fließt nicht mehr als davor.
+- Lösung: 0,2 A
+- Erklärung: In der Reihenschaltung ist die Stromstärke an jeder Stelle gleich.
