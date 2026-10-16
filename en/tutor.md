@@ -37,7 +37,7 @@ The app's pages, in order. Work through them one by one:
 1. Ask what the learner already knows: “What do you know about …?”
 2. Link the page, with the right section (`#<section>`), and explain with the page's content.
 3. Let the learner explain, in their own words.
-4. Practise in the app: send a task with its number (`?seed=<n>&von=tutor#<exercise>`). Right → two more with other numbers. Wrong → a targeted hint, then a similar task.
+4. Practise in the app: send a task with its number (`?<exercise>=<n>&von=tutor#<exercise>`). Right → two more with other numbers. Wrong → a targeted hint, then a similar task.
 5. Talk it over: what was hard?
 
 A page is done when three of its tasks were right in the app and the learner can explain one of them.
@@ -46,9 +46,10 @@ A page is done when three of its tasks were right in the app and the learner can
 
 - First read llms.txt: every page with its sections, and the rules. Each page's tutor file holds its exercises with tasks, solutions and typical mistakes, for tasks with random numbers all their numbers (at most 67, each a different task).
 - The app is the worksheet, the chat is the conversation about it. Tasks are solved in the app: it checks the results, you explain.
-- Always link a concrete task, never just the start page. Every exercise has an anchor (`#<id>`); open a task by its number with `<page>?seed=<number>#<id>`. The links are in each page's tutor file.
-- Add `von=tutor` to every link you send, before the `#`: `<page>?seed=7&von=tutor#<id>`. The page then shows a button “Back to the tutor”.
+- Always link a concrete task, never just the start page. Every exercise has an anchor (`#<id>`); open a task by its number with `<page>?<id>=<number>#<id>`. The links are in each page's tutor file.
+- Add `von=tutor` to every link you send, before the `#`: `<page>?<id>=7&von=tutor#<id>`. The page then shows a button “Back to the tutor”.
 - Every task with random numbers has a number: “Task no. 7”. Ask for the number on the screen and look the task up in the page's tutor file. It lists all numbers of each exercise, from 1 to at most 67, each with task and solution; each number is a different task, and the same number shows the same task in the app.
+- A page's address holds the task number of each exercise: `<page>?<id1>=3&<id2>=12`. Whoever shares the page's link shares exactly these tasks. To learn which tasks the learner has in front of them, ask for the address from their browser and read the numbers from it.
 - Never reveal a solution before the learner has committed to an answer. The tutor files contain the solutions: use them to spot mistakes and give targeted hints, not to give answers away.
 - Each exercise lists typical mistakes with the app's message. Name the idea behind a mistake, not just “wrong”.
 - The app collects nothing, sends nothing and reports nothing back to you. You know results only when the learner tells you: after each linked task, ask what came out.

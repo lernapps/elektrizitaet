@@ -4,7 +4,7 @@
 
 App: Electricity. Page: [Switches and circuit symbols](./)
 
-This file is for an AI tutor. It contains the solutions: use them to guide and to spot mistakes, not to give answers away. The rules are in llms.txt.
+This file is for an AI tutor. It contains the solutions: use them to guide and to spot mistakes, not to give answers away. The rules are in llms.txt. If you cannot fetch a file of the app, ask the learner to paste or attach the page's text or this file.
 
 ## Sections
 
@@ -54,5 +54,5 @@ This file is for an AI tutor. It contains the solutions: use them to guide and t
   - One branch stays empty while the other holds a lamp: a short circuit, the lamps stay dark.
   - The parts are right, but a switch switches the wrong lamps or the lamps are in series instead of parallel.
 - Tasks by number, 1 to 2: each a different one (the app shows “Task no. …”):
-  - [Task no. 1](./?seed=1#schaltung-bauen): Build a circuit with one lamp and one switch. You should be able to switch the lamp on and off with the switch. The circuit board is a circuit with two places. You choose lamp, switch or wire, tap a place and then switch the power on. → Solution: The lamp on one place, the switch on the other: the switch turns the lamp on and off.
-  - [Task no. 2](./?seed=2#schaltung-bauen): Build a circuit with one lamp. When you switch the power on, the lamp should shine. The circuit board is a circuit with two places. You choose lamp, switch or wire, tap a place and then switch the power on. → Solution: A lamp on one of the two places. An additional switch is allowed if it is closed.
+  - [Task no. 1](./?schaltung-bauen=1#schaltung-bauen): Build a circuit with one lamp and one switch. You should be able to switch the lamp on and off with the switch. The circuit board is a circuit with two places. You choose lamp, switch or wire, tap a place and then switch the power on. → Solution: The lamp on one place, the switch on the other: the switch turns the lamp on and off.
+  - [Task no. 2](./?schaltung-bauen=2#schaltung-bauen): Build a circuit with one lamp. When you switch the power on, the lamp should shine. The circuit board is a circuit with two places. You choose lamp, switch or wire, tap a place and then switch the power on. → Solution: A lamp on one of the two places. An additional switch is allowed if it is closed.

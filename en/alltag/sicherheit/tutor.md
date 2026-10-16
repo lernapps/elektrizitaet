@@ -4,7 +4,7 @@
 
 App: Electricity. Page: [Staying safe with electricity](./)
 
-This file is for an AI tutor. It contains the solutions: use them to guide and to spot mistakes, not to give answers away. The rules are in llms.txt.
+This file is for an AI tutor. It contains the solutions: use them to guide and to spot mistakes, not to give answers away. The rules are in llms.txt. If you cannot fetch a file of the app, ask the learner to paste or attach the page's text or this file.
 
 ## Sections
 

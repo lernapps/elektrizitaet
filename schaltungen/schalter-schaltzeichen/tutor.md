@@ -4,7 +4,7 @@
 
 App: Elektrizität. Seite: [Schalter und Schaltzeichen](./)
 
-Diese Datei ist für einen KI-Tutor. Sie enthält die Lösungen: Nutze sie, um anzuleiten und Fehler zu erkennen, nicht um vorzusagen. Die Regeln stehen in llms.txt.
+Diese Datei ist für einen KI-Tutor. Sie enthält die Lösungen: Nutze sie, um anzuleiten und Fehler zu erkennen, nicht um vorzusagen. Die Regeln stehen in llms.txt. Kannst du eine Datei der App nicht abrufen, bitte die lernende Person, den Text der Seite oder diese Datei einzufügen oder anzuhängen.
 
 ## Abschnitte
 
@@ -54,5 +54,5 @@ Diese Datei ist für einen KI-Tutor. Sie enthält die Lösungen: Nutze sie, um a
   - Ein Zweig bleibt leer, während im anderen eine Lampe sitzt: ein Kurzschluss, die Lampen bleiben dunkel.
   - Die Teile stimmen, aber ein Schalter schaltet die falschen Lampen oder die Lampen hängen in Reihe statt parallel.
 - Aufgaben nach Nummer, 1 bis 2: jede eine andere (die App zeigt „Aufgabe Nr. …“):
-  - [Aufgabe Nr. 1](./?seed=1#schaltung-bauen): Baue einen Stromkreis mit einer Lampe und einem Schalter. Mit dem Schalter sollst du die Lampe ein- und ausschalten können. Das Schaltbrett ist ein Stromkreis mit zwei Plätzen. Du wählst Lampe, Schalter oder Kabel, tippst auf einen Platz und schaltest dann den Strom ein. → Lösung: Die Lampe auf einen Platz, der Schalter auf den anderen: Mit dem Schalter geht die Lampe an und aus.
-  - [Aufgabe Nr. 2](./?seed=2#schaltung-bauen): Baue einen Stromkreis mit einer Lampe. Wenn du den Strom einschaltest, soll die Lampe leuchten. Das Schaltbrett ist ein Stromkreis mit zwei Plätzen. Du wählst Lampe, Schalter oder Kabel, tippst auf einen Platz und schaltest dann den Strom ein. → Lösung: Eine Lampe auf einen der beiden Plätze. Ein zusätzlicher Schalter ist erlaubt, wenn er geschlossen ist.
+  - [Aufgabe Nr. 1](./?schaltung-bauen=1#schaltung-bauen): Baue einen Stromkreis mit einer Lampe und einem Schalter. Mit dem Schalter sollst du die Lampe ein- und ausschalten können. Das Schaltbrett ist ein Stromkreis mit zwei Plätzen. Du wählst Lampe, Schalter oder Kabel, tippst auf einen Platz und schaltest dann den Strom ein. → Lösung: Die Lampe auf einen Platz, der Schalter auf den anderen: Mit dem Schalter geht die Lampe an und aus.
+  - [Aufgabe Nr. 2](./?schaltung-bauen=2#schaltung-bauen): Baue einen Stromkreis mit einer Lampe. Wenn du den Strom einschaltest, soll die Lampe leuchten. Das Schaltbrett ist ein Stromkreis mit zwei Plätzen. Du wählst Lampe, Schalter oder Kabel, tippst auf einen Platz und schaltest dann den Strom ein. → Lösung: Eine Lampe auf einen der beiden Plätze. Ein zusätzlicher Schalter ist erlaubt, wenn er geschlossen ist.

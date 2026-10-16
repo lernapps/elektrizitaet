@@ -4,7 +4,7 @@
 
 App: Elektrizität. Seite: [Das ohmsche Gesetz](./)
 
-Diese Datei ist für einen KI-Tutor. Sie enthält die Lösungen: Nutze sie, um anzuleiten und Fehler zu erkennen, nicht um vorzusagen. Die Regeln stehen in llms.txt.
+Diese Datei ist für einen KI-Tutor. Sie enthält die Lösungen: Nutze sie, um anzuleiten und Fehler zu erkennen, nicht um vorzusagen. Die Regeln stehen in llms.txt. Kannst du eine Datei der App nicht abrufen, bitte die lernende Person, den Text der Seite oder diese Datei einzufügen oder anzuhängen.
 
 ## Abschnitte
 
@@ -26,11 +26,11 @@ Diese Datei ist für einen KI-Tutor. Sie enthält die Lösungen: Nutze sie, um a
   - Keinen Widerstand eingetragen.
   - Spannung geteilt durch Stromstärke falsch herum gerechnet (I : U statt U : I) oder die Stromstärke in mA nicht umgerechnet.
 - Aufgaben nach Nummer, 1 bis 5: jede eine andere (die App zeigt „Aufgabe Nr. …“):
-  - [Aufgabe Nr. 1](./?seed=1#ohm-labor): Der Widerstand im Kreis ist unbekannt. Setze mindestens drei Messpunkte bei verschiedenen Spannungen, rechne dann den Widerstand aus und trage ihn ein. Die Batterie lässt sich von 0 bis 12 V in Schritten von 1,5 V einstellen. Das Voltmeter zeigt die Spannung am Widerstand, das Amperemeter die Stromstärke. Der Widerstand ist unbekannt. → Lösung: Zum Beispiel bei 3 V, 6 V und 9 V messen. Bei 6 V zeigt das Amperemeter 0,12 A, also ist R = 6 V : 0,12 A = 50 Ω. Die Punkte liegen auf einer Geraden durch den Nullpunkt.
-  - [Aufgabe Nr. 2](./?seed=2#ohm-labor): Der Widerstand im Kreis ist unbekannt. Setze mindestens drei Messpunkte bei verschiedenen Spannungen, rechne dann den Widerstand aus und trage ihn ein. Die Batterie lässt sich von 0 bis 12 V in Schritten von 1,5 V einstellen. Das Voltmeter zeigt die Spannung am Widerstand, das Amperemeter die Stromstärke. Der Widerstand ist unbekannt. → Lösung: Zum Beispiel bei 3 V, 6 V und 9 V messen. Bei 6 V zeigt das Amperemeter 0,06 A, also ist R = 6 V : 0,06 A = 100 Ω. Die Punkte liegen auf einer Geraden durch den Nullpunkt.
-  - [Aufgabe Nr. 3](./?seed=3#ohm-labor): Der Widerstand im Kreis ist unbekannt. Setze mindestens drei Messpunkte bei verschiedenen Spannungen, rechne dann den Widerstand aus und trage ihn ein. Die Batterie lässt sich von 0 bis 12 V in Schritten von 1,5 V einstellen. Das Voltmeter zeigt die Spannung am Widerstand, das Amperemeter die Stromstärke. Der Widerstand ist unbekannt. → Lösung: Zum Beispiel bei 3 V, 6 V und 9 V messen. Bei 6 V zeigt das Amperemeter 0,2 A, also ist R = 6 V : 0,2 A = 30 Ω. Die Punkte liegen auf einer Geraden durch den Nullpunkt.
-  - [Aufgabe Nr. 4](./?seed=4#ohm-labor): Der Widerstand im Kreis ist unbekannt. Setze mindestens drei Messpunkte bei verschiedenen Spannungen, rechne dann den Widerstand aus und trage ihn ein. Die Batterie lässt sich von 0 bis 12 V in Schritten von 1,5 V einstellen. Das Voltmeter zeigt die Spannung am Widerstand, das Amperemeter die Stromstärke. Der Widerstand ist unbekannt. → Lösung: Zum Beispiel bei 3 V, 6 V und 9 V messen. Bei 6 V zeigt das Amperemeter 0,6 A, also ist R = 6 V : 0,6 A = 10 Ω. Die Punkte liegen auf einer Geraden durch den Nullpunkt.
-  - [Aufgabe Nr. 5](./?seed=5#ohm-labor): Der Widerstand im Kreis ist unbekannt. Setze mindestens drei Messpunkte bei verschiedenen Spannungen, rechne dann den Widerstand aus und trage ihn ein. Die Batterie lässt sich von 0 bis 12 V in Schritten von 1,5 V einstellen. Das Voltmeter zeigt die Spannung am Widerstand, das Amperemeter die Stromstärke. Der Widerstand ist unbekannt. → Lösung: Zum Beispiel bei 3 V, 6 V und 9 V messen. Bei 6 V zeigt das Amperemeter 0,3 A, also ist R = 6 V : 0,3 A = 20 Ω. Die Punkte liegen auf einer Geraden durch den Nullpunkt.
+  - [Aufgabe Nr. 1](./?ohm-labor=1#ohm-labor): Der Widerstand im Kreis ist unbekannt. Setze mindestens drei Messpunkte bei verschiedenen Spannungen, rechne dann den Widerstand aus und trage ihn ein. Die Batterie lässt sich von 0 bis 12 V in Schritten von 1,5 V einstellen. Das Voltmeter zeigt die Spannung am Widerstand, das Amperemeter die Stromstärke. Der Widerstand ist unbekannt. → Lösung: Zum Beispiel bei 3 V, 6 V und 9 V messen. Bei 6 V zeigt das Amperemeter 0,12 A, also ist R = 6 V : 0,12 A = 50 Ω. Die Punkte liegen auf einer Geraden durch den Nullpunkt.
+  - [Aufgabe Nr. 2](./?ohm-labor=2#ohm-labor): Der Widerstand im Kreis ist unbekannt. Setze mindestens drei Messpunkte bei verschiedenen Spannungen, rechne dann den Widerstand aus und trage ihn ein. Die Batterie lässt sich von 0 bis 12 V in Schritten von 1,5 V einstellen. Das Voltmeter zeigt die Spannung am Widerstand, das Amperemeter die Stromstärke. Der Widerstand ist unbekannt. → Lösung: Zum Beispiel bei 3 V, 6 V und 9 V messen. Bei 6 V zeigt das Amperemeter 0,06 A, also ist R = 6 V : 0,06 A = 100 Ω. Die Punkte liegen auf einer Geraden durch den Nullpunkt.
+  - [Aufgabe Nr. 3](./?ohm-labor=3#ohm-labor): Der Widerstand im Kreis ist unbekannt. Setze mindestens drei Messpunkte bei verschiedenen Spannungen, rechne dann den Widerstand aus und trage ihn ein. Die Batterie lässt sich von 0 bis 12 V in Schritten von 1,5 V einstellen. Das Voltmeter zeigt die Spannung am Widerstand, das Amperemeter die Stromstärke. Der Widerstand ist unbekannt. → Lösung: Zum Beispiel bei 3 V, 6 V und 9 V messen. Bei 6 V zeigt das Amperemeter 0,2 A, also ist R = 6 V : 0,2 A = 30 Ω. Die Punkte liegen auf einer Geraden durch den Nullpunkt.
+  - [Aufgabe Nr. 4](./?ohm-labor=4#ohm-labor): Der Widerstand im Kreis ist unbekannt. Setze mindestens drei Messpunkte bei verschiedenen Spannungen, rechne dann den Widerstand aus und trage ihn ein. Die Batterie lässt sich von 0 bis 12 V in Schritten von 1,5 V einstellen. Das Voltmeter zeigt die Spannung am Widerstand, das Amperemeter die Stromstärke. Der Widerstand ist unbekannt. → Lösung: Zum Beispiel bei 3 V, 6 V und 9 V messen. Bei 6 V zeigt das Amperemeter 0,6 A, also ist R = 6 V : 0,6 A = 10 Ω. Die Punkte liegen auf einer Geraden durch den Nullpunkt.
+  - [Aufgabe Nr. 5](./?ohm-labor=5#ohm-labor): Der Widerstand im Kreis ist unbekannt. Setze mindestens drei Messpunkte bei verschiedenen Spannungen, rechne dann den Widerstand aus und trage ihn ein. Die Batterie lässt sich von 0 bis 12 V in Schritten von 1,5 V einstellen. Das Voltmeter zeigt die Spannung am Widerstand, das Amperemeter die Stromstärke. Der Widerstand ist unbekannt. → Lösung: Zum Beispiel bei 3 V, 6 V und 9 V messen. Bei 6 V zeigt das Amperemeter 0,3 A, also ist R = 6 V : 0,3 A = 20 Ω. Die Punkte liegen auf einer Geraden durch den Nullpunkt.
 
 ### og-strom (generated, number)
 
@@ -41,91 +41,91 @@ Diese Datei ist für einen KI-Tutor. Sie enthält die Lösungen: Nutze sie, um a
   - $I = \frac{U}{R}$
   - $I = \frac{{{U}}\text{ V}}{{{R}}\text{ Ω}} = {{answer}}\text{ A}$
 - Aufgaben nach Nummer, 1 bis 29: jede eine andere (die App zeigt „Aufgabe Nr. …“):
-  - [Aufgabe Nr. 1](./?seed=1#og-strom): Ein Widerstand von 20 Ω liegt an 3 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,15 A
+  - [Aufgabe Nr. 1](./?og-strom=1#og-strom): Ein Widerstand von 20 Ω liegt an 3 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,15 A
     - ✗ 6,666667: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 60: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 2](./?seed=2#og-strom): Ein Widerstand von 100 Ω liegt an 3 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,03 A
+  - [Aufgabe Nr. 2](./?og-strom=2#og-strom): Ein Widerstand von 100 Ω liegt an 3 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,03 A
     - ✗ 33,333333: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 300: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 3](./?seed=3#og-strom): Ein Widerstand von 20 Ω liegt an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,45 A
+  - [Aufgabe Nr. 3](./?og-strom=3#og-strom): Ein Widerstand von 20 Ω liegt an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,45 A
     - ✗ 2,222222: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 180: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 4](./?seed=4#og-strom): Ein Widerstand von 100 Ω liegt an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,06 A
+  - [Aufgabe Nr. 4](./?og-strom=4#og-strom): Ein Widerstand von 100 Ω liegt an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,06 A
     - ✗ 16,666667: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 600: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 5](./?seed=5#og-strom): Ein Widerstand von 30 Ω liegt an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,4 A
+  - [Aufgabe Nr. 5](./?og-strom=5#og-strom): Ein Widerstand von 30 Ω liegt an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,4 A
     - ✗ 2,5: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 360: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 6](./?seed=6#og-strom): Ein Widerstand von 10 Ω liegt an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 1,2 A
+  - [Aufgabe Nr. 6](./?og-strom=6#og-strom): Ein Widerstand von 10 Ω liegt an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 1,2 A
     - ✗ 0,833333: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 120: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 7](./?seed=7#og-strom): Ein Widerstand von 10 Ω liegt an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,9 A
+  - [Aufgabe Nr. 7](./?og-strom=7#og-strom): Ein Widerstand von 10 Ω liegt an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,9 A
     - ✗ 1,111111: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 90: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 8](./?seed=8#og-strom): Ein Widerstand von 20 Ω liegt an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,3 A
+  - [Aufgabe Nr. 8](./?og-strom=8#og-strom): Ein Widerstand von 20 Ω liegt an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,3 A
     - ✗ 3,333333: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 120: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 9](./?seed=9#og-strom): Ein Widerstand von 30 Ω liegt an 3 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,1 A
+  - [Aufgabe Nr. 9](./?og-strom=9#og-strom): Ein Widerstand von 30 Ω liegt an 3 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,1 A
     - ✗ 10: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 90: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 10](./?seed=10#og-strom): Ein Widerstand von 50 Ω liegt an 4,5 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,09 A
+  - [Aufgabe Nr. 10](./?og-strom=10#og-strom): Ein Widerstand von 50 Ω liegt an 4,5 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,09 A
     - ✗ 11,111111: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 225: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 11](./?seed=11#og-strom): Ein Widerstand von 10 Ω liegt an 4,5 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,45 A
+  - [Aufgabe Nr. 11](./?og-strom=11#og-strom): Ein Widerstand von 10 Ω liegt an 4,5 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,45 A
     - ✗ 2,222222: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 45: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 12](./?seed=12#og-strom): Ein Widerstand von 30 Ω liegt an 4,5 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,15 A
+  - [Aufgabe Nr. 12](./?og-strom=12#og-strom): Ein Widerstand von 30 Ω liegt an 4,5 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,15 A
     - ✗ 6,666667: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 135: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 13](./?seed=13#og-strom): Ein Widerstand von 200 Ω liegt an 3 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,015 A
+  - [Aufgabe Nr. 13](./?og-strom=13#og-strom): Ein Widerstand von 200 Ω liegt an 3 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,015 A
     - ✗ 66,666667: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 600: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 14](./?seed=14#og-strom): Ein Widerstand von 10 Ω liegt an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,6 A
+  - [Aufgabe Nr. 14](./?og-strom=14#og-strom): Ein Widerstand von 10 Ω liegt an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,6 A
     - ✗ 1,666667: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 60: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 15](./?seed=15#og-strom): Ein Widerstand von 10 Ω liegt an 3 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,3 A
+  - [Aufgabe Nr. 15](./?og-strom=15#og-strom): Ein Widerstand von 10 Ω liegt an 3 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,3 A
     - ✗ 3,333333: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 30: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 16](./?seed=16#og-strom): Ein Widerstand von 100 Ω liegt an 4,5 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,045 A
+  - [Aufgabe Nr. 16](./?og-strom=16#og-strom): Ein Widerstand von 100 Ω liegt an 4,5 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,045 A
     - ✗ 22,222222: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 450: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 17](./?seed=17#og-strom): Ein Widerstand von 30 Ω liegt an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,2 A
+  - [Aufgabe Nr. 17](./?og-strom=17#og-strom): Ein Widerstand von 30 Ω liegt an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,2 A
     - ✗ 5: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 180: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 18](./?seed=18#og-strom): Ein Widerstand von 50 Ω liegt an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,12 A
+  - [Aufgabe Nr. 18](./?og-strom=18#og-strom): Ein Widerstand von 50 Ω liegt an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,12 A
     - ✗ 8,333333: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 300: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 19](./?seed=19#og-strom): Ein Widerstand von 100 Ω liegt an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,12 A
+  - [Aufgabe Nr. 19](./?og-strom=19#og-strom): Ein Widerstand von 100 Ω liegt an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,12 A
     - ✗ 8,333333: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 1200: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 20](./?seed=20#og-strom): Ein Widerstand von 20 Ω liegt an 4,5 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,225 A
+  - [Aufgabe Nr. 20](./?og-strom=20#og-strom): Ein Widerstand von 20 Ω liegt an 4,5 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,225 A
     - ✗ 4,444444: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 90: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 21](./?seed=21#og-strom): Ein Widerstand von 200 Ω liegt an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,045 A
+  - [Aufgabe Nr. 21](./?og-strom=21#og-strom): Ein Widerstand von 200 Ω liegt an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,045 A
     - ✗ 22,222222: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 1800: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 22](./?seed=22#og-strom): Ein Widerstand von 200 Ω liegt an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,06 A
+  - [Aufgabe Nr. 22](./?og-strom=22#og-strom): Ein Widerstand von 200 Ω liegt an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,06 A
     - ✗ 16,666667: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 2400: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 23](./?seed=23#og-strom): Ein Widerstand von 200 Ω liegt an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,03 A
+  - [Aufgabe Nr. 23](./?og-strom=23#og-strom): Ein Widerstand von 200 Ω liegt an 6 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,03 A
     - ✗ 33,333333: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 1200: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 24](./?seed=24#og-strom): Ein Widerstand von 20 Ω liegt an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,6 A
+  - [Aufgabe Nr. 24](./?og-strom=24#og-strom): Ein Widerstand von 20 Ω liegt an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,6 A
     - ✗ 1,666667: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 240: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 25](./?seed=25#og-strom): Ein Widerstand von 50 Ω liegt an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,24 A
+  - [Aufgabe Nr. 25](./?og-strom=25#og-strom): Ein Widerstand von 50 Ω liegt an 12 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,24 A
     - ✗ 4,166667: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 600: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 26](./?seed=26#og-strom): Ein Widerstand von 100 Ω liegt an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,09 A
+  - [Aufgabe Nr. 26](./?og-strom=26#og-strom): Ein Widerstand von 100 Ω liegt an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,09 A
     - ✗ 11,111111: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 900: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 27](./?seed=27#og-strom): Ein Widerstand von 30 Ω liegt an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,3 A
+  - [Aufgabe Nr. 27](./?og-strom=27#og-strom): Ein Widerstand von 30 Ω liegt an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,3 A
     - ✗ 3,333333: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 270: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 28](./?seed=28#og-strom): Ein Widerstand von 50 Ω liegt an 3 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,06 A
+  - [Aufgabe Nr. 28](./?og-strom=28#og-strom): Ein Widerstand von 50 Ω liegt an 3 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,06 A
     - ✗ 16,666667: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 150: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
-  - [Aufgabe Nr. 29](./?seed=29#og-strom): Ein Widerstand von 50 Ω liegt an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,18 A
+  - [Aufgabe Nr. 29](./?og-strom=29#og-strom): Ein Widerstand von 50 Ω liegt an 9 V. Wie groß ist die Stromstärke in Ampere? → Lösung: 0,18 A
     - ✗ 5,555556: Du hast den Widerstand durch die Spannung geteilt. Richtig ist: Spannung durch Widerstand.
     - ✗ 450: Du hast multipliziert. Die Stromstärke ist die Spannung geteilt durch den Widerstand.
 
@@ -138,70 +138,70 @@ Diese Datei ist für einen KI-Tutor. Sie enthält die Lösungen: Nutze sie, um a
   - $R = \frac{U}{I}$
   - $R = \frac{{{U}}\text{ V}}{{{I}}\text{ A}} = {{answer}}\text{ Ω}$
 - Aufgaben nach Nummer, 1 bis 22: jede eine andere (die App zeigt „Aufgabe Nr. …“):
-  - [Aufgabe Nr. 1](./?seed=1#og-widerstand): An einem Widerstand liegen 9 V, und das Amperemeter zeigt 0,6 A. Wie groß ist der Widerstand in Ω? → Lösung: 15 Ω
+  - [Aufgabe Nr. 1](./?og-widerstand=1#og-widerstand): An einem Widerstand liegen 9 V, und das Amperemeter zeigt 0,6 A. Wie groß ist der Widerstand in Ω? → Lösung: 15 Ω
     - ✗ 0,066667: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 5,4: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 2](./?seed=2#og-widerstand): An einem Widerstand liegen 9 V, und das Amperemeter zeigt 0,2 A. Wie groß ist der Widerstand in Ω? → Lösung: 45 Ω
+  - [Aufgabe Nr. 2](./?og-widerstand=2#og-widerstand): An einem Widerstand liegen 9 V, und das Amperemeter zeigt 0,2 A. Wie groß ist der Widerstand in Ω? → Lösung: 45 Ω
     - ✗ 0,022222: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 1,8: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 3](./?seed=3#og-widerstand): An einem Widerstand liegen 3 V, und das Amperemeter zeigt 0,3 A. Wie groß ist der Widerstand in Ω? → Lösung: 10 Ω
+  - [Aufgabe Nr. 3](./?og-widerstand=3#og-widerstand): An einem Widerstand liegen 3 V, und das Amperemeter zeigt 0,3 A. Wie groß ist der Widerstand in Ω? → Lösung: 10 Ω
     - ✗ 0,1: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 0,9: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 4](./?seed=4#og-widerstand): An einem Widerstand liegen 12 V, und das Amperemeter zeigt 0,3 A. Wie groß ist der Widerstand in Ω? → Lösung: 40 Ω
+  - [Aufgabe Nr. 4](./?og-widerstand=4#og-widerstand): An einem Widerstand liegen 12 V, und das Amperemeter zeigt 0,3 A. Wie groß ist der Widerstand in Ω? → Lösung: 40 Ω
     - ✗ 0,025: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 3,6: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 5](./?seed=5#og-widerstand): An einem Widerstand liegen 12 V, und das Amperemeter zeigt 0,1 A. Wie groß ist der Widerstand in Ω? → Lösung: 120 Ω
+  - [Aufgabe Nr. 5](./?og-widerstand=5#og-widerstand): An einem Widerstand liegen 12 V, und das Amperemeter zeigt 0,1 A. Wie groß ist der Widerstand in Ω? → Lösung: 120 Ω
     - ✗ 0,008333: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 1,2: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 6](./?seed=6#og-widerstand): An einem Widerstand liegen 6 V, und das Amperemeter zeigt 0,4 A. Wie groß ist der Widerstand in Ω? → Lösung: 15 Ω
+  - [Aufgabe Nr. 6](./?og-widerstand=6#og-widerstand): An einem Widerstand liegen 6 V, und das Amperemeter zeigt 0,4 A. Wie groß ist der Widerstand in Ω? → Lösung: 15 Ω
     - ✗ 0,066667: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 2,4: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 7](./?seed=7#og-widerstand): An einem Widerstand liegen 12 V, und das Amperemeter zeigt 0,5 A. Wie groß ist der Widerstand in Ω? → Lösung: 24 Ω
+  - [Aufgabe Nr. 7](./?og-widerstand=7#og-widerstand): An einem Widerstand liegen 12 V, und das Amperemeter zeigt 0,5 A. Wie groß ist der Widerstand in Ω? → Lösung: 24 Ω
     - ✗ 0,041667: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 6: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 8](./?seed=8#og-widerstand): An einem Widerstand liegen 3 V, und das Amperemeter zeigt 0,6 A. Wie groß ist der Widerstand in Ω? → Lösung: 5 Ω
+  - [Aufgabe Nr. 8](./?og-widerstand=8#og-widerstand): An einem Widerstand liegen 3 V, und das Amperemeter zeigt 0,6 A. Wie groß ist der Widerstand in Ω? → Lösung: 5 Ω
     - ✗ 0,2: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 1,8: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 9](./?seed=9#og-widerstand): An einem Widerstand liegen 6 V, und das Amperemeter zeigt 0,1 A. Wie groß ist der Widerstand in Ω? → Lösung: 60 Ω
+  - [Aufgabe Nr. 9](./?og-widerstand=9#og-widerstand): An einem Widerstand liegen 6 V, und das Amperemeter zeigt 0,1 A. Wie groß ist der Widerstand in Ω? → Lösung: 60 Ω
     - ✗ 0,016667: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 0,6: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 10](./?seed=10#og-widerstand): An einem Widerstand liegen 3 V, und das Amperemeter zeigt 0,1 A. Wie groß ist der Widerstand in Ω? → Lösung: 30 Ω
+  - [Aufgabe Nr. 10](./?og-widerstand=10#og-widerstand): An einem Widerstand liegen 3 V, und das Amperemeter zeigt 0,1 A. Wie groß ist der Widerstand in Ω? → Lösung: 30 Ω
     - ✗ 0,033333: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 0,3: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 11](./?seed=11#og-widerstand): An einem Widerstand liegen 6 V, und das Amperemeter zeigt 0,3 A. Wie groß ist der Widerstand in Ω? → Lösung: 20 Ω
+  - [Aufgabe Nr. 11](./?og-widerstand=11#og-widerstand): An einem Widerstand liegen 6 V, und das Amperemeter zeigt 0,3 A. Wie groß ist der Widerstand in Ω? → Lösung: 20 Ω
     - ✗ 0,05: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 1,8: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 12](./?seed=12#og-widerstand): An einem Widerstand liegen 9 V, und das Amperemeter zeigt 0,3 A. Wie groß ist der Widerstand in Ω? → Lösung: 30 Ω
+  - [Aufgabe Nr. 12](./?og-widerstand=12#og-widerstand): An einem Widerstand liegen 9 V, und das Amperemeter zeigt 0,3 A. Wie groß ist der Widerstand in Ω? → Lösung: 30 Ω
     - ✗ 0,033333: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 2,7: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 13](./?seed=13#og-widerstand): An einem Widerstand liegen 12 V, und das Amperemeter zeigt 0,4 A. Wie groß ist der Widerstand in Ω? → Lösung: 30 Ω
+  - [Aufgabe Nr. 13](./?og-widerstand=13#og-widerstand): An einem Widerstand liegen 12 V, und das Amperemeter zeigt 0,4 A. Wie groß ist der Widerstand in Ω? → Lösung: 30 Ω
     - ✗ 0,033333: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 4,8: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 14](./?seed=14#og-widerstand): An einem Widerstand liegen 6 V, und das Amperemeter zeigt 0,2 A. Wie groß ist der Widerstand in Ω? → Lösung: 30 Ω
+  - [Aufgabe Nr. 14](./?og-widerstand=14#og-widerstand): An einem Widerstand liegen 6 V, und das Amperemeter zeigt 0,2 A. Wie groß ist der Widerstand in Ω? → Lösung: 30 Ω
     - ✗ 0,033333: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 1,2: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 15](./?seed=15#og-widerstand): An einem Widerstand liegen 9 V, und das Amperemeter zeigt 0,1 A. Wie groß ist der Widerstand in Ω? → Lösung: 90 Ω
+  - [Aufgabe Nr. 15](./?og-widerstand=15#og-widerstand): An einem Widerstand liegen 9 V, und das Amperemeter zeigt 0,1 A. Wie groß ist der Widerstand in Ω? → Lösung: 90 Ω
     - ✗ 0,011111: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 0,9: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 16](./?seed=16#og-widerstand): An einem Widerstand liegen 6 V, und das Amperemeter zeigt 0,6 A. Wie groß ist der Widerstand in Ω? → Lösung: 10 Ω
+  - [Aufgabe Nr. 16](./?og-widerstand=16#og-widerstand): An einem Widerstand liegen 6 V, und das Amperemeter zeigt 0,6 A. Wie groß ist der Widerstand in Ω? → Lösung: 10 Ω
     - ✗ 0,1: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 3,6: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 17](./?seed=17#og-widerstand): An einem Widerstand liegen 6 V, und das Amperemeter zeigt 0,5 A. Wie groß ist der Widerstand in Ω? → Lösung: 12 Ω
+  - [Aufgabe Nr. 17](./?og-widerstand=17#og-widerstand): An einem Widerstand liegen 6 V, und das Amperemeter zeigt 0,5 A. Wie groß ist der Widerstand in Ω? → Lösung: 12 Ω
     - ✗ 0,083333: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 3: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 18](./?seed=18#og-widerstand): An einem Widerstand liegen 9 V, und das Amperemeter zeigt 0,5 A. Wie groß ist der Widerstand in Ω? → Lösung: 18 Ω
+  - [Aufgabe Nr. 18](./?og-widerstand=18#og-widerstand): An einem Widerstand liegen 9 V, und das Amperemeter zeigt 0,5 A. Wie groß ist der Widerstand in Ω? → Lösung: 18 Ω
     - ✗ 0,055556: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 4,5: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 19](./?seed=19#og-widerstand): An einem Widerstand liegen 3 V, und das Amperemeter zeigt 0,5 A. Wie groß ist der Widerstand in Ω? → Lösung: 6 Ω
+  - [Aufgabe Nr. 19](./?og-widerstand=19#og-widerstand): An einem Widerstand liegen 3 V, und das Amperemeter zeigt 0,5 A. Wie groß ist der Widerstand in Ω? → Lösung: 6 Ω
     - ✗ 0,166667: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 1,5: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 20](./?seed=20#og-widerstand): An einem Widerstand liegen 12 V, und das Amperemeter zeigt 0,2 A. Wie groß ist der Widerstand in Ω? → Lösung: 60 Ω
+  - [Aufgabe Nr. 20](./?og-widerstand=20#og-widerstand): An einem Widerstand liegen 12 V, und das Amperemeter zeigt 0,2 A. Wie groß ist der Widerstand in Ω? → Lösung: 60 Ω
     - ✗ 0,016667: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 2,4: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 21](./?seed=21#og-widerstand): An einem Widerstand liegen 12 V, und das Amperemeter zeigt 0,6 A. Wie groß ist der Widerstand in Ω? → Lösung: 20 Ω
+  - [Aufgabe Nr. 21](./?og-widerstand=21#og-widerstand): An einem Widerstand liegen 12 V, und das Amperemeter zeigt 0,6 A. Wie groß ist der Widerstand in Ω? → Lösung: 20 Ω
     - ✗ 0,05: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 7,2: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
-  - [Aufgabe Nr. 22](./?seed=22#og-widerstand): An einem Widerstand liegen 3 V, und das Amperemeter zeigt 0,2 A. Wie groß ist der Widerstand in Ω? → Lösung: 15 Ω
+  - [Aufgabe Nr. 22](./?og-widerstand=22#og-widerstand): An einem Widerstand liegen 3 V, und das Amperemeter zeigt 0,2 A. Wie groß ist der Widerstand in Ω? → Lösung: 15 Ω
     - ✗ 0,066667: Du hast die Stromstärke durch die Spannung geteilt. Richtig ist: Spannung durch Stromstärke.
     - ✗ 0,6: Du hast multipliziert. Der Widerstand ist die Spannung geteilt durch die Stromstärke.
 

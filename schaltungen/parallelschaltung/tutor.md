@@ -4,7 +4,7 @@
 
 App: Elektrizität. Seite: [Parallelschaltung](./)
 
-Diese Datei ist für einen KI-Tutor. Sie enthält die Lösungen: Nutze sie, um anzuleiten und Fehler zu erkennen, nicht um vorzusagen. Die Regeln stehen in llms.txt.
+Diese Datei ist für einen KI-Tutor. Sie enthält die Lösungen: Nutze sie, um anzuleiten und Fehler zu erkennen, nicht um vorzusagen. Die Regeln stehen in llms.txt. Kannst du eine Datei der App nicht abrufen, bitte die lernende Person, den Text der Seite oder diese Datei einzufügen oder anzuhängen.
 
 ## Abschnitte
 
@@ -54,9 +54,9 @@ Diese Datei ist für einen KI-Tutor. Sie enthält die Lösungen: Nutze sie, um a
   - Ein Zweig bleibt leer, während im anderen eine Lampe sitzt: ein Kurzschluss, die Lampen bleiben dunkel.
   - Die Teile stimmen, aber ein Schalter schaltet die falschen Lampen oder die Lampen hängen in Reihe statt parallel.
 - Aufgaben nach Nummer, 1 bis 3: jede eine andere (die App zeigt „Aufgabe Nr. …“):
-  - [Aufgabe Nr. 1](./?seed=1#schaltung-bauen): Baue einen Stromkreis mit zwei Lampen in den beiden Zweigen. Jede Lampe soll einen eigenen Schalter haben, mit dem du nur sie ein- und ausschaltest. Das Schaltbrett hat sechs Plätze: 1 und 6 in der Hauptleitung, 2 und 3 im ersten Zweig, 4 und 5 im zweiten. Du wählst Lampe, Schalter oder Kabel, tippst auf einen Platz und schaltest dann den Strom ein. → Lösung: In jeden Zweig ein Schalter und eine Lampe, zum Beispiel Schalter auf Platz 2 und 4, Lampen auf Platz 3 und 5.
-  - [Aufgabe Nr. 2](./?seed=2#schaltung-bauen): Baue einen Stromkreis mit zwei Lampen in den beiden Zweigen und einem Schalter, der beide Lampen gemeinsam ein- und ausschaltet. Das Schaltbrett hat sechs Plätze: 1 und 6 in der Hauptleitung, 2 und 3 im ersten Zweig, 4 und 5 im zweiten. Du wählst Lampe, Schalter oder Kabel, tippst auf einen Platz und schaltest dann den Strom ein. → Lösung: Ein Schalter in die Hauptleitung (Platz 1) und eine Lampe in jeden Zweig (zum Beispiel Platz 2 und 4).
-  - [Aufgabe Nr. 3](./?seed=3#schaltung-bauen): Baue einen Stromkreis mit zwei Lampen in den beiden Zweigen, also parallel. Wenn du eine Lampe herausschraubst, soll die andere weiterleuchten. Das Schaltbrett hat sechs Plätze: 1 und 6 in der Hauptleitung, 2 und 3 im ersten Zweig, 4 und 5 im zweiten. Du wählst Lampe, Schalter oder Kabel, tippst auf einen Platz und schaltest dann den Strom ein. → Lösung: Eine Lampe in jeden Zweig, zum Beispiel auf Platz 2 und 4. Schraubst du eine heraus, leuchtet die andere weiter.
+  - [Aufgabe Nr. 1](./?schaltung-bauen=1#schaltung-bauen): Baue einen Stromkreis mit zwei Lampen in den beiden Zweigen. Jede Lampe soll einen eigenen Schalter haben, mit dem du nur sie ein- und ausschaltest. Das Schaltbrett hat sechs Plätze: 1 und 6 in der Hauptleitung, 2 und 3 im ersten Zweig, 4 und 5 im zweiten. Du wählst Lampe, Schalter oder Kabel, tippst auf einen Platz und schaltest dann den Strom ein. → Lösung: In jeden Zweig ein Schalter und eine Lampe, zum Beispiel Schalter auf Platz 2 und 4, Lampen auf Platz 3 und 5.
+  - [Aufgabe Nr. 2](./?schaltung-bauen=2#schaltung-bauen): Baue einen Stromkreis mit zwei Lampen in den beiden Zweigen und einem Schalter, der beide Lampen gemeinsam ein- und ausschaltet. Das Schaltbrett hat sechs Plätze: 1 und 6 in der Hauptleitung, 2 und 3 im ersten Zweig, 4 und 5 im zweiten. Du wählst Lampe, Schalter oder Kabel, tippst auf einen Platz und schaltest dann den Strom ein. → Lösung: Ein Schalter in die Hauptleitung (Platz 1) und eine Lampe in jeden Zweig (zum Beispiel Platz 2 und 4).
+  - [Aufgabe Nr. 3](./?schaltung-bauen=3#schaltung-bauen): Baue einen Stromkreis mit zwei Lampen in den beiden Zweigen, also parallel. Wenn du eine Lampe herausschraubst, soll die andere weiterleuchten. Das Schaltbrett hat sechs Plätze: 1 und 6 in der Hauptleitung, 2 und 3 im ersten Zweig, 4 und 5 im zweiten. Du wählst Lampe, Schalter oder Kabel, tippst auf einen Platz und schaltest dann den Strom ein. → Lösung: Eine Lampe in jeden Zweig, zum Beispiel auf Platz 2 und 4. Schraubst du eine heraus, leuchtet die andere weiter.
 
 ### be-kurzschluss (single-choice)
 

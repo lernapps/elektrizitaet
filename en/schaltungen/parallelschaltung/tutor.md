@@ -4,7 +4,7 @@
 
 App: Electricity. Page: [Parallel circuit](./)
 
-This file is for an AI tutor. It contains the solutions: use them to guide and to spot mistakes, not to give answers away. The rules are in llms.txt.
+This file is for an AI tutor. It contains the solutions: use them to guide and to spot mistakes, not to give answers away. The rules are in llms.txt. If you cannot fetch a file of the app, ask the learner to paste or attach the page's text or this file.
 
 ## Sections
 
@@ -54,9 +54,9 @@ This file is for an AI tutor. It contains the solutions: use them to guide and t
   - One branch stays empty while the other holds a lamp: a short circuit, the lamps stay dark.
   - The parts are right, but a switch switches the wrong lamps or the lamps are in series instead of parallel.
 - Tasks by number, 1 to 3: each a different one (the app shows “Task no. …”):
-  - [Task no. 1](./?seed=1#schaltung-bauen): Build a circuit with two lamps in the two branches. Each lamp should have its own switch, with which you switch only that lamp on and off. The circuit board has six places: 1 and 6 in the main wire, 2 and 3 in the first branch, 4 and 5 in the second. You choose lamp, switch or wire, tap a place and then switch the power on. → Solution: A switch and a lamp in each branch, for example switches on places 2 and 4, lamps on places 3 and 5.
-  - [Task no. 2](./?seed=2#schaltung-bauen): Build a circuit with two lamps in the two branches and one switch that switches both lamps on and off together. The circuit board has six places: 1 and 6 in the main wire, 2 and 3 in the first branch, 4 and 5 in the second. You choose lamp, switch or wire, tap a place and then switch the power on. → Solution: A switch in the main wire (place 1) and a lamp in each branch (for example places 2 and 4).
-  - [Task no. 3](./?seed=3#schaltung-bauen): Build a circuit with two lamps in the two branches, that is, in parallel. When you unscrew one lamp, the other should keep shining. The circuit board has six places: 1 and 6 in the main wire, 2 and 3 in the first branch, 4 and 5 in the second. You choose lamp, switch or wire, tap a place and then switch the power on. → Solution: A lamp in each branch, for example on places 2 and 4. If you unscrew one, the other keeps shining.
+  - [Task no. 1](./?schaltung-bauen=1#schaltung-bauen): Build a circuit with two lamps in the two branches. Each lamp should have its own switch, with which you switch only that lamp on and off. The circuit board has six places: 1 and 6 in the main wire, 2 and 3 in the first branch, 4 and 5 in the second. You choose lamp, switch or wire, tap a place and then switch the power on. → Solution: A switch and a lamp in each branch, for example switches on places 2 and 4, lamps on places 3 and 5.
+  - [Task no. 2](./?schaltung-bauen=2#schaltung-bauen): Build a circuit with two lamps in the two branches and one switch that switches both lamps on and off together. The circuit board has six places: 1 and 6 in the main wire, 2 and 3 in the first branch, 4 and 5 in the second. You choose lamp, switch or wire, tap a place and then switch the power on. → Solution: A switch in the main wire (place 1) and a lamp in each branch (for example places 2 and 4).
+  - [Task no. 3](./?schaltung-bauen=3#schaltung-bauen): Build a circuit with two lamps in the two branches, that is, in parallel. When you unscrew one lamp, the other should keep shining. The circuit board has six places: 1 and 6 in the main wire, 2 and 3 in the first branch, 4 and 5 in the second. You choose lamp, switch or wire, tap a place and then switch the power on. → Solution: A lamp in each branch, for example on places 2 and 4. If you unscrew one, the other keeps shining.
 
 ### be-kurzschluss (single-choice)
 

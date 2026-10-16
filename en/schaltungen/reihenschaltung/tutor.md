@@ -4,7 +4,7 @@
 
 App: Electricity. Page: [Series circuit](./)
 
-This file is for an AI tutor. It contains the solutions: use them to guide and to spot mistakes, not to give answers away. The rules are in llms.txt.
+This file is for an AI tutor. It contains the solutions: use them to guide and to spot mistakes, not to give answers away. The rules are in llms.txt. If you cannot fetch a file of the app, ask the learner to paste or attach the page's text or this file.
 
 ## Sections
 
@@ -54,4 +54,4 @@ This file is for an AI tutor. It contains the solutions: use them to guide and t
   - One branch stays empty while the other holds a lamp: a short circuit, the lamps stay dark.
   - The parts are right, but a switch switches the wrong lamps or the lamps are in series instead of parallel.
 - Tasks by number, 1 to 1: each a different one (the app shows “Task no. …”):
-  - [Task no. 1](./?seed=1#schaltung-bauen): Build a circuit with two lamps one behind the other, that is, in series. When you unscrew one lamp, the other should go out too. The circuit board is a circuit with two places. You choose lamp, switch or wire, tap a place and then switch the power on. → Solution: A lamp on each of the two places, a switch is allowed. If you unscrew one, the other goes out.
+  - [Task no. 1](./?schaltung-bauen=1#schaltung-bauen): Build a circuit with two lamps one behind the other, that is, in series. When you unscrew one lamp, the other should go out too. The circuit board is a circuit with two places. You choose lamp, switch or wire, tap a place and then switch the power on. → Solution: A lamp on each of the two places, a switch is allowed. If you unscrew one, the other goes out.
