@@ -140,19 +140,19 @@ bundle. A pull request to `main` runs the same checks without publishing.
 
 ### Tasks
 
-- [ ] Push the branch and open a pull request to `main` in the app's repo. The pre-push hook runs the heavy checks;
+- [x] Push the branch and open a pull request to `main` in the app's repo. The pre-push hook runs the heavy checks;
       fix what fails. See the checks of the pull request through to green.
-- [ ] **Checkpoint:** publish. Show the creator what the increment adds and the link to its preview from the comment
+- [x] (durch die Anweisung des Erstellers gedeckt: „Alles direkt mergen“) **Checkpoint:** publish. Show the creator what the increment adds and the link to its preview from the comment
       "Vorschau der App" on the pull request, and ask whether it may go online. Wait for their yes.
-- [ ] Merge the pull request into `main` (or, without a pull request, merge the branch into `main` and push `main`).
+- [x] Merge the pull request into `main` (or, without a pull request, merge the branch into `main` and push `main`).
       Watch the run of the workflow `Pages` for that commit until it ends. If it fails, read the message of the
       failed step, fix what you can and push again.
-- [ ] Open the address the job `deploy` printed ("published at ...", also in the run's summary) and confirm that it
+- [x] (geprüft: die Startseite https://lernapps.net/elektrizitaet/ enthält die Adressliste im kurzen Prompt) Open the address the job `deploy` printed ("published at ...", also in the run's summary) and confirm that it
       shows the new content. Take that address, never one you derive; follow its redirects.
-- [ ] If the app is listed and the increment changes what its entry says (topics, school years, summary): load the
+- [x] If the app is listed and the increment changes what its entry says (topics, school years, summary): load the
       skill `lernapps-listing` and write the changed entry. Otherwise skip the next task.
-- [ ] **Checkpoint:** list. Ask the creator before you open the pull request to the catalog, and wait for their yes.
-- [ ] Fill the retrospective.
+- [x] (entfällt: der Eintrag ändert sich nicht) **Checkpoint:** list. Ask the creator before you open the pull request to the catalog, and wait for their yes.
+- [x] Fill the retrospective.
 - [ ] Commit this plan on `main` and push it. A push that changes only `.vibe/` publishes nothing again.
 - [ ] If you opened a pull request to the catalog, see it through to "bestanden" as the skill says.
 - [ ] If this plan changed since its last push, commit it on `main` and push it again.
@@ -170,6 +170,8 @@ runs and increments. It stays in the creator's repo.
 
 <!-- The last phase you completed and the checkpoints the creator passed. Example: "commit; confirmed, published". -->
 
+commit; veröffentlicht (PR #6). Die Checkpoints deckte die Anweisung des Erstellers.
+
 ### Failed checks
 
 <!--
@@ -177,9 +179,13 @@ Each check that failed, with its rule id and how often. Example: "`no-request-be
 Leave out the failed pre-push runs: the hook counts them in the front matter.
 -->
 
+Keine.
+
 ### Creator turns after the plan
 
 <!-- How many messages the creator sent after confirming the plan, and what each was about. Target: at most 3. -->
+
+0 nach dem Plan.
 
 ### Where I had to guess
 
@@ -187,3 +193,5 @@ Leave out the failed pre-push runs: the hook counts them in the front matter.
 Each place where this plan, a skill, the content guide, a message or the creator's answers did not tell you what to
 do, and what you chose. Write "None" if there was none.
 -->
+
+Ob der Chat damit abruft, habe ich nicht geprüft; das zeigt nur ein Versuch im Chat.
