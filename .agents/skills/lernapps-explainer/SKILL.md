@@ -47,8 +47,8 @@ component where no block can say what the page needs. The rules of `lernapps-app
 
 The end-to-end tests and the build's checks come from the runtime, not from your app. If a test fails while your
 content validates (the build passes), the bug is in the template, not in your content: do what the skill
-`lernapps-app` says for a failing test of the runtime (`checks-pass`), and go on with the content. Never change the
-runtime in `node_modules` (`explainer-only-content`). A fix reaches the app with a newer `@lernapps/app-templates`:
+`lernapps-app` says for a failing test of the runtime (`checks-pass`, in its `references/tooling-rules.md`), and go
+on with the content. Never change the runtime in `node_modules` (`explainer-only-content`). A fix reaches the app with a newer `@lernapps/app-templates`:
 `npx --yes github:lernapps/tooling#main update` moves the app to it.
 
 ## Structure
@@ -617,7 +617,7 @@ solution that the task text allows, the typical wrong answers with their reasons
 
 ```rule
 id: vue-component-no-network
-scope: archetype:explainer
+scope: [archetype:explainer, archetype:interactive]
 severity: error
 ```
 
@@ -628,7 +628,7 @@ it.
 
 ```rule
 id: vue-component-no-html-injection
-scope: archetype:explainer
+scope: [archetype:explainer, archetype:interactive]
 severity: error
 ```
 
@@ -638,18 +638,19 @@ Use no `eval`, `new Function`, `innerHTML` or `v-html` in a component: let its t
 
 ```rule
 id: vue-component-imports
-scope: archetype:explainer
+scope: [archetype:explainer, archetype:interactive]
 severity: error
 ```
 
 Import only from `vue`, `@lernapps/app-templates`, `@lernapps/tooling/storage`, `i18n` and `a11y`, and the
-component's own folder. Types may come from anywhere.
+component's own folder. Types may come from anywhere. In an interactive app, the components may also import the app's
+files in `src/` and the libraries in the `dependencies` of its `package.json`.
 
 ### `vue-component-browser-globals`: Browser globals only once mounted
 
 ```rule
 id: vue-component-browser-globals
-scope: archetype:explainer
+scope: [archetype:explainer, archetype:interactive]
 severity: error
 ```
 
