@@ -1,5 +1,7 @@
 // Logic of the prediction exercise: predict what a meter will show in a series or a parallel circuit with two resistors,
-// then switch on and read it.
+// then switch on and read it. SchaltungVorhersage.vue is the input of the task; the explainer checks an answer with
+// check and gives the message of reason. describe states a task and its solution, about what the exercise is; template,
+// params, mistakes and show give a tutor the task once and each number's inputs and outputs.
 import { fill, fmt, nice, pick, random, same } from "./Fluss.ts";
 
 export type Kind = "reihe-strom" | "reihe-spannung" | "parallel-gesamt" | "parallel-zweig";
@@ -17,8 +19,8 @@ export interface Task {
   value: number;
 }
 export interface Answer {
-  /** The value the learner predicted, null while none. */
-  value: number | null;
+  /** The value the learner predicted. */
+  value: number;
 }
 export interface Props {
   kinds: Kind[];
@@ -63,18 +65,26 @@ export function generate(seed: number, props: Props = { kinds: [...KINDS] }): Ta
 }
 
 export const check = (task: Task, answer: Answer): boolean =>
-  answer.value !== null && same(answer.value, task.value, decimals(task.kind));
+  typeof answer.value === "number" && same(answer.value, task.value, decimals(task.kind));
 export const solution = (task: Task): Answer => ({ value: task.value });
-export const wrong = (_task: Task): Answer => ({ value: null });
+/** A wrong answer: 0, which no meter of a task shows. */
+export const wrong = (_task: Task): Answer => ({ value: 0 });
 
-export type Why = "empty" | "series" | "parallel" | "one" | "whole" | "half" | "other";
+/** The number typed, with a comma or a point; undefined while there is none. */
+export function parse(typed: string): number | undefined {
+  const text = typed.trim().replace(",", ".");
+  const number = Number(text);
+  return text === "" || Number.isNaN(number) ? undefined : number;
+}
 
-/** Why an answer is wrong, for the hint under the feedback: the typical mistake it matches; null when it is right. */
+export type Why = "series" | "parallel" | "one" | "whole" | "half" | "other";
+
+/** Why an answer is wrong, for the app's message: the typical mistake it matches; null when it is right. */
 export function diagnose(task: Task, answer: Answer): Why | null {
   if (check(task, answer)) return null;
-  if (answer.value === null) return "empty";
+  if (typeof answer.value !== "number") return "other";
   const { volts: u, r1, r2 } = task;
-  const is = (x: number) => same(answer.value!, x, decimals(task.kind));
+  const is = (x: number) => same(answer.value, x, decimals(task.kind));
   switch (task.kind) {
     case "reihe-strom":
       return is(u / r1) || is(u / r2) ? "one" : is(u / r1 + u / r2) ? "parallel" : "other";
@@ -141,6 +151,21 @@ const TASK_KEYS: Record<Kind, string> = {
   "parallel-zweig": "taskParallelZweig",
 };
 
+/** The app's message for a wrong answer, the text why… of the page for its mistake; undefined for a right one. */
+export function reason(task: Task, answer: Answer, props: DescribeProps, _lang?: string): string | undefined {
+  const why = diagnose(task, answer);
+  if (why === null) return undefined;
+  const key = {
+    series: "whySeries",
+    parallel: "whyParallel",
+    one: "whyOne",
+    whole: "whyWhole",
+    half: "whyHalf",
+    other: "whyOther",
+  }[why];
+  return props.texts[key];
+}
+
 /** The task as the learner sees it, and its solution, in the language lang. */
 export function describe(task: Task, props: DescribeProps, lang: string) {
   const words = WORDS[lang] ?? WORDS["de"]!;
@@ -157,14 +182,86 @@ export function describe(task: Task, props: DescribeProps, lang: string) {
   };
 }
 
+interface TableProps {
+  kinds: Kind[];
+  texts: Record<string, string>;
+}
+
+/** The name of the input that holds the question of a task, in the language lang. */
+const QUESTION: Record<string, string> = { de: "Frage", en: "question" };
+
+/**
+ * The texts of the kinds of the block, split for a tutor: the beginning all of them share, up to the end of a sentence
+ * (the circuit, with {R1}, {R2} and {U}), and for each kind the rest (its question). With one kind the whole text is
+ * shared.
+ */
+function shared(props: TableProps): { start: string; rest: (kind: Kind) => string } {
+  const kinds = props.kinds.length > 0 ? props.kinds : [...KINDS];
+  const texts = kinds.map((kind) => props.texts[TASK_KEYS[kind]]!.replace(/\s+/g, " ").trim());
+  const whole = (kind: Kind) => props.texts[TASK_KEYS[kind]]!.replace(/\s+/g, " ").trim();
+  if (new Set(texts).size === 1) return { start: texts[0]!, rest: () => "" };
+  let common = 0;
+  while (texts.every((text) => text[common] === texts[0]![common]) && common < texts[0]!.length) common++;
+  const end = Math.max(texts[0]!.lastIndexOf(". ", common - 2), texts[0]!.lastIndexOf("? ", common - 2));
+  const start = end < 0 ? "" : texts[0]!.slice(0, end + 2);
+  return { start, rest: (kind) => whole(kind).slice(start.length) };
+}
+
+/** The values of a task's placeholders, as the learner reads them. */
+const values = (task: Task, props: TableProps) => ({
+  U: fmt(task.volts, 0, props.texts["decimal"]!),
+  R1: String(task.r1),
+  R2: String(task.r2),
+});
+
+/**
+ * The task as a learner reads it: the circuit all kinds of the block share, with {R1}, {R2} and {U}, and {Frage} for
+ * the question of the kind when the block has more than one.
+ */
+export function template(props: TableProps, lang: string): string {
+  const { start, rest } = shared(props);
+  const kinds = props.kinds.length > 0 ? props.kinds : [...KINDS];
+  return rest(kinds[0]!) === "" ? start : `${start}{${QUESTION[lang] ?? QUESTION["de"]!}}`;
+}
+
+/** What sets a task: the placeholders of the shared circuit, and the question of its kind when there are several. */
+export function params(task: Task, props: TableProps, lang: string): Record<string, number | string> {
+  const { start, rest } = shared(props);
+  const numbers = { U: task.volts, R1: task.r1, R2: task.r2 };
+  const given: Record<string, number | string> = {};
+  for (const [name, value] of Object.entries(numbers)) if (start.includes(`{${name}}`)) given[name] = value;
+  const question = rest(task.kind);
+  if (question !== "") given[QUESTION[lang] ?? QUESTION["de"]!] = fill(question, values(task, props));
+  return given;
+}
+
+/**
+ * The answer of each typical mistake of about.mistakes, for the kinds it is about: in series the current of the first
+ * resistor alone (voltage : R1), the whole voltage for the partial voltage, in parallel the series current
+ * (voltage : (R1 + R2)); none for the other kinds.
+ */
+export function mistakes(task: Task, _props?: TableProps): (Answer | undefined)[] {
+  const { kind, volts: u, r1, r2 } = task;
+  return [
+    kind === "reihe-strom" ? { value: u / r1 } : undefined,
+    kind === "reihe-spannung" ? { value: u } : undefined,
+    kind === "parallel-gesamt" || kind === "parallel-zweig" ? { value: u / (r1 + r2) } : undefined,
+  ];
+}
+
+/** An answer as the learner gives it: the number with the unit of the meter. */
+export function show(answer: Answer, task: Task, props: TableProps, _lang: string): string {
+  return `${fmt(answer.value, decimals(task.kind), props.texts["decimal"]!)} ${unit(task.kind)}`;
+}
+
 export const about = {
   task: {
     de: "Du sagst vorher, was ein Messgerät in einer Reihen- oder Parallelschaltung mit zwei Widerständen zeigt, und schaltest dann ein.",
     en: "You predict what a meter shows in a series or parallel circuit with two resistors, and then switch on.",
   },
   answer: {
-    de: "Eine Zahl: die Stromstärke in A oder die Spannung in V, je nach Aufgabe (mit Komma oder Punkt); dann „Prüfen“.",
-    en: "A number: the current in A or the voltage in V, depending on the task (with comma or point); then “Check”.",
+    de: "Eine Zahl, ins Feld „Deine Vorhersage“ getippt: die Stromstärke in A oder die Spannung in V, je nach Aufgabe (mit Komma oder Punkt); dann „Prüfen“ unter dem Schaltbild. Beim Prüfen wird eingeschaltet, und das Messgerät zeigt den echten Wert; für eine neue Vorhersage „Neu anfangen“.",
+    en: "A number, typed into the field “Your prediction”: the current in A or the voltage in V, depending on the task (with comma or point); then “Check” below the circuit. Checking switches on, and the meter shows the real value; for a new prediction “Start again”.",
   },
   correct: {
     de: "Die Zahl stimmt auf drei Stellen (Ampere) beziehungsweise zwei Stellen (Volt) mit der Anzeige überein. Der Weg zur Zahl ist frei.",

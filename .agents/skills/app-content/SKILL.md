@@ -198,13 +198,23 @@ das Lehrplanzitat prüfen (Bayern, Gymnasium, Jahrgangsstufe 9 oder 10, nicht ge
 - **KI-Tutor:** `tutor.rules` in `src/app.yaml` gibt der App eigene Regeln an den Tutor (Wasserbild mit Grenzen, keine Elektronen, Gleichstrom, Rechenwege
   auf Papier, jeder gleichwertige Aufbau zählt). Die Anbieter bleiben bei der Voreinstellung (Claude); die App lädt vor einem Klick nichts.
 
-- **Übungskomponenten:** Die Regeln für Komponenten, die `answered` melden (Prop `seed`, `describe`, `about`, `reason`, `examples`, kein
-  `nojs`, die Namen in `src/components/`), stehen im allgemeinen Skill `lernapps-explainer` und gelten unverändert; hier steht nur, was
-  diese App dazu entschieden hat:
+- **Übungskomponenten:** Die Regeln für Übungskomponenten (sie sind nur die Eingabe ihrer Aufgabe und melden `answer`; Prop `seed`,
+  `generate`, `check`, `solution`, `wrong`, `reason`, `describe`, `about`, `examples`, kein `nojs`, die Namen in `src/components/`)
+  stehen im allgemeinen Skill `lernapps-explainer` und gelten unverändert; hier steht nur, was diese App dazu entschieden hat:
   - Die sechs Komponenten sind `StromMessen`, `SpannungMessen`, `DrahtLabor`, `OhmLabor`, `SchaltungVorhersage` und `SchaltungBauen`; sie
     teilen sich Hilfen in `Fluss.ts` (Zufall, Zahlenformat mit Dezimalzeichen der Sprache, Texte füllen, Aussehen des Flusses) und
-    `Zeiger.ts`. Die Gründe für falsche Antworten (`reason`) stehen als Texte `why…` in den `texts` der Seite, die Auswahl macht
-    `diagnose` im Logikmodul.
+    `Zeiger.ts`. Die Gründe für falsche Antworten stehen als Texte `why…` in den `texts` der Seite; `diagnose` im Logikmodul wählt
+    die Fehlerart, `reason` gibt den Text dazu. Ein eigenes „Prüfen“ und einen Text `check` gibt es nicht: der Explainer zeichnet
+    „Prüfen“ unter der Komponente. „Neu anfangen“ (`reset`) bleibt in der Komponente und meldet wieder keine Antwort.
+  - Eine Komponente meldet erst eine Antwort, wenn das Kind etwas tut (Regler, Platz, Punkt, Bauteil, Zahl); vorher und nach „Neu
+    anfangen“ meldet sie `undefined`, und „Prüfen“ ist gesperrt. Eine leere oder unlesbare Vorhersage ist keine Antwort (kein Text
+    `whyEmpty`). Unvollständige Antworten (ein Punkt des Voltmeters, Messpunkte ohne Widerstand) sind Antworten und bekommen ihren
+    Text `why…`.
+  - Für den KI-Tutor geben alle sechs `template`, `params`, `mistakes` und `show`. Der Widerstand in `OhmLabor` ist verdeckt (in
+    `params`, nicht im `template`). `SchaltungVorhersage` teilt die Texte `task…` der Aufgabenarten einer Seite in den gemeinsamen
+    Satz (Schaltung mit `{R1}`, `{R2}`, `{U}`) und `{Frage}`. `SchaltungBauen` gibt als Aufgabe den Text `goal…` und zeigt eine
+    Schaltung als kurzen Text (Teile in Reihe, oder Hauptleitung und Zweige). `mistakes` nennt nur feste Fehlwerte; ein Fehler mit
+    vielen Antworten (Amperemeter quer, falscher Widerstand, zu wenige Messpunkte, falsche Bauteilzahl) bleibt `undefined`.
   - Beispielantworten (`examples`): je Komponente zuerst überlegen, was der Text erlaubt (Lampe plus Schalter bei „eine Lampe“, die beiden
     Punkte des Voltmeters vertauscht, Amperemeter oben oder unten, jeder Zweig-Aufbau mit gleichem Verhalten) und was typisch falsch
     ist; die Beispiele der Komponenten mit eigenen Aufgabenwerten rechnet man mit einem kleinen Skript aus den Logikmodulen, je Seed.
@@ -214,12 +224,13 @@ das Lehrplanzitat prüfen (Bayern, Gymnasium, Jahrgangsstufe 9 oder 10, nicht ge
   (dort Wahr-oder-falsch); `matching` nur mit je genau einem passenden Partner; zwei Übungen dürfen sich nicht widersprechen (die
   Glühlampe ist Wärmewirkung, die LED Lichtwirkung); ein Test je Bauziel prüft mehrere gleichwertige Aufbauten.
 - Die Prüfung einer Bauaufgabe urteilt nur über das, was ihr Text verlangt: die Aufgabe `eine` erlaubt zum Beispiel einen Schalter im
-  Kreis, solange die Lampe leuchtet. Nach dem Prüfen sagt `diagnose` (Text `why…`), was fehlt: Zahl der Lampen, Zahl der Schalter,
+  Kreis, solange die Lampe leuchtet. Nach dem Prüfen sagt `reason` (Text `why…`, Auswahl durch `diagnose`), was fehlt: Zahl der Lampen, Zahl der Schalter,
   Kurzschluss, etwas dunkel (offener Schalter) oder Verhalten.
 - Der Explainer schreibt keine Weiterleitungen: eine entfernte Seite (hier `schaltungen/bau-editor`) gibt danach 404, und der Themenpfad
   im Katalogeintrag muss im selben Zug ersetzt werden.
 - Messen und Bauen folgen der Reihenfolge „bauen, dann Strom einschalten, dann prüfen“: Vor dem Einschalten fließt nichts, leuchtet
-  nichts und zeigt kein Messgerät etwas, Kurzschluss-Warnungen kommen erst mit dem Strom; „Prüfen“ schaltet selbst ein. Beim Bauen
+  nichts und zeigt kein Messgerät etwas, Kurzschluss-Warnungen kommen erst mit dem Strom; „Prüfen“ schaltet selbst ein (die Komponente reagiert auf die Prop
+  `checked`; `SchaltungVorhersage` zeigt dann den echten Wert und sperrt das Feld bis „Neu anfangen“). Beim Bauen
   wählt man ein Bauteil und tippt auf einen Platz; das Schalter-Werkzeug klappt einen eingebauten Schalter auf und zu, bei
   eingeschaltetem Strom prüft jedes Tippen (Schalter umlegen, Lampe herausschrauben).
 - Ein Brett zeigt nur die Plätze, die die Aufgabe braucht: die Ziele `eine`, `schalter`, `reihe` haben zwei Plätze in einem

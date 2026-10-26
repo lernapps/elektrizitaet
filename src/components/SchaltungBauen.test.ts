@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vite-plus/test";
 import {
+  about,
   check,
   diagnose,
   emptySlots,
@@ -8,9 +9,14 @@ import {
   generate,
   lampSlots,
   meets,
+  mistakes,
+  params,
+  reason,
+  show,
   simulate,
   solution,
   solutionSlots,
+  template,
   wrong,
   type Circuit,
   type Goal,
@@ -214,5 +220,57 @@ describe("equivalent solutions", () => {
     const parallel: Circuit = [{ kind: "parallel", branches: [[lamp], [lamp]] }];
     expect(meets("haupt", [shut, ...parallel])).toBe(true);
     expect(meets("haupt", [...parallel, shut])).toBe(true);
+  });
+});
+
+const texts = {
+  goalEine: "Baue einen Stromkreis mit einer Lampe.",
+  goalHaupt: "Baue einen Stromkreis mit zwei Lampen in den beiden Zweigen und einem Schalter.",
+  whyLamps: "Die Anzahl der Lampen stimmt noch nicht.",
+  whySwitches: "Die Anzahl der Schalter stimmt noch nicht.",
+  whyShort: "Es gibt einen Kurzschluss.",
+  whyDark: "Es leuchtet nicht alles.",
+  whyBehaviour: "Die Schaltung verhält sich noch nicht wie verlangt.",
+};
+const props = { texts };
+
+describe("reason", () => {
+  it("gives the text of the mistake a circuit makes, and none for a right one", () => {
+    expect(reason({ goal: "reihe" }, [lamp], props)).toBe(texts.whyLamps);
+    expect(reason({ goal: "schalter" }, [lamp], props)).toBe(texts.whySwitches);
+    expect(reason({ goal: "parallel" }, [{ kind: "parallel", branches: [[lamp], []] }, lamp], props)).toBe(
+      texts.whyShort,
+    );
+    expect(reason({ goal: "eine" }, [open, lamp], props)).toBe(texts.whyDark);
+    expect(reason({ goal: "reihe" }, [{ kind: "parallel", branches: [[lamp], [lamp]] }], props)).toBe(
+      texts.whyBehaviour,
+    );
+    for (const goal of GOALS) expect(reason({ goal }, solution({ goal }), props)).toBeUndefined();
+  });
+});
+
+describe("for a tutor", () => {
+  it("gives the task as the text of its goal", () => {
+    expect(template(props, "de")).toBe("{Aufgabe}");
+    expect(params(generate(1, { goals: ["eine", "haupt"] }), props, "de")).toEqual({ Aufgabe: texts.goalHaupt });
+    expect(mistakes({ goal: "eine" })).toEqual(about.mistakes.map(() => undefined));
+  });
+  it("shows a circuit in series by its parts", () => {
+    expect(show(solution({ goal: "eine" }), { goal: "eine" }, props, "de")).toBe("Lampe");
+    expect(show(solution({ goal: "schalter" }), { goal: "schalter" }, props, "de")).toBe(
+      "Schalter (geschlossen) und Lampe in Reihe",
+    );
+    expect(show([open, { kind: "lamp", out: true }], { goal: "eine" }, props, "en")).toBe(
+      "switch (open) and lamp (unscrewed) in series",
+    );
+    expect(show(wrong({ goal: "eine" }), { goal: "eine" }, props, "de")).toBe("nur Kabel");
+  });
+  it("shows a circuit with branches by the main wire and each branch", () => {
+    expect(show(solution({ goal: "haupt" }), { goal: "haupt" }, props, "de")).toBe(
+      "Hauptleitung: Schalter (geschlossen); Zweig 1: Lampe; Zweig 2: Lampe",
+    );
+    expect(show(solution({ goal: "parallel" }), { goal: "parallel" }, props, "de")).toBe(
+      "Hauptleitung: nur Kabel; Zweig 1: Lampe; Zweig 2: Lampe",
+    );
   });
 });

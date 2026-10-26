@@ -1,5 +1,8 @@
 // Logic of the wire exercise: set the length and the thickness of a wire so that the current gets k times as large.
-import { fill, fmt, pick, random } from "./Fluss.ts";
+// DrahtLabor.vue is the input of the task; the explainer checks an answer with check and gives the message of reason.
+// describe states a task and its solution, about what the exercise is; template, params, mistakes and show give a
+// tutor the task once and each number's inputs and outputs.
+import { fill, fmt, pick, random, round } from "./Fluss.ts";
 
 export const LENGTHS: readonly number[] = [1, 2, 3, 4, 5, 6];
 /** The thickness of the wire in tenths of a square millimetre, to keep the numbers exact. */
@@ -42,7 +45,7 @@ export const wrong = (task: Task): Answer => ({ length: task.length, tenths: tas
 export const ratio = (task: Task, answer: Answer) =>
   current(answer.length, answer.tenths) / current(task.length, task.tenths);
 
-/** Why an answer is wrong, for the hint under the feedback; null when it is right. */
+/** Why an answer is wrong, for the app's message; null when it is right. */
 export function diagnose(task: Task, answer: Answer): "same" | "less" | null {
   if (check(task, answer)) return null;
   return answer.length === task.length && answer.tenths === task.tenths ? "same" : "less";
@@ -50,6 +53,15 @@ export function diagnose(task: Task, answer: Answer): "same" | "less" | null {
 
 interface DescribeProps {
   texts: Record<string, string>;
+}
+
+/** The app's message for a wrong answer, the text why… of the page for its mistake; undefined for a right one. */
+export function reason(task: Task, answer: Answer, props: DescribeProps, _lang?: string): string | undefined {
+  const why = diagnose(task, answer);
+  const t = props.texts;
+  if (why === null) return undefined;
+  if (why === "same") return t["whySame"];
+  return fill(t["whyLess"]!, { X: fmt(ratio(task, answer), 1, t["decimal"]!), K: String(task.factor) });
 }
 const WORDS: Record<string, { limits: string; solution: string }> = {
   de: {
@@ -84,14 +96,50 @@ export function describe(task: Task, props: DescribeProps, lang: string) {
   };
 }
 
+const SHOW: Record<string, string> = {
+  de: "{L} m lang, {A} mm² dick",
+  en: "{L} m long, {A} mm² thick",
+};
+
+/** The task as a learner reads it, with {I}, {K}, {L} and {A}: the prop task and the wire at the start. */
+export function template(props: DescribeProps, lang: string): string {
+  return `${props.texts["task"]!} ${(WORDS[lang] ?? WORDS["de"]!).limits}`;
+}
+
+/** What sets a task: the current at the start, the factor, and the length and the thickness of the start wire. */
+export function params(task: Task, _props: DescribeProps, _lang: string): Record<string, number> {
+  return {
+    I: round(current(task.length, task.tenths), 2),
+    K: task.factor,
+    L: task.length,
+    A: round(task.tenths / 10, 1),
+  };
+}
+
+/**
+ * The answer of each typical mistake of about.mistakes: nothing changed, the start wire; a longer or thinner wire, and
+ * a change too small, have many answers.
+ */
+export function mistakes(task: Task, _props?: DescribeProps): (Answer | undefined)[] {
+  return [wrong(task), undefined, undefined];
+}
+
+/** An answer as the learner gives it: the wire set. */
+export function show(answer: Answer, _task: Task, props: DescribeProps, lang: string): string {
+  return fill(SHOW[lang] ?? SHOW["de"]!, {
+    L: String(answer.length),
+    A: fmt(answer.tenths / 10, 1, props.texts["decimal"]!),
+  });
+}
+
 export const about = {
   task: {
     de: "Du stellst Länge und Dicke eines Drahts mit zwei Reglern ein, bis der Strom mindestens ein Vielfaches des Anfangsstroms ist.",
     en: "You set the length and the thickness of a wire with two sliders until the current is at least a multiple of the starting current.",
   },
   answer: {
-    de: "Die Länge (1 bis 6 m) und die Dicke (0,1 bis 0,5 mm²) des Drahts; dann „Prüfen“.",
-    en: "The length (1 to 6 m) and the thickness (0.1 to 0.5 mm²) of the wire; then “Check”.",
+    de: "Die Länge (1 bis 6 m) und die Dicke (0,1 bis 0,5 mm²) des Drahts, mit den beiden Reglern eingestellt; dann „Prüfen“ unter dem Labor.",
+    en: "The length (1 to 6 m) and the thickness (0.1 to 0.5 mm²) of the wire, set with the two sliders; then “Check” below the lab.",
   },
   correct: {
     de: "Der Strom ist mindestens so viel mal so groß wie am Anfang, wie die Aufgabe verlangt. Jeder Draht, der das schafft, zählt: kürzer, dicker oder beides.",

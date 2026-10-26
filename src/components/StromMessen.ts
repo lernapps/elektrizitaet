@@ -1,6 +1,8 @@
 // Logic of the current exercise: build an ammeter into the circuit at the right place and choose the resistor that
-// gives the target current.
-import { fill, fmt, nice, pick, random, same } from "./Fluss.ts";
+// gives the target current. StromMessen.vue is the input of the task; the explainer checks an answer with check and
+// gives the message of reason. describe states a task and its solution, about what the exercise is; template, params,
+// mistakes and show give a tutor the task once and each number's inputs and outputs.
+import { fill, fmt, nice, pick, random, round, same } from "./Fluss.ts";
 
 /** Where the learner built the ammeter in: the top wire (a), the bottom wire (b), across the source (par) or nowhere. */
 export type Spot = "a" | "b" | "par" | null;
@@ -59,7 +61,7 @@ export function check(task: Task, answer: Answer): boolean {
 export const solution = (task: Task): Answer => ({ spot: "a", ohm: task.ohm });
 export const wrong = (task: Task): Answer => ({ spot: null, ohm: task.start });
 
-/** Why an answer is wrong, for the hint under the feedback; null when it is right. */
+/** Why an answer is wrong, for the app's message; null when it is right. */
 export function diagnose(task: Task, answer: Answer): "ammeter" | "short" | "value" | null {
   if (check(task, answer)) return null;
   if (answer.spot === null) return "ammeter";
@@ -69,6 +71,19 @@ export function diagnose(task: Task, answer: Answer): "ammeter" | "short" | "val
 
 interface DescribeProps {
   texts: Record<string, string>;
+}
+
+/** The app's message for a wrong answer, the text why… of the page for its mistake; undefined for a right one. */
+export function reason(task: Task, answer: Answer, props: DescribeProps, _lang?: string): string | undefined {
+  const why = diagnose(task, answer);
+  const t = props.texts;
+  if (why === null) return undefined;
+  if (why === "value") {
+    const sep = t["decimal"]!;
+    const shown = measure(task.volts, answer).ammeter;
+    return fill(t["whyValue"]!, { v: `${shown === null ? "" : fmt(shown, 3, sep)} A`, T: fmt(task.target, 3, sep) });
+  }
+  return why === "ammeter" ? t["whyAmmeter"] : t["whyShort"];
 }
 const WORDS: Record<string, { places: string; solution: string }> = {
   de: {
@@ -96,14 +111,44 @@ export function describe(task: Task, props: DescribeProps, lang: string) {
   };
 }
 
+const SHOW: Record<string, { at: string; none: string; resistor: string }> = {
+  de: { at: "Amperemeter an Stelle {n}", none: "kein Amperemeter", resistor: "Widerstand {R} Ω" },
+  en: { at: "ammeter at place {n}", none: "no ammeter", resistor: "resistor {R} Ω" },
+};
+
+/** The task as a learner reads it, with {U} and {T}: the prop task and the places of the board. */
+export function template(props: DescribeProps, lang: string): string {
+  return `${props.texts["task"]!} ${(WORDS[lang] ?? WORDS["de"]!).places}`;
+}
+
+/** What sets a task: the voltage of the battery and the current to reach. */
+export function params(task: Task, _props: DescribeProps, _lang: string): Record<string, number> {
+  return { U: task.volts, T: round(task.target, 3) };
+}
+
+/**
+ * The answer of each typical mistake of about.mistakes: none has a single answer, as each goes with any resistor or
+ * any wrong one.
+ */
+export function mistakes(_task: Task, _props?: DescribeProps): (Answer | undefined)[] {
+  return [undefined, undefined, undefined];
+}
+
+/** An answer as the learner gives it: the place of the ammeter and the resistor chosen. */
+export function show(answer: Answer, _task: Task, _props: DescribeProps, lang: string): string {
+  const words = SHOW[lang] ?? SHOW["de"]!;
+  const at = answer.spot === null ? words.none : fill(words.at, { n: String(SPOTS.indexOf(answer.spot) + 1) });
+  return `${at}, ${fill(words.resistor, { R: String(answer.ohm) })}`;
+}
+
 export const about = {
   task: {
     de: "Du baust ein Amperemeter in einen Stromkreis mit Batterie und Widerstand ein und wählst den Widerstand, bis es den Zielstrom zeigt.",
     en: "You build an ammeter into a circuit with a battery and a resistor and choose the resistor until it shows the target current.",
   },
   answer: {
-    de: "Die Stelle des Amperemeters (eine von drei) und der Widerstand (10, 20, 30, 50 oder 100 Ω); dann „Prüfen“.",
-    en: "The place of the ammeter (one of three) and the resistor (10, 20, 30, 50 or 100 Ω); then “Check”.",
+    de: "Die Stelle des Amperemeters (eine von drei, antippen) und der Widerstand (10, 20, 30, 50 oder 100 Ω, Knöpfe unter dem Schaltbild); dann „Prüfen“ unter dem Schaltbild. Beim Prüfen wird der Strom eingeschaltet.",
+    en: "The place of the ammeter (one of three, tap it) and the resistor (10, 20, 30, 50 or 100 Ω, buttons below the circuit); then “Check” below the circuit. Checking switches the power on.",
   },
   correct: {
     de: "Das Amperemeter sitzt in der Leitung, nicht quer über der Batterie, und zeigt den Zielstrom: Spannung geteilt durch Widerstand. Die obere und die untere Leitung gelten gleich.",

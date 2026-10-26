@@ -121,15 +121,9 @@ blocks:
             reset:
               de: Neu anfangen
               en: Start again
-            check:
-              de: Prüfen
-              en: Check
             decimal:
               de: ","
               en: .
-            whyEmpty:
-              de: Schreibe zuerst eine Zahl als Vorhersage.
-              en: First write a number as your prediction.
             whySeries:
               de: Du hast gerechnet wie bei einer Reihenschaltung. In der Parallelschaltung liegt an jedem Zweig die
                 volle Spannung.
@@ -221,8 +215,6 @@ blocks:
               answer:
                 value: 1.2004
           rejected:
-            - answer:
-                value: null
             - answer:
                 value: 0
             - answer:

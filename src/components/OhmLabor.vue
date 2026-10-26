@@ -1,9 +1,13 @@
 <script setup lang="ts">
+// The Ohm's law lab for the task of the number seed: set voltages, record measuring points and name the unknown
+// resistor. It is the input of the task: it emits the points and the resistance typed with answer (undefined until the
+// learner records a point or types), and the explainer draws "Prüfen", checks it with OhmLabor.ts and gives the
+// feedback; Enter in the field checks too.
 import { computed, ref, watch } from "vue";
 import Fluss from "./Fluss.vue";
 import Zeiger from "./Zeiger.vue";
 import { fill, fmt } from "./Fluss.ts";
-import { MAX, STEPS, STOCK, check, diagnose, generate, measure, type Point } from "./OhmLabor.ts";
+import { MAX, STEPS, STOCK, generate, measure, type Answer, type Point } from "./OhmLabor.ts";
 
 interface Texts {
   board: string;
@@ -15,15 +19,15 @@ interface Texts {
   hint: string;
   taskLabel: string;
   task: string;
+  /** The app's messages for the typical mistakes, which reason in OhmLabor.ts gives. */
   whyPoints: string;
   whyAnswer: string;
   whyValue: string;
   reset: string;
-  check: string;
   decimal: string;
 }
 const props = defineProps<{ seed: number; texts: Texts }>();
-const emit = defineEmits<{ answered: [{ correct: boolean; reason?: string }] }>();
+const emit = defineEmits<{ answer: [Answer | undefined] }>();
 
 // The explainer gives the seed: the number of the task.
 const task = computed(() => generate(props.seed, props));
@@ -61,16 +65,15 @@ const reset = () => {
   typed.value = "";
 };
 watch(() => props.seed, reset);
-const reason = computed(() => {
-  const why = diagnose(task.value, { points: points.value, ohm: named.value });
-  const t = props.texts;
-  if (why === null) return undefined;
-  return why === "points" ? t.whyPoints : why === "answer" ? t.whyAnswer : t.whyValue;
-});
-const verify = () => {
-  const correct = check(task.value, { points: points.value, ohm: named.value });
-  emit("answered", reason.value === undefined ? { correct } : { correct, reason: reason.value });
-};
+// The answer: the points recorded and the resistance typed; none while the learner has done neither.
+watch(
+  [points, named],
+  () => {
+    const started = points.value.length > 0 || typed.value.trim() !== "";
+    emit("answer", started ? { points: points.value.map((p) => ({ ...p })), ohm: named.value } : undefined);
+  },
+  { deep: true },
+);
 </script>
 
 <template>
@@ -138,7 +141,6 @@ const verify = () => {
       <input v-model="typed" type="text" inputmode="decimal" size="6" />
     </label>
     <div class="ol-bar">
-      <button type="button" @click="verify()">{{ texts.check }}</button>
       <button type="button" @click="reset()">{{ texts.reset }}</button>
     </div>
   </div>

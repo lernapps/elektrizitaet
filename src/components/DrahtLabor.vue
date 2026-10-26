@@ -1,9 +1,12 @@
 <script setup lang="ts">
+// A circuit with a wire whose length and thickness the learner sets, for the task of the number seed. It is the input
+// of the task: it emits the wire set with answer (undefined until the learner moves a slider), and the explainer draws
+// "Prüfen", checks it with DrahtLabor.ts and gives the feedback.
 import { computed, ref, watch } from "vue";
 import Fluss from "./Fluss.vue";
 import Zeiger from "./Zeiger.vue";
 import { fill, fmt } from "./Fluss.ts";
-import { LENGTHS, TENTHS, VOLTS, check, current, diagnose, generate, ratio } from "./DrahtLabor.ts";
+import { LENGTHS, TENTHS, VOLTS, current, generate, type Answer } from "./DrahtLabor.ts";
 
 interface Texts {
   board: string;
@@ -13,14 +16,14 @@ interface Texts {
   hint: string;
   taskLabel: string;
   task: string;
+  /** The app's messages for the typical mistakes, which reason in DrahtLabor.ts gives. */
   whySame: string;
   whyLess: string;
   reset: string;
-  check: string;
   decimal: string;
 }
 const props = defineProps<{ seed: number; texts: Texts }>();
-const emit = defineEmits<{ answered: [{ correct: boolean; reason?: string }] }>();
+const emit = defineEmits<{ answer: [Answer | undefined] }>();
 
 // The explainer gives the seed: the number of the task.
 const task = computed(() => generate(props.seed, props));
@@ -47,25 +50,23 @@ const summary = computed(() =>
     V: fmt(VOLTS, 0, sep.value),
   }),
 );
+// The answer: the wire, given each time the learner moves a slider; none again after "Zurücksetzen".
+let resetting = false;
+watch(
+  [length, tenths],
+  () => {
+    if (!resetting) emit("answer", { length: length.value, tenths: tenths.value });
+  },
+  { flush: "sync" },
+);
 const reset = () => {
+  resetting = true;
   length.value = task.value.length;
   tenths.value = task.value.tenths;
+  resetting = false;
+  emit("answer", undefined);
 };
 watch(() => props.seed, reset);
-const reason = computed(() => {
-  const answer = { length: length.value, tenths: tenths.value };
-  const why = diagnose(task.value, answer);
-  if (why === null) return undefined;
-  if (why === "same") return props.texts.whySame;
-  return fill(props.texts.whyLess, {
-    X: fmt(ratio(task.value, answer), 1, sep.value),
-    K: String(task.value.factor),
-  });
-});
-const verify = () => {
-  const correct = check(task.value, { length: length.value, tenths: tenths.value });
-  emit("answered", reason.value === undefined ? { correct } : { correct, reason: reason.value });
-};
 </script>
 
 <template>
@@ -110,7 +111,6 @@ const verify = () => {
     </div>
     <p role="status">{{ summary }}</p>
     <div class="dl-bar">
-      <button type="button" @click="verify()">{{ texts.check }}</button>
       <button type="button" @click="reset()">{{ texts.reset }}</button>
     </div>
   </div>
