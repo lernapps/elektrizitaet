@@ -1,6 +1,8 @@
 // Logic of the voltage exercise: connect a voltmeter to two points of a circuit with two resistors in series so that it
-// shows the target voltage.
-import { fill, fmt, nice, pick, random, same } from "./Fluss.ts";
+// shows the target voltage. SpannungMessen.vue is the input of the task; the explainer checks an answer with check and
+// gives the message of reason. describe states a task and its solution, about what the exercise is; template, params,
+// mistakes and show give a tutor the task once and each number's inputs and outputs.
+import { fill, fmt, nice, pick, random, round, same } from "./Fluss.ts";
 
 /** The points of the circuit: before the first resistor (n0), between them (n1), after the second (n2) and in the
  * bottom wire (n3). */
@@ -60,7 +62,7 @@ export const solution = (task: Task): Answer =>
   task.across === "r1" ? { from: "n0", to: "n1" } : { from: "n1", to: "n2" };
 export const wrong = (_task: Task): Answer => ({ from: null, to: null });
 
-/** Why an answer is wrong, for the hint under the feedback; null when it is right. */
+/** Why an answer is wrong, for the app's message; null when it is right. */
 export function diagnose(task: Task, answer: Answer): "points" | "wire" | "value" | null {
   if (check(task, answer)) return null;
   const shown = measure(task, answer);
@@ -70,6 +72,18 @@ export function diagnose(task: Task, answer: Answer): "points" | "wire" | "value
 
 interface DescribeProps {
   texts: Record<string, string>;
+}
+
+/** The app's message for a wrong answer, the text why… of the page for its mistake; undefined for a right one. */
+export function reason(task: Task, answer: Answer, props: DescribeProps, _lang?: string): string | undefined {
+  const why = diagnose(task, answer);
+  const t = props.texts;
+  if (why === null) return undefined;
+  if (why === "value") {
+    const sep = t["decimal"]!;
+    return fill(t["whyValue"]!, { v: `${fmt(measure(task, answer) ?? 0, 2, sep)} V`, T: fmt(task.target, 2, sep) });
+  }
+  return why === "points" ? t["whyPoints"] : t["whyWire"];
 }
 const WORDS: Record<string, { points: string; solution: string; first: string; second: string }> = {
   de: {
@@ -111,14 +125,46 @@ export function describe(task: Task, props: DescribeProps, lang: string) {
   };
 }
 
+const SHOW: Record<string, { both: string; one: string; none: string }> = {
+  de: { both: "Punkt {A} und Punkt {B}", one: "nur Punkt {A}", none: "kein Punkt" },
+  en: { both: "point {A} and point {B}", one: "point {A} only", none: "no point" },
+};
+
+/** The task as a learner reads it, with {U}, {T}, {R1} and {R2}: the prop task and the points of the board. */
+export function template(props: DescribeProps, lang: string): string {
+  return `${props.texts["task"]!} ${(WORDS[lang] ?? WORDS["de"]!).points}`;
+}
+
+/** What sets a task: the voltage of the battery, the voltage to reach and the two resistors. */
+export function params(task: Task, _props: DescribeProps, _lang: string): Record<string, number> {
+  return { U: task.volts, T: round(task.target, 2), R1: task.r1, R2: task.r2 };
+}
+
+/**
+ * The answer of each typical mistake of about.mistakes: fewer than two points has many answers; the two points on the
+ * bottom wire, 3 and 4; the points before and after both resistors, 1 and 3.
+ */
+export function mistakes(_task: Task, _props?: DescribeProps): (Answer | undefined)[] {
+  return [undefined, { from: "n2", to: "n3" }, { from: "n0", to: "n2" }];
+}
+
+/** An answer as the learner gives it: the points the voltmeter is connected to, by their numbers on the board. */
+export function show(answer: Answer, _task: Task, _props: DescribeProps, lang: string): string {
+  const words = SHOW[lang] ?? SHOW["de"]!;
+  const number = (node: Node) => String(NODES.indexOf(node) + 1);
+  const [a, b] = [answer.from, answer.to].filter((node): node is Node => node !== null);
+  if (a === undefined) return words.none;
+  return b === undefined ? fill(words.one, { A: number(a) }) : fill(words.both, { A: number(a), B: number(b) });
+}
+
 export const about = {
   task: {
     de: "Du schließt ein Voltmeter an zwei Punkte eines Stromkreises mit zwei Widerständen in Reihe an, bis es den Zielwert zeigt.",
     en: "You connect a voltmeter to two points of a circuit with two resistors in series until it shows the target value.",
   },
   answer: {
-    de: "Zwei der vier Punkte nacheinander antippen; dann „Prüfen“.",
-    en: "Tap two of the four points one after the other; then “Check”.",
+    de: "Zwei der vier Punkte nacheinander antippen; dann „Prüfen“ unter dem Schaltbild. Beim Prüfen wird der Strom eingeschaltet.",
+    en: "Tap two of the four points one after the other; then “Check” below the circuit. Checking switches the power on.",
   },
   correct: {
     de: "Das Voltmeter zeigt den Zielwert, also den Teil der Spannung an einem der beiden Widerstände. Welche Punkte das sind, ist egal, wenn der Wert stimmt, und die Reihenfolge der beiden Punkte auch.",

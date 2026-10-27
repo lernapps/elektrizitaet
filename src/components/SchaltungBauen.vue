@@ -1,16 +1,19 @@
 <script setup lang="ts">
+// A circuit board for the task of the number seed: the learner builds a circuit of lamps, switches and wires and tests
+// it with the power on. It is the input of the task: it emits the circuit with answer each time the learner changes
+// the board (undefined until the first change and after "Zurücksetzen"), and the explainer draws "Prüfen", checks it
+// with SchaltungBauen.ts and gives the feedback. Once the circuit is checked (checked), the power is on.
 import { computed, ref, watch } from "vue";
 import Fluss from "./Fluss.vue";
 import {
   SLOTS,
-  check,
-  diagnose,
   emptySlots,
   flows,
   fromSlots,
   generate,
   lampSlots,
   simulate,
+  type Circuit,
   type Slots,
   type SlotId,
 } from "./SchaltungBauen.ts";
@@ -36,6 +39,7 @@ interface Texts {
   status: string;
   statusOff: string;
   short: string;
+  /** The app's messages for the typical mistakes, which reason in SchaltungBauen.ts gives. */
   whyLamps: string;
   whySwitches: string;
   whyShort: string;
@@ -43,7 +47,6 @@ interface Texts {
   whyBehaviour: string;
   taskLabel: string;
   reset: string;
-  check: string;
   goalEine: string;
   goalSchalter: string;
   goalReihe: string;
@@ -56,8 +59,10 @@ const props = defineProps<{
   seed: number;
   goals: ("eine" | "schalter" | "reihe" | "parallel" | "je-schalter" | "haupt")[];
   texts: Texts;
+  /** Whether the explainer checked the circuit the board gives now. */
+  checked: boolean;
 }>();
-const emit = defineEmits<{ answered: [{ correct: boolean; reason?: string }] }>();
+const emit = defineEmits<{ answer: [Circuit | undefined] }>();
 
 type Tool = "wire" | "lamp" | "switch";
 
@@ -79,8 +84,6 @@ const SIMPLE: Partial<Record<SlotId, { x: number; y: number; rot: number }>> = {
 const slots = ref<Slots>(emptySlots());
 const tool = ref<Tool>("lamp");
 const powered = ref(false);
-// What is still missing after the last check; cleared by the next change.
-const reason = ref<string | null>(null);
 
 const task = computed(() => generate(props.seed, props));
 const simple = computed(() => ["eine", "schalter", "reihe"].includes(task.value.goal));
@@ -134,39 +137,33 @@ const label = (id: SlotId) => {
 };
 
 function press(id: SlotId) {
-  reason.value = null;
   const part = slots.value[id];
   // With the power on, a tap tests: it flips a switch and unscrews or screws in a lamp.
   if (powered.value) {
     if (part?.kind === "switch") part.closed = !part.closed;
     else if (part?.kind === "lamp") part.out = part.out !== true;
-    return;
   }
   // While building, a tap puts the chosen part in place; the switch tool also flips a switch that is already there.
-  if (tool.value === "switch" && part?.kind === "switch") part.closed = !part.closed;
+  else if (tool.value === "switch" && part?.kind === "switch") part.closed = !part.closed;
   else
     slots.value[id] =
       tool.value === "wire" ? null : tool.value === "lamp" ? { kind: "lamp" } : { kind: "switch", closed: true };
+  // the answer: the circuit as it is now, a copy without Vue's proxies
+  emit("answer", JSON.parse(JSON.stringify(circuit.value)) as Circuit);
 }
 const reset = () => {
-  reason.value = null;
   slots.value = emptySlots();
   powered.value = false;
+  emit("answer", undefined);
 };
 watch(() => props.seed, reset);
-const verify = () => {
-  powered.value = true;
-  const why = diagnose(task.value.goal, circuit.value);
-  const t = props.texts;
-  reason.value =
-    why === null
-      ? null
-      : { lamps: t.whyLamps, switches: t.whySwitches, short: t.whyShort, dark: t.whyDark, behaviour: t.whyBehaviour }[
-          why
-        ];
-  const correct = check(task.value, circuit.value);
-  emit("answered", reason.value === null ? { correct } : { correct, reason: reason.value });
-};
+// "Prüfen" switches the power on, so that the lamps shine as the circuit lets them.
+watch(
+  () => props.checked,
+  (checked) => {
+    if (checked) powered.value = true;
+  },
+);
 </script>
 
 <template>
@@ -185,7 +182,7 @@ const verify = () => {
       <button type="button" :aria-pressed="tool === 'wire'" :disabled="powered" @click="tool = 'wire'">
         {{ texts.toolWire }}
       </button>
-      <button type="button" class="bau-power" :aria-pressed="powered" @click="((powered = !powered), (reason = null))">
+      <button type="button" class="bau-power" :aria-pressed="powered" @click="powered = !powered">
         {{ powered ? texts.powerOff : texts.powerOn }}
       </button>
     </div>
@@ -259,9 +256,7 @@ const verify = () => {
 
     <p class="bau-status" role="status">{{ status }}</p>
     <p v-if="powered && sim.short" class="bau-short" role="status">{{ texts.short }}</p>
-    <p v-if="reason !== null" role="status">{{ reason }}</p>
     <div class="bau-bar">
-      <button type="button" @click="verify()">{{ texts.check }}</button>
       <button type="button" @click="reset()">{{ texts.reset }}</button>
     </div>
   </div>

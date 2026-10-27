@@ -140,9 +140,6 @@ blocks:
             reset:
               de: Neu anfangen
               en: Start again
-            check:
-              de: Prüfen
-              en: Check
             decimal:
               de: ","
               en: .

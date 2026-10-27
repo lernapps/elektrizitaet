@@ -1,9 +1,13 @@
 <script setup lang="ts">
+// A circuit with two resistors in series for the task of the number seed: connect the voltmeter to two of its points.
+// It is the input of the task: it emits the points chosen with answer (undefined until the learner taps one), and the
+// explainer draws "Prüfen", checks it with SpannungMessen.ts and gives the feedback. Once the answer is checked
+// (checked), the power is on and the voltmeter shows what it measures.
 import { computed, ref, watch } from "vue";
 import Fluss from "./Fluss.vue";
 import Zeiger from "./Zeiger.vue";
 import { fill, fmt } from "./Fluss.ts";
-import { NODES, check, current, diagnose, generate, measure, potentials, type Node } from "./SpannungMessen.ts";
+import { NODES, current, generate, measure, potentials, type Answer, type Node } from "./SpannungMessen.ts";
 
 interface Texts {
   board: string;
@@ -15,18 +19,23 @@ interface Texts {
   noVoltmeter: string;
   taskLabel: string;
   task: string;
+  /** The app's messages for the typical mistakes, which reason in SpannungMessen.ts gives. */
   whyPoints: string;
   whyWire: string;
   whyValue: string;
   reset: string;
-  check: string;
   decimal: string;
   switchOn: string;
   switchOff: string;
   off: string;
 }
-const props = defineProps<{ seed: number; texts: Texts }>();
-const emit = defineEmits<{ answered: [{ correct: boolean; reason?: string }] }>();
+const props = defineProps<{
+  seed: number;
+  texts: Texts;
+  /** Whether the explainer checked the answer the circuit gives now. */
+  checked: boolean;
+}>();
+const emit = defineEmits<{ answer: [Answer | undefined] }>();
 
 // The explainer gives the seed: the number of the task.
 const task = computed(() => generate(props.seed, props));
@@ -64,6 +73,7 @@ function press(n: Node) {
     from.value = n;
     to.value = null;
   } else if (n !== from.value) to.value = n;
+  emit("answer", { ...answer.value });
 }
 const status = computed(() =>
   shown.value === null
@@ -76,25 +86,16 @@ const reset = () => {
   powered.value = false;
   from.value = null;
   to.value = null;
+  emit("answer", undefined);
 };
 watch(() => props.seed, reset);
-const reason = computed(() => {
-  const why = diagnose(task.value, answer.value);
-  const t = props.texts;
-  if (why === null) return undefined;
-  if (why === "value") {
-    return fill(t.whyValue, {
-      v: `${fmt(shown.value ?? 0, 2, sep.value)} V`,
-      T: fmt(task.value.target, 2, sep.value),
-    });
-  }
-  return why === "points" ? t.whyPoints : t.whyWire;
-});
-const verify = () => {
-  powered.value = true;
-  const correct = check(task.value, answer.value);
-  emit("answered", reason.value === undefined ? { correct } : { correct, reason: reason.value });
-};
+// "Prüfen" switches the power on, so that the voltmeter shows what it measures.
+watch(
+  () => props.checked,
+  (checked) => {
+    if (checked) powered.value = true;
+  },
+);
 </script>
 
 <template>
@@ -162,7 +163,6 @@ const verify = () => {
       <button type="button" :aria-pressed="powered" @click="powered = !powered">
         {{ powered ? texts.switchOff : texts.switchOn }}
       </button>
-      <button type="button" @click="verify()">{{ texts.check }}</button>
       <button type="button" @click="reset()">{{ texts.reset }}</button>
     </div>
   </div>

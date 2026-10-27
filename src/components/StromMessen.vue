@@ -1,9 +1,13 @@
 <script setup lang="ts">
+// A circuit with a battery and a resistor for the task of the number seed: build the ammeter in and choose the
+// resistor. It is the input of the task: it emits the place and the resistor with answer (undefined until the learner
+// changes either), and the explainer draws "Prüfen", checks it with StromMessen.ts and gives the feedback. Once the
+// answer is checked (checked), the power is on and the ammeter shows what it measures.
 import { computed, ref, watch } from "vue";
 import Fluss from "./Fluss.vue";
 import Zeiger from "./Zeiger.vue";
 import { fill, fmt } from "./Fluss.ts";
-import { STOCK, check, diagnose, generate, measure, type Spot } from "./StromMessen.ts";
+import { STOCK, generate, measure, type Answer, type Spot } from "./StromMessen.ts";
 
 interface Texts {
   board: string;
@@ -21,18 +25,23 @@ interface Texts {
   noAmmeter: string;
   taskLabel: string;
   task: string;
+  /** The app's messages for the typical mistakes, which reason in StromMessen.ts gives. */
   whyAmmeter: string;
   whyShort: string;
   whyValue: string;
   reset: string;
-  check: string;
   decimal: string;
   switchOn: string;
   switchOff: string;
   off: string;
 }
-const props = defineProps<{ seed: number; texts: Texts }>();
-const emit = defineEmits<{ answered: [{ correct: boolean; reason?: string }] }>();
+const props = defineProps<{
+  seed: number;
+  texts: Texts;
+  /** Whether the explainer checked the answer the circuit gives now. */
+  checked: boolean;
+}>();
+const emit = defineEmits<{ answer: [Answer | undefined] }>();
 
 // The explainer gives the seed: the number of the task.
 const task = computed(() => generate(props.seed, props));
@@ -59,6 +68,7 @@ const spotLabel = (id: (typeof spots)[number]) =>
   `${props.texts.spot} ${spots.indexOf(id) + 1}: ${NAMES.value[id]}, ${spot.value === id ? props.texts.spotTaken : props.texts.spotFree}`;
 const press = (id: (typeof spots)[number]) => {
   spot.value = spot.value === id ? null : id;
+  emit("answer", { ...answer.value });
 };
 const readingText = computed(() =>
   !powered.value
@@ -69,27 +79,25 @@ const readingText = computed(() =>
         ? props.texts.noAmmeter
         : fill(props.texts.ammeter, { v: `${fmt(reading.value.ammeter, 3, sep.value)} A` }),
 );
+// The answer: the place and the resistor, given when the learner changes either; none again after "Zurücksetzen".
+const choose = (value: number) => {
+  ohm.value = value;
+  emit("answer", { ...answer.value });
+};
 const reset = () => {
   powered.value = false;
   spot.value = null;
   ohm.value = task.value.start;
+  emit("answer", undefined);
 };
 watch(() => props.seed, reset);
-const reason = computed(() => {
-  const why = diagnose(task.value, answer.value);
-  const t = props.texts;
-  if (why === null) return undefined;
-  if (why === "value") {
-    const shown = reading.value.ammeter === null ? "" : fmt(reading.value.ammeter, 3, sep.value);
-    return fill(t.whyValue, { v: `${shown} A`, T: fmt(task.value.target, 3, sep.value) });
-  }
-  return why === "ammeter" ? t.whyAmmeter : t.whyShort;
-});
-const verify = () => {
-  powered.value = true;
-  const correct = check(task.value, answer.value);
-  emit("answered", reason.value === undefined ? { correct } : { correct, reason: reason.value });
-};
+// "Prüfen" switches the power on, so that the ammeter shows what it measures.
+watch(
+  () => props.checked,
+  (checked) => {
+    if (checked) powered.value = true;
+  },
+);
 </script>
 
 <template>
@@ -149,7 +157,7 @@ const verify = () => {
     </div>
 
     <div class="sm-bar" role="group" :aria-label="texts.resistors">
-      <button v-for="value in STOCK" :key="value" type="button" :aria-pressed="ohm === value" @click="ohm = value">
+      <button v-for="value in STOCK" :key="value" type="button" :aria-pressed="ohm === value" @click="choose(value)">
         {{ fill(texts.resistor, { n: String(value) }) }}
       </button>
     </div>
@@ -158,7 +166,6 @@ const verify = () => {
       <button type="button" :aria-pressed="powered" @click="powered = !powered">
         {{ powered ? texts.switchOff : texts.switchOn }}
       </button>
-      <button type="button" @click="verify()">{{ texts.check }}</button>
       <button type="button" @click="reset()">{{ texts.reset }}</button>
     </div>
   </div>

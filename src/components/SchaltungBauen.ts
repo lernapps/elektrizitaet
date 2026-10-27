@@ -1,4 +1,7 @@
 // Logic of the circuit builder: the circuit model, its simulation and the tasks (goals) the learner solves.
+// SchaltungBauen.vue is the input of the task; the explainer checks a circuit with check and gives the message of
+// reason. describe states a task and its solution, about what the exercise is; template, params, mistakes and show give
+// a tutor the task once and each number's goal and solution, the circuit as a short text.
 
 export type Goal = "eine" | "schalter" | "reihe" | "parallel" | "je-schalter" | "haupt";
 
@@ -266,7 +269,7 @@ const EXPECTED: Record<Goal, { lamps: number; switches: number | null }> = {
   haupt: { lamps: 2, switches: 1 },
 };
 
-/** Why a circuit does not meet the goal, for a hint to the learner; null when it does. */
+/** Why a circuit does not meet the goal, for the app's message; null when it does. */
 export function diagnose(goal: Goal, circuit: Circuit): Reason | null {
   if (meets(goal, circuit)) return null;
   const all = simulate(circuit, { closed: () => true, out: () => false });
@@ -280,6 +283,20 @@ export function diagnose(goal: Goal, circuit: Circuit): Reason | null {
 
 interface DescribeProps {
   texts: Record<string, string>;
+}
+
+/** The app's message for a wrong circuit, the text why… of the page for its mistake; undefined for a right one. */
+export function reason(task: Task, answer: Circuit, props: DescribeProps, _lang?: string): string | undefined {
+  const why = diagnose(task.goal, answer);
+  if (why === null) return undefined;
+  const key = {
+    lamps: "whyLamps",
+    switches: "whySwitches",
+    short: "whyShort",
+    dark: "whyDark",
+    behaviour: "whyBehaviour",
+  }[why];
+  return props.texts[key];
 }
 const GOAL_KEYS: Record<Goal, string> = {
   eine: "goalEine",
@@ -334,14 +351,88 @@ export function describe(task: Task, props: DescribeProps, lang: string) {
   };
 }
 
+const SHOW: Record<
+  string,
+  {
+    task: string;
+    lamp: string;
+    lampOut: string;
+    closed: string;
+    open: string;
+    wire: string;
+    and: string;
+    series: string;
+    main: string;
+    branch: string;
+  }
+> = {
+  de: {
+    task: "Aufgabe",
+    lamp: "Lampe",
+    lampOut: "Lampe (herausgeschraubt)",
+    closed: "Schalter (geschlossen)",
+    open: "Schalter (offen)",
+    wire: "nur Kabel",
+    and: " und ",
+    series: "{P} in Reihe",
+    main: "Hauptleitung",
+    branch: "Zweig {n}",
+  },
+  en: {
+    task: "task",
+    lamp: "lamp",
+    lampOut: "lamp (unscrewed)",
+    closed: "switch (closed)",
+    open: "switch (open)",
+    wire: "just wire",
+    and: " and ",
+    series: "{P} in series",
+    main: "main wire",
+    branch: "branch {n}",
+  },
+};
+
+/** The task as a learner reads it: {Aufgabe} for the text of its goal, which is all the task says. */
+export function template(_props: DescribeProps, lang: string): string {
+  return `{${(SHOW[lang] ?? SHOW["de"]!).task}}`;
+}
+
+/** What sets a task: its goal, as the text of the page. */
+export function params(task: Task, props: DescribeProps, lang: string): Record<string, string> {
+  return { [(SHOW[lang] ?? SHOW["de"]!).task]: props.texts[GOAL_KEYS[task.goal]]!.replace(/\s+/g, " ").trim() };
+}
+
+/** The answer of each typical mistake of about.mistakes: none has a single circuit, each comes in many builds. */
+export function mistakes(_task: Task, _props?: DescribeProps): (Circuit | undefined)[] {
+  return [undefined, undefined, undefined];
+}
+
+/**
+ * A circuit as a learner describes it: its parts in series, or with a parallel section the parts of the main wire and
+ * of each branch; a lamp unscrewed and a switch open or closed as they are.
+ */
+export function show(answer: Circuit, _task: Task, _props: DescribeProps, lang: string): string {
+  const words = SHOW[lang] ?? SHOW["de"]!;
+  const name = (part: Part) =>
+    part.kind === "lamp" ? (part.out === true ? words.lampOut : words.lamp) : part.closed ? words.closed : words.open;
+  const list = (parts: Part[]) => (parts.length === 0 ? words.wire : parts.map(name).join(words.and));
+  const main = answer.filter((element): element is Part => element.kind !== "parallel");
+  const group = answer.find((element): element is Group => element.kind === "parallel");
+  if (group === undefined) return main.length > 1 ? words.series.replace("{P}", list(main)) : list(main);
+  return [
+    `${words.main}: ${list(main)}`,
+    ...group.branches.map((branch, index) => `${words.branch.replace("{n}", String(index + 1))}: ${list(branch)}`),
+  ].join("; ");
+}
+
 export const about = {
   task: {
     de: "Du baust einen Stromkreis aus Lampen, Schaltern und Kabeln, der tut, was die Aufgabe verlangt, schaltest den Strom ein und testest ihn.",
     en: "You build a circuit from lamps, switches and wires that does what the task asks, switch the power on and test it.",
   },
   answer: {
-    de: "Der gebaute Stromkreis auf dem Schaltbrett (Lampe, Schalter oder Kabel pro Platz); dann „Prüfen“.",
-    en: "The circuit built on the board (lamp, switch or wire per place); then “Check”.",
+    de: "Der gebaute Stromkreis auf dem Schaltbrett (Lampe, Schalter oder Kabel pro Platz: Bauteil wählen, dann auf den Platz tippen); dann „Prüfen“ unter dem Schaltbrett. Beim Prüfen wird der Strom eingeschaltet.",
+    en: "The circuit built on the board (lamp, switch or wire per place: choose a part, then tap the place); then “Check” below the board. Checking switches the power on.",
   },
   correct: {
     de: "Der Stromkreis verhält sich so, wie die Aufgabe es sagt: Lampen leuchten, Schalter und herausgeschraubte Lampen wirken wie verlangt. Jeder Aufbau zählt, der das tut, nicht nur die Musterlösung; ein zusätzlicher Schalter ist nur dort ein Fehler, wo die Aufgabe eine feste Zahl nennt.",

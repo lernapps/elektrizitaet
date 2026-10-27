@@ -1,5 +1,20 @@
 import { describe, expect, it } from "vite-plus/test";
-import { KINDS, check, generate, solution, value, wrong, type Kind } from "./SchaltungVorhersage.ts";
+import {
+  KINDS,
+  about,
+  check,
+  generate,
+  mistakes,
+  params,
+  parse,
+  reason,
+  show,
+  solution,
+  template,
+  value,
+  wrong,
+  type Kind,
+} from "./SchaltungVorhersage.ts";
 
 describe("value", () => {
   it("is the series current, the share of the second resistor, the total and the branch current", () => {
@@ -37,5 +52,78 @@ describe("task", () => {
     expect(check(task, { value: 12 / 10 })).toBe(false);
     expect(check(task, { value: 12 / 10 + 12 / 30 })).toBe(false);
     expect(check({ ...task, kind: "parallel-gesamt", value: 1.6 }, { value: 12 / 40 })).toBe(false);
+  });
+});
+
+const texts = {
+  decimal: ",",
+  taskReiheStrom: "Zwei Widerstände von {R1} Ω und {R2} Ω liegen in Reihe an {U} V. Was zeigt das Amperemeter?",
+  taskReiheSpannung:
+    "Zwei Widerstände von {R1} Ω und {R2} Ω liegen in Reihe an {U} V. Was zeigt das Voltmeter am zweiten Widerstand ({R2} Ω)?",
+  taskParallelGesamt: "Zwei Widerstände von {R1} Ω und {R2} Ω liegen parallel an {U} V. Was zeigt das Amperemeter?",
+  taskParallelZweig: "Zwei Widerstände von {R1} Ω und {R2} Ω liegen parallel an {U} V. Was zeigt es im Zweig?",
+  whySeries: "series",
+  whyParallel: "parallel",
+  whyOne: "one",
+  whyWhole: "whole",
+  whyHalf: "half",
+  whyOther: "other",
+};
+const series = { kinds: ["reihe-strom", "reihe-spannung"] as Kind[], texts };
+
+describe("parse", () => {
+  it("reads the number typed, with a comma or a point; none while the field is empty or no number", () => {
+    expect(parse(" 0,3 ")).toBe(0.3);
+    expect(parse("9.5")).toBe(9.5);
+    expect(parse("")).toBeUndefined();
+    expect(parse("neun")).toBeUndefined();
+  });
+});
+
+describe("reason", () => {
+  it("names the typical mistake a wrong number matches, and none for a right one", () => {
+    const task = { kind: "reihe-strom" as const, volts: 12, r1: 10, r2: 30, value: 0.3 };
+    expect(reason(task, { value: 1.2 }, series)).toBe("one");
+    expect(reason(task, { value: 1.6 }, series)).toBe("parallel");
+    expect(reason(task, { value: 7 }, series)).toBe("other");
+    expect(reason(task, { value: 0.3 }, series)).toBeUndefined();
+    const share = { kind: "reihe-spannung" as const, volts: 12, r1: 10, r2: 30, value: 9 };
+    expect(reason(share, { value: 12 }, series)).toBe("whole");
+    expect(reason(share, { value: 6 }, series)).toBe("half");
+  });
+});
+
+describe("for a tutor", () => {
+  it("gives the circuit the kinds share once, and the question of each number's kind", () => {
+    expect(template(series, "de")).toBe("Zwei Widerstände von {R1} Ω und {R2} Ω liegen in Reihe an {U} V. {Frage}");
+    const task = generate(1, series);
+    expect(task.kind).toBe("reihe-spannung");
+    expect(params(task, series, "de")).toEqual({
+      R1: task.r1,
+      R2: task.r2,
+      U: task.volts,
+      Frage: `Was zeigt das Voltmeter am zweiten Widerstand (${task.r2} Ω)?`,
+    });
+  });
+  it("gives the whole text for a block with one kind", () => {
+    const one = { kinds: ["reihe-strom"] as Kind[], texts };
+    expect(template(one, "de")).toBe(texts.taskReiheStrom);
+    expect(Object.keys(params(generate(1, one), one, "de"))).toEqual(["U", "R1", "R2"]);
+  });
+  it("has one answer for each typical mistake of the kind, which check rejects", () => {
+    for (const kind of KINDS)
+      for (let seed = 0; seed < 50; seed++) {
+        const task = generate(seed, { kinds: [kind] });
+        const answers = mistakes(task);
+        expect(answers).toHaveLength(about.mistakes.length);
+        expect(answers.filter((answer) => answer !== undefined)).toHaveLength(1);
+        for (const answer of answers) if (answer !== undefined) expect(check(task, answer), `${seed}`).toBe(false);
+      }
+  });
+  it("shows a number with the unit of the meter", () => {
+    const task = { kind: "reihe-strom" as const, volts: 12, r1: 10, r2: 30, value: 0.3 };
+    expect(show(solution(task), task, series, "de")).toBe("0,3 A");
+    expect(show(mistakes(task)[0]!, task, series, "de")).toBe("1,2 A");
+    expect(show({ value: 9 }, { ...task, kind: "reihe-spannung", value: 9 }, series, "de")).toBe("9 V");
   });
 });

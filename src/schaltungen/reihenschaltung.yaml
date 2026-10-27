@@ -235,9 +235,6 @@ blocks:
             reset:
               de: Neu anfangen
               en: Start again
-            check:
-              de: Prüfen
-              en: Check
             goalEine:
               de: Baue einen Stromkreis mit einer Lampe. Wenn du den Strom einschaltest, soll die Lampe leuchten.
               en: Build a circuit with one lamp. When you switch the power on, the lamp should shine.
