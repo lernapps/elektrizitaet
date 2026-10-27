@@ -1,22 +1,21 @@
 <script setup lang="ts">
 // A switched-off circuit with two resistors and a meter for the task of the number seed: the learner predicts what the
 // meter shows. It is the input of the task: it emits the number typed with answer (undefined while there is none), and
-// the explainer draws "Prüfen", checks it with SchaltungVorhersage.ts and gives the feedback. Once the prediction is
-// checked (checked), the circuit is switched on, the meter shows the real value and the field is locked until
-// "Zurücksetzen"; Enter in the field checks too.
+// the explainer draws "Prüfen", checks it with SchaltungVorhersage.ts and gives the feedback. Once a right prediction
+// is checked (checked), the circuit is switched on, the meter confirms it and the field is locked until "Neu
+// anfangen"; a wrong one leaves the circuit off, so that the meter does not give the solution away. Enter in the
+// field checks too.
 import { computed, ref, watch } from "vue";
 import Fluss from "./Fluss.vue";
 import Zeiger from "./Zeiger.vue";
 import { fill, fmt } from "./Fluss.ts";
-import { branches, check, decimals, generate, parse, unit, type Answer } from "./SchaltungVorhersage.ts";
+import { branches, check, generate, parse, unit, type Answer } from "./SchaltungVorhersage.ts";
 
 interface Texts {
   board: string;
   prediction: string;
   on: string;
   off: string;
-  right: string;
-  wrong: string;
   taskReiheStrom: string;
   taskReiheSpannung: string;
   taskParallelGesamt: string;
@@ -45,7 +44,6 @@ const emit = defineEmits<{ answer: [Answer | undefined] }>();
 const task = computed(() => generate(props.seed, props));
 const typed = ref("");
 const on = ref(false);
-const result = ref<boolean | null>(null);
 
 const sep = computed(() => props.texts.decimal);
 const series = computed(() => task.value.kind.startsWith("reihe"));
@@ -70,28 +68,18 @@ const taskText = computed(() => {
   return fill(text, { U: fmt(volts.value, 0, sep.value), R1: String(task.value.r1), R2: String(task.value.r2) });
 });
 const label = computed(() => `${props.texts.prediction} (${unit(task.value.kind)})`);
-const feedback = computed(() => {
-  if (result.value === null) return "";
-  const text = fill(result.value ? props.texts.right : props.texts.wrong, {
-    v: `${fmt(task.value.value, decimals(task.value.kind), sep.value)} ${unit(task.value.kind)}`,
-  });
-  return text;
-});
 const reset = () => {
   typed.value = "";
   on.value = false;
-  result.value = null;
 };
 watch(() => props.seed, reset);
 // The answer: the number typed; none while the field is empty or holds no number, and none again after a reset.
 watch(named, (value) => emit("answer", value === undefined ? undefined : { value }));
-// Once the explainer checked the prediction, the circuit is switched on and the meter shows the real value.
+// Once the explainer checked a right prediction, the circuit is switched on and the meter confirms it.
 watch(
   () => props.checked,
   (checked) => {
-    if (!checked || named.value === undefined) return;
-    on.value = true;
-    result.value = check(task.value, { value: named.value });
+    if (checked && named.value !== undefined && check(task.value, { value: named.value })) on.value = true;
   },
 );
 </script>
@@ -177,10 +165,7 @@ watch(
       {{ label }}
       <input v-model="typed" type="text" inputmode="decimal" size="8" :disabled="on" />
     </label>
-    <p role="status">
-      <template v-if="result === null">{{ on ? texts.on : texts.off }}</template>
-      <template v-else>{{ feedback }}</template>
-    </p>
+    <p role="status">{{ on ? texts.on : texts.off }}</p>
     <div class="sv-bar">
       <button type="button" @click="reset()">{{ texts.reset }}</button>
     </div>

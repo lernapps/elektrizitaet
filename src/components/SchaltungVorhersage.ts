@@ -260,8 +260,8 @@ export const about = {
     en: "You predict what a meter shows in a series or parallel circuit with two resistors, and then switch on.",
   },
   answer: {
-    de: "Eine Zahl, ins Feld „Deine Vorhersage“ getippt: die Stromstärke in A oder die Spannung in V, je nach Aufgabe (mit Komma oder Punkt); dann „Prüfen“ unter dem Schaltbild. Beim Prüfen wird eingeschaltet, und das Messgerät zeigt den echten Wert; für eine neue Vorhersage „Neu anfangen“.",
-    en: "A number, typed into the field “Your prediction”: the current in A or the voltage in V, depending on the task (with comma or point); then “Check” below the circuit. Checking switches on, and the meter shows the real value; for a new prediction “Start again”.",
+    de: "Eine Zahl, ins Feld „Deine Vorhersage“ getippt: die Stromstärke in A oder die Spannung in V, je nach Aufgabe (mit Komma oder Punkt); dann „Prüfen“ unter dem Schaltbild. Ist die Vorhersage richtig, wird beim Prüfen eingeschaltet, und das Messgerät bestätigt sie; bei einer falschen bleibt der Stromkreis aus. Für eine neue Vorhersage „Neu anfangen“.",
+    en: "A number, typed into the field “Your prediction”: the current in A or the voltage in V, depending on the task (with comma or point); then “Check” below the circuit. A right prediction switches on when checked, and the meter confirms it; after a wrong one the circuit stays off. For a new prediction “Start again”.",
   },
   correct: {
     de: "Die Zahl stimmt auf drei Stellen (Ampere) beziehungsweise zwei Stellen (Volt) mit der Anzeige überein. Der Weg zur Zahl ist frei.",

@@ -133,8 +133,9 @@ diagram, series circuit, parallel circuit, short circuit, fuse, conductor, insul
   - `OhmLabor` (`groessen/ohmsches-gesetz`): Spannung einstellen (0 bis 12 V in Schritten von 1,5 V), Messpunkte setzen, die ein
     Diagramm füllen, und den unbekannten Widerstand angeben (mindestens drei Punkte, Abweichung höchstens 0,5 Ω).
   - `SchaltungVorhersage` (`schaltungen-messen/reihenschaltung` und `parallelschaltung`): erst eine Zahl vorhersagen (Aufgabenarten
-    `reihe-strom`, `reihe-spannung`, `parallel-gesamt`, `parallel-zweig`), dann einschalten: Punkte laufen, das Messgerät zeigt
-    den Wert, die Rückmeldung nennt ihn.
+    `reihe-strom`, `reihe-spannung`, `parallel-gesamt`, `parallel-zweig`), dann prüfen: Nur eine richtige Vorhersage schaltet ein,
+    Punkte laufen, das Messgerät bestätigt sie; eine falsche lässt den Stromkreis aus, damit das Messgerät die Lösung
+    nicht verrät.
   Jede Komponente liegt als `<Name>.vue`, `<Name>.ts` (Logik: `generate`, `check`, `solution`, `wrong`) und `<Name>.test.ts` in
   `src/components/` (der Build erlaubt nur diese Namensform). Gemeinsame Hilfen (Zufall, Runden, Zahlenformat mit Dezimalzeichen
   der Sprache, Texte füllen, Aussehen des Flusses) stehen in `Fluss.ts`, die des Zeigers in `Zeiger.ts`. Die Props einer

@@ -160,16 +160,10 @@ blocks:
               de: Der Stromkreis ist eingeschaltet.
               en: The circuit is switched on.
             "off":
-              de: "Schreibe deine Vorhersage auf und prüfe sie: Dann wird eingeschaltet, und das Messgerät zeigt den
-                Wert."
-              en: "Write down your prediction and check it: then the circuit is switched on and the meter shows the
-                value."
-            right:
-              de: Richtig! Das Messgerät zeigt {v}.
-              en: Correct! The meter shows {v}.
-            wrong:
-              de: Nicht ganz. Das Messgerät zeigt {v}. Rechne noch einmal nach.
-              en: Not quite. The meter shows {v}. Calculate again.
+              de: "Schreibe deine Vorhersage auf und prüfe sie: Stimmt sie, wird eingeschaltet, und das Messgerät
+                bestätigt sie."
+              en: "Write down your prediction and check it: if it is right, the circuit is switched on and the meter
+                confirms it."
             taskReiheStrom:
               de: Zwei Widerstände von {R1} Ω und {R2} Ω liegen in Reihe an {U} V. Was zeigt das Amperemeter?
               en: Two resistors of {R1} Ω and {R2} Ω are connected in series on {U} V. What does the ammeter show?
