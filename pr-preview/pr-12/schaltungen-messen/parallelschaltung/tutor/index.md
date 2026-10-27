@@ -70,7 +70,7 @@ Ein Widerstand mit 20 Ω und einer mit 30 Ω liegen parallel an 12 V. Zweig 1: $
 
 - Was zu tun ist: Du sagst vorher, was ein Messgerät in einer Reihen- oder Parallelschaltung mit zwei Widerständen zeigt, und schaltest dann ein.
 - Aufgabe: „Zwei Widerstände von {R1} Ω und {R2} Ω liegen parallel an {U} V. {Frage}“
-- Antwortformat: Eine Zahl, ins Feld „Deine Vorhersage“ getippt: die Stromstärke in A oder die Spannung in V, je nach Aufgabe (mit Komma oder Punkt); dann „Prüfen“ unter dem Schaltbild. Beim Prüfen wird eingeschaltet, und das Messgerät zeigt den echten Wert; für eine neue Vorhersage „Neu anfangen“.
+- Antwortformat: Eine Zahl, ins Feld „Deine Vorhersage“ getippt: die Stromstärke in A oder die Spannung in V, je nach Aufgabe (mit Komma oder Punkt); dann „Prüfen“ unter dem Schaltbild. Ist die Vorhersage richtig, wird beim Prüfen eingeschaltet, und das Messgerät bestätigt sie; bei einer falschen bleibt der Stromkreis aus. Für eine neue Vorhersage „Neu anfangen“.
 - Was als richtig zählt: Die Zahl stimmt auf drei Stellen (Ampere) beziehungsweise zwei Stellen (Volt) mit der Anzeige überein. Der Weg zur Zahl ist frei.
 - Typische Fehler (die Meldung der App passt zu einem davon):
   - F1: Reihenschaltung: nur einen Widerstand benutzt (Spannung : R1), statt R1 und R2 zu addieren; oder die Zweigströme addiert wie bei einer Parallelschaltung.

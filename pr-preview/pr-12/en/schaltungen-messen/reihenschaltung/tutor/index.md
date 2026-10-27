@@ -74,7 +74,7 @@ A resistor of 10 Ω and one of 30 Ω are connected in series on 12 V. The total 
 
 - What to do: You predict what a meter shows in a series or parallel circuit with two resistors, and then switch on.
 - Task: „Two resistors of {R1} Ω and {R2} Ω are connected in series on {U} V. {question}“
-- Answer format: A number, typed into the field “Your prediction”: the current in A or the voltage in V, depending on the task (with comma or point); then “Check” below the circuit. Checking switches on, and the meter shows the real value; for a new prediction “Start again”.
+- Answer format: A number, typed into the field “Your prediction”: the current in A or the voltage in V, depending on the task (with comma or point); then “Check” below the circuit. A right prediction switches on when checked, and the meter confirms it; after a wrong one the circuit stays off. For a new prediction “Start again”.
 - What counts as right: The number matches the reading to three places (amperes) or two places (volts). The way to the number is free.
 - Typical mistakes (the app's message fits one of them):
   - F1: Series circuit: used only one resistor (voltage : R1) instead of adding R1 and R2; or added branch currents as in a parallel circuit.
