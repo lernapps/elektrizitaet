@@ -1,10 +1,11 @@
-# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
 title:
   de: Sicher mit Strom umgehen
   en: Staying safe with electricity
 description:
   de: Steckdose, Batterie und Gewitter. Du lernst, was gefährlich ist und was nicht.
   en: Sockets, batteries and thunderstorms. You learn what is dangerous and what is not.
+competencies: [gefahren-des-stroms, sicher-mit-strom-umgehen]
 blocks:
   - type: section
     id: idee
