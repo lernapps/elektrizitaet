@@ -1,10 +1,11 @@
-# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
 title:
   de: Das ohmsche Gesetz
   en: Ohm's law
 description:
   de: "Spannung, Stromstärke und Widerstand hängen zusammen: R = U / I. Damit berechnest du eine fehlende Größe."
   en: "Voltage, current and resistance are linked: R = U / I. With it you calculate a missing quantity."
+competencies: [ohmsches-gesetz, ohmsches-gesetz-rechnen]
 blocks:
   - type: section
     id: idee

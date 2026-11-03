@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
 title:
   de: Die Stromstärke
   en: Current
@@ -7,6 +7,7 @@ description:
     (mA).
   en: The current tells you how much electric current flows. You measure it with an ammeter, in amperes (A) and
     milliamperes (mA).
+competencies: [stromstaerke, stromstaerke-messen]
 blocks:
   - type: section
     id: idee

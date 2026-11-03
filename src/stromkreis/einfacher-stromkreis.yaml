@@ -1,10 +1,11 @@
-# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
 title:
   de: Der einfache Stromkreis
   en: The simple circuit
 description:
   de: Batterie, Lampe und Kabel bilden einen Stromkreis. Er muss geschlossen sein, damit die Lampe leuchtet.
   en: A battery, a lamp and wires form a circuit. It must be closed for the lamp to light up.
+competencies: [einfacher-stromkreis]
 blocks:
   - type: section
     id: idee

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
 title:
   de: Leiter und Nichtleiter
   en: Conductors and insulators
@@ -6,6 +6,7 @@ description:
   de: Metalle leiten den Strom, Gummi, Glas und Kunststoff nicht. Daran erkennst du, woraus Kabel gemacht sind.
   en: Metals conduct electricity; rubber, glass and plastic do not. That is how you can tell what cables are made
     of.
+competencies: [leiter-nichtleiter]
 blocks:
   - type: section
     id: idee

@@ -1,10 +1,11 @@
-# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
 title:
   de: Die Spannung
   en: Voltage
 description:
   de: Die Spannung treibt den Strom an. Du misst sie mit dem Voltmeter, in Volt (V), parallel zu dem Bauteil.
   en: The voltage drives the current. You measure it with a voltmeter, in volts (V), in parallel with the part.
+competencies: [spannung, spannung-messen]
 blocks:
   - type: section
     id: idee

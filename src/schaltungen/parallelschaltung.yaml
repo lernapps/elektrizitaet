@@ -1,10 +1,11 @@
-# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
 title:
   de: Parallelschaltung
   en: Parallel circuit
 description:
   de: Bei der Parallelschaltung hat jede Lampe ihren eigenen Weg. Fällt eine aus, leuchten die anderen weiter.
   en: In a parallel circuit every lamp has its own path. If one fails, the others keep shining.
+competencies: [parallelschaltung]
 blocks:
   - type: section
     id: idee

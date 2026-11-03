@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
 title:
   de: Der Widerstand
   en: Resistance
@@ -7,6 +7,7 @@ description:
     Länge und Dicke ab.
   en: The resistance tells how strongly a part hinders the current. It is measured in ohms (Ω) and depends on the
     material, length and thickness.
+competencies: [widerstand, widerstand-einflussgroessen]
 blocks:
   - type: section
     id: idee

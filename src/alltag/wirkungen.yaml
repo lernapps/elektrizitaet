@@ -1,10 +1,11 @@
-# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
 title:
   de: Wirkungen des elektrischen Stroms
   en: Effects of electric current
 description:
   de: Strom kann Wärme, Licht und Magnetismus erzeugen. Damit funktionieren viele Geräte.
   en: Current can produce heat, light and magnetism. Many devices work this way.
+competencies: [waermewirkung-strom, lichtwirkung-strom, magnetwirkung-strom]
 blocks:
   - type: section
     id: idee

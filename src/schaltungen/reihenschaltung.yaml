@@ -1,10 +1,11 @@
-# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
 title:
   de: Reihenschaltung
   en: Series circuit
 description:
   de: Bei der Reihenschaltung hängen die Lampen hintereinander. Fällt eine aus, gehen alle aus.
   en: In a series circuit the lamps are connected one after the other. If one fails, all go out.
+competencies: [reihenschaltung]
 blocks:
   - type: section
     id: idee

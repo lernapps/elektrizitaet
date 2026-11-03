@@ -1,10 +1,11 @@
-# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
 title:
   de: Reihenschaltung mit Messgeräten
   en: Series circuit with meters
 description:
   de: In der Reihenschaltung ist die Stromstärke überall gleich, und die Spannungen der Widerstände addieren sich.
   en: In a series circuit the current is the same everywhere, and the voltages of the resistors add up.
+competencies: [reihenschaltung-groessen]
 blocks:
   - type: section
     id: idee

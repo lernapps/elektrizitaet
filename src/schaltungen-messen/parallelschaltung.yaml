@@ -1,10 +1,11 @@
-# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v1.schema.json
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
 title:
   de: Parallelschaltung mit Messgeräten
   en: Parallel circuit with meters
 description:
   de: In der Parallelschaltung liegt an jedem Zweig dieselbe Spannung, und die Zweigströme addieren sich zum Gesamtstrom.
   en: In a parallel circuit every branch has the same voltage, and the branch currents add up to the total current.
+competencies: [parallelschaltung-groessen]
 blocks:
   - type: section
     id: idee
