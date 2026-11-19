@@ -35,7 +35,7 @@ jobs:
     if: github.event.action != 'closed'
     runs-on: ubuntu-latest
     steps:
-      - uses: lernapps/tooling/actions/app-check@733fbc61ebebb6d77f8678cfe70c50e75c9c4b3c # v0.17.1 # main
+      - uses: lernapps/tooling/actions/app-check@v0.17.2 # v0.17.1 # main
   deploy:
     if: github.ref == 'refs/heads/main'
     needs: app
@@ -44,7 +44,7 @@ jobs:
       contents: write
       pages: write
     steps:
-      - uses: lernapps/tooling/actions/app-publish@733fbc61ebebb6d77f8678cfe70c50e75c9c4b3c # v0.17.1 # main
+      - uses: lernapps/tooling/actions/app-publish@v0.17.2 # v0.17.1 # main
   preview:
     # a pull request from this repo only; on closing, it removes the preview without a check
     if: >-
@@ -58,4 +58,4 @@ jobs:
       pull-requests: write
       pages: read # the app's address, for the comment
     steps:
-      - uses: lernapps/tooling/actions/app-preview@733fbc61ebebb6d77f8678cfe70c50e75c9c4b3c # v0.17.1 # main
+      - uses: lernapps/tooling/actions/app-preview@v0.17.2 # v0.17.1 # main
